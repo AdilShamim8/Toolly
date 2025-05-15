@@ -35,7 +35,7 @@ This project is built using **only HTML5, CSS3, and vanilla JavaScript**—no fr
 1. **Clone the Repository**  
    ```bash
    git clone https://github.com/AdilShamim8/AI-Tools-Directory.git
-````
+
 
 2. **Open the Project**
    Navigate to the folder and open `index.html` in your web browser.
