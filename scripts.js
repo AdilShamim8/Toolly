@@ -1,6 +1,15 @@
 // AI Tools Data (extended for demo)
 const aiTools = [
     {
+        name: "H2O.ai",
+        description: "Open-source AI platform for machine learning and data science with automated ML capabilities.",
+        categories: ["data-science"],
+        logo: "https://www.h2o.ai/favicon.ico",
+        url: "https://www.h2o.ai",
+        badges: ["open source", "freemium"],
+        tags: ["machine learning", "automated ML", "open source", "analytics"]
+    },
+    {
         name: "ChatGPT",
         description: "Conversational AI system that can engage in natural dialogues, answer questions, and assist with writing.",
         categories: ["nlp", "productivity"],
@@ -10,15 +19,6 @@ const aiTools = [
         tags: ["chatbot", "writing assistant", "language model"]
     },
     {
-        name: "H2O.ai",
-        description: "Conversational AI system that can engage in natural dialogues, answer questions, and assist with writing. ",
-        categories: ["nlp", "productivity"],
-        logo: "https://h2o.ai/content/experience-fragments/h2o/us/en/site/header/master/_jcr_content/root/container/header_copy/logo.coreimg.svg/1747254091042/h2o-logo.svg",
-        url: "https://h2o.ai/",
-        badges: ["free","featured",],
-        tags: ["chatbot", "language model", "creative"]
-    },
-    {
         name: "Gemini",
         description: "Google's multimodal AI model that can understand and generate text, code, images, and more.",
         categories: ["nlp", "vision"],
@@ -26,6 +26,150 @@ const aiTools = [
         url: "https://deepmind.google/technologies/gemini/",
         badges: ["featured", "trending", "freemium"],
         tags: ["multimodal", "language model", "code assistant"]
+    },
+    {
+        name: "Grok",
+        description: "X's AI assistant with real-time knowledge and a rebellious streak. Known for its witty responses and ability to access current information.",
+        categories: ["nlp", "productivity"],
+        logo: "https://images.seeklogo.com/logo-png/61/1/grok-logo-png_seeklogo-613403.png",
+        url: "https://grok.x.ai",
+        badges: ["trending"],
+        tags: ["chatbot", "assistant", "real-time", "x", "twitter"]
+    },
+    {
+        name: "DeepSeek",
+        description: "Advanced AI research platform focused on deep learning and neural networks. Offers powerful tools for AI development and experimentation.",
+        categories: ["research", "coding"],
+        logo: "https://logosandtypes.com/wp-content/uploads/2025/02/Deepseek.png",
+        url: "https://deepseek.com",
+        badges: ["featured"],
+        tags: ["research", "deep learning", "neural networks", "development"]
+    },
+    {
+        name: "Black Box",
+        description: "AI-powered code search and development tool that helps developers find and understand code faster. Integrates with popular IDEs.",
+        categories: ["coding", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw1FupX171I8BqEXT6ZfFivUbCv2Y8rme_Mw&s",
+        url: "https://blackbox.ai",
+        badges: ["featured"],
+        tags: ["code search", "development", "IDE", "productivity"]
+    },
+    {
+        name: "Sora",
+        description: "OpenAI's revolutionary text-to-video model that can create realistic and imaginative video scenes from text descriptions. Known for its ability to generate high-quality, coherent videos with complex camera movements and detailed scenes.",
+        categories: ["video", "vision"],
+        logo: "https://openai.com/favicon.ico",
+        url: "https://openai.com/sora",
+        badges: ["featured", "trending"],
+        tags: ["video generation", "text-to-video", "openai", "creative"]
+    },
+    {
+        name: "Soundraw",
+        description: "AI music generator that creates royalty-free music for videos, games, and podcasts. Features customizable tracks with mood, genre, and length controls.",
+        categories: ["audio", "design"],
+        logo: "https://images.sxsw.com/fcA56uPNMovhta-tCqj1-bmptVI=/0x0:5000x5000/950x950/images.sxsw.com/174/6cc79338-ecfb-4154-a56c-f85932e79960/SalesClient-6002",
+        url: "https://soundraw.io",
+        badges: ["featured", "freemium"],
+        tags: ["music generation", "royalty-free", "audio", "creative"]
+    },
+    {
+        name: "OpenAI Codex",
+        description: "Advanced AI system that translates natural language to code. Powers GitHub Copilot and provides powerful code generation capabilities.",
+        categories: ["coding", "nlp"],
+        logo: "https://openai.com/favicon.ico",
+        url: "https://openai.com/blog/openai-codex",
+        badges: ["featured"],
+        tags: ["code generation", "programming", "openai", "development"]
+    },
+    {
+        name: "Codeium",
+        description: "Free AI code completion tool that works across multiple IDEs. Offers intelligent code suggestions and real-time assistance.",
+        categories: ["coding"],
+        logo: "https://codeium.com/favicon.ico",
+        url: "https://codeium.com",
+        badges: ["free", "trending"],
+        tags: ["code completion", "IDE", "programming", "development"]
+    },
+    {
+        name: "PolyCoder",
+        description: "Open-source code generation model trained on multiple programming languages. Provides accurate code suggestions and completions.",
+        categories: ["coding", "research"],
+        logo: "https://upload.wikimedia.org/wikipedia/commons/6/62/Polycode_Logo.png",
+        url: "https://github.com/VHellendoorn/Code-LMs",
+        badges: ["open source"],
+        tags: ["code generation", "open source", "programming", "research"]
+    },
+    {
+        name: "Replit Ghostwriter",
+        description: "AI pair programmer integrated into Replit's online IDE. Provides real-time code suggestions and explanations.",
+        categories: ["coding", "productivity"],
+        logo: "https://cdn.sanity.io/images/bj34pdbp/migration/7d06c37d899d8ba6419b2a9484dfe44586e70081-794x872.png",
+        url: "https://replit.com/ghostwriter",
+        badges: ["featured", "freemium"],
+        tags: ["code completion", "IDE", "programming", "education"]
+    },
+    {
+        name: "Amazon CodeWhisperer",
+        description: "AI coding companion that provides real-time code suggestions and security scanning. Integrated with popular IDEs.",
+        categories: ["coding", "productivity"],
+        logo: "https://aws.amazon.com/favicon.ico",
+        url: "https://aws.amazon.com/codewhisperer",
+        badges: ["featured", "freemium"],
+        tags: ["code completion", "security", "aws", "development"]
+    },
+    {
+        name: "Jasper AI",
+        description: "Enterprise-grade AI content platform for marketing teams and businesses. Features advanced copywriting, content generation, and brand voice customization.",
+        categories: ["marketing", "business", "productivity"],
+        logo: "https://img.icons8.com/?size=512&id=ij6f4GUUwLE8&format=png",
+        url: "https://www.jasper.ai",
+        badges: ["featured", "paid"],
+        tags: ["content creation", "marketing", "copywriting", "enterprise"]
+    },
+    {
+        name: "Pika",
+        description: "AI-powered video generation platform that creates high-quality videos from text prompts. Known for its ability to generate cinematic and artistic video content.",
+        categories: ["video", "design"],
+        logo: "https://pika.art/favicon.ico",
+        url: "https://pika.art",
+        badges: ["trending", "freemium"],
+        tags: ["video generation", "text-to-video", "creative", "cinematic"]
+    },
+    {
+        name: "Lumen5",
+        description: "AI video creation platform that transforms articles and blog posts into engaging social media videos. Features automatic scene creation and content repurposing.",
+        categories: ["video", "marketing"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu2hkE4SuPtDEJh3WqVcLXi-hlIoEInvRpSQ&s", 
+        url: "https://lumen5.com",
+        badges: ["featured", "freemium"],
+        tags: ["video creation", "social media", "content repurposing", "marketing"]
+    },
+    {
+        name: "Manus",
+        description: "AI-powered hand tracking and gesture recognition platform. Enables natural interaction with digital interfaces through hand movements.",
+        categories: ["vision", "productivity"],
+        logo: "https://manus.com/logo.png",
+        url: "https://manus.im/app",
+        badges: ["trending"],
+        tags: ["hand tracking", "gesture recognition", "interaction", "VR"]
+    },
+    {
+        name: "Mistral AI",
+        description: "Open-source AI model provider offering powerful language models and APIs for developers. Known for efficient and high-performance models.",
+        categories: ["nlp", "coding"],
+        logo: "https://mistral.ai/logo.png",
+        url: "https://mistral.ai",
+        badges: ["featured"],
+        tags: ["language model", "open source", "API", "development"]
+    },
+    {
+        name: "Qwen",
+        description: "Alibaba's advanced language model with strong capabilities in understanding and generating text. Supports multiple languages and tasks.",
+        categories: ["nlp", "productivity"],
+        logo: "https://qwen.alibaba.com/logo.png",
+        url: "https://chat.qwen.ai/",
+        badges: ["trending"],
+        tags: ["language model", "multilingual", "alibaba", "chatbot"]
     },
     {
         name: "DALL-E",
@@ -67,19 +211,10 @@ const aiTools = [
         name: "Eleven Labs",
         description: "AI voice technology platform for generating natural-sounding voice content with text-to-speech.",
         categories: ["audio", "nlp"],
-        logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+        logo: "https://11labs-nonprd-15f22c1d.s3.eu-west-3.amazonaws.com/a2ea339b-8b5e-41bb-b706-24eda8a4c9e3/elevenlabs-symbol.svg",
         url: "https://elevenlabs.io",
         badges: ["featured", "freemium"],
         tags: ["voice synthesis", "text-to-speech", "ai voice"]
-    },
-    {
-        name: "Notion AI",
-        description: "AI writing assistant integrated into Notion workspace.",
-        categories: ["productivity", "nlp"],
-        logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png",
-        url: "https://www.notion.so/product/ai",
-        badges: ["freemium"],
-        tags: ["note-taking", "writing", "workspace"]
     },
     {
         name: "Descript",
@@ -163,28 +298,10 @@ const aiTools = [
         tags: ["transcription", "meetings", "collaboration"]
     },
     {
-        name: "Perplexity AI",
-        description: "AI-powered search and answer engine for research and productivity.",
-        categories: ["nlp", "research"],
-        logo: "https://www.perplexity.ai/favicon.ico",
-        url: "https://www.perplexity.ai",
-        badges: ["trending", "freemium"],
-        tags: ["search", "answers", "assistant"]
-    },
-    {
-        name: "RunwayML",
-        description: "Creative suite for AI-powered video editing and generation.",
-        categories: ["vision", "audio"],
-        logo: "https://runwayml.com/favicon.ico",
-        url: "https://runwayml.com",
-        badges: ["freemium"],
-        tags: ["video editing", "creative", "generation"]
-    },
-    {
         name: "Copy.ai",
         description: "AI-powered content generator for marketing, blogs, and more.",
         categories: ["nlp", "productivity"],
-        logo: "https://www.copy.ai/favicon-32x32.png",
+        logo: "https://www.copy.ai/favicon.ico",
         url: "https://www.copy.ai",
         badges: ["freemium"],
         tags: ["content", "marketing", "copywriting"]
@@ -226,15 +343,6 @@ const aiTools = [
         tags: ["presentations", "storytelling", "slides"]
     },
     {
-        name: "Leonardo.Ai",
-        description: "AI image generation platform for creative professionals.",
-        categories: ["vision", "design"],
-        logo: "https://app.leonardo.ai/favicon.ico",
-        url: "https://leonardo.ai",
-        badges: ["trending", "freemium"],
-        tags: ["image generation", "creative", "art"]
-    },
-    {
         name: "Pictory",
         description: "AI video generator that turns scripts and articles into engaging videos.",
         categories: ["vision", "audio"],
@@ -250,7 +358,7 @@ const aiTools = [
         logo: "https://www.aiva.ai/favicon.ico",
         url: "https://www.aiva.ai",
         badges: ["freemium"],
-        tags: ["music", "composition", "audio"]
+        tags: ["music", "composition", "creative"]
     },
     {
         name: "Grammarly",
@@ -308,12 +416,12 @@ const aiTools = [
     },
     {
         name: "Replika",
-        description: "AI companion chatbot for conversation and emotional support.",
-        categories: ["nlp", "productivity"],
+        description: "AI companion that provides emotional support and conversation.",
+        categories: ["life-assistant"],
         logo: "https://replika.com/favicon.ico",
         url: "https://replika.com",
         badges: ["freemium"],
-        tags: ["chatbot", "companion", "emotional support"]
+        tags: ["companion", "emotional support", "chat"]
     },
     {
         name: "DeepMind AlphaFold",
@@ -908,6 +1016,890 @@ const aiTools = [
         url: "https://photofunia.com",
         badges: ["freemium"],
         tags: ["photo", "effects", "fun"]
+    },
+    {
+        name: "Jasper",
+        description: "AI content platform for marketing teams and businesses.",
+        categories: ["marketing"],
+        logo: "https://www.jasper.ai/favicon.ico",
+        url: "https://www.jasper.ai",
+        badges: ["featured", "paid"],
+        tags: ["content creation", "marketing", "copywriting"]
+    },
+    {
+        name: "Grammarly Business",
+        description: "AI writing assistant for professional teams and businesses.",
+        categories: ["marketing"],
+        logo: "https://www.grammarly.com/favicon.ico",
+        url: "https://www.grammarly.com/business",
+        badges: ["paid"],
+        tags: ["writing", "grammar", "business"]
+    },
+    {
+        name: "Beautiful.ai",
+        description: "AI-powered presentation software for business professionals.",
+        categories: ["business"],
+        logo: "https://www.beautiful.ai/favicon.ico",
+        url: "https://www.beautiful.ai",
+        badges: ["paid"],
+        tags: ["presentations", "business", "design"]
+    },
+    {
+        name: "Otter.ai Business",
+        description: "AI meeting assistant for business teams and collaboration.",
+        categories: ["business"],
+        logo: "https://otter.ai/favicon.ico",
+        url: "https://otter.ai/business",
+        badges: ["paid"],
+        tags: ["meetings", "transcription", "collaboration"]
+    },
+    {
+        name: "Synthesia",
+        description: "Create AI videos with digital avatars and voiceovers.",
+        categories: ["video"],
+        logo: "https://www.synthesia.io/favicon.ico",
+        url: "https://www.synthesia.io",
+        badges: ["featured", "paid"],
+        tags: ["video generation", "avatars", "voiceover"]
+    },
+    {
+        name: "InVideo",
+        description: "AI video creation platform for marketing and social media.",
+        categories: ["video"],
+        logo: "https://invideo.io/favicon.ico",
+        url: "https://invideo.io",
+        badges: ["freemium"],
+        tags: ["video creation", "marketing", "social media"]
+    },
+    {
+        name: "Duolingo Max",
+        description: "AI-powered language learning platform with personalized tutoring.",
+        categories: ["education"],
+        logo: "https://www.duolingo.com/favicon.ico",
+        url: "https://www.duolingo.com/max",
+        badges: ["freemium"],
+        tags: ["language learning", "education", "tutoring"]
+    },
+    {
+        name: "Khanmigo",
+        description: "AI tutor and teaching assistant by Khan Academy that provides personalized learning experiences and interactive tutoring.",
+        categories: ["education", "nlp"],
+        logo: "https://www.khanacademy.org/favicon.ico",
+        url: "https://www.khanacademy.org/khan-labs",
+        badges: ["featured", "freemium"],
+        tags: ["tutoring", "learning", "personalized", "education"]
+    },
+    {
+        name: "Anthropic Claude",
+        description: "Advanced AI assistant by Anthropic, known for its helpful, harmless, and honest responses.",
+        categories: ["nlp", "productivity"],
+        logo: "https://www.anthropic.com/favicon.ico",
+        url: "https://www.anthropic.com/claude",
+        badges: ["featured", "trending"],
+        tags: ["chatbot", "assistant", "writing"]
+    },
+    {
+        name: "Microsoft Copilot Pro",
+        description: "Advanced AI assistant integrated with Microsoft 365 for enhanced productivity and creativity.",
+        categories: ["productivity", "business", "coding", "nlp"],
+        logo: "https://copilot.microsoft.com/favicon.ico",
+        url: "https://copilot.microsoft.com",
+        badges: ["featured", "paid"],
+        tags: ["office", "productivity", "assistant"]
+    },
+    {
+        name: "RunwayML",
+        description: "Professional AI video editing and generation platform for filmmakers and creators.",
+        categories: ["video", "design"],
+        logo: "https://runwayml.com/favicon.ico",
+        url: "https://runwayml.com",
+        badges: ["featured", "paid"],
+        tags: ["video editing", "generation", "creative"]
+    },
+    {
+        name: "ElevenLabs",
+        description: "Advanced AI voice generation and cloning platform with ultra-realistic voices.",
+        categories: ["audio"],
+        logo: "https://elevenlabs.io/favicon.ico",
+        url: "https://elevenlabs.io",
+        badges: ["featured", "trending"],
+        tags: ["voice", "audio", "generation"]
+    },
+    {
+        name: "Notion AI",
+        description: "AI writing and organization assistant integrated into Notion workspace.",
+        categories: ["productivity", "business"],
+        logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png",
+        url: "https://www.notion.so/product/ai",
+        badges: ["featured", "freemium"],
+        tags: ["writing", "organization", "productivity"]
+    },
+    {
+        name: "GitHub Copilot X",
+        description: "Next-generation AI pair programmer with advanced code understanding and generation.",
+        categories: ["coding"],
+        logo: "https://github.com/favicon.ico",
+        url: "https://github.com/features/preview/copilot-x",
+        badges: ["featured", "paid"],
+        tags: ["coding", "development", "programming"]
+    },
+    {
+        name: "Perplexity AI",
+        description: "AI-powered search engine that provides detailed, accurate answers with sources.",
+        categories: ["nlp", "research"],
+        logo: "https://www.perplexity.ai/favicon.ico",
+        url: "https://www.perplexity.ai",
+        badges: ["featured","trending", "freemium"],
+        tags: ["search", "research", "answers"]
+    },
+    {
+        name: "Synthesia",
+        description: "Create professional AI videos with digital avatars and voiceovers in minutes.",
+        categories: ["video", "business", "audio"],
+        logo: "https://www.synthesia.io/favicon.ico",
+        url: "https://www.synthesia.io",
+        badges: ["featured", "paid"],
+        tags: ["video", "avatar", "business"]
+    },
+    {
+        name: "Leonardo.AI",
+        description: "Advanced AI image generation platform with specialized models for different styles.",
+        categories: ["vision", "design"],
+        logo: "https://app.leonardo.ai/favicon.ico",
+        url: "https://leonardo.ai",
+        badges: ["featured", "freemium"],
+        tags: ["image generation", "art", "creative"]
+    },
+    {
+        name: "Descript",
+        description: "All-in-one audio and video editing platform with AI-powered features.",
+        categories: ["audio", "video", "productivity"],
+        logo: "https://www.descript.com/favicon.ico",
+        url: "https://www.descript.com",
+        badges: ["featured", "freemium"],
+        tags: ["editing", "audio", "video"]
+    },
+    {
+        name: "Jasper",
+        description: "AI content platform for marketing teams and businesses.",
+        categories: ["marketing", "business"],
+        logo: "https://www.jasper.ai/favicon.ico",
+        url: "https://www.jasper.ai",
+        badges: ["featured", "paid"],
+        tags: ["content", "marketing", "writing"]
+    },
+    {
+        name: "Beautiful.ai",
+        description: "AI-powered presentation software that automatically designs slides.",
+        categories: ["business", "design", "productivity"],
+        logo: "https://www.beautiful.ai/favicon.ico",
+        url: "https://www.beautiful.ai",
+        badges: ["featured", "paid"],
+        tags: ["presentations", "design", "business"]
+    },
+    {
+        name: "Duolingo Max",
+        description: "AI-powered language learning with personalized tutoring and roleplay conversations.",
+        categories: ["education", "nlp"],
+        logo: "https://www.duolingo.com/favicon.ico",
+        url: "https://www.duolingo.com/max",
+        badges: ["featured", "freemium"],
+        tags: ["education", "language", "learning"]
+    },
+    {
+        name: "Inflection AI",
+        description: "Personal AI assistant focused on emotional intelligence and helpful conversations.",
+        categories: ["life-assistant", "productivity"],
+        logo: "https://inflection.ai/favicon.ico",
+        url: "https://inflection.ai",
+        badges: ["featured", "freemium"],
+        tags: ["assistant", "conversation", "personal"]
+    },
+    {
+        name: "DataRobot",
+        description: "Enterprise AI platform for automated machine learning and model deployment.",
+        categories: ["data-science"],
+        logo: "https://www.datarobot.com/favicon.ico",
+        url: "https://www.datarobot.com",
+        badges: ["featured", "paid"],
+        tags: ["machine learning", "automation", "enterprise"]
+    },
+    {
+        name: "TensorFlow AutoML",
+        description: "Google's automated machine learning solution for custom model development.",
+        categories: ["data-science"],
+        logo: "https://www.tensorflow.org/favicon.ico",
+        url: "https://cloud.google.com/automl",
+        badges: ["featured", "paid"],
+        tags: ["machine learning", "automation", "google"]
+    },
+    {
+        name: "Google Vertex AI",
+        description: "Unified AI platform for building, deploying, and managing machine learning models.",
+        categories: ["data-science"],
+        logo: "https://cloud.google.com/favicon.ico",
+        url: "https://cloud.google.com/vertex-ai",
+        badges: ["featured", "paid"],
+        tags: ["machine learning", "cloud", "google"]
+    },
+    {
+        name: "RapidMiner",
+        description: "Data science platform for building and deploying machine learning models.",
+        categories: ["data-science"],
+        logo: "https://rapidminer.com/favicon.ico",
+        url: "https://rapidminer.com",
+        badges: ["freemium"],
+        tags: ["data science", "machine learning", "analytics"]
+    },
+    {
+        name: "Alteryx",
+        description: "End-to-end analytics platform for data preparation, analysis, and machine learning.",
+        categories: ["data-science"],
+        logo: "https://www.alteryx.com/favicon.ico",
+        url: "https://www.alteryx.com",
+        badges: ["paid"],
+        tags: ["analytics", "data preparation", "machine learning"]
+    },
+    {
+        name: "Tableau GPT",
+        description: "AI-powered analytics and insights platform for data visualization.",
+        categories: ["data-science"],
+        logo: "https://www.tableau.com/favicon.ico",
+        url: "https://www.tableau.com/products/ai-analytics",
+        badges: ["featured", "paid"],
+        tags: ["analytics", "visualization", "insights"]
+    },
+    {
+        name: "MonkeyLearn",
+        description: "Text analysis and machine learning platform for business intelligence.",
+        categories: ["data-science"],
+        logo: "https://monkeylearn.com/favicon.ico",
+        url: "https://monkeylearn.com",
+        badges: ["freemium"],
+        tags: ["text analysis", "machine learning", "business intelligence"]
+    },
+    {
+        name: "Elicit",
+        description: "AI research assistant that helps find and summarize academic papers. Uses language models to answer questions with research-backed evidence.",
+        categories: ["research", "nlp"],
+        logo: "https://elicit.org/favicon.ico",
+        url: "https://elicit.org",
+        badges: ["featured", "free"],
+        tags: ["academic", "research", "papers", "summarization"]
+    },
+    {
+        name: "Consensus",
+        description: "AI-powered search engine for scientific research that provides evidence-based answers to research questions.",
+        categories: ["research", "nlp"],
+        logo: "https://consensus.app/favicon.ico",
+        url: "https://consensus.app",
+        badges: ["featured", "freemium"],
+        tags: ["scientific", "research", "evidence", "search"]
+    },
+    {
+        name: "Scite.ai",
+        description: "Smart citation platform that helps researchers discover and evaluate scientific articles through AI-powered citation analysis.",
+        categories: ["research", "nlp"],
+        logo: "https://scite.ai/favicon.ico",
+        url: "https://scite.ai",
+        badges: ["featured", "paid"],
+        tags: ["citations", "research", "academic", "analysis"]
+    },
+    {
+        name: "Semantic Scholar AI",
+        description: "AI-powered academic search engine that helps researchers find relevant papers and understand research trends.",
+        categories: ["research", "nlp"],
+        logo: "https://www.semanticscholar.org/favicon.ico",
+        url: "https://www.semanticscholar.org",
+        badges: ["featured", "free"],
+        tags: ["academic", "research", "search", "analysis"]
+    },
+    {
+        name: "Quizlet AI",
+        description: "AI-powered study platform that creates personalized study plans and adaptive learning experiences.",
+        categories: ["education", "nlp"],
+        logo: "https://quizlet.com/favicon.ico",
+        url: "https://quizlet.com/ai",
+        badges: ["featured", "freemium"],
+        tags: ["study", "learning", "flashcards", "education"]
+    },
+    {
+        name: "Coursera AI",
+        description: "AI-powered learning platform offering personalized course recommendations and adaptive learning paths.",
+        categories: ["education", "nlp"],
+        logo: "https://www.coursera.org/favicon.ico",
+        url: "https://www.coursera.org",
+        badges: ["featured", "freemium"],
+        tags: ["courses", "learning", "education", "online"]
+    },
+    {
+        name: "Grammarly for Education",
+        description: "AI writing assistant specifically designed for students and educators, offering advanced writing feedback and learning tools.",
+        categories: ["education", "nlp"],
+        logo: "https://www.grammarly.com/favicon.ico",
+        url: "https://www.grammarly.com/education",
+        badges: ["featured", "paid"],
+        tags: ["writing", "education", "feedback", "learning"]
+    },
+    {
+        name: "Socratic by Google",
+        description: "AI-powered homework helper that provides step-by-step explanations and learning resources for students.",
+        categories: ["education", "nlp"],
+        logo: "https://socratic.org/favicon.ico",
+        url: "https://socratic.org",
+        badges: ["featured", "free"],
+        tags: ["homework", "learning", "education", "help"]
+    },
+    {
+        name: "Brainly AI",
+        description: "AI-powered learning community that helps students with homework and provides personalized learning support.",
+        categories: ["education", "nlp"],
+        logo: "https://brainly.com/favicon.ico",
+        url: "https://brainly.com",
+        badges: ["featured", "freemium"],
+        tags: ["homework", "community", "learning", "education"]
+    },
+    {
+        name: "Century AI",
+        description: "AI-powered learning platform that personalizes education and provides real-time feedback for students.",
+        categories: ["education", "nlp"],
+        logo: "https://www.century.tech/favicon.ico",
+        url: "https://www.century.tech",
+        badges: ["featured", "paid"],
+        tags: ["learning", "personalized", "education", "feedback"]
+    },
+    {
+        name: "Carnegie Learning",
+        description: "AI-powered math learning platform that provides personalized instruction and real-time feedback.",
+        categories: ["education", "nlp"],
+        logo: "https://www.carnegielearning.com/favicon.ico",
+        url: "https://www.carnegielearning.com",
+        badges: ["featured", "paid"],
+        tags: ["math", "learning", "education", "personalized"]
+    },
+    {
+        name: "QuillBot for Education",
+        description: "AI writing and paraphrasing tool specifically designed for students and educators.",
+        categories: ["education", "nlp"],
+        logo: "https://quillbot.com/favicon.ico",
+        url: "https://quillbot.com/education",
+        badges: ["featured", "freemium"],
+        tags: ["writing", "paraphrasing", "education", "learning"]
+    },
+    {
+        name: "Pi by Inflection",
+        description: "Personal AI assistant focused on emotional intelligence and helpful conversations for daily life.",
+        categories: ["life-assistant", "nlp"],
+        logo: "https://inflection.ai/favicon.ico",
+        url: "https://pi.ai",
+        badges: ["featured", "free"],
+        tags: ["personal assistant", "conversation", "emotional support", "daily life"]
+    },
+    {
+        name: "Replika",
+        description: "AI companion that provides emotional support, conversation, and personal growth assistance.",
+        categories: ["life-assistant", "nlp"],
+        logo: "https://replika.com/favicon.ico",
+        url: "https://replika.com",
+        badges: ["featured", "freemium"],
+        tags: ["companion", "emotional support", "personal growth", "conversation"]
+    },
+    {
+        name: "Character.AI",
+        description: "AI platform for creating and chatting with various AI characters and personalities.",
+        categories: ["life-assistant", "nlp"],
+        logo: "https://character.ai/favicon.ico",
+        url: "https://character.ai",
+        badges: ["featured", "freemium"],
+        tags: ["chat", "characters", "conversation", "entertainment"]
+    },
+    {
+        name: "Woebot",
+        description: "AI mental health assistant that provides emotional support and cognitive behavioral therapy techniques.",
+        categories: ["life-assistant", "nlp"],
+        logo: "https://woebot.com/favicon.ico",
+        url: "https://woebot.com",
+        badges: ["featured", "freemium"],
+        tags: ["mental health", "therapy", "emotional support", "wellness"]
+    },
+    {
+        name: "Wysa",
+        description: "AI mental health chatbot that provides emotional support and mindfulness exercises.",
+        categories: ["life-assistant", "nlp"],
+        logo: "https://wysa.io/favicon.ico",
+        url: "https://wysa.io",
+        badges: ["featured", "freemium"],
+        tags: ["mental health", "mindfulness", "emotional support", "wellness"]
+    },
+    {
+        name: "Youper",
+        description: "AI emotional health assistant that helps track mood and provides personalized emotional support.",
+        categories: ["life-assistant", "nlp"],
+        logo: "https://youper.ai/favicon.ico",
+        url: "https://youper.ai",
+        badges: ["featured", "freemium"],
+        tags: ["emotional health", "mood tracking", "personalized support", "wellness"]
+    },
+    {
+        name: "Mondly",
+        description: "AI language learning assistant with personalized conversation practice and real-time feedback.",
+        categories: ["life-assistant", "education", "nlp"],
+        logo: "https://www.mondly.com/favicon.ico",
+        url: "https://www.mondly.com",
+        badges: ["featured", "freemium"],
+        tags: ["language learning", "conversation", "personalized", "education"]
+    },
+    {
+        name: "FitnessAI",
+        description: "AI personal trainer that creates personalized workout plans and provides real-time form feedback.",
+        categories: ["life-assistant", "vision"],
+        logo: "https://fitnessai.com/favicon.ico",
+        url: "https://fitnessai.com",
+        badges: ["featured", "paid"],
+        tags: ["fitness", "workout", "personal training", "health"]
+    },
+    {
+        name: "Finch",
+        description: "AI self-care companion that helps build healthy habits and provides daily emotional support.",
+        categories: ["life-assistant", "nlp"],
+        logo: "https://finchcare.com/favicon.ico",
+        url: "https://finchcare.com",
+        badges: ["featured", "freemium"],
+        tags: ["self-care", "habits", "emotional support", "wellness"]
+    },
+    {
+        name: "Cleo",
+        description: "AI financial assistant that helps manage money, track spending, and provide financial advice.",
+        categories: ["life-assistant", "nlp"],
+        logo: "https://meetcleo.com/favicon.ico",
+        url: "https://meetcleo.com",
+        badges: ["featured", "freemium"],
+        tags: ["finance", "budgeting", "money management", "advice"]
+    },
+    {
+        name: "Milo",
+        description: "AI parenting assistant that provides personalized advice and support for child development.",
+        categories: ["life-assistant", "nlp"],
+        logo: "https://milo.ai/favicon.ico",
+        url: "https://milo.ai",
+        badges: ["featured", "freemium"],
+        tags: ["parenting", "child development", "advice", "support"]
+    },
+    {
+        name: "Dataiku",
+        description: "Enterprise AI and machine learning platform for data scientists and analysts to build and deploy AI solutions.",
+        categories: ["data-science"],
+        logo: "https://www.dataiku.com/favicon.ico",
+        url: "https://www.dataiku.com",
+        badges: ["featured", "paid"],
+        tags: ["machine learning", "data science", "enterprise", "analytics"]
+    },
+    {
+        name: "KNIME",
+        description: "Open-source data analytics platform for creating data science workflows and machine learning models.",
+        categories: ["data-science"],
+        logo: "https://www.knime.com/favicon.ico",
+        url: "https://www.knime.com",
+        badges: ["open source", "freemium"],
+        tags: ["data analytics", "workflow", "machine learning", "visualization"]
+    },
+    {
+        name: "Databricks",
+        description: "Unified analytics platform for data engineering, machine learning, and collaborative data science.",
+        categories: ["data-science"],
+        logo: "https://databricks.com/favicon.ico",
+        url: "https://databricks.com",
+        badges: ["featured", "paid"],
+        tags: ["analytics", "machine learning", "data engineering", "collaboration"]
+    },
+    {
+        name: "SAS Viya",
+        description: "Cloud-native AI and analytics platform for advanced data analysis and machine learning.",
+        categories: ["data-science"],
+        logo: "https://www.sas.com/favicon.ico",
+        url: "https://www.sas.com/en_us/software/viya.html",
+        badges: ["featured", "paid"],
+        tags: ["analytics", "machine learning", "cloud", "enterprise"]
+    },
+    {
+        name: "IBM Watson Studio",
+        description: "Integrated environment for data scientists and developers to build, train, and deploy AI models.",
+        categories: ["data-science"],
+        logo: "https://www.ibm.com/favicon.ico",
+        url: "https://www.ibm.com/cloud/watson-studio",
+        badges: ["featured", "paid"],
+        tags: ["machine learning", "AI development", "model deployment", "enterprise"]
+    },
+    {
+        name: "Azure Machine Learning",
+        description: "Cloud-based platform for building, training, and deploying machine learning models.",
+        categories: ["data-science"],
+        logo: "https://azure.microsoft.com/favicon.ico",
+        url: "https://azure.microsoft.com/services/machine-learning",
+        badges: ["featured", "paid"],
+        tags: ["machine learning", "cloud", "model deployment", "azure"]
+    },
+    {
+        name: "AWS SageMaker",
+        description: "Fully managed service for building, training, and deploying machine learning models.",
+        categories: ["data-science"],
+        logo: "https://aws.amazon.com/favicon.ico",
+        url: "https://aws.amazon.com/sagemaker",
+        badges: ["featured", "paid"],
+        tags: ["machine learning", "cloud", "model deployment", "aws"]
+    },
+    {
+        name: "Google Cloud AI Platform",
+        description: "End-to-end platform for building and deploying machine learning models in the cloud.",
+        categories: ["data-science"],
+        logo: "https://cloud.google.com/favicon.ico",
+        url: "https://cloud.google.com/ai-platform",
+        badges: ["featured", "paid"],
+        tags: ["machine learning", "cloud", "model deployment", "google"]
+    },
+    {
+        name: "Domino Data Lab",
+        description: "Enterprise MLOps platform for data science teams to collaborate and deploy models.",
+        categories: ["data-science"],
+        logo: "https://www.dominodatalab.com/favicon.ico",
+        url: "https://www.dominodatalab.com",
+        badges: ["featured", "paid"],
+        tags: ["MLOps", "collaboration", "model deployment", "enterprise"]
+    },
+    {
+        name: "Alteryx Designer",
+        description: "End-to-end analytics platform for data preparation, blending, and advanced analytics.",
+        categories: ["data-science"],
+        logo: "https://www.alteryx.com/favicon.ico",
+        url: "https://www.alteryx.com/products/alteryx-designer",
+        badges: ["featured", "paid"],
+        tags: ["analytics", "data preparation", "blending", "automation"]
+    },
+    {
+        name: "RapidMiner",
+        description: "Data science platform for building and deploying machine learning models with visual workflows.",
+        categories: ["data-science"],
+        logo: "https://rapidminer.com/favicon.ico",
+        url: "https://rapidminer.com",
+        badges: ["featured", "freemium"],
+        tags: ["machine learning", "visual workflows", "automation", "analytics"]
+    },
+    {
+        name: "DataRobot",
+        description: "Enterprise AI platform for automated machine learning and model deployment.",
+        categories: ["data-science"],
+        logo: "https://www.datarobot.com/favicon.ico",
+        url: "https://www.datarobot.com",
+        badges: ["featured", "paid"],
+        tags: ["automated ML", "model deployment", "enterprise", "analytics"]
+    },
+    {
+        name: "H2O.ai",
+        description: "Open-source AI platform for machine learning and data science with automated ML capabilities.",
+        categories: ["data-science"],
+        logo: "https://www.h2o.ai/favicon.ico",
+        url: "https://www.h2o.ai",
+        badges: ["open source", "freemium"],
+        tags: ["machine learning", "automated ML", "open source", "analytics"]
+    },
+    // Business Tools
+    {
+        name: "Gong",
+        description: "AI-powered revenue intelligence platform that analyzes sales conversations and provides insights.",
+        categories: ["business"],
+        logo: "https://www.gong.io/favicon.ico",
+        url: "https://www.gong.io",
+        badges: ["featured", "paid"],
+        tags: ["sales", "revenue intelligence", "conversation analytics", "business"]
+    },
+    {
+        name: "Chorus.ai",
+        description: "Conversation intelligence platform that helps sales teams improve performance through AI analysis.",
+        categories: ["business"],
+        logo: "https://www.chorus.ai/favicon.ico",
+        url: "https://www.chorus.ai",
+        badges: ["featured", "paid"],
+        tags: ["sales", "conversation intelligence", "performance", "business"]
+    },
+    {
+        name: "Drift",
+        description: "AI-powered conversational marketing and sales platform for real-time customer engagement.",
+        categories: ["business", "marketing"],
+        logo: "https://www.drift.com/favicon.ico",
+        url: "https://www.drift.com",
+        badges: ["featured", "freemium"],
+        tags: ["conversational marketing", "sales", "customer engagement", "chat"]
+    },
+    {
+        name: "Intercom",
+        description: "AI-powered customer messaging platform for personalized customer support and engagement.",
+        categories: ["business"],
+        logo: "https://www.intercom.com/favicon.ico",
+        url: "https://www.intercom.com",
+        badges: ["featured", "paid"],
+        tags: ["customer support", "messaging", "engagement", "automation"]
+    },
+    {
+        name: "Zendesk AI",
+        description: "AI-powered customer service platform with automated responses and intelligent ticket routing.",
+        categories: ["business"],
+        logo: "https://www.zendesk.com/favicon.ico",
+        url: "https://www.zendesk.com/ai",
+        badges: ["featured", "paid"],
+        tags: ["customer service", "support", "automation", "ticketing"]
+    },
+    {
+        name: "Salesforce Einstein",
+        description: "AI-powered CRM platform with predictive analytics and automated insights for sales teams.",
+        categories: ["business"],
+        logo: "https://www.salesforce.com/favicon.ico",
+        url: "https://www.salesforce.com/products/einstein/overview",
+        badges: ["featured", "paid"],
+        tags: ["CRM", "sales", "analytics", "automation"]
+    },
+    {
+        name: "HubSpot AI",
+        description: "AI-powered marketing, sales, and service platform for inbound business growth.",
+        categories: ["business", "marketing"],
+        logo: "https://www.hubspot.com/favicon.ico",
+        url: "https://www.hubspot.com/ai",
+        badges: ["featured", "freemium"],
+        tags: ["marketing", "sales", "service", "automation"]
+    },
+    {
+        name: "Pega",
+        description: "AI-powered business process automation and customer engagement platform.",
+        categories: ["business"],
+        logo: "https://www.pega.com/favicon.ico",
+        url: "https://www.pega.com",
+        badges: ["featured", "paid"],
+        tags: ["process automation", "customer engagement", "workflow", "enterprise"]
+    },
+    {
+        name: "UiPath",
+        description: "AI-powered robotic process automation platform for business process automation.",
+        categories: ["business"],
+        logo: "https://www.uipath.com/favicon.ico",
+        url: "https://www.uipath.com",
+        badges: ["featured", "paid"],
+        tags: ["RPA", "automation", "workflow", "enterprise"]
+    },
+    {
+        name: "Blue Prism",
+        description: "Enterprise-grade robotic process automation platform with AI capabilities.",
+        categories: ["business"],
+        logo: "https://www.blueprism.com/favicon.ico",
+        url: "https://www.blueprism.com",
+        badges: ["featured", "paid"],
+        tags: ["RPA", "automation", "enterprise", "workflow"]
+    },
+    {
+        name: "Automation Anywhere",
+        description: "AI-powered robotic process automation platform for business process automation.",
+        categories: ["business"],
+        logo: "https://www.automationanywhere.com/favicon.ico",
+        url: "https://www.automationanywhere.com",
+        badges: ["featured", "paid"],
+        tags: ["RPA", "automation", "workflow", "enterprise"]
+    },
+    {
+        name: "Workday",
+        description: "AI-powered enterprise management cloud platform for HR, finance, and planning.",
+        categories: ["business"],
+        logo: "https://www.workday.com/favicon.ico",
+        url: "https://www.workday.com",
+        badges: ["featured", "paid"],
+        tags: ["HR", "finance", "planning", "enterprise"]
+    },
+    {
+        name: "ServiceNow",
+        description: "AI-powered digital workflow platform for enterprise service management.",
+        categories: ["business"],
+        logo: "https://www.servicenow.com/favicon.ico",
+        url: "https://www.servicenow.com",
+        badges: ["featured", "paid"],
+        tags: ["workflow", "service management", "automation", "enterprise"]
+    },
+    // Marketing Tools
+    {
+        name: "Jasper",
+        description: "AI content platform for marketing teams and businesses with advanced copywriting and brand voice customization.",
+        categories: ["marketing", "nlp"],
+        logo: "https://www.jasper.ai/favicon.ico",
+        url: "https://www.jasper.ai",
+        badges: ["featured", "paid"],
+        tags: ["content creation", "copywriting", "marketing", "brand voice"]
+    },
+    {
+        name: "Copy.ai",
+        description: "AI copywriting tool for generating marketing content, social media posts, and ad copy.",
+        categories: ["marketing", "nlp"],
+        logo: "https://www.copy.ai/favicon.ico",
+        url: "https://www.copy.ai",
+        badges: ["featured", "freemium"],
+        tags: ["copywriting", "content generation", "marketing", "social media"]
+    },
+    {
+        name: "Writesonic",
+        description: "AI writing platform for creating marketing content, blogs, ads, and social media posts.",
+        categories: ["marketing", "nlp"],
+        logo: "https://writesonic.com/favicon.ico",
+        url: "https://writesonic.com",
+        badges: ["featured", "freemium"],
+        tags: ["content creation", "marketing", "copywriting", "blogging"]
+    },
+    {
+        name: "Phrasee",
+        description: "AI copywriting platform for generating and optimizing marketing language and email subject lines.",
+        categories: ["marketing", "nlp"],
+        logo: "https://phrasee.co/favicon.ico",
+        url: "https://phrasee.co",
+        badges: ["featured", "paid"],
+        tags: ["copywriting", "email marketing", "optimization", "language"]
+    },
+    {
+        name: "Persado",
+        description: "AI platform for generating emotionally intelligent marketing language and content.",
+        categories: ["marketing", "nlp"],
+        logo: "https://persado.com/favicon.ico",
+        url: "https://persado.com",
+        badges: ["featured", "paid"],
+        tags: ["content generation", "emotional intelligence", "marketing", "language"]
+    },
+    {
+        name: "Lately",
+        description: "AI social media marketing platform that generates and schedules content across multiple platforms.",
+        categories: ["marketing", "nlp"],
+        logo: "https://www.lately.ai/favicon.ico",
+        url: "https://www.lately.ai",
+        badges: ["featured", "freemium"],
+        tags: ["social media", "content generation", "scheduling", "marketing"]
+    },
+    {
+        name: "Grammarly Business",
+        description: "AI writing assistant for marketing teams with advanced grammar, style, and tone suggestions.",
+        categories: ["marketing", "nlp"],
+        logo: "https://www.grammarly.com/favicon.ico",
+        url: "https://www.grammarly.com/business",
+        badges: ["featured", "paid"],
+        tags: ["writing", "grammar", "style", "marketing"]
+    },
+    {
+        name: "Acrolinx",
+        description: "AI-powered content governance platform for maintaining brand voice and content quality.",
+        categories: ["marketing", "nlp"],
+        logo: "https://www.acrolinx.com/favicon.ico",
+        url: "https://www.acrolinx.com",
+        badges: ["featured", "paid"],
+        tags: ["content governance", "brand voice", "quality", "marketing"]
+    },
+    {
+        name: "MarketMuse",
+        description: "AI content planning and optimization platform for SEO and content marketing.",
+        categories: ["marketing", "nlp"],
+        logo: "https://www.marketmuse.com/favicon.ico",
+        url: "https://www.marketmuse.com",
+        badges: ["featured", "paid"],
+        tags: ["content planning", "SEO", "optimization", "marketing"]
+    },
+    {
+        name: "Frase",
+        description: "AI content optimization platform for creating SEO-friendly content and answering user questions.",
+        categories: ["marketing", "nlp"],
+        logo: "https://www.frase.io/favicon.ico",
+        url: "https://www.frase.io",
+        badges: ["featured", "freemium"],
+        tags: ["content optimization", "SEO", "research", "marketing"]
+    },
+    {
+        name: "WordLift",
+        description: "AI-powered SEO platform that enhances content with structured data and semantic analysis.",
+        categories: ["marketing", "nlp"],
+        logo: "https://wordlift.io/favicon.ico",
+        url: "https://wordlift.io",
+        badges: ["featured", "freemium"],
+        tags: ["SEO", "semantic analysis", "structured data", "marketing"]
+    },
+    {
+        name: "Surfer SEO",
+        description: "AI content editor and SEO tool for creating optimized content that ranks in search engines.",
+        categories: ["marketing", "nlp"],
+        logo: "https://surferseo.com/favicon.ico",
+        url: "https://surferseo.com",
+        badges: ["featured", "paid"],
+        tags: ["SEO", "content optimization", "research", "marketing"]
+    },
+    {
+        name: "Clearscope",
+        description: "AI-powered content optimization platform for creating SEO-optimized content.",
+        categories: ["marketing", "nlp"],
+        logo: "https://www.clearscope.io/favicon.ico",
+        url: "https://www.clearscope.io",
+        badges: ["featured", "paid"],
+        tags: ["content optimization", "SEO", "research", "marketing"]
+    },
+    {
+        name: "Zapier AI",
+        description: "AI-powered automation platform that helps create and manage workflows between different apps and services.",
+        categories: ["productivity", "business"],
+        logo: "https://zapier.com/favicon.ico",
+        url: "https://zapier.com/ai",
+        badges: ["featured", "freemium"],
+        tags: ["automation", "workflow", "integration", "productivity"]
+    },
+    {
+        name: "Mem AI",
+        description: "AI-powered note-taking and knowledge management platform that helps organize and connect your thoughts.",
+        categories: ["productivity", "nlp"],
+        logo: "https://mem.ai/favicon.ico",
+        url: "https://mem.ai",
+        badges: ["featured", "freemium"],
+        tags: ["note-taking", "knowledge management", "organization", "productivity"]
+    },
+    {
+        name: "ClickUp AI",
+        description: "AI-powered project management platform that helps automate tasks, generate content, and improve productivity.",
+        categories: ["productivity", "business"],
+        logo: "https://clickup.com/favicon.ico",
+        url: "https://clickup.com/ai",
+        badges: ["featured", "freemium"],
+        tags: ["project management", "automation", "productivity", "collaboration"]
+    },
+    {
+        name: "Napkin",
+        description: "AI-powered note-taking app that helps capture and organize ideas with smart categorization.",
+        categories: ["productivity", "nlp"],
+        logo: "https://napkin.ai/favicon.ico",
+        url: "https://napkin.ai",
+        badges: ["featured", "freemium"],
+        tags: ["note-taking", "organization", "productivity", "ideas"]
+    },
+    {
+        name: "Anki",
+        description: "AI-powered flashcard and spaced repetition learning platform for efficient memorization.",
+        categories: ["education", "productivity"],
+        logo: "https://apps.ankiweb.net/favicon.ico",
+        url: "https://apps.ankiweb.net",
+        badges: ["featured", "free"],
+        tags: ["flashcards", "learning", "spaced repetition", "education"]
+    },
+    {
+        name: "Lovable",
+        description: "AI-powered customer feedback and sentiment analysis platform for improving customer experience.",
+        categories: ["business", "nlp"],
+        logo: "https://lovable.ai/favicon.ico",
+        url: "https://lovable.ai",
+        badges: ["featured", "freemium"],
+        tags: ["customer feedback", "sentiment analysis", "customer experience", "analytics"]
+    },
+    {
+        name: "Quadratic",
+        description: "AI-powered spreadsheet and data analysis platform with advanced automation capabilities.",
+        categories: ["productivity", "data-science"],
+        logo: "https://quadratic.com/favicon.ico",
+        url: "https://quadratic.com",
+        badges: ["featured", "freemium"],
+        tags: ["spreadsheet", "data analysis", "automation", "productivity"]
     }
 ];
 
@@ -1020,6 +2012,12 @@ function categoryLabel(cat) {
         case 'coding': return 'Developer Tools';
         case 'productivity': return 'Productivity';
         case 'research': return 'Research';
+        case 'life-assistant': return 'Life Assistant';
+        case 'marketing': return 'Marketing';
+        case 'business': return 'Business';
+        case 'video': return 'Video Generator';
+        case 'education': return 'Education';
+        case 'data-science': return 'Data Science & Analytics';
         default: return cat;
     }
 }
@@ -1087,6 +2085,31 @@ if (categoryList) {
     categoryList.addEventListener('click', e => {
         if (window.innerWidth <= 1024) closeSidebar();
     });
+}
+
+// Theme toggle functionality
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = themeToggle.querySelector('i');
+
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+}
+
+// Theme toggle click handler
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+});
+
+function updateThemeIcon(theme) {
+    themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
 }
 
 // Initial render
