@@ -392,38 +392,34 @@ body {
 
 @media (max-width: 1024px) {
     .sidebar-toggle {
-        display: flex;
+        display: block;
     }
     .sidebar {
         position: fixed;
-        left: 0;
+        left: -100%;
         top: 0;
-        height: 100vh;
+        z-index: 1000;
+        transition: left 0.3s ease;
         width: 280px;
-        background: var(--sidebar-bg);
-        z-index: 1202;
-        transform: translateX(-110%);
-        box-shadow: 2px 0 16px rgba(0,0,0,0.10);
-        transition: var(--transition);
+        height: 100vh;
         overflow-y: auto;
+        background: var(--sidebar-bg);
     }
     .sidebar.open {
-        transform: translateX(0);
+        left: 0;
     }
     .sidebar-overlay.active {
         display: block;
     }
     .layout {
-        flex-direction: column;
+        padding-left: 0;
     }
     .main-content {
         padding: 1.5rem 1rem;
-        margin-top: 4.5rem;
         width: 100%;
     }
     .main-header-top {
         flex-direction: column;
-        align-items: flex-start;
         gap: 0.5rem;
     }
     .header-content {
@@ -446,22 +442,20 @@ body {
         width: 100%;
     }
     .theme-toggle {
-        bottom: 5rem;
+        right: 1rem;
     }
 }
 
 @media (max-width: 700px) {
     .main-content {
         padding: 1rem;
-        margin-top: 4rem;
     }
     .tools-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
     .tool-card {
-        min-height: auto;
-        padding: 1.2rem 1rem 1rem 1rem;
+        padding: 1rem;
     }
     .tool-header {
         flex-direction: column;
@@ -476,31 +470,29 @@ body {
         font-size: 1.1rem;
     }
     .tool-badges {
-        margin-top: 0.5rem;
+        flex-wrap: wrap;
     }
     .tool-description {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
     }
     .tool-tags {
-        gap: 0.3rem;
+        flex-wrap: wrap;
     }
     .tag {
-        font-size: 0.75rem;
-        padding: 0.15rem 0.6rem;
+        font-size: 0.8rem;
     }
     .tool-link {
         width: 100%;
-        padding: 0.7rem;
-        font-size: 0.95rem;
+        text-align: center;
     }
     .main-header-top h1 {
         font-size: 1.8rem;
-        margin-bottom: 0.8rem;
+        margin-bottom: 0.5rem;
     }
     .subtitle {
         font-size: 1rem;
-        padding-left: 1rem;
-        margin-left: -1rem;
+        padding-left: 0.8rem;
+        margin-left: -0.8rem;
         border-left-width: 3px;
     }
     #toolCount {
@@ -518,25 +510,35 @@ body {
         font-size: 1.2rem;
     }
     .sidebar-categories li {
-        padding: 0.6rem 1rem;
+        padding: 0.8rem 1rem;
         font-size: 0.95rem;
     }
     .sidebar-about {
+        padding: 1rem;
         font-size: 0.9rem;
-        padding: 0.8rem;
     }
     .back-to-top {
-        bottom: 5rem;
         right: 1rem;
+        bottom: 1rem;
+        width: 40px;
+        height: 40px;
     }
     .theme-toggle {
-        bottom: 1rem;
         right: 1rem;
-        width: 44px;
-        height: 44px;
+        bottom: 5rem;
+        width: 40px;
+        height: 40px;
     }
     .theme-toggle i {
-        font-size: 1.1rem;
+        font-size: 1rem;
+    }
+    .search-container input {
+        padding: 0.6rem 1rem 0.6rem 2.5rem;
+        font-size: 0.95rem;
+    }
+    #sortSelect {
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
     }
 }
 
@@ -545,22 +547,31 @@ body {
     html {
         scroll-behavior: smooth;
     }
-    .sidebar {
-        -webkit-overflow-scrolling: touch;
-    }
 }
 
 /* Improve touch targets for mobile */
 @media (max-width: 700px) {
     .sidebar-categories li,
     .tool-link,
-    .theme-toggle,
-    .back-to-top {
-        min-height: 44px;
-    }
     .search-container input,
     #sortSelect {
         min-height: 44px;
+    }
+}
+
+/* Add better spacing for mobile */
+@media (max-width: 700px) {
+    .main-header {
+        margin-bottom: 1.5rem;
+    }
+    .main-header-top {
+        margin-bottom: 1.5rem;
+    }
+    .main-header-actions {
+        margin-top: 1rem;
+    }
+    .tools-grid {
+        margin-top: 1rem;
     }
 }
 
