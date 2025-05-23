@@ -1,647 +1,2071 @@
-:root {
-    --primary-color: #B0DB9C;
-    --secondary-color: #8fc77d;
-    --background-color: #f8fafc;
-    --sidebar-bg: #fff;
-    --main-bg: #f8fafc;
-    --card-bg: #fff;
-    --text-color: #1e293b;
-    --muted-text: #64748b;
-    --border-radius: 16px;
-    --shadow: 0 4px 24px rgba(176, 219, 156, 0.15);
-    --transition: all 0.2s cubic-bezier(.4,0,.2,1);
-    --badge-featured: #B0DB9C;
-    --badge-trending: #fbbf24;
-    --badge-paid: #f87171;
-    --badge-freemium: #34d399;
-    --input-bg: #fff;
-    --input-border: #e2e8f0;
-    --tag-bg: #f1f5f9;
-    --sidebar-about-bg: #f1f5f9;
+// AI Tools Data (extended for demo)
+const aiTools = [
+    {
+        name: "H2O.ai",
+        description: "Open-source AI platform for machine learning and data science with automated ML capabilities.",
+        categories: ["data-science"],
+        logo: "https://www.h2o.ai/favicon.ico",
+        url: "https://www.h2o.ai",
+        badges: ["open source", "freemium"],
+        tags: ["machine learning", "automated ML", "open source", "analytics"]
+    },
+    {
+        name: "ChatGPT",
+        description: "Conversational AI system that can engage in natural dialogues, answer questions, and assist with writing.",
+        categories: ["nlp", "productivity"],
+        logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+        url: "https://chat.openai.com",
+        badges: ["featured", "trending", "freemium"],
+        tags: ["chatbot", "writing assistant", "language model"]
+    },
+    {
+        name: "Claude",
+        description: "Anthropic's conversational AI assistant for enterprise and research.",
+        categories: ["nlp", "research"],
+        logo: "https://www.anthropic.com/favicon.ico",
+        url: "https://www.anthropic.com/claude",
+        badges: ["freemium"],
+        tags: ["chatbot", "enterprise", "assistant"]
+    },
+    {
+        name: "Mistral AI",
+        description: "Open-source AI model provider offering powerful language models and APIs for developers. Known for efficient and high-performance models.",
+        categories: ["nlp", "coding"],
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Mistral_AI_logo_%282025%E2%80%93%29.svg/800px-Mistral_AI_logo_%282025%E2%80%93%29.svg.png",
+        url: "https://mistral.ai",
+        badges: ["featured"],
+        tags: ["language model", "open source", "API", "development"]
+    },
+    {
+        name: "Gemini",
+        description: "Google's multimodal AI model that can understand and generate text, code, images, and more.",
+        categories: ["nlp", "vision"],
+        logo: "https://brandlogos.net/wp-content/uploads/2025/03/gemini_icon-logo_brandlogos.net_bqzeu-512x512.png",
+        url: "https://deepmind.google/technologies/gemini/",
+        badges: ["featured", "trending", "freemium"],
+        tags: ["multimodal", "language model", "code assistant"]
+    },
+    {
+        name: "Perplexity",
+        description: "AI-powered search engine that provides detailed, accurate answers with sources.",
+        categories: ["nlp", "research"],
+        logo: "https://www.perplexity.ai/favicon.ico",
+        url: "https://www.perplexity.ai",
+        badges: ["featured","trending", "freemium"],
+        tags: ["search", "research", "answers"]
+    },
+    {
+        name: "Grok",
+        description: "X's AI assistant with real-time knowledge and a rebellious streak. Known for its witty responses and ability to access current information.",
+        categories: ["nlp", "productivity"],
+        logo: "https://images.seeklogo.com/logo-png/61/1/grok-logo-png_seeklogo-613403.png",
+        url: "https://grok.x.ai",
+        badges: ["trending"],
+        tags: ["chatbot", "assistant", "real-time", "x", "twitter"]
+    },
+    {
+        name: "DeepSeek",
+        description: "Advanced AI research platform focused on deep learning and neural networks. Offers powerful tools for AI development and experimentation.",
+        categories: ["research", "coding"],
+        logo: "https://logosandtypes.com/wp-content/uploads/2025/02/Deepseek.png",
+        url: "https://deepseek.com",
+        badges: ["featured"],
+        tags: ["research", "deep learning", "neural networks", "development"]
+    },
+    {
+        name: "Black Box",
+        description: "AI-powered code search and development tool that helps developers find and understand code faster. Integrates with popular IDEs.",
+        categories: ["coding", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSw1FupX171I8BqEXT6ZfFivUbCv2Y8rme_Mw&s",
+        url: "https://blackbox.ai",
+        badges: ["featured"],
+        tags: ["code search", "development", "IDE", "productivity"]
+    },
+    {
+        name: "Sora",
+        description: "OpenAI's revolutionary text-to-video model that can create realistic and imaginative video scenes from text descriptions. Known for its ability to generate high-quality, coherent videos with complex camera movements and detailed scenes.",
+        categories: ["video", "vision"],
+        logo: "https://openai.com/favicon.ico",
+        url: "https://openai.com/sora",
+        badges: ["featured", "trending"],
+        tags: ["video generation", "text-to-video", "openai", "creative"]
+    },
+    {
+        name: "Soundraw",
+        description: "AI music generator that creates royalty-free music for videos, games, and podcasts. Features customizable tracks with mood, genre, and length controls.",
+        categories: ["audio", "design"],
+        logo: "https://images.sxsw.com/fcA56uPNMovhta-tCqj1-bmptVI=/0x0:5000x5000/950x950/images.sxsw.com/174/6cc79338-ecfb-4154-a56c-f85932e79960/SalesClient-6002",
+        url: "https://soundraw.io",
+        badges: ["featured", "freemium"],
+        tags: ["music generation", "royalty-free", "audio", "creative"]
+    },
+    {
+        name: "OpenAI Codex",
+        description: "Advanced AI system that translates natural language to code. Powers GitHub Copilot and provides powerful code generation capabilities.",
+        categories: ["coding", "nlp"],
+        logo: "https://openai.com/favicon.ico",
+        url: "https://openai.com/blog/openai-codex",
+        badges: ["featured"],
+        tags: ["code generation", "programming", "openai", "development"]
+    },
+    {
+        name: "Codeium",
+        description: "Free AI code completion tool that works across multiple IDEs. Offers intelligent code suggestions and real-time assistance.",
+        categories: ["coding"],
+        logo: "https://codeium.com/favicon.ico",
+        url: "https://codeium.com",
+        badges: ["free", "trending"],
+        tags: ["code completion", "IDE", "programming", "development"]
+    },
+    {
+        name: "PolyCoder",
+        description: "Open-source code generation model trained on multiple programming languages. Provides accurate code suggestions and completions.",
+        categories: ["coding", "research"],
+        logo: "https://upload.wikimedia.org/wikipedia/commons/6/62/Polycode_Logo.png",
+        url: "https://github.com/VHellendoorn/Code-LMs",
+        badges: ["open source"],
+        tags: ["code generation", "open source", "programming", "research"]
+    },
+    {
+        name: "Replit Ghostwriter",
+        description: "AI pair programmer integrated into Replit's online IDE. Provides real-time code suggestions and explanations.",
+        categories: ["coding", "productivity"],
+        logo: "https://cdn.sanity.io/images/bj34pdbp/migration/7d06c37d899d8ba6419b2a9484dfe44586e70081-794x872.png",
+        url: "https://replit.com/ghostwriter",
+        badges: ["featured", "freemium"],
+        tags: ["code completion", "IDE", "programming", "education"]
+    },
+    {
+        name: "Amazon CodeWhisperer",
+        description: "AI coding companion that provides real-time code suggestions and security scanning. Integrated with popular IDEs.",
+        categories: ["coding", "productivity"],
+        logo: "https://aws.amazon.com/favicon.ico",
+        url: "https://aws.amazon.com/codewhisperer",
+        badges: ["featured", "freemium"],
+        tags: ["code completion", "security", "aws", "development"]
+    },
+    {
+        name: "Jasper AI",
+        description: "Enterprise-grade AI content platform for marketing teams and businesses. Features advanced copywriting, content generation, and brand voice customization.",
+        categories: ["marketing", "business", "productivity"],
+        logo: "https://img.icons8.com/?size=512&id=ij6f4GUUwLE8&format=png",
+        url: "https://www.jasper.ai",
+        badges: ["featured", "paid"],
+        tags: ["content creation", "marketing", "copywriting", "enterprise"]
+    },
+    {
+        name: "Pika",
+        description: "AI-powered video generation platform that creates high-quality videos from text prompts. Known for its ability to generate cinematic and artistic video content.",
+        categories: ["video", "design"],
+        logo: "https://pika.art/favicon.ico",
+        url: "https://pika.art",
+        badges: ["trending", "freemium"],
+        tags: ["video generation", "text-to-video", "creative", "cinematic"]
+    },
+    {
+        name: "Lumen5",
+        description: "AI video creation platform that transforms articles and blog posts into engaging social media videos. Features automatic scene creation and content repurposing.",
+        categories: ["video", "marketing"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu2hkE4SuPtDEJh3WqVcLXi-hlIoEInvRpSQ&s", 
+        url: "https://lumen5.com",
+        badges: ["featured", "freemium"],
+        tags: ["video creation", "social media", "content repurposing", "marketing"]
+    },
+    {
+        name: "Manus",
+        description: "AI-powered hand tracking and gesture recognition platform. Enables natural interaction with digital interfaces through hand movements.",
+        categories: ["vision", "productivity"],
+        logo: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/manus.png",
+        url: "https://manus.im/app",
+        badges: ["trending"],
+        tags: ["hand tracking", "gesture recognition", "interaction", "VR"]
+    },
+    {
+        name: "Qwen",
+        description: "Alibaba's advanced language model with strong capabilities in understanding and generating text. Supports multiple languages and tasks.",
+        categories: ["nlp", "productivity"],
+        logo: "https://images.seeklogo.com/logo-png/61/1/qwen-logo-png_seeklogo-611723.png",
+        url: "https://chat.qwen.ai/",
+        badges: ["trending"],
+        tags: ["language model", "multilingual", "alibaba", "chatbot"]
+    },
+    {
+        name: "DALL-E",
+        description: "AI system that can create realistic images and art from natural language descriptions.",
+        categories: ["vision", "design"],
+        logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+        url: "https://openai.com/dall-e-2",
+        badges: ["featured", "paid"],
+        tags: ["image generation", "art", "creative"]
+    },
+    {
+        name: "GitHub Copilot",
+        description: "AI pair programmer that helps you write better code by suggesting code and entire functions.",
+        categories: ["coding", "productivity"],
+        logo: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+        url: "https://github.com/features/copilot",
+        badges: ["featured", "paid"],
+        tags: ["coding assistant", "autocomplete", "programming"]
+    },
+    {
+        name: "Hugging Face",
+        description: "Platform providing tools for building, training and deploying machine learning models, including transformers.",
+        categories: ["nlp", "coding"],
+        logo: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
+        url: "https://huggingface.co",
+        badges: ["featured", "freemium"],
+        tags: ["machine learning", "models", "transformers"]
+    },
+    {
+        name: "Adobe Firefly",
+        description: "Creative generative AI tools for image generation and editing integrated with Adobe products.",
+        categories: ["vision", "design"],
+        logo: "https://seeklogo.com/images/A/adobe-firefly-logo-862ACDBCA4-seeklogo.com.png",
+        url: "https://www.adobe.com/sensei/generative-ai/firefly.html",
+        badges: ["featured", "paid"],
+        tags: ["image generation", "creative tools", "adobe"]
+    },
+    {
+        name: "Eleven Labs",
+        description: "AI voice technology platform for generating natural-sounding voice content with text-to-speech.",
+        categories: ["audio", "nlp"],
+        logo: "https://11labs-nonprd-15f22c1d.s3.eu-west-3.amazonaws.com/a2ea339b-8b5e-41bb-b706-24eda8a4c9e3/elevenlabs-symbol.svg",
+        url: "https://elevenlabs.io",
+        badges: ["featured", "freemium"],
+        tags: ["voice synthesis", "text-to-speech", "ai voice"]
+    },
+    {
+        name: "Descript",
+        description: "AI-powered audio and video editing platform.",
+        categories: ["audio", "productivity"],
+        logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+        url: "https://www.descript.com",
+        badges: ["freemium"],
+        tags: ["audio editing", "video editing", "transcription"]
+    },
+    {
+        name: "Stable Diffusion",
+        description: "Open-source AI image generation model.",
+        categories: ["vision", "design"],
+        logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+        url: "https://stability.ai",
+        badges: ["freemium"],
+        tags: ["image generation", "open source", "art"]
+    },
+    {
+        name: "Midjourney",
+        description: "AI art generator that creates images from text prompts.",
+        categories: ["vision", "design"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS55bvDrwepdxIPIOM7EpQQO3wYWSaJJ1tBxw&s",
+        url: "https://www.midjourney.com",
+        badges: ["trending", "paid"],
+        tags: ["art", "image generation", "creative"]
+    },
+    {
+        name: "Llama 2",
+        description: "Meta's open large language model for research and commercial use.",
+        categories: ["nlp", "research"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKrj0iunR9XUI3h1ZaXpx14-6dIcCX_Rpm5w&s",
+        url: "https://ai.meta.com/llama/",
+        badges: ["open source"],
+        tags: ["language model", "meta", "open source"]
+    },
+    {
+        name: "Canva Magic Studio",
+        description: "AI-powered design tools for creating graphics, presentations, and more.",
+        categories: ["design", "productivity"],
+        logo: "https://static.canva.com/static/images/favicon.ico",
+        url: "https://www.canva.com/magic/",
+        badges: ["freemium"],
+        tags: ["design", "graphics", "presentations"]
+    },
+    {
+        name: "Synthesia",
+        description: "Create AI videos from text in minutes with avatars and voiceovers.",
+        categories: ["audio", "vision"],
+        logo: "https://logowik.com/content/uploads/images/synthesia8926.jpg",
+        url: "https://www.synthesia.io",
+        badges: ["paid"],
+        tags: ["video", "avatar", "voiceover"]
+    },
+    {
+        name: "DeepL Translator",
+        description: "AI-powered translation tool for accurate and natural translations.",
+        categories: ["nlp", "productivity"],
+        logo: "https://static.deepl.com/img/favicon/favicon_32.png",
+        url: "https://www.deepl.com/translator",
+        badges: ["freemium"],
+        tags: ["translation", "languages", "writing"]
+    },
+    {
+        name: "Otter.ai",
+        description: "AI meeting assistant for real-time transcription and collaboration.",
+        categories: ["audio", "productivity"],
+        logo: "https://otter.ai/favicon.ico",
+        url: "https://otter.ai",
+        badges: ["freemium"],
+        tags: ["transcription", "meetings", "collaboration"]
+    },
+    {
+        name: "Copy.ai",
+        description: "AI-powered content generator for marketing, blogs, and more.",
+        categories: ["nlp", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT14c1RIu0V-Xhj9vCFlpjA0a0Go3Q0Pxkwhw&s",
+        url: "https://www.copy.ai",
+        badges: ["freemium"],
+        tags: ["content", "marketing", "copywriting"]
+    },
+    {
+        name: "Soundful",
+        description: "Generate royalty-free music with AI for your videos, streams, and podcasts.",
+        categories: ["audio", "design"],
+        logo: "https://soundful.com/favicon.ico",
+        url: "https://soundful.com",
+        badges: ["freemium"],
+        tags: ["music", "audio", "royalty-free"]
+    },
+    {
+        name: "QuillBot",
+        description: "AI writing and paraphrasing tool for students and professionals.",
+        categories: ["nlp", "productivity"],
+        logo: "https://quillbot.com/favicon.ico",
+        url: "https://quillbot.com",
+        badges: ["freemium"],
+        tags: ["writing", "paraphrasing", "grammar"]
+    },
+    {
+        name: "Krisp",
+        description: "AI-powered noise cancellation for calls and recordings.",
+        categories: ["audio", "productivity"],
+        logo: "https://krisp.ai/blog/wp-content/uploads/2023/10/cropped-Favicon.png",
+        url: "https://krisp.ai",
+        badges: ["freemium"],
+        tags: ["noise cancellation", "calls", "audio"]
+    },
+    {
+        name: "Tome",
+        description: "AI-powered storytelling and presentation tool.",
+        categories: ["productivity", "design"],
+        logo: "https://tome.app/favicon.ico",
+        url: "https://tome.app",
+        badges: ["trending", "freemium"],
+        tags: ["presentations", "storytelling", "slides"]
+    },
+    {
+        name: "Pictory",
+        description: "AI video generator that turns scripts and articles into engaging videos.",
+        categories: ["vision", "audio"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLDoc_aBV_Kcbl-d_rqoVtFzmdrkdyNCHUbQ&s",
+        url: "https://pictory.ai",
+        badges: ["freemium"],
+        tags: ["video", "script", "editing"]
+    },
+    {
+        name: "AIVA",
+        description: "AI music composition assistant for creators and professionals.",
+        categories: ["audio", "design"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQiUmFKGYkecYliBfVBr9MqKAXU62LGtedZw&s",
+        url: "https://www.aiva.ai",
+        badges: ["freemium"],
+        tags: ["music", "composition", "creative"]
+    },
+    {
+        name: "Grammarly",
+        description: "AI-powered writing assistant that helps improve your writing.",
+        categories: ["nlp", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM34CCdspT0QP8vyW66b_Dred0jfmSgQosyw&s",
+        url: "https://www.grammarly.com",
+        badges: ["freemium"],
+        tags: ["writing", "grammar", "assistant"]
+    },
+    {
+        name: "Google Bard",
+        description: "Conversational generative AI chatbot developed by Google.",
+        categories: ["nlp", "productivity"],
+        logo: "https://logowik.com/content/uploads/images/google-bard3872.logowik.com.webp",
+        url: "https://bard.google.com",
+        badges: ["trending", "freemium"],
+        tags: ["chatbot", "google", "language model"]
+    },
+    {
+        name: "Microsoft Copilot",
+        description: "AI assistant integrated into Microsoft 365, Edge, and Bing for productivity and search.",
+        categories: ["productivity", "coding", "nlp"],
+        logo: "https://copilot.microsoft.com/favicon.ico",
+        url: "https://copilot.microsoft.com",
+        badges: ["featured", "freemium"],
+        tags: ["assistant", "office", "search"]
+    },
+    {
+        name: "OpenAI Whisper",
+        description: "Automatic speech recognition system trained on a large dataset of diverse audio.",
+        categories: ["audio", "nlp"],
+        logo: "https://openai.com/favicon.ico",
+        url: "https://openai.com/research/whisper",
+        badges: ["open source"],
+        tags: ["speech recognition", "transcription", "audio"]
+    },
+    {
+        name: "Suno AI",
+        description: "AI music generation platform for creating songs and soundtracks.",
+        categories: ["audio", "design"],
+        logo: "https://app.suno.ai/favicon.ico",
+        url: "https://suno.ai",
+        badges: ["trending", "freemium"],
+        tags: ["music", "generation", "audio"]
+    },
+    {
+        name: "You.com",
+        description: "AI-powered search engine with chat, writing, and coding features.",
+        categories: ["nlp", "productivity", "coding"],
+        logo: "https://logowik.com/content/uploads/images/youcom-new-20242443.logowik.com.webp",
+        url: "https://you.com",
+        badges: ["freemium"],
+        tags: ["search", "assistant", "writing"]
+    },
+    {
+        name: "Replika",
+        description: "AI companion that provides emotional support and conversation.",
+        categories: ["life-assistant"],
+        logo: "https://replika.com/favicon.ico",
+        url: "https://replika.com",
+        badges: ["freemium"],
+        tags: ["companion", "emotional support", "chat"]
+    },
+    {
+        name: "DeepMind AlphaFold",
+        description: "AI system that predicts 3D structures of proteins with high accuracy.",
+        categories: ["research", "vision"],
+        logo: "https://lh3.googleusercontent.com/EQG-IiwCivtoW6UzARBc_7uaVBrQ6b5nMtAE-tRCIVLz59sst09hqaHPh2Z1oFhVhdKeuHFkIJVKXX4FM651",
+        url: "https://alphafold.ebi.ac.uk",
+        badges: ["open source", "featured"],
+        tags: ["protein folding", "biology", "science"]
+    },
+    {
+        name: "FaceApp",
+        description: "AI photo editing app for face transformations and filters.",
+        categories: ["vision", "design"],
+        logo: "https://images.seeklogo.com/logo-png/46/2/faceapp-logo-png_seeklogo-467497.png",
+        url: "https://www.faceapp.com",
+        badges: ["trending", "freemium"],
+        tags: ["photo editing", "filters", "face"]
+    },
+    {
+        name: "Remove.bg",
+        description: "AI tool to remove image backgrounds automatically.",
+        categories: ["vision", "design"],
+        logo: "https://www.remove.bg/favicon.ico",
+        url: "https://www.remove.bg",
+        badges: ["freemium"],
+        tags: ["background removal", "image editing", "photo"]
+    },
+    {
+        name: "ChatSonic",
+        description: "Conversational AI chatbot for content creation and search.",
+        categories: ["nlp", "productivity"],
+        logo: "https://app.writesonic.com/favicon.ico",
+        url: "https://writesonic.com/chatsonic",
+        badges: ["trending", "freemium"],
+        tags: ["chatbot", "content", "search"]
+    },
+    {
+        name: "Jasper Art",
+        description: "AI art generator for creating unique images from text prompts.",
+        categories: ["vision", "design"],
+        logo: "https://www.camerareviews.com/wp-content/uploads/2022/11/Jasper-logo-squared.webp",
+        url: "https://www.jasper.ai/art",
+        badges: ["freemium"],
+        tags: ["art", "image generation", "creative"]
+    },
+    {
+        name: "Synthesys",
+        description: "AI voiceover and video creation platform for content creators.",
+        categories: ["audio", "vision"],
+        logo: "https://synthesys.io/favicon.ico",
+        url: "https://synthesys.io",
+        badges: ["freemium"],
+        tags: ["voiceover", "video", "content"]
+    },
+    {
+        name: "Play.ht",
+        description: "AI-powered text-to-speech platform with realistic voices.",
+        categories: ["audio", "nlp"],
+        logo: "https://play.ht/favicon.ico",
+        url: "https://play.ht",
+        badges: ["freemium"],
+        tags: ["text-to-speech", "audio", "voice"]
+    },
+    {
+        name: "Lensa AI",
+        description: "AI photo editor for creating avatars and enhancing selfies.",
+        categories: ["vision", "design"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmqSjOkuKyM6UAEW_e6R-zBFF65LJgwNI3lw&s",
+        url: "https://lensa-ai.com",
+        badges: ["trending", "freemium"],
+        tags: ["photo editing", "avatar", "selfie"]
+    },
+    {
+        name: "PhotoRoom",
+        description: "AI photo studio for background removal and product images.",
+        categories: ["vision", "design", "productivity"],
+        logo: "https://www.photoroom.com/favicon.ico",
+        url: "https://www.photoroom.com",
+        badges: ["freemium"],
+        tags: ["photo editing", "background removal", "studio"]
+    },
+    {
+        name: "Descript Overdub",
+        description: "AI voice cloning tool for creating ultra-realistic voiceovers.",
+        categories: ["audio", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrtsPhxm10Bkinahg8DPM_nLZBgpoqSuYi-Q&s",
+        url: "https://www.descript.com/overdub",
+        badges: ["freemium"],
+        tags: ["voice cloning", "voiceover", "audio"]
+    },
+    {
+        name: "Speechify",
+        description: "AI text-to-speech reader for listening to documents and web pages.",
+        categories: ["audio", "nlp", "productivity"],
+        logo: "https://speechify.com/favicon.ico",
+        url: "https://speechify.com",
+        badges: ["freemium"],
+        tags: ["text-to-speech", "reading", "audio"]
+    },
+    {
+        name: "CopyMonkey",
+        description: "AI tool for generating and optimizing Amazon product listings.",
+        categories: ["nlp", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEYtafNj-h1l2vTHjbm3CLnzm7L5i_pONeJQ&s",
+        url: "https://copymonkey.ai",
+        badges: ["freemium"],
+        tags: ["ecommerce", "copywriting", "amazon"]
+    },
+    {
+        name: "SurferSEO",
+        description: "AI-powered SEO tool for content optimization and strategy.",
+        categories: ["nlp", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdS1UefwqOtPyhNrofB0iQMhyQ-NlNUv3uYw&s",
+        url: "https://surferseo.com",
+        badges: ["freemium"],
+        tags: ["seo", "content", "optimization"]
+    },
+    {
+        name: "DeepL Write",
+        description: "AI writing assistant for clear, compelling communication.",
+        categories: ["nlp", "productivity"],
+        logo: "https://static.deepl.com/img/favicon/favicon_32.png",
+        url: "https://www.deepl.com/write",
+        badges: ["freemium"],
+        tags: ["writing", "assistant", "clarity"]
+    },
+    {
+        name: "Papercup",
+        description: "AI dubbing and voiceover for video localization.",
+        categories: ["audio", "vision"],
+        logo: "https://www.papercup.com/favicon.ico",
+        url: "https://www.papercup.com",
+        badges: ["freemium"],
+        tags: ["dubbing", "voiceover", "localization"]
+    },
+    {
+        name: "Murf AI",
+        description: "AI voice generator for studio-quality voiceovers.",
+        categories: ["audio", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYO81J0zYiPaCqey4hdEazJp-DZjm08DUdKA&s",
+        url: "https://murf.ai",
+        badges: ["freemium"],
+        tags: ["voiceover", "audio", "generator"]
+    },
+    {
+        name: "HeyGen",
+        description: "AI video creation with talking avatars.",
+        categories: ["vision", "audio"],
+        logo: "https://images.seeklogo.com/logo-png/61/1/heygen-logo-png_seeklogo-617924.png",
+        url: "https://www.heygen.com",
+        badges: ["trending", "freemium"],
+        tags: ["video", "avatar", "creation"]
+    },
+    {
+        name: "Kaiber",
+        description: "AI video generator for music videos and animations.",
+        categories: ["vision", "design"],
+        logo: "https://cdn.theorg.com/c64450bd-cbff-4e97-b402-bf27ed6e2afc_medium.jpg",
+        url: "https://www.kaiber.ai",
+        badges: ["freemium"],
+        tags: ["video", "animation", "music"]
+    },
+    {
+        name: "Cleanup.pictures",
+        description: "Remove unwanted objects from images with AI.",
+        categories: ["vision", "design"],
+        logo: "https://cleanup.pictures/favicon.ico",
+        url: "https://cleanup.pictures",
+        badges: ["freemium"],
+        tags: ["image editing", "cleanup", "photo"]
+    },
+    {
+        name: "DreamStudio",
+        description: "Create images from text with Stable Diffusion.",
+        categories: ["vision", "design"],
+        logo: "https://backend.aionlinecourse.com/uploads/ai_software/image/2023/09/dreamstudio.png",
+        url: "https://dreamstudio.ai",
+        badges: ["freemium"],
+        tags: ["image generation", "art", "diffusion"]
+    },
+    {
+        name: "NightCafe",
+        description: "AI art generator using multiple models.",
+        categories: ["vision", "design"],
+        logo: "https://creator.nightcafe.studio/favicon.ico",
+        url: "https://creator.nightcafe.studio",
+        badges: ["freemium"],
+        tags: ["art", "image generation", "creative"]
+    },
+    {
+        name: "Craiyon",
+        description: "AI image generator formerly known as DALL-E Mini.",
+        categories: ["vision", "design"],
+        logo: "https://www.craiyon.com/favicon.ico",
+        url: "https://www.craiyon.com",
+        badges: ["freemium"],
+        tags: ["image generation", "art", "mini"]
+    },
+    {
+        name: "Veed.io",
+        description: "Online video editing with AI features.",
+        categories: ["vision", "audio", "productivity"],
+        logo: "https://www.veed.io/favicon.ico",
+        url: "https://www.veed.io",
+        badges: ["freemium"],
+        tags: ["video editing", "audio", "online"]
+    },
+    {
+        name: "Descript Studio Sound",
+        description: "AI audio enhancement for studio-quality sound.",
+        categories: ["audio", "productivity"],
+        logo: "https://cdn.prod.website-files.com/61e09d67f0dcf4552c951a3a/634dc9fb0310cfee2728878b_Descript.png",
+        url: "https://www.descript.com/studio-sound",
+        badges: ["freemium"],
+        tags: ["audio", "enhancement", "studio"]
+    },
+    {
+        name: "Auphonic",
+        description: "AI audio post-production for podcasts and videos.",
+        categories: ["audio", "productivity"],
+        logo: "https://auphonic.com/media/pics/auphonic-app-icon.png",
+        url: "https://auphonic.com",
+        badges: ["freemium"],
+        tags: ["audio", "post-production", "podcast"]
+    },
+    {
+        name: "Napkin AI",
+        description: "Free during beta – full functionality currently at no cost. Create up to 3 visuals on the Starter plan even outside beta.",
+        categories: ["design", "productivity"],
+        logo: "https://napkin.ai/favicon.ico",
+        url: "https://napkin.ai",
+        badges: ["freemium", "beta"],
+        tags: ["visuals", "design", "image generation"]
+    },
+    {
+        name: "Gamma",
+        description: "Free plan (no credit card) with 400 AI credits signup bonus. Enough to generate a couple of presentations. Unlimited users and basic exports included.",
+        categories: ["productivity", "business", "design"],
+        logo: "https://gamma.app/favicon.ico",
+        url: "https://gamma.app",
+        badges: ["freemium"],
+        tags: ["presentations", "business", "design", "productivity"]
+    },
+    {
+        name: "10Web",
+        description: "Offers a 7-day free trial with full features. Also has a free Personal plan option (with very limited resources) for testing.",
+        categories: ["productivity", "web-development"],
+        logo: "https://10web.io/favicon.ico",
+        url: "https://10web.io",
+        badges: ["freemium", "trial"],
+        tags: ["website builder", "web development", "hosting"]
+    },
+    {
+        name: "DALL-E 3",
+        description: "Free via Bing Image Creator – unlimited usage with a Microsoft account",
+        categories: ["vision", "design"],
+        logo: "https://bing.com/favicon.ico",
+        url: "https://www.bing.com/images/create",
+        badges: ["free"],
+        tags: ["image generation", "art", "creative", "bing"]
+    },
+    {
+        name: "Leonardo AI",
+        description: "Comprehensive free use ~150 tokens every 8 hours (about 15 image generations) perpetually.",
+        categories: ["vision", "design"],
+        logo: "https://leonardo.ai/favicon.ico",
+        url: "https://leonardo.ai",
+        badges: ["freemium"],
+        tags: ["image generation", "art", "creative"]
+    },
+    {
+        name: "Hailuo AI",
+        description: "Yes - 1000 initial credits + 100 daily free(roughly 3 free videos per day).",
+        categories: ["video", "design"],
+        logo: "https://hailuo.ai/favicon.ico",
+        url: "https://hailuo.ai",
+        badges: ["freemium"],
+        tags: ["video generation", "creative"]
+    },
+    {
+        name: "Kling",
+        description: "Yes - 66 free credits daily (roughly three 5 sec videos per day)",
+        categories: ["video", "design"],
+        logo: "https://play-lh.googleusercontent.com/JOfjXqsShK8j1aGBc1xlHBnatoRKRwLsGuoFZUAvKksaEPvK71eLwSg4FbKlky9Es-s",
+        url: "https://kling.ai",
+        badges: ["freemium"],
+        tags: ["video generation", "creative"]
+    },
+    {
+        name: "Cursor AI",
+        description: "Yes - the Cursor code editor is free to download and offers a two week free trail for all its pro features. For the free version, you can have 2000 completions for free.",
+        categories: ["coding", "productivity"],
+        logo: "https://cursor.sh/favicon.ico",
+        url: "https://cursor.sh",
+        badges: ["free", "trial"],
+        tags: ["code editor", "coding assistant", "IDE"]
+    },
+    {
+        name: "Fotor GoArt",
+        description: "AI art generator for turning photos into paintings.",
+        categories: ["vision", "design"],
+        logo: "https://www.fotor.com/favicon.ico",
+        url: "https://www.fotor.com/goart",
+        badges: ["freemium"],
+        tags: ["art", "painting", "photo"]
+    },
+    {
+        name: "Remini",
+        description: "AI photo enhancer for restoring old images.",
+        categories: ["vision", "design"],
+        logo: "https://www.remini.ai/favicon.ico",
+        url: "https://www.remini.ai",
+        badges: ["freemium"],
+        tags: ["photo", "enhancer", "restoration"]
+    },
+    {
+        name: "Let's Enhance",
+        description: "AI image upscaler and enhancer.",
+        categories: ["vision", "design"],
+        logo: "https://yt3.googleusercontent.com/jEIS4r9BGPsDzS3MpMbLhecYzVnVrVfW6z2JH9Z8l3RdNYhIeJ0EAlC13jrXv4VHjF_513Ks=s900-c-k-c0x00ffffff-no-rj",
+        url: "https://letsenhance.io",
+        badges: ["freemium"],
+        tags: ["upscaling", "enhancer", "photo"]
+    },
+    {
+        name: "Remove Objects",
+        description: "Remove objects from photos with AI.",
+        categories: ["vision", "design"],
+        logo: "https://www.remove.bg/favicon.ico",
+        url: "https://www.remove.bg/remove-objects",
+        badges: ["freemium"],
+        tags: ["object removal", "photo", "editing"]
+    },
+    {
+        name: "PhotoAI",
+        description: "AI headshots and portraits from your selfies.",
+        categories: ["vision", "design"],
+        logo: "https://photoai.com/favicon.ico",
+        url: "https://photoai.com",
+        badges: ["freemium"],
+        tags: ["headshot", "portrait", "photo"]
+    },
+    {
+        name: "Avatarify",
+        description: "Create animated avatars from photos.",
+        categories: ["vision", "design"],
+        logo: "https://avatarify.ai/favicon.ico",
+        url: "https://avatarify.ai",
+        badges: ["freemium"],
+        tags: ["avatar", "animation", "photo"]
+    },
+    {
+        name: "Deep Nostalgia",
+        description: "Animate old family photos with AI.",
+        categories: ["vision", "design"],
+        logo: "https://deepnostalgia.ai/apple-icon.png?3d07840bbf1d8993",
+        url: "https://www.myheritage.com/deep-nostalgia",
+        badges: ["freemium"],
+        tags: ["animation", "photo", "nostalgia"]
+    },
+    {
+        name: "Deep Dream Generator",
+        description: "Create dream-like images with neural networks.",
+        categories: ["vision", "design"],
+        logo: "https://deepdreamgenerator.com/favicon.ico",
+        url: "https://deepdreamgenerator.com",
+        badges: ["freemium"],
+        tags: ["dream", "image", "generator"]
+    },
+    {
+        name: "Bigjpg",
+        description: "AI image enlarger for photos and artwork.",
+        categories: ["vision", "design"],
+        logo: "https://bigjpg.com/favicon.ico",
+        url: "https://bigjpg.com",
+        badges: ["freemium"],
+        tags: ["enlarger", "photo", "artwork"]
+    },
+    {
+        name: "VanceAI",
+        description: "AI photo enhancer, upscaler, and background remover.",
+        categories: ["vision", "design"],
+        logo: "https://vanceai.com/favicon.ico",
+        url: "https://vanceai.com",
+        badges: ["freemium"],
+        tags: ["enhancer", "upscaler", "remover"]
+    },
+    {
+        name: "PaintsChainer",
+        description: "AI automatic coloring for sketches and manga.",
+        categories: ["vision", "design"],
+        logo: "https://petalica.com/images/design-v2/logo.svg",
+        url: "https://paintschainer.preferred.tech",
+        badges: ["freemium"],
+        tags: ["coloring", "sketch", "manga"]
+    },
+    {
+        name: "Artbreeder",
+        description: "Create and explore images with genetic algorithms.",
+        categories: ["vision", "design"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMrSa6myIofenGS9dVauR8E87XwmanbkKJcA&s",
+        url: "https://www.artbreeder.com",
+        badges: ["freemium"],
+        tags: ["image", "genetic", "art"]
+    },
+    {
+        name: "Wombo Dream",
+        description: "AI-powered art generator from text prompts.",
+        categories: ["vision", "design"],
+        logo: "https://www.wombo.art/favicon.ico",
+        url: "https://www.wombo.art",
+        badges: ["freemium"],
+        tags: ["art", "generator", "dream"]
+    },
+    {
+        name: "DeepArt",
+        description: "Turn photos into artwork with neural networks.",
+        categories: ["vision", "design"],
+        logo: "https://avatars.githubusercontent.com/u/25684714?s=280&v=4",
+        url: "https://deepart.io",
+        badges: ["freemium"],
+        tags: ["artwork", "photo", "neural"]
+    },
+    {
+        name: "AI Picasso",
+        description: "Create Picasso-style art from your photos.",
+        categories: ["vision", "design"],
+        logo: "https://framerusercontent.com/images/ttNBlLQ1awng2oh1byuTAuBmiBw.png?scale-down-to=512",
+        url: "https://aipicasso.app",
+        badges: ["freemium"],
+        tags: ["picasso", "art", "photo"]
+    },
+    {
+        name: "Toongineer Cartoonizer",
+        description: "Turn photos into cartoons with AI.",
+        categories: ["vision", "design"],
+        logo: "https://www.vanceai.com/favicon.ico",
+        url: "https://www.vanceai.com/toongineer-cartoonizer/",
+        badges: ["freemium"],
+        tags: ["cartoon", "photo", "art"]
+    },
+    {
+        name: "Cartoonify",
+        description: "Cartoon yourself online with AI.",
+        categories: ["vision", "design"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlhA_2gmrvBzd424l8i6S5lMRwv6HI_6BLfA&s",
+        url: "https://www.cartoonify.de",
+        badges: ["freemium"],
+        tags: ["cartoon", "photo", "avatar"]
+    },
+    {
+        name: "AISEO",
+        description: "AI-powered SEO content generator.",
+        categories: ["nlp", "productivity"],
+        logo: "https://media.licdn.com/dms/image/v2/C4D0BAQF0RVJaxx983g/company-logo_200_200/company-logo_200_200/0/1649257648693/aiseo_ai_logo?e=2147483647&v=beta&t=5TrQO37Qldj65CZljNSzKkI4if5SnCcfb275WHBRm2Y",
+        url: "https://aiseo.ai",
+        badges: ["freemium"],
+        tags: ["seo", "content", "writing"]
+    },
+    {
+        name: "INK",
+        description: "AI writing and SEO assistant.",
+        categories: ["nlp", "productivity"],
+        logo: "https://inkforall.com/favicon.ico",
+        url: "https://inkforall.com",
+        badges: ["freemium"],
+        tags: ["writing", "seo", "assistant"]
+    },
+    {
+        name: "Rytr",
+        description: "AI writing assistant for blogs, emails, and more.",
+        categories: ["nlp", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ9cZZet_33soscJCwtE-dP3C-D0W2akWWVw&s",
+        url: "https://rytr.me",
+        badges: ["freemium"],
+        tags: ["writing", "assistant", "content"]
+    },
+    {
+        name: "Frase.io",
+        description: "AI-powered content research and optimization.",
+        categories: ["nlp", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzml55hs1gvLq-lCgaXQe5GdJghWKRFDYpZQ&s",
+        url: "https://www.frase.io",
+        badges: ["freemium"],
+        tags: ["content", "research", "optimization"]
+    },
+    {
+        name: "LongShot AI",
+        description: "AI writing assistant for long-form content.",
+        categories: ["nlp", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8JV-cmD895Gmm7AtmlmHUzudNJT_dPm8WRA&s",
+        url: "https://www.longshot.ai",
+        badges: ["freemium"],
+        tags: ["writing", "long-form", "content"]
+    },
+    {
+        name: "Wordtune",
+        description: "AI-powered writing companion for better sentences.",
+        categories: ["nlp", "productivity"],
+        logo: "https://logowik.com/content/uploads/images/wordtune5989.logowik.com.webp",
+        url: "https://www.wordtune.com",
+        badges: ["freemium"],
+        tags: ["writing", "companion", "sentences"]
+    },
+    {
+        name: "HyperWrite",
+        description: "AI writing assistant for emails, blogs, and more.",
+        categories: ["nlp", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwe3-J2IQN8nPPsXpOtSfNL5JAQ5X5W9AAtg&s",
+        url: "https://hyperwriteai.com",
+        badges: ["freemium"],
+        tags: ["writing", "assistant", "content"]
+    },
+    {
+        name: "Sudowrite",
+        description: "AI writing tool for creative writers.",
+        categories: ["nlp", "productivity"],
+        logo: "https://pbs.twimg.com/profile_images/1681066020868349952/oubjd_MW_400x400.jpg",
+        url: "https://www.sudowrite.com",
+        badges: ["freemium"],
+        tags: ["writing", "creative", "assistant"]
+    },
+    {
+        name: "NovelAI",
+        description: "AI-powered storytelling and novel writing.",
+        categories: ["nlp", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3r1CmcE-vfNHkjGBS3KYgxmjcdmeEfw5Lbg&s",
+        url: "https://novelai.net",
+        badges: ["freemium"],
+        tags: ["storytelling", "writing", "novel"]
+    },
+    {
+        name: "AI Dungeon",
+        description: "AI-powered text adventure game.",
+        categories: ["nlp", "productivity"],
+        logo: "https://upload.wikimedia.org/wikipedia/commons/5/52/AI_Dungeon_Logo.png",
+        url: "https://play.aidungeon.io",
+        badges: ["freemium"],
+        tags: ["game", "adventure", "text"]
+    },
+    {
+        name: "ShortlyAI",
+        description: "AI writing assistant for short-form content.",
+        categories: ["nlp", "productivity"],
+        logo: "https://www.shortlyai.com/favicon.ico",
+        url: "https://www.shortlyai.com",
+        badges: ["freemium"],
+        tags: ["writing", "short-form", "assistant"]
+    },
+    {
+        name: "CopySmith",
+        description: "AI copywriting tool for ads, emails, and more.",
+        categories: ["nlp", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXb-fDNZq4QlJJXLW3iaWSpYbSUEDgtHLONw&s",
+        url: "https://copysmith.ai",
+        badges: ["freemium"],
+        tags: ["copywriting", "ads", "emails"]
+    },
+    {
+        name: "Peppertype.ai",
+        description: "AI content generation for marketers and creators.",
+        categories: ["nlp", "productivity"],
+        logo: "https://cdn.techjockey.com/web/assets/images/techjockey/products/17730_Peppertypelogo.jpg",
+        url: "https://www.peppertype.ai",
+        badges: ["freemium"],
+        tags: ["content", "generation", "marketing"]
+    },
+    {
+        name: "Writesonic Photosonic",
+        description: "AI art generator by Writesonic.",
+        categories: ["vision", "design"],
+        logo: "https://pbs.twimg.com/profile_images/1517412056907272192/_cH9KL9__400x400.jpg",
+        url: "https://writesonic.com/photosonic",
+        badges: ["freemium"],
+        tags: ["art", "image generation", "photosonic"]
+    },
+    {
+        name: "Cleanup AI",
+        description: "Remove unwanted elements from images.",
+        categories: ["vision", "design"],
+        logo: "https://cleanup.pictures/favicon.ico",
+        url: "https://cleanup.pictures/ai",
+        badges: ["freemium"],
+        tags: ["cleanup", "image", "removal"]
+    },
+    {
+        name: "Remove Watermark AI",
+        description: "Remove watermarks from images with AI.",
+        categories: ["vision", "design"],
+        logo: "https://www.remove.bg/favicon.ico",
+        url: "https://www.remove.bg/remove-watermark",
+        badges: ["freemium"],
+        tags: ["watermark", "removal", "image"]
+    },
+    {
+        name: "AI Portraits",
+        description: "Create AI-generated portraits from photos.",
+        categories: ["vision", "design"],
+        logo: "https://play-lh.googleusercontent.com/zD3Szw9tZpc6ALvn_R2HR2vfQwfslWkF4ORaK5SeHxNIU0oD6i_hmOf_pQmqaItXX0A",
+        url: "https://aiportraits.com",
+        badges: ["freemium"],
+        tags: ["portrait", "photo", "art"]
+    },
+    {
+        name: "DeepSwap",
+        description: "AI face swap for photos and videos.",
+        categories: ["vision", "design"],
+        logo: "https://www.softwareworld.co/assets/software/logo/deepswap.jpg",
+        url: "https://www.deepswap.ai",
+        badges: ["freemium"],
+        tags: ["face swap", "photo", "video"]
+    },
+    {
+        name: "FaceMagic",
+        description: "AI face swap and morphing app.",
+        categories: ["vision", "design"],
+        logo: "https://www.facemagic.ai/favicon.ico",
+        url: "https://www.facemagic.ai",
+        badges: ["freemium"],
+        tags: ["face swap", "morphing", "photo"]
+    },
+    {
+        name: "Avatar AI",
+        description: "Create AI avatars for social media and games.",
+        categories: ["vision", "design"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVTLsEBaCMe5yelsI_VpwFNuM9jlMD6ILpHw&s",
+        url: "https://avatarai.me",
+        badges: ["freemium"],
+        tags: ["avatar", "photo", "social"]
+    },
+    {
+        name: "ProfilePicture.AI",
+        description: "Generate professional profile pictures with AI.",
+        categories: ["vision", "design"],
+        logo: "https://profilepicture.ai/favicon.ico",
+        url: "https://profilepicture.ai",
+        badges: ["freemium"],
+        tags: ["profile", "photo", "avatar"]
+    },
+    {
+        name: "PhotoFunia AI",
+        description: "Fun photo effects and filters with AI.",
+        categories: ["vision", "design"],
+        logo: "https://photofunia.com/favicon.ico",
+        url: "https://photofunia.com",
+        badges: ["freemium"],
+        tags: ["photo", "effects", "fun"]
+    },
+    {
+        name: "Beautiful.ai",
+        description: "AI-powered presentation software for business professionals.",
+        categories: ["business"],
+        logo: "https://www.beautiful.ai/favicon.ico",
+        url: "https://www.beautiful.ai",
+        badges: ["paid"],
+        tags: ["presentations", "business", "design"]
+    },
+    {
+        name: "Otter.ai Business",
+        description: "AI meeting assistant for business teams and collaboration.",
+        categories: ["business"],
+        logo: "https://otter.ai/favicon.ico",
+        url: "https://otter.ai/business",
+        badges: ["paid"],
+        tags: ["meetings", "transcription", "collaboration"]
+    },
+    {
+        name: "InVideo",
+        description: "AI video creation platform for marketing and social media.",
+        categories: ["video"],
+        logo: "https://logowik.com/content/uploads/images/invideo12525.logowik.com.webp",
+        url: "https://invideo.io",
+        badges: ["freemium"],
+        tags: ["video creation", "marketing", "social media"]
+    },
+    {
+        name: "Duolingo",
+        description: "AI-powered language learning platform with personalized tutoring.",
+        categories: ["education"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPmbSq0vdFc9kh6_g9YQ-reLlSzHuJZNm0hw&s",
+        url: "https://www.duolingo.com/max",
+        badges: ["freemium"],
+        tags: ["language learning", "education", "tutoring"]
+    },
+    {
+        name: "Khanmigo",
+        description: "AI tutor and teaching assistant by Khan Academy that provides personalized learning experiences and interactive tutoring.",
+        categories: ["education", "nlp"],
+        logo: "https://www.khanacademy.org/favicon.ico",
+        url: "https://www.khanacademy.org/khan-labs",
+        badges: ["featured", "freemium"],
+        tags: ["tutoring", "learning", "personalized", "education"]
+    },
+    {
+        name: "Anthropic Claude",
+        description: "Advanced AI assistant by Anthropic, known for its helpful, harmless, and honest responses.",
+        categories: ["nlp", "productivity"],
+        logo: "https://www.anthropic.com/favicon.ico",
+        url: "https://www.anthropic.com/claude",
+        badges: ["featured", "trending"],
+        tags: ["chatbot", "assistant", "writing"]
+    },
+    {
+        name: "Microsoft Copilot Pro",
+        description: "Advanced AI assistant integrated with Microsoft 365 for enhanced productivity and creativity.",
+        categories: ["productivity", "business", "coding", "nlp"],
+        logo: "https://copilot.microsoft.com/favicon.ico",
+        url: "https://copilot.microsoft.com",
+        badges: ["featured", "paid"],
+        tags: ["office", "productivity", "assistant"]
+    },
+    {
+        name: "RunwayML",
+        description: "Professional AI video editing and generation platform for filmmakers and creators.",
+        categories: ["video", "design"],
+        logo: "https://images.seeklogo.com/logo-png/49/1/runway-logo-png_seeklogo-496519.png",
+        url: "https://runwayml.com",
+        badges: ["featured", "paid"],
+        tags: ["video editing", "generation", "creative"]
+    },
+    {
+        name: "ElevenLabs",
+        description: "Advanced AI voice generation and cloning platform with ultra-realistic voices.",
+        categories: ["audio"],
+        logo: "https://elevenlabs.io/favicon.ico",
+        url: "https://elevenlabs.io",
+        badges: ["featured", "trending"],
+        tags: ["voice", "audio", "generation"]
+    },
+    {
+        name: "Notion AI",
+        description: "AI writing and organization assistant integrated into Notion workspace.",
+        categories: ["productivity", "business"],
+        logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png",
+        url: "https://www.notion.so/product/ai",
+        badges: ["featured", "freemium"],
+        tags: ["writing", "organization", "productivity"]
+    },
+    {
+        name: "GitHub Copilot X",
+        description: "Next-generation AI pair programmer with advanced code understanding and generation.",
+        categories: ["coding"],
+        logo: "https://github.com/favicon.ico",
+        url: "https://github.com/features/preview/copilot-x",
+        badges: ["featured", "paid"],
+        tags: ["coding", "development", "programming"]
+    },
+    {
+        name: "Leonardo.AI",
+        description: "Advanced AI image generation platform with specialized models for different styles.",
+        categories: ["vision", "design"],
+        logo: "https://app.leonardo.ai/favicon.ico",
+        url: "https://leonardo.ai",
+        badges: ["featured", "freemium"],
+        tags: ["image generation", "art", "creative"]
+    },
+    {
+        name: "Beautiful.ai",
+        description: "AI-powered presentation software that automatically designs slides.",
+        categories: ["business", "design", "productivity"],
+        logo: "https://www.beautiful.ai/favicon.ico",
+        url: "https://www.beautiful.ai",
+        badges: ["featured", "paid"],
+        tags: ["presentations", "design", "business"]
+    },
+    {
+        name: "Inflection AI",
+        description: "Personal AI assistant focused on emotional intelligence and helpful conversations.",
+        categories: ["life-assistant", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShirXl4FhieiUSy5vtV3qedpTHLgtm6RzlFw&s",
+        url: "https://inflection.ai",
+        badges: ["featured", "freemium"],
+        tags: ["assistant", "conversation", "personal"]
+    },
+    {
+        name: "DataRobot",
+        description: "Enterprise AI platform for automated machine learning and model deployment.",
+        categories: ["data-science"],
+        logo: "https://www.datarobot.com/favicon.ico",
+        url: "https://www.datarobot.com",
+        badges: ["featured", "paid"],
+        tags: ["machine learning", "automation", "enterprise"]
+    },
+    {
+        name: "TensorFlow AutoML",
+        description: "Google's automated machine learning solution for custom model development.",
+        categories: ["data-science"],
+        logo: "https://www.tensorflow.org/favicon.ico",
+        url: "https://cloud.google.com/automl",
+        badges: ["featured", "paid"],
+        tags: ["machine learning", "automation", "google"]
+    },
+    {
+        name: "Google Vertex AI",
+        description: "Unified AI platform for building, deploying, and managing machine learning models.",
+        categories: ["data-science"],
+        logo: "https://cloud.google.com/favicon.ico",
+        url: "https://cloud.google.com/vertex-ai",
+        badges: ["featured", "paid"],
+        tags: ["machine learning", "cloud", "google"]
+    },
+    {
+        name: "RapidMiner",
+        description: "Data science platform for building and deploying machine learning models.",
+        categories: ["data-science"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-3vra_tK2_tQlSDhf6m_eYe-O-I9Xm0WVgw&s",
+        url: "https://rapidminer.com",
+        badges: ["freemium"],
+        tags: ["data science", "machine learning", "analytics"]
+    },
+    {
+        name: "Alteryx",
+        description: "End-to-end analytics platform for data preparation, analysis, and machine learning.",
+        categories: ["data-science"],
+        logo: "https://www.alteryx.com/favicon.ico",
+        url: "https://www.alteryx.com",
+        badges: ["paid"],
+        tags: ["analytics", "data preparation", "machine learning"]
+    },
+    {
+        name: "Tableau GPT",
+        description: "AI-powered analytics and insights platform for data visualization.",
+        categories: ["data-science"],
+        logo: "https://www.tableau.com/favicon.ico",
+        url: "https://www.tableau.com/products/ai-analytics",
+        badges: ["featured", "paid"],
+        tags: ["analytics", "visualization", "insights"]
+    },
+    {
+        name: "MonkeyLearn",
+        description: "Text analysis and machine learning platform for business intelligence.",
+        categories: ["data-science"],
+        logo: "https://avatars.githubusercontent.com/u/8461612?s=280&v=4",
+        url: "https://monkeylearn.com",
+        badges: ["freemium"],
+        tags: ["text analysis", "machine learning", "business intelligence"]
+    },
+    {
+        name: "Elicit",
+        description: "AI research assistant that helps find and summarize academic papers. Uses language models to answer questions with research-backed evidence.",
+        categories: ["research", "nlp"],
+        logo: "https://www.fahimai.com/wp-content/uploads/2024/12/CTA-42.png",
+        url: "https://elicit.org",
+        badges: ["featured", "free"],
+        tags: ["academic", "research", "papers", "summarization"]
+    },
+    {
+        name: "Consensus",
+        description: "AI-powered search engine for scientific research that provides evidence-based answers to research questions.",
+        categories: ["research", "nlp"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfFl0avG1yDnFPdn1EteAqB28p_QQfkYIpJQ&s",
+        url: "https://consensus.app",
+        badges: ["featured", "freemium"],
+        tags: ["scientific", "research", "evidence", "search"]
+    },
+    {
+        name: "Scite.ai",
+        description: "Smart citation platform that helps researchers discover and evaluate scientific articles through AI-powered citation analysis.",
+        categories: ["research", "nlp"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDrc_VwLwmKuBiPVUOKD-a69SiTfWa_eE-tw&s",
+        url: "https://scite.ai",
+        badges: ["featured", "paid"],
+        tags: ["citations", "research", "academic", "analysis"]
+    },
+    {
+        name: "Semantic Scholar AI",
+        description: "AI-powered academic search engine that helps researchers find relevant papers and understand research trends.",
+        categories: ["research", "nlp"],
+        logo: "https://www.semanticscholar.org/favicon.ico",
+        url: "https://www.semanticscholar.org",
+        badges: ["featured", "free"],
+        tags: ["academic", "research", "search", "analysis"]
+    },
+    {
+        name: "Quizlet AI",
+        description: "AI-powered study platform that creates personalized study plans and adaptive learning experiences.",
+        categories: ["education", "nlp"],
+        logo: "https://img.icons8.com/color/512/quizlet.png",
+        url: "https://quizlet.com/ai",
+        badges: ["featured", "freemium"],
+        tags: ["study", "learning", "flashcards", "education"]
+    },
+    {
+        name: "Coursera AI",
+        description: "AI-powered learning platform offering personalized course recommendations and adaptive learning paths.",
+        categories: ["education", "nlp"],
+        logo: "https://www.coursera.org/favicon.ico",
+        url: "https://www.coursera.org",
+        badges: ["featured", "freemium"],
+        tags: ["courses", "learning", "education", "online"]
+    },
+    {
+        name: "Socratic by Google",
+        description: "AI-powered homework helper that provides step-by-step explanations and learning resources for students.",
+        categories: ["education", "nlp"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG8NuihxfkJD2kafYOCStkTu3hjE3hDTNC2Q&s",
+        url: "https://socratic.org",
+        badges: ["featured", "free"],
+        tags: ["homework", "learning", "education", "help"]
+    },
+    {
+        name: "Brainly AI",
+        description: "AI-powered learning community that helps students with homework and provides personalized learning support.",
+        categories: ["education", "nlp"],
+        logo: "https://brainly.com/favicon.ico",
+        url: "https://brainly.com",
+        badges: ["featured", "freemium"],
+        tags: ["homework", "community", "learning", "education"]
+    },
+    {
+        name: "Century AI",
+        description: "AI-powered learning platform that personalizes education and provides real-time feedback for students.",
+        categories: ["education", "nlp"],
+        logo: "https://jobs.mindtheproduct.com/wp-content/uploads/job-manager-uploads/company_logo/2022/04/Century-Icon.png",
+        url: "https://www.century.tech",
+        badges: ["featured", "paid"],
+        tags: ["learning", "personalized", "education", "feedback"]
+    },
+    {
+        name: "Carnegie Learning",
+        description: "AI-powered math learning platform that provides personalized instruction and real-time feedback.",
+        categories: ["education", "nlp"],
+        logo: "https://www.carnegielearning.com/favicon.ico",
+        url: "https://www.carnegielearning.com",
+        badges: ["featured", "paid"],
+        tags: ["math", "learning", "education", "personalized"]
+    },
+    {
+        name: "QuillBot for Education",
+        description: "AI writing and paraphrasing tool specifically designed for students and educators.",
+        categories: ["education", "nlp"],
+        logo: "https://quillbot.com/favicon.ico",
+        url: "https://quillbot.com/education",
+        badges: ["featured", "freemium"],
+        tags: ["writing", "paraphrasing", "education", "learning"]
+    },
+    {
+        name: "Pi by Inflection",
+        description: "Personal AI assistant focused on emotional intelligence and helpful conversations for daily life.",
+        categories: ["life-assistant", "nlp"],
+        logo: "https://play-lh.googleusercontent.com/Ef7is-Xonqhs2agdsGarpTS_c1Is6Yvk-JhnL3qNvU1Nwdc7kn6Dml2IuCqlfa9Nuzk",
+        url: "https://pi.ai",
+        badges: ["featured", "free"],
+        tags: ["personal assistant", "conversation", "emotional support", "daily life"]
+    },
+    {
+        name: "Replika",
+        description: "AI companion that provides emotional support, conversation, and personal growth assistance.",
+        categories: ["life-assistant", "nlp"],
+        logo: "https://replika.com/favicon.ico",
+        url: "https://replika.com",
+        badges: ["featured", "freemium"],
+        tags: ["companion", "emotional support", "personal growth", "conversation"]
+    },
+    {
+        name: "Character.AI",
+        description: "AI platform for creating and chatting with various AI characters and personalities.",
+        categories: ["life-assistant", "nlp"],
+        logo: "https://character.ai/favicon.ico",
+        url: "https://character.ai",
+        badges: ["featured", "freemium"],
+        tags: ["chat", "characters", "conversation", "entertainment"]
+    },
+    {
+        name: "Woebot",
+        description: "AI mental health assistant that provides emotional support and cognitive behavioral therapy techniques.",
+        categories: ["life-assistant", "nlp"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlCs2lyOZNKbG5FQ_RSoYLx0ZvI1RMhFEWWQ&s",
+        url: "https://woebot.com",
+        badges: ["featured", "freemium"],
+        tags: ["mental health", "therapy", "emotional support", "wellness"]
+    },
+    {
+        name: "Wysa",
+        description: "AI mental health chatbot that provides emotional support and mindfulness exercises.",
+        categories: ["life-assistant", "nlp"],
+        logo: "https://wysa.io/favicon.ico",
+        url: "https://wysa.io",
+        badges: ["featured", "freemium"],
+        tags: ["mental health", "mindfulness", "emotional support", "wellness"]
+    },
+    {
+        name: "Youper",
+        description: "AI emotional health assistant that helps track mood and provides personalized emotional support.",
+        categories: ["life-assistant", "nlp"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ2AcvzmKvE2XDTKcKVsjCxqjR44fD6p5zQQ&s",
+        url: "https://youper.ai",
+        badges: ["featured", "freemium"],
+        tags: ["emotional health", "mood tracking", "personalized support", "wellness"]
+    },
+    {
+        name: "Mondly",
+        description: "AI language learning assistant with personalized conversation practice and real-time feedback.",
+        categories: ["life-assistant", "education", "nlp"],
+        logo: "https://www.mondly.com/favicon.ico",
+        url: "https://www.mondly.com",
+        badges: ["featured", "freemium"],
+        tags: ["language learning", "conversation", "personalized", "education"]
+    },
+    {
+        name: "FitnessAI",
+        description: "AI personal trainer that creates personalized workout plans and provides real-time form feedback.",
+        categories: ["life-assistant", "vision"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzQzyCmCRtdsl9EvxUFmOu4nA4SJHoWrMeqw&s",
+        url: "https://fitnessai.com",
+        badges: ["featured", "paid"],
+        tags: ["fitness", "workout", "personal training", "health"]
+    },
+    {
+        name: "Finch",
+        description: "AI self-care companion that helps build healthy habits and provides daily emotional support.",
+        categories: ["life-assistant", "nlp"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0jW-_wRYbV56K6UQQ56XEYCMBmELZXdQIRg&s",
+        url: "https://finchcare.com",
+        badges: ["featured", "freemium"],
+        tags: ["self-care", "habits", "emotional support", "wellness"]
+    },
+    {
+        name: "Cleo",
+        description: "AI financial assistant that helps manage money, track spending, and provide financial advice.",
+        categories: ["life-assistant", "nlp"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNVbf82o4j0727w0JigX06UYz_jOO7V91bUQ&s",
+        url: "https://meetcleo.com",
+        badges: ["featured", "freemium"],
+        tags: ["finance", "budgeting", "money management", "advice"]
+    },
+    {
+        name: "Dataiku",
+        description: "Enterprise AI and machine learning platform for data scientists and analysts to build and deploy AI solutions.",
+        categories: ["data-science"],
+        logo: "https://www.dataiku.com/favicon.ico",
+        url: "https://www.dataiku.com",
+        badges: ["featured", "paid"],
+        tags: ["machine learning", "data science", "enterprise", "analytics"]
+    },
+    {
+        name: "KNIME",
+        description: "Open-source data analytics platform for creating data science workflows and machine learning models.",
+        categories: ["data-science"],
+        logo: "https://www.knime.com/favicon.ico",
+        url: "https://www.knime.com",
+        badges: ["open source", "freemium"],
+        tags: ["data analytics", "workflow", "machine learning", "visualization"]
+    },
+    {
+        name: "Databricks",
+        description: "Unified analytics platform for data engineering, machine learning, and collaborative data science.",
+        categories: ["data-science"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS36Vt4wSXF8AZGnryASm-iL1f71ucL1f9pjg&s",
+        url: "https://databricks.com",
+        badges: ["featured", "paid"],
+        tags: ["analytics", "machine learning", "data engineering", "collaboration"]
+    },
+    {
+        name: "SAS Viya",
+        description: "Cloud-native AI and analytics platform for advanced data analysis and machine learning.",
+        categories: ["data-science"],
+        logo: "https://www.sas.com/favicon.ico",
+        url: "https://www.sas.com/en_us/software/viya.html",
+        badges: ["featured", "paid"],
+        tags: ["analytics", "machine learning", "cloud", "enterprise"]
+    },
+    {
+        name: "IBM Watson Studio",
+        description: "Integrated environment for data scientists and developers to build, train, and deploy AI models.",
+        categories: ["data-science"],
+        logo: "https://www.ibm.com/favicon.ico",
+        url: "https://www.ibm.com/cloud/watson-studio",
+        badges: ["featured", "paid"],
+        tags: ["machine learning", "AI development", "model deployment", "enterprise"]
+    },
+    {
+        name: "Azure Machine Learning",
+        description: "Cloud-based platform for building, training, and deploying machine learning models.",
+        categories: ["data-science"],
+        logo: "https://azure.microsoft.com/favicon.ico",
+        url: "https://azure.microsoft.com/services/machine-learning",
+        badges: ["featured", "paid"],
+        tags: ["machine learning", "cloud", "model deployment", "azure"]
+    },
+    {
+        name: "AWS SageMaker",
+        description: "Fully managed service for building, training, and deploying machine learning models.",
+        categories: ["data-science"],
+        logo: "https://aws.amazon.com/favicon.ico",
+        url: "https://aws.amazon.com/sagemaker",
+        badges: ["featured", "paid"],
+        tags: ["machine learning", "cloud", "model deployment", "aws"]
+    },
+    {
+        name: "Google Cloud AI Platform",
+        description: "End-to-end platform for building and deploying machine learning models in the cloud.",
+        categories: ["data-science"],
+        logo: "https://cloud.google.com/favicon.ico",
+        url: "https://cloud.google.com/ai-platform",
+        badges: ["featured", "paid"],
+        tags: ["machine learning", "cloud", "model deployment", "google"]
+    },
+    {
+        name: "Domino Data Lab",
+        description: "Enterprise MLOps platform for data science teams to collaborate and deploy models.",
+        categories: ["data-science"],
+        logo: "https://www.dominodatalab.com/favicon.ico",
+        url: "https://www.dominodatalab.com",
+        badges: ["featured", "paid"],
+        tags: ["MLOps", "collaboration", "model deployment", "enterprise"]
+    },
+    {
+        name: "Alteryx Designer",
+        description: "End-to-end analytics platform for data preparation, blending, and advanced analytics.",
+        categories: ["data-science"],
+        logo: "https://www.alteryx.com/favicon.ico",
+        url: "https://www.alteryx.com/products/alteryx-designer",
+        badges: ["featured", "paid"],
+        tags: ["analytics", "data preparation", "blending", "automation"]
+    },
+    {
+        name: "DataRobot",
+        description: "Enterprise AI platform for automated machine learning and model deployment.",
+        categories: ["data-science"],
+        logo: "https://www.datarobot.com/favicon.ico",
+        url: "https://www.datarobot.com",
+        badges: ["featured", "paid"],
+        tags: ["automated ML", "model deployment", "enterprise", "analytics"]
+    },
+    // Business Tools
+    {
+        name: "Gong",
+        description: "AI-powered revenue intelligence platform that analyzes sales conversations and provides insights.",
+        categories: ["business"],
+        logo: "https://www.gong.io/favicon.ico",
+        url: "https://www.gong.io",
+        badges: ["featured", "paid"],
+        tags: ["sales", "revenue intelligence", "conversation analytics", "business"]
+    },
+    {
+        name: "Chorus.ai",
+        description: "Conversation intelligence platform that helps sales teams improve performance through AI analysis.",
+        categories: ["business"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHLI5v-DnQTogD2HZGWQmhKmwjGJ1kccj0JQ&s",
+        url: "https://www.chorus.ai",
+        badges: ["featured", "paid"],
+        tags: ["sales", "conversation intelligence", "performance", "business"]
+    },
+    {
+        name: "Drift",
+        description: "AI-powered conversational marketing and sales platform for real-time customer engagement.",
+        categories: ["business", "marketing"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP2oZvneJLFZ3MGu-4uUivoOrVovV7XjEuJQ&s",
+        url: "https://www.drift.com",
+        badges: ["featured", "freemium"],
+        tags: ["conversational marketing", "sales", "customer engagement", "chat"]
+    },
+    {
+        name: "Intercom",
+        description: "AI-powered customer messaging platform for personalized customer support and engagement.",
+        categories: ["business"],
+        logo: "https://www.pngkey.com/png/full/423-4237226_intercom-logo-png-transparent-intercom-logo-svg.png",
+        url: "https://www.intercom.com",
+        badges: ["featured", "paid"],
+        tags: ["customer support", "messaging", "engagement", "automation"]
+    },
+    {
+        name: "Zendesk AI",
+        description: "AI-powered customer service platform with automated responses and intelligent ticket routing.",
+        categories: ["business"],
+        logo: "https://www.zendesk.com/favicon.ico",
+        url: "https://www.zendesk.com/ai",
+        badges: ["featured", "paid"],
+        tags: ["customer service", "support", "automation", "ticketing"]
+    },
+    {
+        name: "Salesforce Einstein",
+        description: "AI-powered CRM platform with predictive analytics and automated insights for sales teams.",
+        categories: ["business"],
+        logo: "https://www.salesforce.com/favicon.ico",
+        url: "https://www.salesforce.com/products/einstein/overview",
+        badges: ["featured", "paid"],
+        tags: ["CRM", "sales", "analytics", "automation"]
+    },
+    {
+        name: "HubSpot AI",
+        description: "AI-powered marketing, sales, and service platform for inbound business growth.",
+        categories: ["business", "marketing"],
+        logo: "https://www.hubspot.com/favicon.ico",
+        url: "https://www.hubspot.com/ai",
+        badges: ["featured", "freemium"],
+        tags: ["marketing", "sales", "service", "automation"]
+    },
+    {
+        name: "Pega",
+        description: "AI-powered business process automation and customer engagement platform.",
+        categories: ["business"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5AYpeuUxp0OgruXD3ofv0YBdpLS3-Ik1SYQ&s",
+        url: "https://www.pega.com",
+        badges: ["featured", "paid"],
+        tags: ["process automation", "customer engagement", "workflow", "enterprise"]
+    },
+    {
+        name: "UiPath",
+        description: "AI-powered robotic process automation platform for business process automation.",
+        categories: ["business"],
+        logo: "https://www.uipath.com/favicon.ico",
+        url: "https://www.uipath.com",
+        badges: ["featured", "paid"],
+        tags: ["RPA", "automation", "workflow", "enterprise"]
+    },
+    {
+        name: "Blue Prism",
+        description: "Enterprise-grade robotic process automation platform with AI capabilities.",
+        categories: ["business"],
+        logo: "https://www.blueprism.com/favicon.ico",
+        url: "https://www.blueprism.com",
+        badges: ["featured", "paid"],
+        tags: ["RPA", "automation", "enterprise", "workflow"]
+    },
+    {
+        name: "Automation Anywhere",
+        description: "AI-powered robotic process automation platform for business process automation.",
+        categories: ["business"],
+        logo: "https://images.seeklogo.com/logo-png/34/2/automation-anywhere-logo-png_seeklogo-347692.png",
+        url: "https://www.automationanywhere.com",
+        badges: ["featured", "paid"],
+        tags: ["RPA", "automation", "workflow", "enterprise"]
+    },
+    {
+        name: "Workday",
+        description: "AI-powered enterprise management cloud platform for HR, finance, and planning.",
+        categories: ["business"],
+        logo: "https://www.workday.com/favicon.ico",
+        url: "https://www.workday.com",
+        badges: ["featured", "paid"],
+        tags: ["HR", "finance", "planning", "enterprise"]
+    },
+    {
+        name: "ServiceNow",
+        description: "AI-powered digital workflow platform for enterprise service management.",
+        categories: ["business"],
+        logo: "https://www.servicenow.com/favicon.ico",
+        url: "https://www.servicenow.com",
+        badges: ["featured", "paid"],
+        tags: ["workflow", "service management", "automation", "enterprise"]
+    },
+    // Marketing Tools
+    {
+        name: "Writesonic",
+        description: "AI writing platform for creating marketing content, blogs, ads, and social media posts.",
+        categories: ["marketing", "nlp"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRpQniYA5zh4ADrbN6QW0gGS4Zd3fvEmZzVg&s",
+        url: "https://writesonic.com",
+        badges: ["featured", "freemium"],
+        tags: ["content creation", "marketing", "copywriting", "blogging"]
+    },
+    {
+        name: "Phrasee",
+        description: "AI copywriting platform for generating and optimizing marketing language and email subject lines.",
+        categories: ["marketing", "nlp"],
+        logo: "https://phrasee.co/favicon.ico",
+        url: "https://phrasee.co",
+        badges: ["featured", "paid"],
+        tags: ["copywriting", "email marketing", "optimization", "language"]
+    },
+    {
+        name: "Persado",
+        description: "AI platform for generating emotionally intelligent marketing language and content.",
+        categories: ["marketing", "nlp"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzrr3geNXaTe1BrDieUhPRfaXNKjJJFjAaAw&s",
+        url: "https://persado.com",
+        badges: ["featured", "paid"],
+        tags: ["content generation", "emotional intelligence", "marketing", "language"]
+    },
+    {
+        name: "Lately",
+        description: "AI social media marketing platform that generates and schedules content across multiple platforms.",
+        categories: ["marketing", "nlp"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwLBpxEELRWGC5aURpDpIcGGUfC1lEaE851g&s",
+        url: "https://www.lately.ai",
+        badges: ["featured", "freemium"],
+        tags: ["social media", "content generation", "scheduling", "marketing"]
+    },
+    {
+        name: "Acrolinx",
+        description: "AI-powered content governance platform for maintaining brand voice and content quality.",
+        categories: ["marketing", "nlp"],
+        logo: "https://www.acrolinx.com/favicon.ico",
+        url: "https://www.acrolinx.com",
+        badges: ["featured", "paid"],
+        tags: ["content governance", "brand voice", "quality", "marketing"]
+    },
+    {
+        name: "MarketMuse",
+        description: "AI content planning and optimization platform for SEO and content marketing.",
+        categories: ["marketing", "nlp"],
+        logo: "https://www.marketmuse.com/favicon.ico",
+        url: "https://www.marketmuse.com",
+        badges: ["featured", "paid"],
+        tags: ["content planning", "SEO", "optimization", "marketing"]
+    },
+    {
+        name: "WordLift",
+        description: "AI-powered SEO platform that enhances content with structured data and semantic analysis.",
+        categories: ["marketing", "nlp"],
+        logo: "https://wordlift.io/favicon.ico",
+        url: "https://wordlift.io",
+        badges: ["featured", "freemium"],
+        tags: ["SEO", "semantic analysis", "structured data", "marketing"]
+    },
+    {
+        name: "Surfer SEO",
+        description: "AI content editor and SEO tool for creating optimized content that ranks in search engines.",
+        categories: ["marketing", "nlp"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdS1UefwqOtPyhNrofB0iQMhyQ-NlNUv3uYw&s",
+        url: "https://surferseo.com",
+        badges: ["featured", "paid"],
+        tags: ["SEO", "content optimization", "research", "marketing"]
+    },
+    {
+        name: "Clearscope",
+        description: "AI-powered content optimization platform for creating SEO-optimized content.",
+        categories: ["marketing", "nlp"],
+        logo: "https://www.clearscope.io/favicon.ico",
+        url: "https://www.clearscope.io",
+        badges: ["featured", "paid"],
+        tags: ["content optimization", "SEO", "research", "marketing"]
+    },
+    {
+        name: "Zapier AI",
+        description: "AI-powered automation platform that helps create and manage workflows between different apps and services.",
+        categories: ["productivity", "business"],
+        logo: "https://seeklogo.com/images/Z/zapier-logo-46EEE9963E-seeklogo.com.png",
+        url: "https://zapier.com/ai",
+        badges: ["featured", "freemium"],
+        tags: ["automation", "workflow", "integration", "productivity"]
+    },
+    {
+        name: "Mem AI",
+        description: "AI-powered note-taking and knowledge management platform that helps organize and connect your thoughts.",
+        categories: ["productivity", "nlp"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4HPzM2MwH1_bq3Ke_FhvU6gw-YUoUUcyeMw&s",
+        url: "https://mem.ai",
+        badges: ["featured", "freemium"],
+        tags: ["note-taking", "knowledge management", "organization", "productivity"]
+    },
+    {
+        name: "ClickUp AI",
+        description: "AI-powered project management platform that helps automate tasks, generate content, and improve productivity.",
+        categories: ["productivity", "business"],
+        logo: "https://clickup.com/favicon.ico",
+        url: "https://clickup.com/ai",
+        badges: ["featured", "freemium"],
+        tags: ["project management", "automation", "productivity", "collaboration"]
+    },
+    {
+        name: "Napkin",
+        description: "AI-powered note-taking app that helps capture and organize ideas with smart categorization.",
+        categories: ["productivity", "nlp"],
+        logo: "https://napkin.ai/favicon.ico",
+        url: "https://napkin.ai",
+        badges: ["featured", "freemium"],
+        tags: ["note-taking", "organization", "productivity", "ideas"]
+    },
+    {
+        name: "Anki",
+        description: "AI-powered flashcard and spaced repetition learning platform for efficient memorization.",
+        categories: ["education", "productivity"],
+        logo: "https://apps.ankiweb.net/logo.svg",
+        url: "https://apps.ankiweb.net",
+        badges: ["featured", "free"],
+        tags: ["flashcards", "learning", "spaced repetition", "education"]
+    },
+    {
+        name: "Lovable",
+        description: "AI-powered customer feedback and sentiment analysis platform for improving customer experience.",
+        categories: ["business", "nlp"],
+        logo: "https://lovable.ai/favicon.ico",
+        url: "https://lovable.ai",
+        badges: ["featured", "freemium"],
+        tags: ["customer feedback", "sentiment analysis", "customer experience", "analytics"]
+    },
+    {
+        name: "Quadratic",
+        description: "AI-powered spreadsheet and data analysis platform with advanced automation capabilities.",
+        categories: ["productivity", "data-science"],
+        logo: "https://www.quadratichq.com/images/og-image.png",
+        url: "https://app.quadratichq.com/",
+        badges: ["featured", "freemium"],
+        tags: ["spreadsheet", "data analysis", "automation", "productivity"]
+    },
+    {
+        name: "AnkiDecks",
+        description: "AI-powered flashcard generator that converts notes, PDFs, and other content into Anki flashcards. Features automatic image occlusion and supports 50+ languages.",
+        categories: ["education", "productivity"],
+        logo: "https://anki-decks.com/static/images/favicons/favicon.cb6c6b1d29c2.ico",
+        url: "https://anki-decks.com",
+        badges: ["featured", "freemium"],
+        tags: ["flashcards", "learning", "education", "spaced repetition"]
+    },
+    {
+        name: "Lovable",
+        description: "AI-powered full stack development platform that helps turn ideas into apps in seconds. Features include note-taking, social media dashboards, real estate listings, and habit tracking capabilities.",
+        categories: ["productivity", "coding"],
+        logo: "https://sacra.cdn.prismic.io/sacra/Z4V6ApbqstJ99Zom_lovablelogo.svg",
+        url: "https://lovable.dev",
+        badges: ["featured", "freemium"],
+        tags: ["app development", "full stack", "productivity", "automation"]
+    },
+    {
+        name: "Quadratic",
+        description: "AI-powered spreadsheet and data analysis platform with advanced automation capabilities.",
+        categories: ["productivity", "data-science"],
+        logo: "https://www.quadratichq.com/images/og-image.png",
+        url: "https://app.quadratichq.com/",
+        badges: ["featured", "freemium"],
+        tags: ["spreadsheet", "data analysis", "automation", "productivity"]
+    },
+    {
+        name: "Google AI Studio",
+        description: "A web-based tool for prototyping and experimenting with Google\'s generative AI models.",
+        categories: ["coding", "productivity", "nlp"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgSyDw5dgzQ31DkG4WLNr4e11unIerY_dNmw&s", 
+        url: "https://aistudio.google.com/prompts/new_chat",
+        badges: ["freemium", "featured"],
+        tags: ["generative AI", "prototyping", "experimentation", "google"]
+    },
+];
+
+// DOM Elements
+const toolsGrid = document.getElementById('toolsGrid');
+const searchInput = document.getElementById('searchInput');
+const backToTopButton = document.getElementById('backToTop');
+const toolCount = document.getElementById('toolCount');
+const categoryList = document.getElementById('categoryList');
+const sortSelect = document.getElementById('sortSelect');
+
+let currentCategory = 'all';
+let currentSearch = '';
+let currentSort = 'default';
+
+function renderTools() {
+    // Filter
+    let filtered = aiTools.filter(tool => {
+        const matchesCategory = currentCategory === 'all' || tool.categories.includes(currentCategory);
+        const matchesSearch =
+            tool.name.toLowerCase().includes(currentSearch) ||
+            tool.description.toLowerCase().includes(currentSearch) ||
+            (tool.tags && tool.tags.some(tag => tag.toLowerCase().includes(currentSearch)));
+        return matchesCategory && matchesSearch;
+    });
+    // Sort
+    if (currentSort === 'name') {
+        filtered.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (currentSort === 'featured') {
+        filtered.sort((a, b) => (b.badges?.includes('featured') ? 1 : 0) - (a.badges?.includes('featured') ? 1 : 0));
+    }
+    // Render
+    toolsGrid.innerHTML = '';
+    filtered.forEach(tool => toolsGrid.appendChild(createToolCard(tool)));
+    toolCount.textContent = `Showing ${filtered.length} tool${filtered.length !== 1 ? 's' : ''}`;
 }
 
-[data-theme="dark"] {
-    --primary-color: #8fc77d;
-    --secondary-color: #B0DB9C;
-    --background-color: #0f172a;
-    --sidebar-bg: #1e293b;
-    --main-bg: #0f172a;
-    --card-bg: #1e293b;
-    --text-color: #e2e8f0;
-    --muted-text: #94a3b8;
-    --shadow: 0 4px 24px rgba(176, 219, 156, 0.1);
-    --input-bg: #1e293b;
-    --input-border: #334155;
-    --tag-bg: #334155;
-    --sidebar-about-bg: #334155;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: var(--background-color);
-    color: var(--text-color);
-    line-height: 1.6;
-}
-
-.layout {
-    display: flex;
-    min-height: 100vh;
-    background: var(--main-bg);
-}
-
-.sidebar {
-    width: 270px;
-    background: var(--sidebar-bg);
-    box-shadow: 2px 0 16px rgba(0,0,0,0.04);
-    padding: 2rem 1.5rem 1.5rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-}
-
-.sidebar-header {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px 20px 0px 20px;
-}
-
-.sidebar-header h2 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 0;
-    margin-top: 10px;
-}
-
-.sidebar-categories h3,
-.sidebar-about h3 {
-    font-size: 1rem;
-    margin-bottom: 0;
-    color: var(--muted-text);
-    font-weight: 600;
-}
-
-.sidebar-categories ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.sidebar-categories li {
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius);
-    margin-bottom: 0.25rem;
-    cursor: pointer;
-    color: var(--text-color);
-    transition: var(--transition);
-    font-size: 1rem;
-}
-.sidebar-categories li.active,
-.sidebar-categories li:hover {
-    background: var(--primary-color);
-    color: #fff;
-}
-
-.sidebar-about {
-    font-size: 0.95rem;
-    color: var(--text-color);
-    background: var(--sidebar-about-bg);
-    border-radius: var(--border-radius);
-    padding: 1.2rem;
-    margin-top: auto;
-    border: 1px solid var(--input-border);
-}
-
-.sidebar-about h3 {
-    color: var(--primary-color);
-    margin-bottom: 0.8rem;
-    font-size: 1.1rem;
-}
-
-.sidebar-about p {
-    line-height: 1.6;
-    margin: 0;
-    color: var(--text-color);
-    opacity: 0.9;
-}
-
-.sidebar-about .copyright {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--input-border);
-    font-size: 0.85rem;
-    color: var(--muted-text);
-    text-align: center;
-}
-
-.main-content {
-    flex: 1;
-    padding: 2.5rem 2rem 2rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.main-header {
-    margin-bottom: 2rem;
-}
-.main-header-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-.header-content {
-    flex: 1;
-    max-width: 800px;
-}
-.main-header-top h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    line-height: 1.2;
-}
-
-.subtitle {
-    font-size: 1.2rem;
-    color: var(--text-color);
-    line-height: 1.6;
-    margin-bottom: 0;
-    font-weight: 500;
-    opacity: 0.9;
-    border-left: 4px solid var(--primary-color);
-    padding-left: 1.2rem;
-    margin-left: -1.2rem;
-}
-
-#toolCount {
-    color: var(--muted-text);
-    font-size: 1rem;
-    padding-top: 0.5rem;
-}
-
-.main-header-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1.2rem;
-}
-.search-container {
-    position: relative;
-    flex: 1;
-}
-.search-container input {
-    width: 100%;
-    padding: 0.75rem 1rem 0.75rem 2.5rem;
-    border: 2px solid var(--input-border);
-    border-radius: var(--border-radius);
-    font-size: 1rem;
-    background: var(--input-bg);
-    color: var(--text-color);
-    transition: var(--transition);
-}
-.search-container input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(176, 219, 156, 0.2);
-}
-.search-container i {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #a1a1aa;
-}
-#sortSelect {
-    padding: 0.7rem 1.2rem;
-    border-radius: var(--border-radius);
-    border: 2px solid var(--input-border);
-    background: var(--input-bg);
-    color: var(--text-color);
-    font-size: 1rem;
-    transition: var(--transition);
-}
-
-.featured-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 1.2rem;
-    color: var(--primary-color);
-}
-
-.tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
-}
-
-.tool-card {
-    background: var(--card-bg);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    transition: var(--transition);
-    position: relative;
-    min-height: 200px;
-}
-.tool-card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 8px 32px rgba(176, 219, 156, 0.2);
-}
-.tool-logo {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-    border-radius: 8px;
-    background: #f1f5f9;
-    margin-bottom: 0.3rem;
-}
-.tool-header {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-}
-.tool-name {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-color);
-    margin: 0;
-}
-.tool-badges {
-    display: flex;
-    gap: 0.3rem;
-    flex-wrap: wrap;
-}
-.badge {
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 0.15rem 0.5rem;
-    border-radius: 999px;
-    color: #fff;
-    background: var(--primary-color);
-    display: inline-block;
-    margin-bottom: 0.1rem;
-}
-.badge.featured { background: var(--badge-featured); }
-.badge.trending { background: var(--badge-trending); color: #fff; }
-.badge.paid { background: var(--badge-paid); }
-.badge.freemium { background: var(--badge-freemium); }
-
-.tool-description {
-    color: var(--muted-text);
-    font-size: 0.85rem;
-    margin-bottom: 0.3rem;
-    flex-grow: 1;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-.tool-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.3rem;
-    margin-bottom: 0.3rem;
-}
-.tag {
-    background: var(--tag-bg);
-    color: var(--muted-text);
-    font-size: 0.7rem;
-    padding: 0.15rem 0.5rem;
-    border-radius: 999px;
-    display: inline-block;
-}
-.tool-link {
-    display: inline-block;
-    padding: 0.4rem 0.8rem;
-    background: var(--primary-color);
-    color: #fff;
-    text-decoration: none;
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    font-size: 0.85rem;
-    text-align: center;
-    transition: var(--transition);
-    margin-top: 0.1rem;
-}
-.tool-link:hover {
-    background: var(--secondary-color);
-}
-
-.back-to-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background: var(--primary-color);
-    color: #fff;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition);
-    box-shadow: 0 4px 16px rgba(176, 219, 156, 0.2);
-    z-index: 100;
-}
-.back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-}
-.back-to-top:hover {
-    background: var(--secondary-color);
-    transform: translateY(-2px);
-}
-
-.sidebar-toggle {
-    display: none;
-    position: fixed;
-    top: 1.2rem;
-    left: 1.2rem;
-    z-index: 1300;
-    background: var(--primary-color);
-    color: #fff;
-    border: none;
-    border-radius: 12px;
-    width: 54px;
-    height: 54px;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    cursor: pointer;
-    box-shadow: 0 4px 16px rgba(176, 219, 156, 0.2);
-    transition: var(--transition);
-    padding: 0;
-}
-.sidebar-toggle:active {
-    background: var(--secondary-color);
-}
-
-@media (max-width: 1024px) {
-    .sidebar-toggle {
-        display: block;
+function createToolCard(tool) {
+    const card = document.createElement('div');
+    card.className = 'tool-card';
+    // Header
+    const header = document.createElement('div');
+    header.className = 'tool-header';
+    const logo = document.createElement('img');
+    logo.className = 'tool-logo';
+    logo.src = tool.logo;
+    logo.alt = `${tool.name} logo`;
+    header.appendChild(logo);
+    const name = document.createElement('h3');
+    name.className = 'tool-name';
+    name.textContent = tool.name;
+    header.appendChild(name);
+    card.appendChild(header);
+    // Badges
+    if (tool.badges && tool.badges.length) {
+        const badges = document.createElement('div');
+        badges.className = 'tool-badges';
+        tool.badges.forEach(badge => {
+            const badgeEl = document.createElement('span');
+            badgeEl.className = `badge ${badge}`;
+            badgeEl.textContent = badge.charAt(0).toUpperCase() + badge.slice(1);
+            badges.appendChild(badgeEl);
+        });
+        card.appendChild(badges);
     }
-    .sidebar {
-        position: fixed;
-        left: -100%;
-        top: 0;
-        z-index: 1000;
-        transition: left 0.3s ease;
-        width: 280px;
-        height: 100vh;
-        overflow-y: auto;
-        background: var(--sidebar-bg);
+    // Description
+    const desc = document.createElement('p');
+    desc.className = 'tool-description';
+    desc.textContent = tool.description;
+    card.appendChild(desc);
+    // Tags
+    if (tool.categories && tool.categories.length) {
+        const tags = document.createElement('div');
+        tags.className = 'tool-tags';
+        tool.categories.forEach(cat => {
+            const tag = document.createElement('span');
+            tag.className = 'tag';
+            tag.textContent = categoryLabel(cat);
+            tags.appendChild(tag);
+        });
+        card.appendChild(tags);
     }
-    .sidebar.open {
-        left: 0;
+    if (tool.tags && tool.tags.length) {
+        const tags = document.createElement('div');
+        tags.className = 'tool-tags';
+        tool.tags.forEach(t => {
+            const tag = document.createElement('span');
+            tag.className = 'tag';
+            tag.textContent = t;
+            tags.appendChild(tag);
+        });
+        card.appendChild(tags);
     }
-    .sidebar-overlay.active {
-        display: block;
-    }
-    .layout {
-        padding-left: 0;
-    }
-    .main-content {
-        padding: 1.5rem 1rem;
-        width: 100%;
-    }
-    .main-header-top {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    .header-content {
-        width: 100%;
-    }
-    .main-header-top h1 {
-        font-size: 2rem;
-    }
-    .subtitle {
-        font-size: 1.1rem;
-    }
-    .main-header-actions {
-        flex-direction: column;
-        width: 100%;
-    }
-    .search-container {
-        width: 100%;
-    }
-    #sortSelect {
-        width: 100%;
-    }
-    .theme-toggle {
-        right: 1rem;
+    // Link
+    const link = document.createElement('a');
+    link.className = 'tool-link';
+    link.href = tool.url;
+    link.target = '_blank';
+    link.textContent = 'Visit Site';
+    card.appendChild(link);
+    return card;
+}
+
+function categoryLabel(cat) {
+    switch (cat) {
+        case 'nlp': return 'Natural Language Processing';
+        case 'vision': return 'Computer Vision';
+        case 'audio': return 'Audio/Video';
+        case 'design': return 'Design';
+        case 'coding': return 'Developer Tools';
+        case 'productivity': return 'Productivity';
+        case 'research': return 'Research';
+        case 'life-assistant': return 'Life Assistant';
+        case 'marketing': return 'Marketing';
+        case 'business': return 'Business';
+        case 'video': return 'Video Generator';
+        case 'education': return 'Education';
+        case 'data-science': return 'Data Science & Analytics';
+        default: return cat;
     }
 }
 
-@media (max-width: 700px) {
-    .main-content {
-        padding: 1rem;
+// Sidebar category click
+if (categoryList) {
+    categoryList.addEventListener('click', e => {
+        if (e.target.tagName === 'LI') {
+            categoryList.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+            e.target.classList.add('active');
+            currentCategory = e.target.dataset.category;
+            renderTools();
+        }
+    });
+}
+// Search
+if (searchInput) {
+    searchInput.addEventListener('input', e => {
+        currentSearch = e.target.value.toLowerCase();
+        renderTools();
+    });
+}
+// Sort
+if (sortSelect) {
+    sortSelect.addEventListener('change', e => {
+        currentSort = e.target.value;
+        renderTools();
+    });
+}
+// Back to top
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        backToTopButton.classList.add('visible');
+    } else {
+        backToTopButton.classList.remove('visible');
     }
-    .tools-grid {
-        grid-template-columns: 1fr;
-        gap: 0.8rem;
-    }
-    .tool-card {
-        padding: 0.8rem;
-        min-height: 180px;
-    }
-    .tool-header {
-        flex-direction: row;
-        align-items: center;
-        gap: 0.5rem;
-    }
-    .tool-logo {
-        width: 28px;
-        height: 28px;
-        margin-bottom: 0;
-    }
-    .tool-name {
-        font-size: 0.95rem;
-    }
-    .tool-badges {
-        gap: 0.2rem;
-    }
-    .badge {
-        font-size: 0.65rem;
-        padding: 0.12rem 0.4rem;
-    }
-    .tool-description {
-        font-size: 0.8rem;
-        -webkit-line-clamp: 2;
-        margin-bottom: 0.2rem;
-    }
-    .tool-tags {
-        gap: 0.2rem;
-        margin-bottom: 0.2rem;
-    }
-    .tag {
-        font-size: 0.65rem;
-        padding: 0.12rem 0.4rem;
-    }
-    .tool-link {
-        width: 100%;
-        text-align: center;
-        padding: 0.35rem 0.6rem;
-        font-size: 0.8rem;
-    }
-    .main-header-top h1 {
-        font-size: 1.5rem;
-        margin-bottom: 0.4rem;
-    }
-    .subtitle {
-        font-size: 0.9rem;
-        padding-left: 0.6rem;
-        margin-left: -0.6rem;
-        border-left-width: 2px;
-    }
-    #toolCount {
-        font-size: 0.8rem;
-    }
-    .featured-title {
-        font-size: 1rem;
-        margin-bottom: 0.8rem;
-    }
-    .sidebar {
-        width: 100%;
-        max-width: 280px;
-    }
-    .sidebar-header h2 {
-        font-size: 1.1rem;
-    }
-    .sidebar-categories li {
-        padding: 0.6rem 0.8rem;
-        font-size: 0.9rem;
-    }
-    .sidebar-about {
-        padding: 0.8rem;
-        font-size: 0.85rem;
-    }
-    .back-to-top {
-        right: 0.8rem;
-        bottom: 0.8rem;
-        width: 36px;
-        height: 36px;
-    }
-    .theme-toggle {
-        right: 0.8rem;
-        bottom: 4.5rem;
-        width: 36px;
-        height: 36px;
-    }
-    .theme-toggle i {
-        font-size: 0.9rem;
-    }
-    .search-container input {
-        padding: 0.5rem 0.8rem 0.5rem 2.2rem;
-        font-size: 0.9rem;
-    }
-    #sortSelect {
-        padding: 0.5rem 0.8rem;
-        font-size: 0.9rem;
-    }
-    .main-header {
-        margin-bottom: 1.2rem;
-    }
-    .main-header-top {
-        margin-bottom: 1.2rem;
-    }
-    .main-header-actions {
-        margin-top: 0.8rem;
-        gap: 0.8rem;
-    }
-    .tools-grid {
-        margin-top: 0.8rem;
-    }
+});
+backToTopButton.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Sidebar toggle for mobile
+const sidebar = document.getElementById('sidebar');
+const sidebarToggle = document.getElementById('sidebarToggle');
+const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+function openSidebar() {
+    sidebar.classList.add('open');
+    sidebarOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeSidebar() {
+    sidebar.classList.remove('open');
+    sidebarOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+}
+if (sidebarToggle) {
+    sidebarToggle.addEventListener('click', openSidebar);
+}
+if (sidebarOverlay) {
+    sidebarOverlay.addEventListener('click', closeSidebar);
+}
+// Also close sidebar when a category is clicked (on mobile)
+if (categoryList) {
+    categoryList.addEventListener('click', e => {
+        if (window.innerWidth <= 1024) closeSidebar();
+    });
 }
 
-/* Add smooth scrolling for mobile */
-@media (max-width: 700px) {
-    html {
-        scroll-behavior: smooth;
-    }
+// Theme toggle functionality
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = themeToggle.querySelector('i');
+
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
 }
 
-/* Improve touch targets for mobile */
-@media (max-width: 700px) {
-    .sidebar-categories li,
-    .tool-link,
-    .search-container input,
-    #sortSelect {
-        min-height: 40px;
-    }
+// Theme toggle click handler
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+});
+
+function updateThemeIcon(theme) {
+    themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
 }
 
-/* Add better spacing for mobile */
-@media (max-width: 700px) {
-    .main-header {
-        margin-bottom: 1.5rem;
-    }
-    .main-header-top {
-        margin-bottom: 1.5rem;
-    }
-    .main-header-actions {
-        margin-top: 1rem;
-    }
-    .tools-grid {
-        margin-top: 1rem;
-    }
-}
-
-.theme-toggle {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    z-index: 1000;
-}
-
-.theme-toggle:hover {
-    transform: scale(1.1);
-}
-
-.theme-toggle i {
-    font-size: 1.2rem;
-}
-
-.logo {
-    max-height: 50px;
-    width: auto;
-    margin-bottom: 10px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.header-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 5px;
-} 
+// Initial render
+renderTools(); 
