@@ -148,7 +148,7 @@ const aiTools = [
         name: "Manus",
         description: "AI-powered hand tracking and gesture recognition platform. Enables natural interaction with digital interfaces through hand movements.",
         categories: ["vision", "productivity"],
-        logo: "https://manus.com/logo.png",
+        logo: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/manus.png",
         url: "https://manus.im/app",
         badges: ["trending"],
         tags: ["hand tracking", "gesture recognition", "interaction", "VR"]
@@ -157,7 +157,7 @@ const aiTools = [
         name: "Mistral AI",
         description: "Open-source AI model provider offering powerful language models and APIs for developers. Known for efficient and high-performance models.",
         categories: ["nlp", "coding"],
-        logo: "https://mistral.ai/logo.png",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Mistral_AI_logo_%282025%E2%80%93%29.svg/800px-Mistral_AI_logo_%282025%E2%80%93%29.svg.png",
         url: "https://mistral.ai",
         badges: ["featured"],
         tags: ["language model", "open source", "API", "development"]
@@ -166,7 +166,7 @@ const aiTools = [
         name: "Qwen",
         description: "Alibaba's advanced language model with strong capabilities in understanding and generating text. Supports multiple languages and tasks.",
         categories: ["nlp", "productivity"],
-        logo: "https://qwen.alibaba.com/logo.png",
+        logo: "https://images.seeklogo.com/logo-png/61/1/qwen-logo-png_seeklogo-611723.png",
         url: "https://chat.qwen.ai/",
         badges: ["trending"],
         tags: ["language model", "multilingual", "alibaba", "chatbot"]
@@ -238,7 +238,7 @@ const aiTools = [
         name: "Midjourney",
         description: "AI art generator that creates images from text prompts.",
         categories: ["vision", "design"],
-        logo: "https://cdn.midjourney.com/favicon-32x32.png",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS55bvDrwepdxIPIOM7EpQQO3wYWSaJJ1tBxw&s",
         url: "https://www.midjourney.com",
         badges: ["trending", "paid"],
         tags: ["art", "image generation", "creative"]
@@ -256,7 +256,7 @@ const aiTools = [
         name: "Llama 2",
         description: "Meta's open large language model for research and commercial use.",
         categories: ["nlp", "research"],
-        logo: "https://ai.meta.com/static/images/meta-logo.png",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKrj0iunR9XUI3h1ZaXpx14-6dIcCX_Rpm5w&s",
         url: "https://ai.meta.com/llama/",
         badges: ["open source"],
         tags: ["language model", "meta", "open source"]
@@ -274,7 +274,7 @@ const aiTools = [
         name: "Synthesia",
         description: "Create AI videos from text in minutes with avatars and voiceovers.",
         categories: ["audio", "vision"],
-        logo: "https://www.synthesia.io/favicon-32x32.png",
+        logo: "https://logowik.com/content/uploads/images/synthesia8926.jpg",
         url: "https://www.synthesia.io",
         badges: ["paid"],
         tags: ["video", "avatar", "voiceover"]
@@ -301,7 +301,7 @@ const aiTools = [
         name: "Copy.ai",
         description: "AI-powered content generator for marketing, blogs, and more.",
         categories: ["nlp", "productivity"],
-        logo: "https://www.copy.ai/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT14c1RIu0V-Xhj9vCFlpjA0a0Go3Q0Pxkwhw&s",
         url: "https://www.copy.ai",
         badges: ["freemium"],
         tags: ["content", "marketing", "copywriting"]
@@ -328,7 +328,7 @@ const aiTools = [
         name: "Krisp",
         description: "AI-powered noise cancellation for calls and recordings.",
         categories: ["audio", "productivity"],
-        logo: "https://krisp.ai/favicon.ico",
+        logo: "https://krisp.ai/blog/wp-content/uploads/2023/10/cropped-Favicon.png",
         url: "https://krisp.ai",
         badges: ["freemium"],
         tags: ["noise cancellation", "calls", "audio"]
@@ -346,7 +346,7 @@ const aiTools = [
         name: "Pictory",
         description: "AI video generator that turns scripts and articles into engaging videos.",
         categories: ["vision", "audio"],
-        logo: "https://pictory.ai/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLDoc_aBV_Kcbl-d_rqoVtFzmdrkdyNCHUbQ&s",
         url: "https://pictory.ai",
         badges: ["freemium"],
         tags: ["video", "script", "editing"]
@@ -355,7 +355,7 @@ const aiTools = [
         name: "AIVA",
         description: "AI music composition assistant for creators and professionals.",
         categories: ["audio", "design"],
-        logo: "https://www.aiva.ai/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQiUmFKGYkecYliBfVBr9MqKAXU62LGtedZw&s",
         url: "https://www.aiva.ai",
         badges: ["freemium"],
         tags: ["music", "composition", "creative"]
@@ -364,7 +364,7 @@ const aiTools = [
         name: "Grammarly",
         description: "AI-powered writing assistant that helps improve your writing.",
         categories: ["nlp", "productivity"],
-        logo: "https://static.grammarly.com/assets/files/cb6ce17d281d15f2c819035bcd430b0e/grammarly_logo.svg",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM34CCdspT0QP8vyW66b_Dred0jfmSgQosyw&s",
         url: "https://www.grammarly.com",
         badges: ["freemium"],
         tags: ["writing", "grammar", "assistant"]
@@ -373,7 +373,7 @@ const aiTools = [
         name: "Google Bard",
         description: "Conversational generative AI chatbot developed by Google.",
         categories: ["nlp", "productivity"],
-        logo: "https://www.gstatic.com/lamda/images/favicon_v2_32.png",
+        logo: "https://logowik.com/content/uploads/images/google-bard3872.logowik.com.webp",
         url: "https://bard.google.com",
         badges: ["trending", "freemium"],
         tags: ["chatbot", "google", "language model"]
@@ -409,7 +409,7 @@ const aiTools = [
         name: "You.com",
         description: "AI-powered search engine with chat, writing, and coding features.",
         categories: ["nlp", "productivity", "coding"],
-        logo: "https://you.com/favicon.ico",
+        logo: "https://logowik.com/content/uploads/images/youcom-new-20242443.logowik.com.webp",
         url: "https://you.com",
         badges: ["freemium"],
         tags: ["search", "assistant", "writing"]
@@ -427,7 +427,7 @@ const aiTools = [
         name: "DeepMind AlphaFold",
         description: "AI system that predicts 3D structures of proteins with high accuracy.",
         categories: ["research", "vision"],
-        logo: "https://www.deepmind.com/favicon.ico",
+        logo: "https://lh3.googleusercontent.com/EQG-IiwCivtoW6UzARBc_7uaVBrQ6b5nMtAE-tRCIVLz59sst09hqaHPh2Z1oFhVhdKeuHFkIJVKXX4FM651",
         url: "https://alphafold.ebi.ac.uk",
         badges: ["open source", "featured"],
         tags: ["protein folding", "biology", "science"]
@@ -436,7 +436,7 @@ const aiTools = [
         name: "FaceApp",
         description: "AI photo editing app for face transformations and filters.",
         categories: ["vision", "design"],
-        logo: "https://static.faceapp.com/favicon.ico",
+        logo: "https://images.seeklogo.com/logo-png/46/2/faceapp-logo-png_seeklogo-467497.png",
         url: "https://www.faceapp.com",
         badges: ["trending", "freemium"],
         tags: ["photo editing", "filters", "face"]
@@ -463,7 +463,7 @@ const aiTools = [
         name: "Jasper Art",
         description: "AI art generator for creating unique images from text prompts.",
         categories: ["vision", "design"],
-        logo: "https://www.jasper.ai/favicon.ico",
+        logo: "https://www.camerareviews.com/wp-content/uploads/2022/11/Jasper-logo-squared.webp",
         url: "https://www.jasper.ai/art",
         badges: ["freemium"],
         tags: ["art", "image generation", "creative"]
@@ -490,7 +490,7 @@ const aiTools = [
         name: "Lensa AI",
         description: "AI photo editor for creating avatars and enhancing selfies.",
         categories: ["vision", "design"],
-        logo: "https://lensa-ai.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmqSjOkuKyM6UAEW_e6R-zBFF65LJgwNI3lw&s",
         url: "https://lensa-ai.com",
         badges: ["trending", "freemium"],
         tags: ["photo editing", "avatar", "selfie"]
@@ -508,7 +508,7 @@ const aiTools = [
         name: "Descript Overdub",
         description: "AI voice cloning tool for creating ultra-realistic voiceovers.",
         categories: ["audio", "productivity"],
-        logo: "https://www.descript.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrtsPhxm10Bkinahg8DPM_nLZBgpoqSuYi-Q&s",
         url: "https://www.descript.com/overdub",
         badges: ["freemium"],
         tags: ["voice cloning", "voiceover", "audio"]
@@ -526,7 +526,7 @@ const aiTools = [
         name: "CopyMonkey",
         description: "AI tool for generating and optimizing Amazon product listings.",
         categories: ["nlp", "productivity"],
-        logo: "https://copymonkey.ai/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEYtafNj-h1l2vTHjbm3CLnzm7L5i_pONeJQ&s",
         url: "https://copymonkey.ai",
         badges: ["freemium"],
         tags: ["ecommerce", "copywriting", "amazon"]
@@ -535,19 +535,10 @@ const aiTools = [
         name: "SurferSEO",
         description: "AI-powered SEO tool for content optimization and strategy.",
         categories: ["nlp", "productivity"],
-        logo: "https://surferseo.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdS1UefwqOtPyhNrofB0iQMhyQ-NlNUv3uYw&s",
         url: "https://surferseo.com",
         badges: ["freemium"],
         tags: ["seo", "content", "optimization"]
-    },
-    {
-        name: "Writesonic",
-        description: "AI writing platform for blogs, ads, emails, and more.",
-        categories: ["nlp", "productivity"],
-        logo: "https://writesonic.com/favicon.ico",
-        url: "https://writesonic.com",
-        badges: ["trending", "freemium"],
-        tags: ["writing", "content", "copywriting"]
     },
     {
         name: "DeepL Write",
@@ -568,19 +559,10 @@ const aiTools = [
         tags: ["dubbing", "voiceover", "localization"]
     },
     {
-        name: "Synthesia STUDIO",
-        description: "Create AI videos with avatars in minutes.",
-        categories: ["vision", "audio"],
-        logo: "https://www.synthesia.io/favicon-32x32.png",
-        url: "https://www.synthesia.io/studio",
-        badges: ["paid"],
-        tags: ["video", "avatar", "studio"]
-    },
-    {
         name: "Murf AI",
         description: "AI voice generator for studio-quality voiceovers.",
         categories: ["audio", "productivity"],
-        logo: "https://murf.ai/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYO81J0zYiPaCqey4hdEazJp-DZjm08DUdKA&s",
         url: "https://murf.ai",
         badges: ["freemium"],
         tags: ["voiceover", "audio", "generator"]
@@ -589,7 +571,7 @@ const aiTools = [
         name: "HeyGen",
         description: "AI video creation with talking avatars.",
         categories: ["vision", "audio"],
-        logo: "https://www.heygen.com/favicon.ico",
+        logo: "https://images.seeklogo.com/logo-png/61/1/heygen-logo-png_seeklogo-617924.png",
         url: "https://www.heygen.com",
         badges: ["trending", "freemium"],
         tags: ["video", "avatar", "creation"]
@@ -598,7 +580,7 @@ const aiTools = [
         name: "Kaiber",
         description: "AI video generator for music videos and animations.",
         categories: ["vision", "design"],
-        logo: "https://www.kaiber.ai/favicon.ico",
+        logo: "https://cdn.theorg.com/c64450bd-cbff-4e97-b402-bf27ed6e2afc_medium.jpg",
         url: "https://www.kaiber.ai",
         badges: ["freemium"],
         tags: ["video", "animation", "music"]
@@ -616,7 +598,7 @@ const aiTools = [
         name: "DreamStudio",
         description: "Create images from text with Stable Diffusion.",
         categories: ["vision", "design"],
-        logo: "https://dreamstudio.ai/favicon.ico",
+        logo: "https://backend.aionlinecourse.com/uploads/ai_software/image/2023/09/dreamstudio.png",
         url: "https://dreamstudio.ai",
         badges: ["freemium"],
         tags: ["image generation", "art", "diffusion"]
@@ -652,7 +634,7 @@ const aiTools = [
         name: "Descript Studio Sound",
         description: "AI audio enhancement for studio-quality sound.",
         categories: ["audio", "productivity"],
-        logo: "https://www.descript.com/favicon.ico",
+        logo: "https://cdn.prod.website-files.com/61e09d67f0dcf4552c951a3a/634dc9fb0310cfee2728878b_Descript.png",
         url: "https://www.descript.com/studio-sound",
         badges: ["freemium"],
         tags: ["audio", "enhancement", "studio"]
@@ -661,7 +643,7 @@ const aiTools = [
         name: "Auphonic",
         description: "AI audio post-production for podcasts and videos.",
         categories: ["audio", "productivity"],
-        logo: "https://auphonic.com/favicon.ico",
+        logo: "https://auphonic.com/media/pics/auphonic-app-icon.png",
         url: "https://auphonic.com",
         badges: ["freemium"],
         tags: ["audio", "post-production", "podcast"]
@@ -688,7 +670,7 @@ const aiTools = [
         name: "Let's Enhance",
         description: "AI image upscaler and enhancer.",
         categories: ["vision", "design"],
-        logo: "https://letsenhance.io/favicon.ico",
+        logo: "https://yt3.googleusercontent.com/jEIS4r9BGPsDzS3MpMbLhecYzVnVrVfW6z2JH9Z8l3RdNYhIeJ0EAlC13jrXv4VHjF_513Ks=s900-c-k-c0x00ffffff-no-rj",
         url: "https://letsenhance.io",
         badges: ["freemium"],
         tags: ["upscaling", "enhancer", "photo"]
@@ -724,7 +706,7 @@ const aiTools = [
         name: "Deep Nostalgia",
         description: "Animate old family photos with AI.",
         categories: ["vision", "design"],
-        logo: "https://www.myheritage.com/favicon.ico",
+        logo: "https://deepnostalgia.ai/apple-icon.png?3d07840bbf1d8993",
         url: "https://www.myheritage.com/deep-nostalgia",
         badges: ["freemium"],
         tags: ["animation", "photo", "nostalgia"]
@@ -760,7 +742,7 @@ const aiTools = [
         name: "PaintsChainer",
         description: "AI automatic coloring for sketches and manga.",
         categories: ["vision", "design"],
-        logo: "https://paintschainer.preferred.tech/favicon.ico",
+        logo: "https://petalica.com/images/design-v2/logo.svg",
         url: "https://paintschainer.preferred.tech",
         badges: ["freemium"],
         tags: ["coloring", "sketch", "manga"]
@@ -769,7 +751,7 @@ const aiTools = [
         name: "Artbreeder",
         description: "Create and explore images with genetic algorithms.",
         categories: ["vision", "design"],
-        logo: "https://www.artbreeder.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMrSa6myIofenGS9dVauR8E87XwmanbkKJcA&s",
         url: "https://www.artbreeder.com",
         badges: ["freemium"],
         tags: ["image", "genetic", "art"]
@@ -787,7 +769,7 @@ const aiTools = [
         name: "DeepArt",
         description: "Turn photos into artwork with neural networks.",
         categories: ["vision", "design"],
-        logo: "https://deepart.io/favicon.ico",
+        logo: "https://avatars.githubusercontent.com/u/25684714?s=280&v=4",
         url: "https://deepart.io",
         badges: ["freemium"],
         tags: ["artwork", "photo", "neural"]
@@ -796,7 +778,7 @@ const aiTools = [
         name: "AI Picasso",
         description: "Create Picasso-style art from your photos.",
         categories: ["vision", "design"],
-        logo: "https://aipicasso.app/favicon.ico",
+        logo: "https://framerusercontent.com/images/ttNBlLQ1awng2oh1byuTAuBmiBw.png?scale-down-to=512",
         url: "https://aipicasso.app",
         badges: ["freemium"],
         tags: ["picasso", "art", "photo"]
@@ -814,7 +796,7 @@ const aiTools = [
         name: "Cartoonify",
         description: "Cartoon yourself online with AI.",
         categories: ["vision", "design"],
-        logo: "https://www.cartoonify.de/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlhA_2gmrvBzd424l8i6S5lMRwv6HI_6BLfA&s",
         url: "https://www.cartoonify.de",
         badges: ["freemium"],
         tags: ["cartoon", "photo", "avatar"]
@@ -823,7 +805,7 @@ const aiTools = [
         name: "AISEO",
         description: "AI-powered SEO content generator.",
         categories: ["nlp", "productivity"],
-        logo: "https://aiseo.ai/favicon.ico",
+        logo: "https://media.licdn.com/dms/image/v2/C4D0BAQF0RVJaxx983g/company-logo_200_200/company-logo_200_200/0/1649257648693/aiseo_ai_logo?e=2147483647&v=beta&t=5TrQO37Qldj65CZljNSzKkI4if5SnCcfb275WHBRm2Y",
         url: "https://aiseo.ai",
         badges: ["freemium"],
         tags: ["seo", "content", "writing"]
@@ -841,7 +823,7 @@ const aiTools = [
         name: "Rytr",
         description: "AI writing assistant for blogs, emails, and more.",
         categories: ["nlp", "productivity"],
-        logo: "https://rytr.me/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ9cZZet_33soscJCwtE-dP3C-D0W2akWWVw&s",
         url: "https://rytr.me",
         badges: ["freemium"],
         tags: ["writing", "assistant", "content"]
@@ -850,7 +832,7 @@ const aiTools = [
         name: "Frase.io",
         description: "AI-powered content research and optimization.",
         categories: ["nlp", "productivity"],
-        logo: "https://www.frase.io/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzml55hs1gvLq-lCgaXQe5GdJghWKRFDYpZQ&s",
         url: "https://www.frase.io",
         badges: ["freemium"],
         tags: ["content", "research", "optimization"]
@@ -859,7 +841,7 @@ const aiTools = [
         name: "LongShot AI",
         description: "AI writing assistant for long-form content.",
         categories: ["nlp", "productivity"],
-        logo: "https://www.longshot.ai/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8JV-cmD895Gmm7AtmlmHUzudNJT_dPm8WRA&s",
         url: "https://www.longshot.ai",
         badges: ["freemium"],
         tags: ["writing", "long-form", "content"]
@@ -868,7 +850,7 @@ const aiTools = [
         name: "Wordtune",
         description: "AI-powered writing companion for better sentences.",
         categories: ["nlp", "productivity"],
-        logo: "https://www.wordtune.com/favicon.ico",
+        logo: "https://logowik.com/content/uploads/images/wordtune5989.logowik.com.webp",
         url: "https://www.wordtune.com",
         badges: ["freemium"],
         tags: ["writing", "companion", "sentences"]
@@ -877,7 +859,7 @@ const aiTools = [
         name: "HyperWrite",
         description: "AI writing assistant for emails, blogs, and more.",
         categories: ["nlp", "productivity"],
-        logo: "https://hyperwriteai.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwe3-J2IQN8nPPsXpOtSfNL5JAQ5X5W9AAtg&s",
         url: "https://hyperwriteai.com",
         badges: ["freemium"],
         tags: ["writing", "assistant", "content"]
@@ -886,7 +868,7 @@ const aiTools = [
         name: "Sudowrite",
         description: "AI writing tool for creative writers.",
         categories: ["nlp", "productivity"],
-        logo: "https://www.sudowrite.com/favicon.ico",
+        logo: "https://pbs.twimg.com/profile_images/1681066020868349952/oubjd_MW_400x400.jpg",
         url: "https://www.sudowrite.com",
         badges: ["freemium"],
         tags: ["writing", "creative", "assistant"]
@@ -895,7 +877,7 @@ const aiTools = [
         name: "NovelAI",
         description: "AI-powered storytelling and novel writing.",
         categories: ["nlp", "productivity"],
-        logo: "https://novelai.net/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3r1CmcE-vfNHkjGBS3KYgxmjcdmeEfw5Lbg&s",
         url: "https://novelai.net",
         badges: ["freemium"],
         tags: ["storytelling", "writing", "novel"]
@@ -904,7 +886,7 @@ const aiTools = [
         name: "AI Dungeon",
         description: "AI-powered text adventure game.",
         categories: ["nlp", "productivity"],
-        logo: "https://play.aidungeon.io/favicon.ico",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/5/52/AI_Dungeon_Logo.png",
         url: "https://play.aidungeon.io",
         badges: ["freemium"],
         tags: ["game", "adventure", "text"]
@@ -922,7 +904,7 @@ const aiTools = [
         name: "CopySmith",
         description: "AI copywriting tool for ads, emails, and more.",
         categories: ["nlp", "productivity"],
-        logo: "https://copysmith.ai/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXb-fDNZq4QlJJXLW3iaWSpYbSUEDgtHLONw&s",
         url: "https://copysmith.ai",
         badges: ["freemium"],
         tags: ["copywriting", "ads", "emails"]
@@ -931,7 +913,7 @@ const aiTools = [
         name: "Peppertype.ai",
         description: "AI content generation for marketers and creators.",
         categories: ["nlp", "productivity"],
-        logo: "https://www.peppertype.ai/favicon.ico",
+        logo: "https://cdn.techjockey.com/web/assets/images/techjockey/products/17730_Peppertypelogo.jpg",
         url: "https://www.peppertype.ai",
         badges: ["freemium"],
         tags: ["content", "generation", "marketing"]
@@ -940,7 +922,7 @@ const aiTools = [
         name: "Writesonic Photosonic",
         description: "AI art generator by Writesonic.",
         categories: ["vision", "design"],
-        logo: "https://writesonic.com/favicon.ico",
+        logo: "https://pbs.twimg.com/profile_images/1517412056907272192/_cH9KL9__400x400.jpg",
         url: "https://writesonic.com/photosonic",
         badges: ["freemium"],
         tags: ["art", "image generation", "photosonic"]
@@ -967,7 +949,7 @@ const aiTools = [
         name: "AI Portraits",
         description: "Create AI-generated portraits from photos.",
         categories: ["vision", "design"],
-        logo: "https://aiportraits.com/favicon.ico",
+        logo: "https://play-lh.googleusercontent.com/zD3Szw9tZpc6ALvn_R2HR2vfQwfslWkF4ORaK5SeHxNIU0oD6i_hmOf_pQmqaItXX0A",
         url: "https://aiportraits.com",
         badges: ["freemium"],
         tags: ["portrait", "photo", "art"]
@@ -976,7 +958,7 @@ const aiTools = [
         name: "DeepSwap",
         description: "AI face swap for photos and videos.",
         categories: ["vision", "design"],
-        logo: "https://www.deepswap.ai/favicon.ico",
+        logo: "https://www.softwareworld.co/assets/software/logo/deepswap.jpg",
         url: "https://www.deepswap.ai",
         badges: ["freemium"],
         tags: ["face swap", "photo", "video"]
@@ -994,7 +976,7 @@ const aiTools = [
         name: "Avatar AI",
         description: "Create AI avatars for social media and games.",
         categories: ["vision", "design"],
-        logo: "https://avatarai.me/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVTLsEBaCMe5yelsI_VpwFNuM9jlMD6ILpHw&s",
         url: "https://avatarai.me",
         badges: ["freemium"],
         tags: ["avatar", "photo", "social"]
@@ -1018,24 +1000,6 @@ const aiTools = [
         tags: ["photo", "effects", "fun"]
     },
     {
-        name: "Jasper",
-        description: "AI content platform for marketing teams and businesses.",
-        categories: ["marketing"],
-        logo: "https://www.jasper.ai/favicon.ico",
-        url: "https://www.jasper.ai",
-        badges: ["featured", "paid"],
-        tags: ["content creation", "marketing", "copywriting"]
-    },
-    {
-        name: "Grammarly Business",
-        description: "AI writing assistant for professional teams and businesses.",
-        categories: ["marketing"],
-        logo: "https://www.grammarly.com/favicon.ico",
-        url: "https://www.grammarly.com/business",
-        badges: ["paid"],
-        tags: ["writing", "grammar", "business"]
-    },
-    {
         name: "Beautiful.ai",
         description: "AI-powered presentation software for business professionals.",
         categories: ["business"],
@@ -1054,28 +1018,19 @@ const aiTools = [
         tags: ["meetings", "transcription", "collaboration"]
     },
     {
-        name: "Synthesia",
-        description: "Create AI videos with digital avatars and voiceovers.",
-        categories: ["video"],
-        logo: "https://www.synthesia.io/favicon.ico",
-        url: "https://www.synthesia.io",
-        badges: ["featured", "paid"],
-        tags: ["video generation", "avatars", "voiceover"]
-    },
-    {
         name: "InVideo",
         description: "AI video creation platform for marketing and social media.",
         categories: ["video"],
-        logo: "https://invideo.io/favicon.ico",
+        logo: "https://logowik.com/content/uploads/images/invideo12525.logowik.com.webp",
         url: "https://invideo.io",
         badges: ["freemium"],
         tags: ["video creation", "marketing", "social media"]
     },
     {
-        name: "Duolingo Max",
+        name: "Duolingo",
         description: "AI-powered language learning platform with personalized tutoring.",
         categories: ["education"],
-        logo: "https://www.duolingo.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPmbSq0vdFc9kh6_g9YQ-reLlSzHuJZNm0hw&s",
         url: "https://www.duolingo.com/max",
         badges: ["freemium"],
         tags: ["language learning", "education", "tutoring"]
@@ -1111,7 +1066,7 @@ const aiTools = [
         name: "RunwayML",
         description: "Professional AI video editing and generation platform for filmmakers and creators.",
         categories: ["video", "design"],
-        logo: "https://runwayml.com/favicon.ico",
+        logo: "https://images.seeklogo.com/logo-png/49/1/runway-logo-png_seeklogo-496519.png",
         url: "https://runwayml.com",
         badges: ["featured", "paid"],
         tags: ["video editing", "generation", "creative"]
@@ -1153,15 +1108,6 @@ const aiTools = [
         tags: ["search", "research", "answers"]
     },
     {
-        name: "Synthesia",
-        description: "Create professional AI videos with digital avatars and voiceovers in minutes.",
-        categories: ["video", "business", "audio"],
-        logo: "https://www.synthesia.io/favicon.ico",
-        url: "https://www.synthesia.io",
-        badges: ["featured", "paid"],
-        tags: ["video", "avatar", "business"]
-    },
-    {
         name: "Leonardo.AI",
         description: "Advanced AI image generation platform with specialized models for different styles.",
         categories: ["vision", "design"],
@@ -1169,24 +1115,6 @@ const aiTools = [
         url: "https://leonardo.ai",
         badges: ["featured", "freemium"],
         tags: ["image generation", "art", "creative"]
-    },
-    {
-        name: "Descript",
-        description: "All-in-one audio and video editing platform with AI-powered features.",
-        categories: ["audio", "video", "productivity"],
-        logo: "https://www.descript.com/favicon.ico",
-        url: "https://www.descript.com",
-        badges: ["featured", "freemium"],
-        tags: ["editing", "audio", "video"]
-    },
-    {
-        name: "Jasper",
-        description: "AI content platform for marketing teams and businesses.",
-        categories: ["marketing", "business"],
-        logo: "https://www.jasper.ai/favicon.ico",
-        url: "https://www.jasper.ai",
-        badges: ["featured", "paid"],
-        tags: ["content", "marketing", "writing"]
     },
     {
         name: "Beautiful.ai",
@@ -1198,19 +1126,10 @@ const aiTools = [
         tags: ["presentations", "design", "business"]
     },
     {
-        name: "Duolingo Max",
-        description: "AI-powered language learning with personalized tutoring and roleplay conversations.",
-        categories: ["education", "nlp"],
-        logo: "https://www.duolingo.com/favicon.ico",
-        url: "https://www.duolingo.com/max",
-        badges: ["featured", "freemium"],
-        tags: ["education", "language", "learning"]
-    },
-    {
         name: "Inflection AI",
         description: "Personal AI assistant focused on emotional intelligence and helpful conversations.",
         categories: ["life-assistant", "productivity"],
-        logo: "https://inflection.ai/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShirXl4FhieiUSy5vtV3qedpTHLgtm6RzlFw&s",
         url: "https://inflection.ai",
         badges: ["featured", "freemium"],
         tags: ["assistant", "conversation", "personal"]
@@ -1246,7 +1165,7 @@ const aiTools = [
         name: "RapidMiner",
         description: "Data science platform for building and deploying machine learning models.",
         categories: ["data-science"],
-        logo: "https://rapidminer.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-3vra_tK2_tQlSDhf6m_eYe-O-I9Xm0WVgw&s",
         url: "https://rapidminer.com",
         badges: ["freemium"],
         tags: ["data science", "machine learning", "analytics"]
@@ -1273,7 +1192,7 @@ const aiTools = [
         name: "MonkeyLearn",
         description: "Text analysis and machine learning platform for business intelligence.",
         categories: ["data-science"],
-        logo: "https://monkeylearn.com/favicon.ico",
+        logo: "https://avatars.githubusercontent.com/u/8461612?s=280&v=4",
         url: "https://monkeylearn.com",
         badges: ["freemium"],
         tags: ["text analysis", "machine learning", "business intelligence"]
@@ -1282,7 +1201,7 @@ const aiTools = [
         name: "Elicit",
         description: "AI research assistant that helps find and summarize academic papers. Uses language models to answer questions with research-backed evidence.",
         categories: ["research", "nlp"],
-        logo: "https://elicit.org/favicon.ico",
+        logo: "https://www.fahimai.com/wp-content/uploads/2024/12/CTA-42.png",
         url: "https://elicit.org",
         badges: ["featured", "free"],
         tags: ["academic", "research", "papers", "summarization"]
@@ -1291,7 +1210,7 @@ const aiTools = [
         name: "Consensus",
         description: "AI-powered search engine for scientific research that provides evidence-based answers to research questions.",
         categories: ["research", "nlp"],
-        logo: "https://consensus.app/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfFl0avG1yDnFPdn1EteAqB28p_QQfkYIpJQ&s",
         url: "https://consensus.app",
         badges: ["featured", "freemium"],
         tags: ["scientific", "research", "evidence", "search"]
@@ -1300,7 +1219,7 @@ const aiTools = [
         name: "Scite.ai",
         description: "Smart citation platform that helps researchers discover and evaluate scientific articles through AI-powered citation analysis.",
         categories: ["research", "nlp"],
-        logo: "https://scite.ai/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDrc_VwLwmKuBiPVUOKD-a69SiTfWa_eE-tw&s",
         url: "https://scite.ai",
         badges: ["featured", "paid"],
         tags: ["citations", "research", "academic", "analysis"]
@@ -1318,7 +1237,7 @@ const aiTools = [
         name: "Quizlet AI",
         description: "AI-powered study platform that creates personalized study plans and adaptive learning experiences.",
         categories: ["education", "nlp"],
-        logo: "https://quizlet.com/favicon.ico",
+        logo: "https://img.icons8.com/color/512/quizlet.png",
         url: "https://quizlet.com/ai",
         badges: ["featured", "freemium"],
         tags: ["study", "learning", "flashcards", "education"]
@@ -1333,19 +1252,10 @@ const aiTools = [
         tags: ["courses", "learning", "education", "online"]
     },
     {
-        name: "Grammarly for Education",
-        description: "AI writing assistant specifically designed for students and educators, offering advanced writing feedback and learning tools.",
-        categories: ["education", "nlp"],
-        logo: "https://www.grammarly.com/favicon.ico",
-        url: "https://www.grammarly.com/education",
-        badges: ["featured", "paid"],
-        tags: ["writing", "education", "feedback", "learning"]
-    },
-    {
         name: "Socratic by Google",
         description: "AI-powered homework helper that provides step-by-step explanations and learning resources for students.",
         categories: ["education", "nlp"],
-        logo: "https://socratic.org/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTG8NuihxfkJD2kafYOCStkTu3hjE3hDTNC2Q&s",
         url: "https://socratic.org",
         badges: ["featured", "free"],
         tags: ["homework", "learning", "education", "help"]
@@ -1363,7 +1273,7 @@ const aiTools = [
         name: "Century AI",
         description: "AI-powered learning platform that personalizes education and provides real-time feedback for students.",
         categories: ["education", "nlp"],
-        logo: "https://www.century.tech/favicon.ico",
+        logo: "https://jobs.mindtheproduct.com/wp-content/uploads/job-manager-uploads/company_logo/2022/04/Century-Icon.png",
         url: "https://www.century.tech",
         badges: ["featured", "paid"],
         tags: ["learning", "personalized", "education", "feedback"]
@@ -1390,7 +1300,7 @@ const aiTools = [
         name: "Pi by Inflection",
         description: "Personal AI assistant focused on emotional intelligence and helpful conversations for daily life.",
         categories: ["life-assistant", "nlp"],
-        logo: "https://inflection.ai/favicon.ico",
+        logo: "https://play-lh.googleusercontent.com/Ef7is-Xonqhs2agdsGarpTS_c1Is6Yvk-JhnL3qNvU1Nwdc7kn6Dml2IuCqlfa9Nuzk",
         url: "https://pi.ai",
         badges: ["featured", "free"],
         tags: ["personal assistant", "conversation", "emotional support", "daily life"]
@@ -1417,7 +1327,7 @@ const aiTools = [
         name: "Woebot",
         description: "AI mental health assistant that provides emotional support and cognitive behavioral therapy techniques.",
         categories: ["life-assistant", "nlp"],
-        logo: "https://woebot.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlCs2lyOZNKbG5FQ_RSoYLx0ZvI1RMhFEWWQ&s",
         url: "https://woebot.com",
         badges: ["featured", "freemium"],
         tags: ["mental health", "therapy", "emotional support", "wellness"]
@@ -1435,7 +1345,7 @@ const aiTools = [
         name: "Youper",
         description: "AI emotional health assistant that helps track mood and provides personalized emotional support.",
         categories: ["life-assistant", "nlp"],
-        logo: "https://youper.ai/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ2AcvzmKvE2XDTKcKVsjCxqjR44fD6p5zQQ&s",
         url: "https://youper.ai",
         badges: ["featured", "freemium"],
         tags: ["emotional health", "mood tracking", "personalized support", "wellness"]
@@ -1453,7 +1363,7 @@ const aiTools = [
         name: "FitnessAI",
         description: "AI personal trainer that creates personalized workout plans and provides real-time form feedback.",
         categories: ["life-assistant", "vision"],
-        logo: "https://fitnessai.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzQzyCmCRtdsl9EvxUFmOu4nA4SJHoWrMeqw&s",
         url: "https://fitnessai.com",
         badges: ["featured", "paid"],
         tags: ["fitness", "workout", "personal training", "health"]
@@ -1462,7 +1372,7 @@ const aiTools = [
         name: "Finch",
         description: "AI self-care companion that helps build healthy habits and provides daily emotional support.",
         categories: ["life-assistant", "nlp"],
-        logo: "https://finchcare.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0jW-_wRYbV56K6UQQ56XEYCMBmELZXdQIRg&s",
         url: "https://finchcare.com",
         badges: ["featured", "freemium"],
         tags: ["self-care", "habits", "emotional support", "wellness"]
@@ -1471,19 +1381,10 @@ const aiTools = [
         name: "Cleo",
         description: "AI financial assistant that helps manage money, track spending, and provide financial advice.",
         categories: ["life-assistant", "nlp"],
-        logo: "https://meetcleo.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNVbf82o4j0727w0JigX06UYz_jOO7V91bUQ&s",
         url: "https://meetcleo.com",
         badges: ["featured", "freemium"],
         tags: ["finance", "budgeting", "money management", "advice"]
-    },
-    {
-        name: "Milo",
-        description: "AI parenting assistant that provides personalized advice and support for child development.",
-        categories: ["life-assistant", "nlp"],
-        logo: "https://milo.ai/favicon.ico",
-        url: "https://milo.ai",
-        badges: ["featured", "freemium"],
-        tags: ["parenting", "child development", "advice", "support"]
     },
     {
         name: "Dataiku",
@@ -1507,7 +1408,7 @@ const aiTools = [
         name: "Databricks",
         description: "Unified analytics platform for data engineering, machine learning, and collaborative data science.",
         categories: ["data-science"],
-        logo: "https://databricks.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS36Vt4wSXF8AZGnryASm-iL1f71ucL1f9pjg&s",
         url: "https://databricks.com",
         badges: ["featured", "paid"],
         tags: ["analytics", "machine learning", "data engineering", "collaboration"]
@@ -1576,15 +1477,6 @@ const aiTools = [
         tags: ["analytics", "data preparation", "blending", "automation"]
     },
     {
-        name: "RapidMiner",
-        description: "Data science platform for building and deploying machine learning models with visual workflows.",
-        categories: ["data-science"],
-        logo: "https://rapidminer.com/favicon.ico",
-        url: "https://rapidminer.com",
-        badges: ["featured", "freemium"],
-        tags: ["machine learning", "visual workflows", "automation", "analytics"]
-    },
-    {
         name: "DataRobot",
         description: "Enterprise AI platform for automated machine learning and model deployment.",
         categories: ["data-science"],
@@ -1592,15 +1484,6 @@ const aiTools = [
         url: "https://www.datarobot.com",
         badges: ["featured", "paid"],
         tags: ["automated ML", "model deployment", "enterprise", "analytics"]
-    },
-    {
-        name: "H2O.ai",
-        description: "Open-source AI platform for machine learning and data science with automated ML capabilities.",
-        categories: ["data-science"],
-        logo: "https://www.h2o.ai/favicon.ico",
-        url: "https://www.h2o.ai",
-        badges: ["open source", "freemium"],
-        tags: ["machine learning", "automated ML", "open source", "analytics"]
     },
     // Business Tools
     {
@@ -1616,7 +1499,7 @@ const aiTools = [
         name: "Chorus.ai",
         description: "Conversation intelligence platform that helps sales teams improve performance through AI analysis.",
         categories: ["business"],
-        logo: "https://www.chorus.ai/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHLI5v-DnQTogD2HZGWQmhKmwjGJ1kccj0JQ&s",
         url: "https://www.chorus.ai",
         badges: ["featured", "paid"],
         tags: ["sales", "conversation intelligence", "performance", "business"]
@@ -1625,7 +1508,7 @@ const aiTools = [
         name: "Drift",
         description: "AI-powered conversational marketing and sales platform for real-time customer engagement.",
         categories: ["business", "marketing"],
-        logo: "https://www.drift.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRP2oZvneJLFZ3MGu-4uUivoOrVovV7XjEuJQ&s",
         url: "https://www.drift.com",
         badges: ["featured", "freemium"],
         tags: ["conversational marketing", "sales", "customer engagement", "chat"]
@@ -1634,7 +1517,7 @@ const aiTools = [
         name: "Intercom",
         description: "AI-powered customer messaging platform for personalized customer support and engagement.",
         categories: ["business"],
-        logo: "https://www.intercom.com/favicon.ico",
+        logo: "https://www.pngkey.com/png/full/423-4237226_intercom-logo-png-transparent-intercom-logo-svg.png",
         url: "https://www.intercom.com",
         badges: ["featured", "paid"],
         tags: ["customer support", "messaging", "engagement", "automation"]
@@ -1670,7 +1553,7 @@ const aiTools = [
         name: "Pega",
         description: "AI-powered business process automation and customer engagement platform.",
         categories: ["business"],
-        logo: "https://www.pega.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5AYpeuUxp0OgruXD3ofv0YBdpLS3-Ik1SYQ&s",
         url: "https://www.pega.com",
         badges: ["featured", "paid"],
         tags: ["process automation", "customer engagement", "workflow", "enterprise"]
@@ -1697,7 +1580,7 @@ const aiTools = [
         name: "Automation Anywhere",
         description: "AI-powered robotic process automation platform for business process automation.",
         categories: ["business"],
-        logo: "https://www.automationanywhere.com/favicon.ico",
+        logo: "https://images.seeklogo.com/logo-png/34/2/automation-anywhere-logo-png_seeklogo-347692.png",
         url: "https://www.automationanywhere.com",
         badges: ["featured", "paid"],
         tags: ["RPA", "automation", "workflow", "enterprise"]
@@ -1722,28 +1605,10 @@ const aiTools = [
     },
     // Marketing Tools
     {
-        name: "Jasper",
-        description: "AI content platform for marketing teams and businesses with advanced copywriting and brand voice customization.",
-        categories: ["marketing", "nlp"],
-        logo: "https://www.jasper.ai/favicon.ico",
-        url: "https://www.jasper.ai",
-        badges: ["featured", "paid"],
-        tags: ["content creation", "copywriting", "marketing", "brand voice"]
-    },
-    {
-        name: "Copy.ai",
-        description: "AI copywriting tool for generating marketing content, social media posts, and ad copy.",
-        categories: ["marketing", "nlp"],
-        logo: "https://www.copy.ai/favicon.ico",
-        url: "https://www.copy.ai",
-        badges: ["featured", "freemium"],
-        tags: ["copywriting", "content generation", "marketing", "social media"]
-    },
-    {
         name: "Writesonic",
         description: "AI writing platform for creating marketing content, blogs, ads, and social media posts.",
         categories: ["marketing", "nlp"],
-        logo: "https://writesonic.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRpQniYA5zh4ADrbN6QW0gGS4Zd3fvEmZzVg&s",
         url: "https://writesonic.com",
         badges: ["featured", "freemium"],
         tags: ["content creation", "marketing", "copywriting", "blogging"]
@@ -1761,7 +1626,7 @@ const aiTools = [
         name: "Persado",
         description: "AI platform for generating emotionally intelligent marketing language and content.",
         categories: ["marketing", "nlp"],
-        logo: "https://persado.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzrr3geNXaTe1BrDieUhPRfaXNKjJJFjAaAw&s",
         url: "https://persado.com",
         badges: ["featured", "paid"],
         tags: ["content generation", "emotional intelligence", "marketing", "language"]
@@ -1770,19 +1635,10 @@ const aiTools = [
         name: "Lately",
         description: "AI social media marketing platform that generates and schedules content across multiple platforms.",
         categories: ["marketing", "nlp"],
-        logo: "https://www.lately.ai/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwLBpxEELRWGC5aURpDpIcGGUfC1lEaE851g&s",
         url: "https://www.lately.ai",
         badges: ["featured", "freemium"],
         tags: ["social media", "content generation", "scheduling", "marketing"]
-    },
-    {
-        name: "Grammarly Business",
-        description: "AI writing assistant for marketing teams with advanced grammar, style, and tone suggestions.",
-        categories: ["marketing", "nlp"],
-        logo: "https://www.grammarly.com/favicon.ico",
-        url: "https://www.grammarly.com/business",
-        badges: ["featured", "paid"],
-        tags: ["writing", "grammar", "style", "marketing"]
     },
     {
         name: "Acrolinx",
@@ -1803,15 +1659,6 @@ const aiTools = [
         tags: ["content planning", "SEO", "optimization", "marketing"]
     },
     {
-        name: "Frase",
-        description: "AI content optimization platform for creating SEO-friendly content and answering user questions.",
-        categories: ["marketing", "nlp"],
-        logo: "https://www.frase.io/favicon.ico",
-        url: "https://www.frase.io",
-        badges: ["featured", "freemium"],
-        tags: ["content optimization", "SEO", "research", "marketing"]
-    },
-    {
         name: "WordLift",
         description: "AI-powered SEO platform that enhances content with structured data and semantic analysis.",
         categories: ["marketing", "nlp"],
@@ -1824,7 +1671,7 @@ const aiTools = [
         name: "Surfer SEO",
         description: "AI content editor and SEO tool for creating optimized content that ranks in search engines.",
         categories: ["marketing", "nlp"],
-        logo: "https://surferseo.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdS1UefwqOtPyhNrofB0iQMhyQ-NlNUv3uYw&s",
         url: "https://surferseo.com",
         badges: ["featured", "paid"],
         tags: ["SEO", "content optimization", "research", "marketing"]
@@ -1842,7 +1689,7 @@ const aiTools = [
         name: "Zapier AI",
         description: "AI-powered automation platform that helps create and manage workflows between different apps and services.",
         categories: ["productivity", "business"],
-        logo: "https://zapier.com/favicon.ico",
+        logo: "https://seeklogo.com/images/Z/zapier-logo-46EEE9963E-seeklogo.com.png",
         url: "https://zapier.com/ai",
         badges: ["featured", "freemium"],
         tags: ["automation", "workflow", "integration", "productivity"]
@@ -1851,7 +1698,7 @@ const aiTools = [
         name: "Mem AI",
         description: "AI-powered note-taking and knowledge management platform that helps organize and connect your thoughts.",
         categories: ["productivity", "nlp"],
-        logo: "https://mem.ai/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4HPzM2MwH1_bq3Ke_FhvU6gw-YUoUUcyeMw&s",
         url: "https://mem.ai",
         badges: ["featured", "freemium"],
         tags: ["note-taking", "knowledge management", "organization", "productivity"]
@@ -1878,7 +1725,7 @@ const aiTools = [
         name: "Anki",
         description: "AI-powered flashcard and spaced repetition learning platform for efficient memorization.",
         categories: ["education", "productivity"],
-        logo: "https://apps.ankiweb.net/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaR3QmptY_rfUwFXShga5a-_MhQ8wzJrkRtQ&s",
         url: "https://apps.ankiweb.net",
         badges: ["featured", "free"],
         tags: ["flashcards", "learning", "spaced repetition", "education"]
@@ -1896,8 +1743,8 @@ const aiTools = [
         name: "Quadratic",
         description: "AI-powered spreadsheet and data analysis platform with advanced automation capabilities.",
         categories: ["productivity", "data-science"],
-        logo: "https://quadratic.com/favicon.ico",
-        url: "https://quadratic.com",
+        logo: "https://www.quadratichq.com/images/og-image.png",
+        url: "https://app.quadratichq.com/",
         badges: ["featured", "freemium"],
         tags: ["spreadsheet", "data analysis", "automation", "productivity"]
     }
