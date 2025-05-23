@@ -82,6 +82,15 @@ const aiTools = [
         tags: ["code search", "development", "IDE", "productivity"]
     },
     {
+        name: "Google AI Studio",
+        description: "A web-based tool for prototyping and experimenting with Google\'s generative AI models.",
+        categories: ["coding", "productivity", "nlp"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgSyDw5dgzQ31DkG4WLNr4e11unIerY_dNmw&s", 
+        url: "https://aistudio.google.com/prompts/new_chat",
+        badges: ["freemium", "featured"],
+        tags: ["generative AI", "prototyping", "experimentation", "google"]
+    },
+    {
         name: "Sora",
         description: "OpenAI's revolutionary text-to-video model that can create realistic and imaginative video scenes from text descriptions. Known for its ability to generate high-quality, coherent videos with complex camera movements and detailed scenes.",
         categories: ["video", "vision"],
@@ -89,6 +98,69 @@ const aiTools = [
         url: "https://openai.com/sora",
         badges: ["featured", "trending"],
         tags: ["video generation", "text-to-video", "openai", "creative"]
+    },
+    {
+        name: "Manus",
+        description: "AI-powered hand tracking and gesture recognition platform. Enables natural interaction with digital interfaces through hand movements.",
+        categories: ["vision", "productivity"],
+        logo: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/manus.png",
+        url: "https://manus.im/app",
+        badges: ["trending"],
+        tags: ["hand tracking", "gesture recognition", "interaction", "VR"]
+    },
+    {
+        name: "Hugging Face",
+        description: "Platform providing tools for building, training and deploying machine learning models, including transformers.",
+        categories: ["nlp", "coding"],
+        logo: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
+        url: "https://huggingface.co",
+        badges: ["featured", "freemium"],
+        tags: ["machine learning", "models", "transformers"]
+    },
+    {
+        name: "Microsoft Copilot",
+        description: "AI assistant integrated into Microsoft 365, Edge, and Bing for productivity and search.",
+        categories: ["productivity", "coding", "nlp"],
+        logo: "https://copilot.microsoft.com/favicon.ico",
+        url: "https://copilot.microsoft.com",
+        badges: ["featured", "freemium"],
+        tags: ["assistant", "office", "search"]
+    },
+    {
+        name: "Napkin AI",
+        description: "Free during beta – full functionality currently at no cost. Create up to 3 visuals on the Starter plan even outside beta.",
+        categories: ["design", "productivity"],
+        logo: "https://napkin.ai/favicon.ico",
+        url: "https://napkin.ai",
+        badges: ["freemium", "beta"],
+        tags: ["visuals", "design", "image generation"]
+    },
+    {
+        name: "Lovable",
+        description: "AI-powered customer feedback and sentiment analysis platform for improving customer experience.",
+        categories: ["business", "nlp"],
+        logo: "https://lovable.ai/favicon.ico",
+        url: "https://lovable.ai",
+        badges: ["featured", "freemium"],
+        tags: ["customer feedback", "sentiment analysis", "customer experience", "analytics"]
+    },
+    {
+        name: "Quadratic",
+        description: "AI-powered spreadsheet and data analysis platform with advanced automation capabilities.",
+        categories: ["productivity", "data-science"],
+        logo: "https://www.quadratichq.com/images/og-image.png",
+        url: "https://app.quadratichq.com/",
+        badges: ["featured", "freemium"],
+        tags: ["spreadsheet", "data analysis", "automation", "productivity"]
+    },
+    {
+        name: "HeyGen",
+        description: "AI video creation with talking avatars.",
+        categories: ["vision", "audio"],
+        logo: "https://images.seeklogo.com/logo-png/61/1/heygen-logo-png_seeklogo-617924.png",
+        url: "https://www.heygen.com",
+        badges: ["trending", "freemium"],
+        tags: ["video", "avatar", "creation"]
     },
     {
         name: "Soundraw",
@@ -172,15 +244,6 @@ const aiTools = [
         tags: ["video creation", "social media", "content repurposing", "marketing"]
     },
     {
-        name: "Manus",
-        description: "AI-powered hand tracking and gesture recognition platform. Enables natural interaction with digital interfaces through hand movements.",
-        categories: ["vision", "productivity"],
-        logo: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/manus.png",
-        url: "https://manus.im/app",
-        badges: ["trending"],
-        tags: ["hand tracking", "gesture recognition", "interaction", "VR"]
-    },
-    {
         name: "Qwen",
         description: "Alibaba's advanced language model with strong capabilities in understanding and generating text. Supports multiple languages and tasks.",
         categories: ["nlp", "productivity"],
@@ -206,15 +269,6 @@ const aiTools = [
         url: "https://github.com/features/copilot",
         badges: ["featured", "paid"],
         tags: ["coding assistant", "autocomplete", "programming"]
-    },
-    {
-        name: "Hugging Face",
-        description: "Platform providing tools for building, training and deploying machine learning models, including transformers.",
-        categories: ["nlp", "coding"],
-        logo: "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
-        url: "https://huggingface.co",
-        badges: ["featured", "freemium"],
-        tags: ["machine learning", "models", "transformers"]
     },
     {
         name: "Adobe Firefly",
@@ -388,15 +442,6 @@ const aiTools = [
         tags: ["chatbot", "google", "language model"]
     },
     {
-        name: "Microsoft Copilot",
-        description: "AI assistant integrated into Microsoft 365, Edge, and Bing for productivity and search.",
-        categories: ["productivity", "coding", "nlp"],
-        logo: "https://copilot.microsoft.com/favicon.ico",
-        url: "https://copilot.microsoft.com",
-        badges: ["featured", "freemium"],
-        tags: ["assistant", "office", "search"]
-    },
-    {
         name: "OpenAI Whisper",
         description: "Automatic speech recognition system trained on a large dataset of diverse audio.",
         categories: ["audio", "nlp"],
@@ -422,15 +467,6 @@ const aiTools = [
         url: "https://you.com",
         badges: ["freemium"],
         tags: ["search", "assistant", "writing"]
-    },
-    {
-        name: "Replika",
-        description: "AI companion that provides emotional support and conversation.",
-        categories: ["life-assistant"],
-        logo: "https://replika.com/favicon.ico",
-        url: "https://replika.com",
-        badges: ["freemium"],
-        tags: ["companion", "emotional support", "chat"]
     },
     {
         name: "DeepMind AlphaFold",
@@ -577,15 +613,6 @@ const aiTools = [
         tags: ["voiceover", "audio", "generator"]
     },
     {
-        name: "HeyGen",
-        description: "AI video creation with talking avatars.",
-        categories: ["vision", "audio"],
-        logo: "https://images.seeklogo.com/logo-png/61/1/heygen-logo-png_seeklogo-617924.png",
-        url: "https://www.heygen.com",
-        badges: ["trending", "freemium"],
-        tags: ["video", "avatar", "creation"]
-    },
-    {
         name: "Kaiber",
         description: "AI video generator for music videos and animations.",
         categories: ["vision", "design"],
@@ -658,15 +685,6 @@ const aiTools = [
         tags: ["audio", "post-production", "podcast"]
     },
     {
-        name: "Napkin AI",
-        description: "Free during beta – full functionality currently at no cost. Create up to 3 visuals on the Starter plan even outside beta.",
-        categories: ["design", "productivity"],
-        logo: "https://napkin.ai/favicon.ico",
-        url: "https://napkin.ai",
-        badges: ["freemium", "beta"],
-        tags: ["visuals", "design", "image generation"]
-    },
-    {
         name: "Gamma",
         description: "Free plan (no credit card) with 400 AI credits signup bonus. Enough to generate a couple of presentations. Unlimited users and basic exports included.",
         categories: ["productivity", "business", "design"],
@@ -679,7 +697,7 @@ const aiTools = [
         name: "10Web",
         description: "Offers a 7-day free trial with full features. Also has a free Personal plan option (with very limited resources) for testing.",
         categories: ["productivity", "web-development"],
-        logo: "https://10web.io/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPBUINz6BcfKz9BbNWwXaNt8GaYfRA8lMX5Q&s",
         url: "https://10web.io",
         badges: ["freemium", "trial"],
         tags: ["website builder", "web development", "hosting"]
@@ -1785,15 +1803,6 @@ const aiTools = [
         tags: ["project management", "automation", "productivity", "collaboration"]
     },
     {
-        name: "Napkin",
-        description: "AI-powered note-taking app that helps capture and organize ideas with smart categorization.",
-        categories: ["productivity", "nlp"],
-        logo: "https://napkin.ai/favicon.ico",
-        url: "https://napkin.ai",
-        badges: ["featured", "freemium"],
-        tags: ["note-taking", "organization", "productivity", "ideas"]
-    },
-    {
         name: "Anki",
         description: "AI-powered flashcard and spaced repetition learning platform for efficient memorization.",
         categories: ["education", "productivity"],
@@ -1803,24 +1812,6 @@ const aiTools = [
         tags: ["flashcards", "learning", "spaced repetition", "education"]
     },
     {
-        name: "Lovable",
-        description: "AI-powered customer feedback and sentiment analysis platform for improving customer experience.",
-        categories: ["business", "nlp"],
-        logo: "https://lovable.ai/favicon.ico",
-        url: "https://lovable.ai",
-        badges: ["featured", "freemium"],
-        tags: ["customer feedback", "sentiment analysis", "customer experience", "analytics"]
-    },
-    {
-        name: "Quadratic",
-        description: "AI-powered spreadsheet and data analysis platform with advanced automation capabilities.",
-        categories: ["productivity", "data-science"],
-        logo: "https://www.quadratichq.com/images/og-image.png",
-        url: "https://app.quadratichq.com/",
-        badges: ["featured", "freemium"],
-        tags: ["spreadsheet", "data analysis", "automation", "productivity"]
-    },
-    {
         name: "AnkiDecks",
         description: "AI-powered flashcard generator that converts notes, PDFs, and other content into Anki flashcards. Features automatic image occlusion and supports 50+ languages.",
         categories: ["education", "productivity"],
@@ -1828,33 +1819,6 @@ const aiTools = [
         url: "https://anki-decks.com",
         badges: ["featured", "freemium"],
         tags: ["flashcards", "learning", "education", "spaced repetition"]
-    },
-    {
-        name: "Lovable",
-        description: "AI-powered full stack development platform that helps turn ideas into apps in seconds. Features include note-taking, social media dashboards, real estate listings, and habit tracking capabilities.",
-        categories: ["productivity", "coding"],
-        logo: "https://sacra.cdn.prismic.io/sacra/Z4V6ApbqstJ99Zom_lovablelogo.svg",
-        url: "https://lovable.dev",
-        badges: ["featured", "freemium"],
-        tags: ["app development", "full stack", "productivity", "automation"]
-    },
-    {
-        name: "Quadratic",
-        description: "AI-powered spreadsheet and data analysis platform with advanced automation capabilities.",
-        categories: ["productivity", "data-science"],
-        logo: "https://www.quadratichq.com/images/og-image.png",
-        url: "https://app.quadratichq.com/",
-        badges: ["featured", "freemium"],
-        tags: ["spreadsheet", "data analysis", "automation", "productivity"]
-    },
-    {
-        name: "Google AI Studio",
-        description: "A web-based tool for prototyping and experimenting with Google\'s generative AI models.",
-        categories: ["coding", "productivity", "nlp"],
-        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgSyDw5dgzQ31DkG4WLNr4e11unIerY_dNmw&s", 
-        url: "https://aistudio.google.com/prompts/new_chat",
-        badges: ["freemium", "featured"],
-        tags: ["generative AI", "prototyping", "experimentation", "google"]
     },
 ];
 
