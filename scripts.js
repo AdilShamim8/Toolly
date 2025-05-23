@@ -19,6 +19,24 @@ const aiTools = [
         tags: ["chatbot", "writing assistant", "language model"]
     },
     {
+        name: "Claude",
+        description: "Anthropic's conversational AI assistant for enterprise and research.",
+        categories: ["nlp", "research"],
+        logo: "https://www.anthropic.com/favicon.ico",
+        url: "https://www.anthropic.com/claude",
+        badges: ["freemium"],
+        tags: ["chatbot", "enterprise", "assistant"]
+    },
+    {
+        name: "Mistral AI",
+        description: "Open-source AI model provider offering powerful language models and APIs for developers. Known for efficient and high-performance models.",
+        categories: ["nlp", "coding"],
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Mistral_AI_logo_%282025%E2%80%93%29.svg/800px-Mistral_AI_logo_%282025%E2%80%93%29.svg.png",
+        url: "https://mistral.ai",
+        badges: ["featured"],
+        tags: ["language model", "open source", "API", "development"]
+    },
+    {
         name: "Gemini",
         description: "Google's multimodal AI model that can understand and generate text, code, images, and more.",
         categories: ["nlp", "vision"],
@@ -26,6 +44,15 @@ const aiTools = [
         url: "https://deepmind.google/technologies/gemini/",
         badges: ["featured", "trending", "freemium"],
         tags: ["multimodal", "language model", "code assistant"]
+    },
+    {
+        name: "Perplexity",
+        description: "AI-powered search engine that provides detailed, accurate answers with sources.",
+        categories: ["nlp", "research"],
+        logo: "https://www.perplexity.ai/favicon.ico",
+        url: "https://www.perplexity.ai",
+        badges: ["featured","trending", "freemium"],
+        tags: ["search", "research", "answers"]
     },
     {
         name: "Grok",
@@ -154,15 +181,6 @@ const aiTools = [
         tags: ["hand tracking", "gesture recognition", "interaction", "VR"]
     },
     {
-        name: "Mistral AI",
-        description: "Open-source AI model provider offering powerful language models and APIs for developers. Known for efficient and high-performance models.",
-        categories: ["nlp", "coding"],
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Mistral_AI_logo_%282025%E2%80%93%29.svg/800px-Mistral_AI_logo_%282025%E2%80%93%29.svg.png",
-        url: "https://mistral.ai",
-        badges: ["featured"],
-        tags: ["language model", "open source", "API", "development"]
-    },
-    {
         name: "Qwen",
         description: "Alibaba's advanced language model with strong capabilities in understanding and generating text. Supports multiple languages and tasks.",
         categories: ["nlp", "productivity"],
@@ -242,15 +260,6 @@ const aiTools = [
         url: "https://www.midjourney.com",
         badges: ["trending", "paid"],
         tags: ["art", "image generation", "creative"]
-    },
-    {
-        name: "Claude",
-        description: "Anthropic's conversational AI assistant for enterprise and research.",
-        categories: ["nlp", "research"],
-        logo: "https://www.anthropic.com/favicon.ico",
-        url: "https://www.anthropic.com/claude",
-        badges: ["freemium"],
-        tags: ["chatbot", "enterprise", "assistant"]
     },
     {
         name: "Llama 2",
@@ -647,6 +656,96 @@ const aiTools = [
         url: "https://auphonic.com",
         badges: ["freemium"],
         tags: ["audio", "post-production", "podcast"]
+    },
+    {
+        name: "Napkin AI",
+        description: "Free during beta – full functionality currently at no cost. Create up to 3 visuals on the Starter plan even outside beta.",
+        categories: ["design", "productivity"],
+        logo: "https://napkin.ai/favicon.ico",
+        url: "https://napkin.ai",
+        badges: ["freemium", "beta"],
+        tags: ["visuals", "design", "image generation"]
+    },
+    {
+        name: "Gamma",
+        description: "Free plan (no credit card) with 400 AI credits signup bonus. Enough to generate a couple of presentations. Unlimited users and basic exports included.",
+        categories: ["productivity", "business", "design"],
+        logo: "https://gamma.app/favicon.ico",
+        url: "https://gamma.app",
+        badges: ["freemium"],
+        tags: ["presentations", "business", "design", "productivity"]
+    },
+    {
+        name: "10Web",
+        description: "Offers a 7-day free trial with full features. Also has a free Personal plan option (with very limited resources) for testing.",
+        categories: ["productivity", "web-development"],
+        logo: "https://10web.io/favicon.ico",
+        url: "https://10web.io",
+        badges: ["freemium", "trial"],
+        tags: ["website builder", "web development", "hosting"]
+    },
+    {
+        name: "DALL-E 3",
+        description: "Free via Bing Image Creator – unlimited usage with a Microsoft account",
+        categories: ["vision", "design"],
+        logo: "https://bing.com/favicon.ico",
+        url: "https://www.bing.com/images/create",
+        badges: ["free"],
+        tags: ["image generation", "art", "creative", "bing"]
+    },
+    {
+        name: "Leonardo AI",
+        description: "Comprehensive free use ~150 tokens every 8 hours (about 15 image generations) perpetually.",
+        categories: ["vision", "design"],
+        logo: "https://leonardo.ai/favicon.ico",
+        url: "https://leonardo.ai",
+        badges: ["freemium"],
+        tags: ["image generation", "art", "creative"]
+    },
+    {
+        name: "Hailuo AI",
+        description: "Yes - 1000 initial credits + 100 daily free(roughly 3 free videos per day).",
+        categories: ["video", "design"],
+        logo: "https://hailuo.ai/favicon.ico",
+        url: "https://hailuo.ai",
+        badges: ["freemium"],
+        tags: ["video generation", "creative"]
+    },
+    {
+        name: "Runway ML",
+        description: "Yes - free tier (Basic) with 125 credits one-time, which equates to ~25 seconds of video gen and some image tools.",
+        categories: ["video", "design"],
+        logo: "https://runwayml.com/favicon.ico",
+        url: "https://runwayml.com",
+        badges: ["freemium"],
+        tags: ["video generation", "image tools", "creative"]
+    },
+    {
+        name: "Kling",
+        description: "Yes - 66 free credits daily (roughly three 5 sec videos per day)",
+        categories: ["video", "design"],
+        logo: "https://kling.ai/favicon.ico",
+        url: "https://kling.ai",
+        badges: ["freemium"],
+        tags: ["video generation", "creative"]
+    },
+    {
+        name: "Pika Labs",
+        description: "Yes - free Basic plan with 80 video credits per month (~30 seconds of video effects total).",
+        categories: ["video", "design"],
+        logo: "https://pika.art/favicon.ico",
+        url: "https://pika.art",
+        badges: ["freemium"],
+        tags: ["video effects", "creative"]
+    },
+    {
+        name: "Cursor AI",
+        description: "Yes - the Cursor code editor is free to download and offers a two week free trail for all its pro features. For the free version, you can have 2000 completions for free.",
+        categories: ["coding", "productivity"],
+        logo: "https://cursor.sh/favicon.ico",
+        url: "https://cursor.sh",
+        badges: ["free", "trial"],
+        tags: ["code editor", "coding assistant", "IDE"]
     },
     {
         name: "Fotor GoArt",
@@ -1097,15 +1196,6 @@ const aiTools = [
         url: "https://github.com/features/preview/copilot-x",
         badges: ["featured", "paid"],
         tags: ["coding", "development", "programming"]
-    },
-    {
-        name: "Perplexity AI",
-        description: "AI-powered search engine that provides detailed, accurate answers with sources.",
-        categories: ["nlp", "research"],
-        logo: "https://www.perplexity.ai/favicon.ico",
-        url: "https://www.perplexity.ai",
-        badges: ["featured","trending", "freemium"],
-        tags: ["search", "research", "answers"]
     },
     {
         name: "Leonardo.AI",
@@ -1725,7 +1815,7 @@ const aiTools = [
         name: "Anki",
         description: "AI-powered flashcard and spaced repetition learning platform for efficient memorization.",
         categories: ["education", "productivity"],
-        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaR3QmptY_rfUwFXShga5a-_MhQ8wzJrkRtQ&s",
+        logo: "https://apps.ankiweb.net/logo.svg",
         url: "https://apps.ankiweb.net",
         badges: ["featured", "free"],
         tags: ["flashcards", "learning", "spaced repetition", "education"]
@@ -1747,7 +1837,43 @@ const aiTools = [
         url: "https://app.quadratichq.com/",
         badges: ["featured", "freemium"],
         tags: ["spreadsheet", "data analysis", "automation", "productivity"]
-    }
+    },
+    {
+        name: "AnkiDecks",
+        description: "AI-powered flashcard generator that converts notes, PDFs, and other content into Anki flashcards. Features automatic image occlusion and supports 50+ languages.",
+        categories: ["education", "productivity"],
+        logo: "https://anki-decks.com/static/images/favicons/favicon.cb6c6b1d29c2.ico",
+        url: "https://anki-decks.com",
+        badges: ["featured", "freemium"],
+        tags: ["flashcards", "learning", "education", "spaced repetition"]
+    },
+    {
+        name: "Lovable",
+        description: "AI-powered full stack development platform that helps turn ideas into apps in seconds. Features include note-taking, social media dashboards, real estate listings, and habit tracking capabilities.",
+        categories: ["productivity", "coding"],
+        logo: "https://sacra.cdn.prismic.io/sacra/Z4V6ApbqstJ99Zom_lovablelogo.svg",
+        url: "https://lovable.dev",
+        badges: ["featured", "freemium"],
+        tags: ["app development", "full stack", "productivity", "automation"]
+    },
+    {
+        name: "Quadratic",
+        description: "AI-powered spreadsheet and data analysis platform with advanced automation capabilities.",
+        categories: ["productivity", "data-science"],
+        logo: "https://www.quadratichq.com/images/og-image.png",
+        url: "https://app.quadratichq.com/",
+        badges: ["featured", "freemium"],
+        tags: ["spreadsheet", "data analysis", "automation", "productivity"]
+    },
+    {
+        name: "Google AI Studio",
+        description: "A web-based tool for prototyping and experimenting with Google\'s generative AI models.",
+        categories: ["coding", "productivity", "nlp"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgSyDw5dgzQ31DkG4WLNr4e11unIerY_dNmw&s", 
+        url: "https://aistudio.google.com/prompts/new_chat",
+        badges: ["freemium", "featured"],
+        tags: ["generative AI", "prototyping", "experimentation", "google"]
+    },
 ];
 
 // DOM Elements
