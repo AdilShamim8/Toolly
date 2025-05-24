@@ -145,6 +145,24 @@ const aiTools = [
         tags: ["customer feedback", "sentiment analysis", "customer experience", "analytics"]
     },
     {
+        name: "Bolt",
+        description: "AI-powered platform for building, running, and deploying full-stack web and mobile applications with an intuitive interface.",
+        categories: ["coding", "productivity"],
+        logo: "https://pbs.twimg.com/profile_images/1880702021122342912/fe9TlQqJ_400x400.jpg",
+        url: "https://bolt.new",
+        badges: ["featured", "trending"],
+        tags: ["web development", "mobile apps", "full-stack", "deployment"]
+    },
+    {
+        name: "Windsurf",
+        description: "Purpose-built IDE with AI capabilities for enhanced development workflow, featuring smart code suggestions, real-time collaboration, and advanced debugging tools.",
+        categories: ["coding", "productivity"],
+        logo: "https://windsurf.com/favicon.ico",
+        url: "https://windsurf.com",
+        badges: ["featured", "trending"],
+        tags: ["IDE", "development", "collaboration", "debugging"]
+    },
+    {
         name: "Quadratic",
         description: "AI-powered spreadsheet and data analysis platform with advanced automation capabilities.",
         categories: ["productivity", "data-science"],
