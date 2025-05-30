@@ -199,6 +199,24 @@ const aiTools = [
         tags: ["code generation", "programming", "openai", "development"]
     },
     {
+        name: "n8n.io",
+        description: "Open-source workflow automation platform that allows you to connect different services and automate tasks. Features a visual workflow editor and extensive integration capabilities.",
+        categories: ["productivity", "coding"],
+        logo: "https://n8n.io/favicon.ico",
+        url: "https://n8n.io",
+        badges: ["open source", "freemium"],
+        tags: ["workflow automation", "integration", "open source", "productivity"]
+    },
+    {
+        name: "Make.com",
+        description: "Powerful automation platform (formerly Integromat) that enables complex workflow automation between apps and services. Features visual scenario builder and advanced automation capabilities.",
+        categories: ["productivity", "business"],
+        logo: "https://www.make.com/favicon.ico",
+        url: "https://www.make.com",
+        badges: ["featured", "freemium"],
+        tags: ["automation", "workflow", "integration", "business"]
+    },
+    {
         name: "Codeium",
         description: "Free AI code completion tool that works across multiple IDEs. Offers intelligent code suggestions and real-time assistance.",
         categories: ["coding"],
