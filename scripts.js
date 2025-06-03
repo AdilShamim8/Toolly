@@ -194,7 +194,7 @@ const aiTools = [
         description: "Advanced AI system that translates natural language to code. Powers GitHub Copilot and provides powerful code generation capabilities.",
         categories: ["coding", "nlp"],
         logo: "https://openai.com/favicon.ico",
-        url: "https://openai.com/blog/openai-codex",
+        url: "https://openai.com/codex",
         badges: ["featured"],
         tags: ["code generation", "programming", "openai", "development"]
     },
@@ -1856,6 +1856,33 @@ const aiTools = [
         badges: ["featured", "freemium"],
         tags: ["flashcards", "learning", "education", "spaced repetition"]
     },
+    {
+        name: "Jules Coding Agent",
+        description: "Google's AI coding assistant that helps developers write, understand, and debug code more efficiently.",
+        categories: ["coding", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvAXEz4EsU3RQHCV96BAfJusei09ZBjQOG2g&s",
+        url: "https://jules.google",
+        badges: ["featured", "trending"],
+        tags: ["code assistant", "development", "google", "productivity"]
+    },
+    {
+        name: "Firebase Studio",
+        description: "Modern Firebase management interface for developers to manage their Firebase projects and resources.",
+        categories: ["coding", "productivity"],
+        logo: "https://firebase.google.com/favicon.ico",
+        url: "https://firebase.studio",
+        badges: ["featured"],
+        tags: ["firebase", "development", "database", "management"]
+    },
+    {
+        name: "Stitch",
+        description: "Google's AI-powered code stitching tool that helps developers combine and integrate code snippets efficiently.",
+        categories: ["coding", "productivity"],
+        logo: "https://cdn-b.saashub.com/images/app/service_logos/292/wxq6mkcw6vro/large.png?1747867235",
+        url: "https://stitch.withgoogle.com",
+        badges: ["featured", "trending"],
+        tags: ["code integration", "development", "google", "productivity"]
+    }
 ];
 
 // DOM Elements
