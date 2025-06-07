@@ -1882,6 +1882,15 @@ const aiTools = [
         url: "https://stitch.withgoogle.com",
         badges: ["featured", "trending"],
         tags: ["code integration", "development", "google", "productivity"]
+    },
+    {
+        name: "Veo",
+        description: "Google DeepMind's state-of-the-art video generation model that creates high-quality videos with realistic physics and audio.",
+        categories: ["video", "design"],
+        logo: "https://d4.alternativeto.net/wpYRDF072HNknWU2_fE_Q9uWeROKvjivu4EO_2tf2Wk/rs:fit:280:280:0/g:ce:0:0/exar:1/YWJzOi8vZGlzdC9pY29ucy9nb29nbGUtdmVvXzIzMTY2MC5wbmc.png",
+        url: "https://deepmind.google/models/veo/",
+        badges: ["featured", "trending"],
+        tags: ["video generation", "AI video", "creative", "deepmind"]
     }
 ];
 
