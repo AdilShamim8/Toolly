@@ -1891,6 +1891,114 @@ const aiTools = [
         url: "https://deepmind.google/models/veo/",
         badges: ["featured", "trending"],
         tags: ["video generation", "AI video", "creative", "deepmind"]
+    },
+    {
+        name: "ExplainPaper",
+        description: "AI-powered tool that helps you understand research papers by explaining complex concepts and highlighting key points.",
+        categories: ["education", "research"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrPqGF3zi0q1Pgw4_EyBI_du612rwKGiiBMQ&s",
+        url: "https://www.explainpaper.com",
+        badges: ["featured", "freemium"],
+        tags: ["research papers", "academic", "learning", "education"]
+    },
+    {
+        name: "Scholarcy",
+        description: "AI-powered research assistant that summarizes academic papers and extracts key information.",
+        categories: ["education", "research"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6VO8stg6QQk92yLciCx23dH1e6-RRR6g9gA&s",
+        url: "https://www.scholarcy.com",
+        badges: ["freemium"],
+        tags: ["research", "summarization", "academic", "education"]
+    },
+    {
+        name: "AudioPen",
+        description: "AI-powered tool that converts your voice notes into well-written text, perfect for students and researchers.",
+        categories: ["education", "audio"],
+        logo: "https://ph-files.imgix.net/c63a9ef1-ebdd-48c9-97b7-bd1233cee4b3.png?auto=format",
+        url: "https://audiopen.ai",
+        badges: ["freemium"],
+        tags: ["voice notes", "transcription", "education", "productivity"]
+    },
+    {
+        name: "RecCloud",
+        description: "AI-powered video and audio processing platform with transcription, translation, and summarization capabilities.",
+        categories: ["education", "audio", "video"],
+        logo: "https://play-lh.googleusercontent.com/ZPj9rngiNXll2dLtxEnsmRg-sMCJxrrcy7WZvMOb2LKTekZvEBHMiHFLp6OZJxFIfEY",
+        url: "https://reccloud.com",
+        badges: ["freemium"],
+        tags: ["video processing", "audio processing", "transcription", "education"]
+    },
+    {
+        name: "Gradescope",
+        description: "AI-powered grading and assessment platform that helps educators grade assignments efficiently and provide detailed feedback.",
+        categories: ["education"],
+        logo: "https://gradescope.com/favicon.ico",
+        url: "https://gradescope.com",
+        badges: ["featured", "paid"],
+        tags: ["grading", "assessment", "education", "feedback"]
+    },
+    {
+        name: "QuizGecko",
+        description: "AI-powered quiz generator that creates engaging quizzes from any text or content, perfect for educators and students.",
+        categories: ["education"],
+        logo: "https://quizgecko.com/favicon.ico",
+        url: "https://quizgecko.com",
+        badges: ["freemium"],
+        tags: ["quiz generation", "education", "assessment", "learning"]
+    },
+    {
+        name: "OpExams",
+        description: "AI-powered exam platform that helps teachers create, administer, and grade exams with advanced proctoring and analytics.",
+        categories: ["education"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLak8iDvrazgH4wwntjoh3NRAMEOXiDXPXQA&s",
+        url: "https://opexams.com",
+        badges: ["featured", "freemium"],
+        tags: ["exams", "assessment", "grading", "education", "proctoring"]
+    },
+    {
+        name: "Curipod",
+        description: "AI-powered K-12 curriculum platform that creates interactive lessons with real-time feedback and student engagement tools.",
+        categories: ["education"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrR6vGrv6JQhf6QbiwNaW4ddkEzLptS-SANA&s",
+        url: "https://curipod.com",
+        badges: ["featured", "freemium"],
+        tags: ["curriculum", "interactive lessons", "student engagement", "education", "K-12"]
+    },
+    {
+        name: "TeachThought",
+        description: "Educational platform providing AI-powered teaching resources, critical thinking tools, and digital learning strategies.",
+        categories: ["education", "research"],
+        logo: "https://www.teachthought.com/favicon.ico",
+        url: "https://www.teachthought.com",
+        badges: ["freemium"],
+        tags: ["teaching resources", "critical thinking", "digital learning", "education"]
+    },
+    {
+        name: "Durable",
+        description: "AI-powered website builder that creates complete business websites in seconds, including content, branding, and marketing tools.",
+        categories: ["design", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXFRkJkBDVRQRH07_sDnPC5GwMA5v05u5SOw&s",
+        url: "https://durable.co",
+        badges: ["featured", "freemium"],
+        tags: ["website builder", "business", "AI website", "marketing"]
+    },
+    {
+        name: "Hostinger Website Builder",
+        description: "AI-powered website builder with drag-and-drop editor, 150+ templates, and built-in marketing tools for businesses.",
+        categories: ["design", "productivity"],
+        logo: "https://www.hostinger.com/favicon.ico",
+        url: "https://www.hostinger.com/website-builder",
+        badges: ["featured", "freemium"],
+        tags: ["website builder", "hosting", "templates", "marketing"]
+    },
+    {
+        name: "Framer",
+        description: "Advanced design and prototyping tool with AI capabilities for creating interactive websites and applications.",
+        categories: ["design", "productivity"],
+        logo: "https://iaperfecta.com/wp-content/uploads/2024/10/framer.png",
+        url: "https://www.framer.com",
+        badges: ["featured", "freemium"],
+        tags: ["design", "prototyping", "interactive", "UI/UX"]
     }
 ];
 
