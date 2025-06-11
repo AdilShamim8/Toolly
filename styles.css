@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 :root {
     --primary-color: #B0DB9C;
     --secondary-color: #8fc77d;
@@ -36,10 +42,9 @@
     --sidebar-about-bg: #334155;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+html,
+body {
+    height: 100%;
 }
 
 body {
@@ -47,11 +52,34 @@ body {
     background: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
+    overflow-y: auto; /* Enable vertical scrolling for the body */
+}
+
+/* Custom Scrollbar Styles */
+/* For WebKit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 10px; /* width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: var(--main-bg); /* Color of the tracking area */
+    border-radius: 10px; /* Rounded corners for the track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #000; /* Color of the scroll thumb */
+    border-radius: 10px; /* Rounded corners for the thumb */
+    border: 2px solid var(--main-bg); /* Space around thumb */
+}
+
+/* For Firefox */
+html {
+    scrollbar-width: thin; /* "auto" or "thin" */
+    scrollbar-color: #000 var(--main-bg); /* thumb color track color */
 }
 
 .layout {
     display: flex;
-    min-height: 100vh;
     background: var(--main-bg);
 }
 
@@ -66,6 +94,7 @@ body {
     position: sticky;
     top: 0;
     height: 100vh;
+    overflow-y: auto; /* Allow internal scrolling for sidebar content */
 }
 
 .sidebar-header {
@@ -520,18 +549,55 @@ body {
     }
     .sidebar {
         width: 100%;
-        max-width: 280px;
+        max-width: 250px;
+        padding: 0.6rem;
+    }
+    .sidebar-header {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.3rem;
+        padding: 0;
+        margin-bottom: 0.4rem;
     }
     .sidebar-header h2 {
-        font-size: 1.1rem;
+        font-size: 1.4rem;
+        margin-top: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .logo {
+        max-height: 30px;
+        flex-shrink: 0;
+    }
+    .sidebar-categories {
+        margin-bottom: 0.6rem;
+    }
+    .sidebar-categories h3,
+    .sidebar-about h3 {
+        font-size: 1.05rem;
+        margin-bottom: 0.2rem;
+    }
+    .sidebar-categories ul {
+        padding: 0;
+        margin: 0;
     }
     .sidebar-categories li {
-        padding: 0.6rem 0.8rem;
-        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+        line-height: 1.6;
+        word-wrap: break-word;
     }
     .sidebar-about {
-        padding: 0.8rem;
-        font-size: 0.85rem;
+        padding: 1.2rem;
+    }
+    .sidebar-about p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+    .copyright {
+        font-size: 0.65rem;
     }
     .back-to-top {
         right: 0.8rem;
@@ -568,6 +634,13 @@ body {
     }
     .tools-grid {
         margin-top: 0.8rem;
+    }
+    .sidebar-toggle {
+        width: 44px;
+        height: 44px;
+        font-size: 1.5rem;
+        top: 0.8rem;
+        left: 0.8rem;
     }
 }
 
