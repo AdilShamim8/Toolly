@@ -1,4 +1,4 @@
-**ToolVault**
+**Toolly**
 
 *"The tools you need to build the future, all in one place.*
 
@@ -27,7 +27,7 @@ In the spirit of relentless innovation, ToolVault was born from a belief: that t
 1. **Clone the repo**
 
    ```bash
-   git clone https://github.com/AdilShamim8/ToolVault.git
+   git clone https://github.com/AdilShamim8/Toolly.git
    cd ToolVault
    ```
 2. **Install**
