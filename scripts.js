@@ -136,15 +136,6 @@ const aiTools = [
         tags: ["visuals", "design", "image generation"]
     },
     {
-        name: "Lovable",
-        description: "AI-powered customer feedback and sentiment analysis platform for improving customer experience.",
-        categories: ["business", "nlp"],
-        logo: "https://lovable.ai/favicon.ico",
-        url: "https://lovable.ai",
-        badges: ["featured", "freemium"],
-        tags: ["customer feedback", "sentiment analysis", "customer experience", "analytics"]
-    },
-    {
         name: "Bolt",
         description: "AI-powered platform for building, running, and deploying full-stack web and mobile applications with an intuitive interface.",
         categories: ["coding", "productivity"],
@@ -356,9 +347,72 @@ const aiTools = [
         description: "Meta's open large language model for research and commercial use.",
         categories: ["nlp", "research"],
         logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKrj0iunR9XUI3h1ZaXpx14-6dIcCX_Rpm5w&s",
-        url: "https://ai.meta.com/llama/",
-        badges: ["open source"],
-        tags: ["language model", "meta", "open source"]
+        url: "https://ai.meta.com/llama",
+        badges: ["open source", "featured"],
+        tags: ["language model", "open source", "meta", "research"]
+    },
+    {
+        name: "Poppy AI",
+        description: "AI-powered platform for creating and managing AI agents and workflows with a focus on automation and productivity.",
+        categories: ["productivity", "coding"],
+        logo: "https://app.getpoppy.ai/favicon.ico",
+        url: "https://app.getpoppy.ai",
+        badges: ["featured", "freemium"],
+        tags: ["AI agents", "automation", "workflow", "productivity"]
+    },
+    {
+        name: "UX Pilot",
+        description: "AI-powered UX design platform that helps create and optimize user experiences with intelligent design suggestions and automation.",
+        categories: ["design", "productivity"],
+        logo: "https://uxpilot.ai/favicon.ico",
+        url: "https://uxpilot.ai",
+        badges: ["featured", "freemium"],
+        tags: ["UX design", "design automation", "user experience", "productivity"]
+    },
+    {
+        name: "Relevance AI",
+        description: "Platform for building and deploying AI agents and workflows with a focus on business automation and integration.",
+        categories: ["productivity", "coding"],
+        logo: "https://assets-developers.ringcentral.com/app/logo/Ym_3UYKiRK-yBt41UigU3w~dqIC9nP0E4RdbDLu8B2F43/045ff187-0842-44df-924d-ed467df506e1.jpg",
+        url: "https://relevanceai.com",
+        badges: ["featured", "freemium"],
+        tags: ["AI agents", "automation", "business", "integration"]
+    },
+    {
+        name: "Recraft",
+        description: "AI-powered design platform for creating and editing visual content with advanced automation capabilities.",
+        categories: ["design", "productivity"],
+        logo: "https://ph-files.imgix.net/39d1d4eb-e5e5-4125-8f98-24b9cfa940b6.png?auto=format",
+        url: "https://www.recraft.ai",
+        badges: ["featured", "freemium"],
+        tags: ["design", "visual content", "automation", "creative"]
+    },
+    {
+        name: "Promptmetheus",
+        description: "AI prompt engineering and optimization platform for maximizing the effectiveness of AI interactions.",
+        categories: ["productivity", "nlp"],
+        logo: "https://promptmetheus.com/favicon.ico",
+        url: "https://promptmetheus.com",
+        badges: ["featured", "freemium"],
+        tags: ["prompt engineering", "AI optimization", "productivity"]
+    },
+    {
+        name: "Postman AI Agent Builder",
+        description: "AI-powered tool for building and testing API agents within the Postman platform.",
+        categories: ["coding", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmtT98yfidU8hGRVTgArB2jtr4hxWjvFYr4g&s",
+        url: "https://www.postman.com/product/ai-agent-builder",
+        badges: ["featured", "freemium"],
+        tags: ["API", "development", "testing", "automation"]
+    },
+    {
+        name: "Lovable",
+        description: "AI-powered platform for creating and managing customer support and engagement workflows.",
+        categories: ["productivity", "nlp"],
+        logo: "https://lovable.dev/favicon.ico",
+        url: "https://lovable.dev",
+        badges: ["featured", "freemium"],
+        tags: ["customer support", "engagement", "automation", "productivity"]
     },
     {
         name: "Canva Magic Studio",
