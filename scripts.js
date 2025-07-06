@@ -2053,6 +2053,42 @@ const aiTools = [
         url: "https://www.framer.com",
         badges: ["featured", "freemium"],
         tags: ["design", "prototyping", "interactive", "UI/UX"]
+    },
+    {
+        name: "NotebookLM",
+        description: "Google's AI-powered notebook that helps you research, learn, and create with your documents. Combines the power of AI with your personal documents for enhanced learning and productivity.",
+        categories: ["productivity", "education", "nlp"],
+        logo: "https://notebooklm.google/_/static/branding/v4/light_mode/notebook-logo.svg",
+        url: "https://notebooklm.google",
+        badges: ["featured", "trending", "freemium"],
+        tags: ["notebook", "research", "learning", "documentation", "google"]
+    },
+    {
+        name: "Fathom",
+        description: "AI meeting assistant that records, transcribes, highlights, and summarizes your meetings so you can focus on the conversation. Works with Zoom, Google Meet, and Microsoft Teams.",
+        categories: ["productivity", "audio", "business"],
+        logo: "https://www.fathom.video/favicon.ico",
+        url: "https://www.fathom.video",
+        badges: ["featured", "trending", "freemium"],
+        tags: ["meeting assistant", "transcription", "summarization", "collaboration", "productivity"]
+    },
+    {
+        name: "Nyota AI",
+        description: "AI-powered platform for creating and managing intelligent workflows and automation solutions for businesses and individuals.",
+        categories: ["productivity", "business", "coding"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR84Fp_XiCSNk7e3LjZejl6VqXHNoX_TtpH_g&s",
+        url: "https://www.nyota.ai",
+        badges: ["featured", "freemium"],
+        tags: ["workflow automation", "business", "productivity", "AI agents"]
+    },
+    {
+        name: "Looka",
+        description: "AI-powered logo and brand design platform that creates professional logos, brand kits, and marketing materials in minutes.",
+        categories: ["design", "business", "marketing"],
+        logo: "https://looka.com/favicon.ico",
+        url: "https://looka.com",
+        badges: ["featured", "freemium"],
+        tags: ["logo design", "branding", "marketing", "design", "business"]
     }
 ];
 
