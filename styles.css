@@ -704,12 +704,23 @@ html {
     font-size: 1.2rem;
 }
 
+.sidebar-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Adjust as needed for vertical space */
+  margin-bottom: 12px;
+}
+
 .logo {
-    max-height: 50px;
-    width: auto;
-    margin-bottom: 10px;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%; /* Optional: makes it circular */
+  background: #fff;   /* Optional: white background for contrast */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06); /* Optional: subtle shadow */
 }
 
 .header-content {
@@ -717,4 +728,29 @@ html {
     flex-direction: column;
     align-items: flex-start;
     gap: 5px;
+} 
+
+@media (max-width: 700px) {
+  .sidebar-logo-container {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    overflow: hidden;
+  }
+  .logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: none;
+  }
 } 
