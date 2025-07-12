@@ -2089,6 +2089,78 @@ const aiTools = [
         url: "https://looka.com",
         badges: ["featured", "freemium"],
         tags: ["logo design", "branding", "marketing", "design", "business"]
+    },
+    {
+        name: "Shortwave",
+        description: "AI-powered email client that helps you organize, write, search, and schedule emails with advanced AI assistance. Features intelligent inbox organization, AI-powered search, and seamless team collaboration.",
+        categories: ["productivity", "business", "nlp"],
+        logo: "https://www.shortwave.com/favicon.ico",
+        url: "https://www.shortwave.com",
+        badges: ["featured", "trending", "freemium"],
+        tags: ["email", "productivity", "AI assistant", "inbox organization", "team collaboration"]
+    },
+    {
+        name: "Fyxer",
+        description: "AI executive assistant that helps you get back one hour every day by organizing emails, drafting responses, and taking meeting notes. Works seamlessly with Gmail and Outlook.",
+        categories: ["productivity", "business", "nlp"],
+        logo: "https://images.prismic.io/sacra/aENuUrh8WN-LVyq0_fyxer-ai-logo.webp?auto=format,compress",
+        url: "https://www.fyxer.com",
+        badges: ["featured", "trending", "freemium"],
+        tags: ["email assistant", "meeting notes", "productivity", "executive assistant", "automation"]
+    },
+    {
+        name: "HubSpot AI Email Writer",
+        description: "AI-powered email writing tool that helps create compelling marketing emails, subject lines, and content that resonates with your audience. Integrated with HubSpot's marketing platform.",
+        categories: ["marketing", "nlp", "business"],
+        logo: "https://www.hubspot.com/favicon.ico",
+        url: "https://www.hubspot.com/products/marketing/ai-email-writer",
+        badges: ["featured", "freemium"],
+        tags: ["email marketing", "content creation", "marketing", "hubspot", "copywriting"]
+    },
+    {
+        name: "Clockwise",
+        description: "AI calendar assistant that optimizes your schedule by automatically finding the best meeting times, creating focus time, and reducing calendar conflicts for better productivity.",
+        categories: ["productivity", "business"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv-Cad_2bWAL4DNjNvrDeicGavpVPstcEI6w&s",
+        url: "https://www.getclockwise.com",
+        badges: ["featured", "freemium"],
+        tags: ["calendar", "scheduling", "productivity", "meeting optimization", "time management"]
+    },
+    {
+        name: "Reclaim",
+        description: "AI-powered calendar and task management platform that automatically schedules your work, creates focus time, and helps you maintain work-life balance through intelligent time blocking.",
+        categories: ["productivity", "business"],
+        logo: "https://avatars.githubusercontent.com/u/52470885?s=280&v=4",
+        url: "https://reclaim.ai",
+        badges: ["featured", "freemium"],
+        tags: ["calendar", "task management", "time blocking", "productivity", "work-life balance"]
+    },
+    {
+        name: "Udio",
+        description: "AI music generation platform that creates original songs and soundtracks from text prompts. Features high-quality audio generation with customizable styles and genres.",
+        categories: ["audio", "design"],
+        logo: "https://www.udio.com/favicon.ico",
+        url: "https://www.udio.com",
+        badges: ["featured", "trending", "freemium"],
+        tags: ["music generation", "audio", "creative", "soundtracks", "AI music"]
+    },
+    {
+        name: "Airops",
+        description: "AI-powered data operations platform that automates data workflows, cleaning, and analysis. Helps businesses streamline their data processes and improve data quality.",
+        categories: ["data-science", "business", "productivity"],
+        logo: "https://cdn2.futurepedia.io/259acf3af47c9b45705dfffdf954aab0fdb15781-128x128.png?w=256",
+        url: "https://www.airops.com",
+        badges: ["featured", "freemium"],
+        tags: ["data operations", "automation", "data cleaning", "workflow", "analytics"]
+    },
+    {
+        name: "AdCreative.ai",
+        description: "AI-powered advertising creative platform that generates high-converting ad creatives, social media posts, and marketing visuals. Optimizes designs for better performance and engagement.",
+        categories: ["design", "marketing", "business"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKGXLdVkeAExPAQQgiKjNOk_dtf5Vq_H3OOg&s",
+        url: "https://www.adcreative.ai",
+        badges: ["featured", "freemium"],
+        tags: ["ad creatives", "marketing", "design", "social media", "conversion optimization"]
     }
 ];
 
