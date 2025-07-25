@@ -2169,12 +2169,30 @@ const toolsGrid = document.getElementById('toolsGrid');
 const searchInput = document.getElementById('searchInput');
 const backToTopButton = document.getElementById('backToTop');
 const toolCount = document.getElementById('toolCount');
+const totalToolCount = document.getElementById('totalToolCount');
+const featuredCount = document.getElementById('featuredCount');
 const categoryList = document.getElementById('categoryList');
 const sortSelect = document.getElementById('sortSelect');
+const loadingOverlay = document.getElementById('loadingOverlay');
+const emptyState = document.getElementById('emptyState');
+const viewButtons = document.querySelectorAll('.view-btn');
 
 let currentCategory = 'all';
 let currentSearch = '';
 let currentSort = 'default';
+let currentView = 'grid';
+
+// Initialize stats
+function initializeStats() {
+    if (totalToolCount) {
+        totalToolCount.textContent = aiTools.length;
+    }
+    
+    if (featuredCount) {
+        const featuredTools = aiTools.filter(tool => tool.badges && tool.badges.includes('featured'));
+        featuredCount.textContent = featuredTools.length;
+    }
+}
 
 function renderTools() {
     // Filter
@@ -2186,81 +2204,183 @@ function renderTools() {
             (tool.tags && tool.tags.some(tag => tag.toLowerCase().includes(currentSearch)));
         return matchesCategory && matchesSearch;
     });
+    
     // Sort
     if (currentSort === 'name') {
         filtered.sort((a, b) => a.name.localeCompare(b.name));
     } else if (currentSort === 'featured') {
         filtered.sort((a, b) => (b.badges?.includes('featured') ? 1 : 0) - (a.badges?.includes('featured') ? 1 : 0));
     }
+    
     // Render
     toolsGrid.innerHTML = '';
-    filtered.forEach(tool => toolsGrid.appendChild(createToolCard(tool)));
-    toolCount.textContent = `Showing ${filtered.length} tool${filtered.length !== 1 ? 's' : ''}`;
+    
+    // Show/hide empty state
+    if (filtered.length === 0) {
+        if (emptyState) emptyState.style.display = 'block';
+    } else {
+        if (emptyState) emptyState.style.display = 'none';
+        filtered.forEach(tool => toolsGrid.appendChild(createToolCard(tool)));
+    }
+    
+    // Update count
+    if (toolCount) {
+        toolCount.textContent = `Showing ${filtered.length} tool${filtered.length !== 1 ? 's' : ''}`;
+    }
 }
 
 function createToolCard(tool) {
     const card = document.createElement('div');
     card.className = 'tool-card';
-    // Header
+    
+    // Create header with logo and name
     const header = document.createElement('div');
     header.className = 'tool-header';
+    
     const logo = document.createElement('img');
     logo.className = 'tool-logo';
     logo.src = tool.logo;
     logo.alt = `${tool.name} logo`;
+    logo.onerror = function() {
+        // Fallback for broken images
+        this.src = 'logo/favicon.svg';
+    };
     header.appendChild(logo);
+    
     const name = document.createElement('h3');
     name.className = 'tool-name';
     name.textContent = tool.name;
     header.appendChild(name);
-    card.appendChild(header);
-    // Badges
-    if (tool.badges && tool.badges.length) {
-        const badges = document.createElement('div');
-        badges.className = 'tool-badges';
-        tool.badges.forEach(badge => {
-            const badgeEl = document.createElement('span');
-            badgeEl.className = `badge ${badge}`;
-            badgeEl.textContent = badge.charAt(0).toUpperCase() + badge.slice(1);
-            badges.appendChild(badgeEl);
-        });
-        card.appendChild(badges);
+    
+    // For list view, we'll structure differently
+    if (currentView === 'list') {
+        card.appendChild(header);
+        
+        const content = document.createElement('div');
+        content.className = 'tool-content';
+        
+        // Badges
+        if (tool.badges && tool.badges.length) {
+            const badges = document.createElement('div');
+            badges.className = 'tool-badges';
+            tool.badges.forEach(badge => {
+                const badgeEl = document.createElement('span');
+                badgeEl.className = `badge ${badge}`;
+                badgeEl.textContent = badge.charAt(0).toUpperCase() + badge.slice(1);
+                badges.appendChild(badgeEl);
+            });
+            content.appendChild(badges);
+        }
+        
+        // Description
+        const desc = document.createElement('p');
+        desc.className = 'tool-description';
+        desc.textContent = tool.description;
+        content.appendChild(desc);
+        
+        // Tags container
+        const tagsContainer = document.createElement('div');
+        tagsContainer.className = 'tags-container';
+        
+        // Category tags
+        if (tool.categories && tool.categories.length) {
+            const tags = document.createElement('div');
+            tags.className = 'tool-tags';
+            tool.categories.forEach(cat => {
+                const tag = document.createElement('span');
+                tag.className = 'tag';
+                tag.textContent = categoryLabel(cat);
+                tags.appendChild(tag);
+            });
+            tagsContainer.appendChild(tags);
+        }
+        
+        // Regular tags
+        if (tool.tags && tool.tags.length) {
+            const tags = document.createElement('div');
+            tags.className = 'tool-tags';
+            tool.tags.slice(0, 3).forEach(t => { // Limit to 3 tags in list view
+                const tag = document.createElement('span');
+                tag.className = 'tag';
+                tag.textContent = t;
+                tags.appendChild(tag);
+            });
+            tagsContainer.appendChild(tags);
+        }
+        
+        content.appendChild(tagsContainer);
+        
+        // Footer with link
+        const footer = document.createElement('div');
+        footer.className = 'tool-footer';
+        
+        const link = document.createElement('a');
+        link.className = 'tool-link';
+        link.href = tool.url;
+        link.target = '_blank';
+        link.textContent = 'Visit Site';
+        footer.appendChild(link);
+        
+        content.appendChild(footer);
+        card.appendChild(content);
+    } else {
+        // Grid view (original layout)
+        card.appendChild(header);
+        
+        // Badges
+        if (tool.badges && tool.badges.length) {
+            const badges = document.createElement('div');
+            badges.className = 'tool-badges';
+            tool.badges.forEach(badge => {
+                const badgeEl = document.createElement('span');
+                badgeEl.className = `badge ${badge}`;
+                badgeEl.textContent = badge.charAt(0).toUpperCase() + badge.slice(1);
+                badges.appendChild(badgeEl);
+            });
+            card.appendChild(badges);
+        }
+        
+        // Description
+        const desc = document.createElement('p');
+        desc.className = 'tool-description';
+        desc.textContent = tool.description;
+        card.appendChild(desc);
+        
+        // Category tags
+        if (tool.categories && tool.categories.length) {
+            const tags = document.createElement('div');
+            tags.className = 'tool-tags';
+            tool.categories.forEach(cat => {
+                const tag = document.createElement('span');
+                tag.className = 'tag';
+                tag.textContent = categoryLabel(cat);
+                tags.appendChild(tag);
+            });
+            card.appendChild(tags);
+        }
+        
+        // Regular tags
+        if (tool.tags && tool.tags.length) {
+            const tags = document.createElement('div');
+            tags.className = 'tool-tags';
+            tool.tags.forEach(t => {
+                const tag = document.createElement('span');
+                tag.className = 'tag';
+                tag.textContent = t;
+                tags.appendChild(tag);
+            });
+            card.appendChild(tags);
+        }
+        
+        // Link
+        const link = document.createElement('a');
+        link.className = 'tool-link';
+        link.href = tool.url;
+        link.target = '_blank';
+        link.textContent = 'Visit Site';
+        card.appendChild(link);
     }
-    // Description
-    const desc = document.createElement('p');
-    desc.className = 'tool-description';
-    desc.textContent = tool.description;
-    card.appendChild(desc);
-    // Tags
-    if (tool.categories && tool.categories.length) {
-        const tags = document.createElement('div');
-        tags.className = 'tool-tags';
-        tool.categories.forEach(cat => {
-            const tag = document.createElement('span');
-            tag.className = 'tag';
-            tag.textContent = categoryLabel(cat);
-            tags.appendChild(tag);
-        });
-        card.appendChild(tags);
-    }
-    if (tool.tags && tool.tags.length) {
-        const tags = document.createElement('div');
-        tags.className = 'tool-tags';
-        tool.tags.forEach(t => {
-            const tag = document.createElement('span');
-            tag.className = 'tag';
-            tag.textContent = t;
-            tags.appendChild(tag);
-        });
-        card.appendChild(tags);
-    }
-    // Link
-    const link = document.createElement('a');
-    link.className = 'tool-link';
-    link.href = tool.url;
-    link.target = '_blank';
-    link.textContent = 'Visit Site';
-    card.appendChild(link);
+    
     return card;
 }
 
@@ -2373,5 +2493,45 @@ function updateThemeIcon(theme) {
     themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
 }
 
-// Initial render
-renderTools(); 
+// View toggle functionality
+if (viewButtons) {
+    viewButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Update active button
+            viewButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // Update view
+            currentView = btn.dataset.view;
+            
+            // Update grid class
+            if (currentView === 'list') {
+                toolsGrid.classList.add('list-view');
+            } else {
+                toolsGrid.classList.remove('list-view');
+            }
+            
+            // Re-render tools
+            renderTools();
+        });
+    });
+}
+
+// Loading animation
+window.addEventListener('load', () => {
+    // Hide loading overlay after a short delay
+    setTimeout(() => {
+        if (loadingOverlay) {
+            loadingOverlay.classList.add('hidden');
+            setTimeout(() => {
+                loadingOverlay.style.display = 'none';
+            }, 500);
+        }
+    }, 800);
+    
+    // Initialize stats
+    initializeStats();
+    
+    // Initial render
+    renderTools();
+});
