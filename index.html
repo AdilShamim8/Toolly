@@ -3,11 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toolly</title>
+    <meta name="description" content="Toolly - The ultimate directory of AI tools across various categories. Find the perfect AI tool for your needs.">
+    <meta name="keywords" content="AI tools, artificial intelligence, chatbot, productivity, developer tools, research, education, data science, audio generator, video generator, image generator, design, business, marketing">
+    <meta property="og:title" content="Toolly - AI Tools Directory">
+    <meta property="og:description" content="Discover the best AI tools for your needs. Toolly offers a comprehensive directory of AI tools across various categories.">
+    <meta property="og:image" content="logo/Toolly.jpg">
+    <meta property="og:url" content="https://toolly.ai">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Toolly - AI Tools Directory</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="logo/favicon.svg" type="image/svg+xml">
 </head>
 <body>
+    <!-- Loading Animation -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading amazing AI tools...</p>
+        </div>
+    </div>
+    
     <button class="sidebar-toggle" id="sidebarToggle" aria-label="Open sidebar">
         <i class="fas fa-bars"></i>
     </button>
@@ -49,10 +65,24 @@
             <header class="main-header">
                 <div class="main-header-top">
                     <div class="header-content">
-                        <h1>AI Tools Directory</h1>
+                        <h1>Discover the Best AI Tools</h1>
                         <p class="subtitle">Your time is precious—don't squander it on an hour's drudgery when AI can compress it into a single minute.</p>
+                        <div class="header-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" id="totalToolCount">100+</span>
+                                <span class="stat-label">AI Tools</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">14</span>
+                                <span class="stat-label">Categories</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" id="featuredCount">20+</span>
+                                <span class="stat-label">Featured</span>
+                            </div>
+                        </div>
                     </div>
-                    <span id="toolCount">Showing 0 tools</span>
+                    <span id="toolCount" class="tools-counter">Showing 0 tools</span>
                 </div>
                 <div class="main-header-actions">
                     <div class="search-container">
@@ -67,14 +97,56 @@
                 </div>
             </header>
             <section>
-                <h2 class="featured-title">Featured Tools</h2>
+                <div class="section-header">
+                    <h2 class="featured-title">Featured Tools</h2>
+                    <div class="view-options">
+                        <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
+                        <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
+                    </div>
+                </div>
                 <div class="tools-grid" id="toolsGrid">
                     <!-- Tool cards will be dynamically inserted here -->
+                </div>
+                <div class="empty-state" id="emptyState" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No tools found</h3>
+                    <p>Try adjusting your search or category filters</p>
                 </div>
             </section>
         </main>
         
     </div>
+    
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Toolly</h3>
+                <p>Toolly is your comprehensive directory of AI tools to enhance productivity, creativity, and efficiency.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Submit a Tool</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://x.com/Toolly_" aria-label="Twitter"><i class="fab fa-twitter"></i></a> 
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Toolly. All rights reserved.</p>
+        </div>
+    </footer>
+    
     <button id="backToTop" class="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </button>
@@ -83,4 +155,4 @@
     </button>
     <script src="scripts.js"></script>
 </body>
-</html> 
+</html>
