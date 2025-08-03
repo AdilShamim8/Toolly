@@ -1,54 +1,148 @@
-**Toolly**
+# Toolly
 
-*"The tools you need to build the future, all in one place.*
+<div align="center">
 
-@@ -27,49 +27,49 @@
-1. **Clone the repo**
+![Toolly Logo](https://github.com/AdilShamim8/Toolly/blob/main/logo/Toolly.jpg)
 
-   ```bash
-   git clone https://github.com/AdilShamim8/ToolVault.git
-   git clone https://github.com/AdilShamim8/Toolly.git
-   cd ToolVault
-   ```
-2. **Install**
+[![License](https://img.shields.io/github/license/AdilShamim8/Toolly)](https://github.com/AdilShamim8/Toolly/blob/main/LICENSE)
+[![Issues](https://img.shields.io/github/issues/AdilShamim8/Toolly)](https://github.com/AdilShamim8/Toolly/issues)
+[![Stars](https://img.shields.io/github/stars/AdilShamim8/Toolly)](https://github.com/AdilShamim8/Toolly/stargazers)
+[![Last Commit](https://img.shields.io/github/last-commit/AdilShamim8/Toolly)](https://github.com/AdilShamim8/Toolly/commits/main)
 
-   ```bash
-   npm install        # or yarn install
-   ```
-3. **Run**
+**A comprehensive collection of development tools and utilities to enhance your workflow.**
 
-   ```bash
-   toolvault --help   # see available commands
-   ```
+[Features](#features) • [Installation](#installation) • [Usage](#usage) • [Documentation](#documentation) • [Contributing](#contributing) • [License](#license)
 
-That’s it. You’re ready to unlock your potential.
+</div>
 
-## Philosophy
+## 🚀 Features
 
-> "Innovation distinguishes between a leader and a follower." 
+- **Tool Category 1**: Description of the first set of tools
+- **Tool Category 2**: Description of the second set of tools
+- **Tool Category 3**: Description of the third set of tools
+- **Cross-platform**: Works on Windows, macOS, and Linux
+- **Extensible**: Easy to add your own custom tools
 
-We believe leadership in software comes from clarity of purpose. Every line in ToolVault is intentional, every feature is designed to empower.
+## 📋 Requirements
 
-## Roadmap
+- Requirement 1 (e.g., Node.js >= 14)
+- Requirement 2
+- Requirement 3
 
-* **v1.2:** Plugin marketplace, advanced analytics dashboard.
-* **v2.0:** Visual interface, collaborative workflows.
-* **Future:** AI-driven suggestions, real-time pair programming.
+## 💻 Installation
 
-## Contributing
+### Using Package Manager
 
-Your ideas fuel this project. Whether you find a bug, dream up a new feature, or write documentation, we welcome you:
+```bash
+# npm
+npm install toolly
 
-1. Fork the repo
-2. Create a feature branch
-3. Open a Pull Request
+# yarn
+yarn add toolly
 
-Let’s build the future—together.
+# pnpm
+pnpm add toolly
+```
 
-## License
+### From Source
 
-Released under the **MIT License**. See `LICENSE` for details.
+```bash
+# Clone the repository
+git clone https://github.com/AdilShamim8/Toolly.git
+
+# Navigate to the project directory
+cd Toolly
+
+# Install dependencies
+npm install
+
+# Build the project
+npm run build
+```
+
+## 🔍 Usage
+
+Here's a quick example to get you started:
+
+```javascript
+// Import the library
+import { toolName } from 'toolly';
+
+// Use a specific tool
+const result = toolName.process('input data');
+console.log(result);
+
+// Advanced configuration
+const config = {
+  option1: true,
+  option2: 'value',
+};
+toolName.configure(config);
+```
+
+## 📊 Examples
+
+### Example 1: Basic Task
+
+```javascript
+import { toolA } from 'toolly';
+
+// Example code showing how to use toolA
+const output = toolA.run();
+```
+
+### Example 2: Advanced Usage
+
+```javascript
+import { toolB } from 'toolly';
+
+// Example code showing how to use toolB with advanced options
+const options = {
+  precision: 'high',
+  timeout: 1000,
+};
+
+const result = toolB.execute('input', options);
+```
+
+## 📚 Documentation
+
+For full documentation, please visit our [documentation site](https://github.com/AdilShamim8/Toolly/wiki) or refer to the following resources:
+
+- [API Reference](https://github.com/AdilShamim8/Toolly/wiki/API-Reference)
+- [Configuration Guide](https://github.com/AdilShamim8/Toolly/wiki/Configuration)
+- [Troubleshooting](https://github.com/AdilShamim8/Toolly/wiki/Troubleshooting)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgements
+
+- List any libraries or tools that inspired or are used by this project
+- Credit contributors or maintainers
+- Any other acknowledgements
+
+## 📬 Contact
+
+Adil Shamim - [@your_twitter](https://twitter.com/your_twitter) - email@example.com
+
+Project Link: [https://github.com/AdilShamim8/Toolly](https://github.com/AdilShamim8/Toolly)
 
 ---
 
-*Designed and built by Adil Shamim*
+<div align="center">
+  Made with ❤️ by <a href="https://github.com/AdilShamim8">Adil Shamim</a>
+</div>
