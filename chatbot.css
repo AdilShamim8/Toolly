@@ -6,6 +6,8 @@
     right: 20px;
     z-index: 1000;
     font-family: 'Segoe UI', Arial, sans-serif;
+    max-width: 100vw;
+    box-sizing: border-box;
 }
 
 .chatbot-toggle {
@@ -296,13 +298,23 @@
 
 /* Responsive adjustments */
 @media (max-width: 480px) {
+    .chatbot-container {
+        right: 10px;
+    }
+    
     .chatbot-panel {
         width: 300px;
         height: 450px;
         right: 0;
+        max-width: calc(100vw - 20px);
     }
     
     .chatbot-message-content {
         max-width: 90%;
+    }
+    
+    .chatbot-toggle {
+        width: 50px;
+        height: 50px;
     }
 }
