@@ -60,6 +60,10 @@
     right: 0;
     width: 350px;
     height: 500px;
+    min-width: 300px;
+    min-height: 400px;
+    max-width: 90vw;
+    max-height: 80vh;
     background-color: var(--card-bg);
     border-radius: 16px;
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
@@ -69,6 +73,7 @@
     transform: translateY(-20px);
     opacity: 0;
     transition: all 0.3s ease;
+    resize: both;
 }
 
 .chatbot-panel.open {
@@ -89,6 +94,8 @@
     margin: 0;
     font-size: 16px;
     font-weight: 600;
+    flex-grow: 1;
+    text-align: center;
 }
 
 .chatbot-close {
@@ -217,13 +224,13 @@
 }
 
 /* Typing indicator */
-.typing-dots {
+.typing-indicator, .typing-dots {
     display: flex;
     gap: 4px;
     padding: 5px 0;
 }
 
-.typing-dots span {
+.typing-indicator span, .typing-dots span {
     width: 8px;
     height: 8px;
     background-color: var(--muted-text);
@@ -242,6 +249,21 @@
 
 .typing-dots span:nth-child(3) {
     animation-delay: 0.4s;
+}
+
+.typing-text {
+    font-size: 13px;
+    color: var(--muted-text);
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-style: italic;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
 }
 
 @keyframes typing {
@@ -294,6 +316,89 @@
 
 .chatbot-message-content .tool-link:hover {
     text-decoration: underline;
+}
+
+/* Image styling in chatbot responses */
+.chatbot-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 10px 0;
+    display: block;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Resize handle styling */
+.chatbot-panel {
+    position: relative;
+}
+
+.chatbot-panel::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    cursor: nwse-resize;
+    background: linear-gradient(135deg, transparent 50%, var(--primary-color) 50%);
+    border-bottom-right-radius: 16px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.chatbot-panel:hover::after {
+    opacity: 1;
+}
+
+/* Size controls */
+.chatbot-size-controls {
+    display: flex;
+    gap: 5px;
+    margin-right: 10px;
+    z-index: 10;
+}
+
+.chatbot-size-btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    min-width: 25px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.chatbot-size-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+.chatbot-size-btn.active {
+    background-color: rgba(255, 255, 255, 0.4);
+    font-weight: bold;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+/* Size variations */
+.chatbot-panel.size-small {
+    width: 280px;
+    height: 400px;
+}
+
+.chatbot-panel.size-default {
+    width: 350px;
+    height: 500px;
+}
+
+.chatbot-panel.size-large {
+    width: 450px;
+    height: 600px;
 }
 
 /* Responsive adjustments */
