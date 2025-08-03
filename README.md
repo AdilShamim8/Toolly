@@ -1,76 +1,148 @@
-**Toolly**
+# Toolly
 
-*"The tools you need to build the future, all in one place.*
+<div align="center">
 
-Welcome to **ToolVault**, crafted with purpose and simplicity to empower every developer’s journey. Here, we don't just provide utilities—we spark creativity, ignite innovation, and remove barriers between your ideas and reality.
+![Toolly Logo](https://via.placeholder.com/150?text=Toolly)
 
-## Vision
+[![License](https://img.shields.io/github/license/AdilShamim8/Toolly)](https://github.com/AdilShamim8/Toolly/blob/main/LICENSE)
+[![Issues](https://img.shields.io/github/issues/AdilShamim8/Toolly)](https://github.com/AdilShamim8/Toolly/issues)
+[![Stars](https://img.shields.io/github/stars/AdilShamim8/Toolly)](https://github.com/AdilShamim8/Toolly/stargazers)
+[![Last Commit](https://img.shields.io/github/last-commit/AdilShamim8/Toolly)](https://github.com/AdilShamim8/Toolly/commits/main)
 
-In the spirit of relentless innovation, ToolVault was born from a belief: that the right tool, at the right time, can change everything. We imagine a world where developers focus on solving problems, not wrestling with setup. ToolVault is that world made real.
+**A comprehensive collection of development tools and utilities to enhance your workflow.**
 
-## What Makes ToolVault Special
+[Features](#features) • [Installation](#installation) • [Usage](#usage) • [Documentation](#documentation) • [Contributing](#contributing) • [License](#license)
 
-* **Elegant Simplicity**: A curated suite of utilities, each refined to do exactly what you need—no clutter, no confusion.
-* **Seamless Integration**: Designed to plug into your existing workflow; whether you’re scripting, prototyping, or deploying, ToolVault is there.
-* **Open by Design**: Every component is open source. Your feedback shapes the next release, and your contributions power the community.
+</div>
 
-## Core Features
+## 🚀 Features
 
-1. **Instant Scaffolding**: Bootstrap any project with a single command.
-2. **Smart Formatting**: Keep your code clean and consistent—automatically.
-3. **Unified CLI**: One interface to rule them all; no more context switching.
-4. **Extensible Plugins**: Build or install plugins that speak your language.
-5. **Insightful Analytics**: Track your workflow, then optimize with real data.
+- **Tool Category 1**: Description of the first set of tools
+- **Tool Category 2**: Description of the second set of tools
+- **Tool Category 3**: Description of the third set of tools
+- **Cross-platform**: Works on Windows, macOS, and Linux
+- **Extensible**: Easy to add your own custom tools
 
-## Quick Start
+## 📋 Requirements
 
-1. **Clone the repo**
+- Requirement 1 (e.g., Node.js >= 14)
+- Requirement 2
+- Requirement 3
 
-   ```bash
-   git clone https://github.com/AdilShamim8/Toolly.git
-   cd ToolVault
-   ```
-2. **Install**
+## 💻 Installation
 
-   ```bash
-   npm install        # or yarn install
-   ```
-3. **Run**
+### Using Package Manager
 
-   ```bash
-   toolvault --help   # see available commands
-   ```
+```bash
+# npm
+npm install toolly
 
-That’s it. You’re ready to unlock your potential.
+# yarn
+yarn add toolly
 
-## Philosophy
+# pnpm
+pnpm add toolly
+```
 
-> "Innovation distinguishes between a leader and a follower." 
+### From Source
 
-We believe leadership in software comes from clarity of purpose. Every line in ToolVault is intentional, every feature is designed to empower.
+```bash
+# Clone the repository
+git clone https://github.com/AdilShamim8/Toolly.git
 
-## Roadmap
+# Navigate to the project directory
+cd Toolly
 
-* **v1.2:** Plugin marketplace, advanced analytics dashboard.
-* **v2.0:** Visual interface, collaborative workflows.
-* **Future:** AI-driven suggestions, real-time pair programming.
+# Install dependencies
+npm install
 
-## Contributing
+# Build the project
+npm run build
+```
 
-Your ideas fuel this project. Whether you find a bug, dream up a new feature, or write documentation, we welcome you:
+## 🔍 Usage
 
-1. Fork the repo
-2. Create a feature branch
-3. Open a Pull Request
+Here's a quick example to get you started:
 
-Let’s build the future—together.
+```javascript
+// Import the library
+import { toolName } from 'toolly';
 
-## License
+// Use a specific tool
+const result = toolName.process('input data');
+console.log(result);
 
-Released under the **MIT License**. See `LICENSE` for details.
+// Advanced configuration
+const config = {
+  option1: true,
+  option2: 'value',
+};
+toolName.configure(config);
+```
+
+## 📊 Examples
+
+### Example 1: Basic Task
+
+```javascript
+import { toolA } from 'toolly';
+
+// Example code showing how to use toolA
+const output = toolA.run();
+```
+
+### Example 2: Advanced Usage
+
+```javascript
+import { toolB } from 'toolly';
+
+// Example code showing how to use toolB with advanced options
+const options = {
+  precision: 'high',
+  timeout: 1000,
+};
+
+const result = toolB.execute('input', options);
+```
+
+## 📚 Documentation
+
+For full documentation, please visit our [documentation site](https://github.com/AdilShamim8/Toolly/wiki) or refer to the following resources:
+
+- [API Reference](https://github.com/AdilShamim8/Toolly/wiki/API-Reference)
+- [Configuration Guide](https://github.com/AdilShamim8/Toolly/wiki/Configuration)
+- [Troubleshooting](https://github.com/AdilShamim8/Toolly/wiki/Troubleshooting)
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgements
+
+- List any libraries or tools that inspired or are used by this project
+- Credit contributors or maintainers
+- Any other acknowledgements
+
+## 📬 Contact
+
+Adil Shamim - [@your_twitter](https://twitter.com/your_twitter) - email@example.com
+
+Project Link: [https://github.com/AdilShamim8/Toolly](https://github.com/AdilShamim8/Toolly)
 
 ---
 
-*Designed and built by Adil Shamim*
-
-[🌐 Live Demo](http://adilshamim.me/ToolVault/) | [📦 GitHub](https://github.com/AdilShamim8/ToolVault)
+<div align="center">
+  Made with ❤️ by <a href="https://github.com/AdilShamim8">Adil Shamim</a>
+</div>
