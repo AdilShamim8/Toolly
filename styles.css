@@ -61,7 +61,10 @@ body {
     background: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
     overflow-y: auto; /* Enable vertical scrolling for the body */
+    width: 100%;
+    max-width: 100%;
 }
 
 /* Custom Scrollbar Styles */
@@ -90,6 +93,9 @@ html {
 .layout {
     display: flex;
     background: var(--main-bg);
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .sidebar {
@@ -184,8 +190,10 @@ html {
 .main-content {
     flex: 1;
     padding: 2.5rem 2rem 2rem 2rem;
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 .main-header {
@@ -197,10 +205,14 @@ html {
     justify-content: space-between;
     gap: 1rem;
     margin-bottom: 2rem;
+    width: 100%;
+    flex-wrap: wrap;
 }
 .header-content {
     flex: 1;
-    max-width: 800px;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
 }
 .main-header-top h1 {
     font-size: 2.5rem;
@@ -260,10 +272,14 @@ html {
     align-items: center;
     gap: 1rem;
     margin-top: 1.2rem;
+    width: 100%;
+    flex-wrap: wrap;
 }
 .search-container {
     position: relative;
     flex: 1;
+    width: 100%;
+    box-sizing: border-box;
 }
 .search-container input {
     width: 100%;
@@ -295,6 +311,7 @@ html {
     color: var(--text-color);
     font-size: 1rem;
     transition: var(--transition);
+    box-sizing: border-box;
 }
 
 .section-header {
@@ -339,6 +356,8 @@ html {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .tools-grid.list-view {
@@ -411,6 +430,8 @@ html {
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .tool-card:hover {
@@ -648,7 +669,7 @@ html {
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transition: var(--transition);
+    transition: var(--transition), transform 0.3s ease;
     box-shadow: 0 4px 16px rgba(176, 219, 156, 0.2);
     z-index: 100;
 }
@@ -678,11 +699,26 @@ html {
     font-size: 2rem;
     cursor: pointer;
     box-shadow: 0 4px 16px rgba(176, 219, 156, 0.2);
-    transition: var(--transition);
+    transition: var(--transition), transform 0.3s ease;
     padding: 0;
 }
 .sidebar-toggle:active {
     background: var(--secondary-color);
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 90;
+}
+
+.sidebar-overlay.active {
+    display: block;
 }
 
 /* Footer Styles */
@@ -691,6 +727,9 @@ html {
     color: var(--footer-text);
     padding: 3rem 2rem 1.5rem;
     margin-top: 3rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .footer-content {
@@ -698,8 +737,11 @@ html {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 2rem;
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 1rem;
 }
 
 .footer-section {
@@ -784,14 +826,17 @@ html {
         position: fixed;
         left: -300px;
         top: 0;
-        height: 100%;
-        z-index: 100;
+        height: 100vh;
+        z-index: 1000;
         transition: left 0.3s ease;
         width: 280px;
+        max-width: 85vw;
+        overflow-y: auto;
     }
     
     .sidebar.open {
         left: 0;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     }
     
     .sidebar-toggle {
@@ -858,10 +903,57 @@ html {
     .header-stats {
         flex-direction: column;
         align-items: flex-start;
+        width: 100%;
     }
     
     .stat-item {
         margin-bottom: 0.5rem;
+        width: 100%;
+    }
+    
+    .main-header-top h1 {
+        font-size: 1.5rem;
+        width: 100%;
+    }
+    
+    .subtitle {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .tools-counter {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+    
+    .search-container {
+        width: 100%;
+    }
+    
+    #sortSelect {
+        width: 100%;
+    }
+    
+    /* Ensure fixed buttons are properly positioned on mobile */
+    .sidebar-toggle,
+    .back-to-top,
+    .theme-toggle {
+        will-change: transform;
+    }
+    
+    .sidebar-toggle {
+        display: flex;
+    }
+    
+    /* Adjust spacing between fixed buttons */
+    .theme-toggle {
+        bottom: 5.5rem;
+    }
+    
+    .back-to-top {
+        bottom: 9rem;
     }
 }
 
@@ -967,10 +1059,25 @@ html {
 @media (max-width: 700px) {
     .main-content {
         padding: 1rem;
+        width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
     }
     .tools-grid {
         grid-template-columns: 1fr;
         gap: 0.8rem;
+        width: 100%;
+    }
+    .main-header-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+    }
+    .search-container {
+        width: 100%;
+    }
+    #sortSelect {
+        width: 100%;
     }
     .tool-card {
         padding: 0.8rem;
@@ -1089,12 +1196,14 @@ html {
         bottom: 0.8rem;
         width: 36px;
         height: 36px;
+        will-change: transform;
     }
     .theme-toggle {
         right: 0.8rem;
         bottom: 4.5rem;
         width: 36px;
         height: 36px;
+        will-change: transform;
     }
     .theme-toggle i {
         font-size: 0.9rem;
@@ -1177,7 +1286,7 @@ html {
     justify-content: center;
     cursor: pointer;
     box-shadow: var(--shadow);
-    transition: var(--transition);
+    transition: var(--transition), transform 0.3s ease;
     z-index: 1000;
 }
 
