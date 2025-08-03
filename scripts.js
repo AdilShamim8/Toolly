@@ -2428,12 +2428,43 @@ if (sortSelect) {
         renderTools();
     });
 }
-// Back to top
+// Back to top and mobile icons visibility control
+let lastScrollTop = 0;
+let scrollDirection = 'up';
+const sidebarToggleBtn = document.getElementById('sidebarToggle');
+const themeToggleBtn = document.getElementById('themeToggle');
+
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
+    // Determine scroll direction
+    const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+    scrollDirection = currentScrollTop > lastScrollTop ? 'down' : 'up';
+    lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
+    
+    // Handle back-to-top button visibility based on scroll position
+    if (currentScrollTop > 300) {
         backToTopButton.classList.add('visible');
     } else {
         backToTopButton.classList.remove('visible');
+    }
+    
+    // Handle mobile icons visibility based on scroll direction
+    if (window.innerWidth <= 768) { // Only apply on mobile screens
+        if (scrollDirection === 'down' && currentScrollTop > 100) {
+            // Hide icons when scrolling down
+            sidebarToggleBtn.style.transform = 'translateY(-100px)';
+            backToTopButton.style.transform = 'translateY(100px)';
+            themeToggleBtn.style.transform = 'translateY(100px)';
+        } else {
+            // Show icons when scrolling up
+            sidebarToggleBtn.style.transform = 'translateY(0)';
+            backToTopButton.style.transform = 'translateY(0)';
+            themeToggleBtn.style.transform = 'translateY(0)';
+        }
+    } else {
+        // Reset transforms on desktop
+        sidebarToggleBtn.style.transform = '';
+        backToTopButton.style.transform = '';
+        themeToggleBtn.style.transform = '';
     }
 });
 backToTopButton.addEventListener('click', () => {
