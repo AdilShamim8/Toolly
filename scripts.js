@@ -667,15 +667,6 @@ const aiTools = [
         tags: ["ecommerce", "copywriting", "amazon"]
     },
     {
-        name: "SurferSEO",
-        description: "AI-powered SEO tool for content optimization and strategy.",
-        categories: ["nlp", "productivity"],
-        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdS1UefwqOtPyhNrofB0iQMhyQ-NlNUv3uYw&s",
-        url: "https://surferseo.com",
-        badges: ["freemium"],
-        tags: ["seo", "content", "optimization"]
-    },
-    {
         name: "DeepL Write",
         description: "AI writing assistant for clear, compelling communication.",
         categories: ["nlp", "productivity"],
@@ -2161,6 +2152,87 @@ const aiTools = [
         url: "https://www.adcreative.ai",
         badges: ["featured", "freemium"],
         tags: ["ad creatives", "marketing", "design", "social media", "conversion optimization"]
+    },
+    {
+        name: "Gumloop",
+        description: "AI automation platform with a visual builder to orchestrate apps, data, and AI into end‑to‑end workflows.",
+        categories: ["productivity", "business"],
+        logo: "https://www.gumloop.com/favicon.ico",
+        url: "https://www.gumloop.com/home",
+        badges: ["freemium"],
+        tags: ["automation", "workflows", "integrations", "AI router", "no-code"]
+    },
+    {
+        name: "Lexica Art",
+        description: "AI image generation and gallery/search engine for prompts and models.",
+        categories: ["vision", "design"],
+        logo: "https://lexica.art/favicon.ico",
+        url: "https://lexica.art/",
+        badges: ["freemium", "trending"],
+        tags: ["text-to-image", "image generation", "prompts", "gallery"]
+    },
+    {
+        name: "LALAL.AI",
+        description: "AI-powered stem separation to extract vocals, instruments, and more from audio files.",
+        categories: ["audio"],
+        logo: "https://www.lalal.ai/favicon.ico",
+        url: "https://www.lalal.ai/",
+        badges: ["freemium"],
+        tags: ["stem separation", "audio", "vocals", "music"]
+    },
+    {
+        name: "Crayo",
+        description: "AI design and content creation platform for generating branded visuals and assets.",
+        categories: ["design", "marketing"],
+        logo: "https://crayo.ai/favicon.ico",
+        url: "https://crayo.ai/",
+        badges: ["freemium"],
+        tags: ["design", "branding", "content", "images"]
+    },
+    {
+        name: "Brandwell",
+        description: "AI branding assistant to create brand identities, assets, and guidelines.",
+        categories: ["design", "marketing", "business"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAJtelSUIlC6eUkRa-3KHaM2T_cuq2M3F0NQ&s",
+        url: "https://brandwell.ai/",
+        badges: ["freemium"],
+        tags: ["branding", "logo", "brand kit", "design"]
+    },
+    {
+        name: "Originality AI",
+        description: "AI content detection and plagiarism checking for writers, educators, and teams.",
+        categories: ["research", "education", "business"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6aH2w7cWRBaG7UKX0j3oBXw5Ih2oKRs_1UQ&s",
+        url: "https://originality.ai/",
+        badges: ["paid"],
+        tags: ["AI detection", "plagiarism", "content quality", "verification"]
+    },
+    {
+        name: "Writer",
+        description: "Enterprise-grade writing assistant for brand-safe content, style guides, and collaboration.",
+        categories: ["nlp", "productivity", "business", "marketing"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTzb_-3SblAC-iOmwBPx_-Cn8CPmQLpwp5WQ&s",
+        url: "https://writer.com/",
+        badges: ["featured", "paid"],
+        tags: ["writing", "style guide", "enterprise", "assistant"]
+    },
+    {
+        name: "Undetectable AI",
+        description: "AI content humanizer to rewrite text for naturalness while preserving meaning.",
+        categories: ["nlp", "marketing", "education"],
+        logo: "https://undetectable.ai/favicon.ico",
+        url: "https://undetectable.ai/",
+        badges: ["paid"],
+        tags: ["humanizer", "paraphrasing", "writing", "content"]
+    },
+    {
+        name: "ContentShake AI (Semrush)",
+        description: "AI writing tool by Semrush to research, draft, and optimize SEO content.",
+        categories: ["marketing", "productivity"],
+        logo: "https://www.semrush.com/favicon.ico",
+        url: "https://www.semrush.com/",
+        badges: ["freemium"],
+        tags: ["SEO", "content", "writing", "blog"]
     }
 ];
 
