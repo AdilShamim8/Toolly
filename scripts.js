@@ -2233,6 +2233,60 @@ const aiTools = [
         url: "https://www.semrush.com/",
         badges: ["freemium"],
         tags: ["SEO", "content", "writing", "blog"]
+    },
+    {
+        name: "Hemingway App",
+        description: "Readability and clarity editor that highlights complex sentences and suggests improvements.",
+        categories: ["productivity", "education"],
+        logo: "https://hemingwayapp.com/favicon.ico",
+        url: "https://hemingwayapp.com/",
+        badges: ["freemium"],
+        tags: ["writing", "readability", "editor", "grammar"]
+    },
+    {
+        name: "Chatfuel",
+        description: "AI chatbot platform for WhatsApp, Facebook, and Instagram to automate sales, support, and engagement.",
+        categories: ["nlp", "marketing", "business"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyp2HaWRBxp4sP0gAnaKGKdm880WNH0LAhgA&s",
+        url: "https://chatfuel.com/",
+        badges: ["freemium"],
+        tags: ["chatbot", "WhatsApp", "automation", "customer support"]
+    },
+    {
+        name: "Albert.ai",
+        description: "Autonomous AI for digital marketing that optimizes campaigns across channels.",
+        categories: ["marketing", "business"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNZ4QQfxaDvEIaDN90a36K5qwFJ16I6H4Jpw&s",
+        url: "https://albert.ai/",
+        badges: ["paid"],
+        tags: ["marketing", "ads", "optimization", "automation"]
+    },
+    {
+        name: "Userbot.ai",
+        description: "AI customer service and sales chatbots that automate conversations across channels.",
+        categories: ["nlp", "business", "productivity"],
+        logo: "https://www.accuratereviews.com/wp-content/uploads/2024/11/Userbot.png",
+        url: "https://userbot.ai/",
+        badges: ["paid"],
+        tags: ["chatbot", "customer service", "automation", "omnichannel"]
+    },
+    {
+        name: "Browse AI",
+        description: "No-code web scraping and monitoring with AI to extract data from any website.",
+        categories: ["research", "data-science", "productivity"],
+        logo: "https://cdn-1.webcatalog.io/catalog/browse-ai/browse-ai-icon-filled-256.png?v=1714776991599",
+        url: "https://www.browse.ai/",
+        badges: ["freemium", "trending"],
+        tags: ["web scraping", "data extraction", "monitoring", "automation"]
+    },
+    {
+        name: "Algolia",
+        description: "AI-powered search and discovery platform for developers to build fast, relevant search.",
+        categories: ["coding", "business", "productivity"],
+        logo: "https://www.algolia.com/favicon.ico",
+        url: "https://www.algolia.com/",
+        badges: ["paid"],
+        tags: ["search", "API", "ranking", "recommendations"]
     }
 ];
 
