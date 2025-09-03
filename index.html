@@ -11,19 +11,46 @@
     <meta property="og:url" content="https://toolly.ai">
     <meta name="twitter:card" content="summary_large_image">
     <title>Toolly - AI Tools Directory</title>
+    <!-- Preload critical assets -->
+    <!-- Resource hints for faster loading -->
+    <link rel="preload" href="logo/Toolly.jpg" as="image">
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
+    <!-- Critical inline CSS for faster rendering -->
+    <style>
+        .loading-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-color:var(--background-color,#f8fafc);display:flex;justify-content:center;align-items:center;z-index:9999;transition:opacity 0.3s ease-out;}
+        .loading-spinner{text-align:center;}
+        .spinner{width:50px;height:50px;border:5px solid rgba(176,219,156,0.3);border-radius:50%;border-top-color:var(--primary-color,#B0DB9C);animation:spin 1s linear infinite;margin:0 auto;}
+        @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+        body{margin:0;padding:0;font-family:'Segoe UI',Arial,sans-serif;}
+    </style>
+    <!-- Stylesheets with performance attributes -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="chatbot.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" href="logo\Toolly.jpg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="icon" href="logo/Toolly.jpg" type="image/svg+xml">
 </head>
 <body>
-    <!-- Loading Animation -->
+    <!-- Loading Animation with improved performance -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-spinner">
             <div class="spinner"></div>
             <p>Loading amazing AI tools...</p>
         </div>
     </div>
+    <script>
+    // Inline critical script to handle loading state
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            document.getElementById('loadingOverlay').style.opacity = '0';
+            setTimeout(function() {
+                document.getElementById('loadingOverlay').style.display = 'none';
+            }, 300);
+        }, 500);
+    });
+    </script>
     
     <button class="sidebar-toggle" id="sidebarToggle" aria-label="Open sidebar">
         <i class="fas fa-bars"></i>
@@ -33,7 +60,7 @@
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <div class="sidebar-logo-container">
-                  <img src="logo/Toolly.jpg" alt="Toolly Logo" class="logo">
+                  <img src="logo/Toolly.jpg" alt="Toolly Logo" class="logo" width="64" height="64" loading="eager">
                 </div>
                 <h2>Toolly</h2>
             </div>
@@ -154,7 +181,10 @@
     <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
         <i class="fas fa-moon"></i>
     </button>
-    <script src="scripts.js"></script>
-    <script src="chatbot.js"></script>
+    <!-- Load critical data first -->
+    <script src="data-loader.js"></script>
+    <!-- Defer non-critical JavaScript -->
+    <script src="scripts.js" defer></script>
+    <script src="chatbot.js" defer></script>
 </body>
 </html>
