@@ -1270,15 +1270,6 @@ const aiTools = [
         tags: ["writing", "organization", "productivity"]
     },
     {
-        name: "GitHub Copilot X",
-        description: "Next-generation AI pair programmer with advanced code understanding and generation.",
-        categories: ["coding"],
-        logo: "https://github.com/favicon.ico",
-        url: "https://github.com/features/preview/copilot-x",
-        badges: ["featured", "paid"],
-        tags: ["coding", "development", "programming"]
-    },
-    {
         name: "Leonardo.AI",
         description: "Advanced AI image generation platform with specialized models for different styles.",
         categories: ["vision", "design"],
