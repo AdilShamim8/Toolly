@@ -1495,6 +1495,78 @@ const aiTools = [
         tags: ["machine learning", "data science", "enterprise", "analytics"]
     },
     {
+        name: "YouChat",
+        description: "AI assistant by You.com for chat, search, and reasoning with citations.",
+        categories: ["chat", "research", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFFy1noh6tNqh68HEkJsHeX40Wlst_zgaCSg&s",
+        url: "https://you.com/home",
+        badges: ["free"],
+        tags: ["chatbot", "search", "citations", "assistant"]
+    },
+    {
+        name: "Poe",
+        description: "Multi-model AI chat platform (Claude, GPT, Llama, etc.) with fast responses.",
+        categories: ["chat", "productivity", "developer-tools"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiCfU71ZSW4rhD8JIIQxA0_dc8q3ZL7RKlUw&s",
+        url: "https://poe.com/login",
+        badges: ["freemium", "popular"],
+        tags: ["multi-model", "chatbot", "prompting", "fast"]
+    },
+    {
+        name: "Pi",
+        description: "Personal AI companion focused on helpful, friendly, and safe conversations.",
+        categories: ["chat", "wellness", "productivity"],
+        logo: "https://play-lh.googleusercontent.com/Ef7is-Xonqhs2agdsGarpTS_c1Is6Yvk-JhnL3qNvU1Nwdc7kn6Dml2IuCqlfa9Nuzk=w600-h300-pc0xffffff-pd",
+        url: "https://pi.ai/onboarding",
+        badges: ["free"],
+        tags: ["companion", "chatbot", "safety", "conversational"]
+    },
+    {
+        name: "Caktus AI",
+        description: "Student-focused AI for writing, coding help, and study assistance.",
+        categories: ["education", "writing", "coding"],
+        logo: "https://caktus.ai/favicon.ico",
+        url: "https://caktus.ai/",
+        badges: ["freemium", "trending"],
+        tags: ["students", "essay", "study", "coder"]
+    },
+    {
+        name: "scispace",
+        description: "AI copilot for reading, explaining, and discovering scientific papers.",
+        categories: ["research", "education", "productivity"],
+        logo: "https://cdn.prod.website-files.com/648302318a1143aaf5e78dfa/662e79fc151538445a578869_d3JYR823QfSPL1DkKG6V_6b34N9K4AGMJ21jH.png",
+        url: "https://scispace.com/",
+        badges: ["freemium"],
+        tags: ["papers", "summarization", "explain", "citation"]
+    },
+    {
+        name: "Krea AI",
+        description: "Real-time AI image creation and design exploration.",
+        categories: ["design", "image", "creativity"],
+        logo: "https://ai-training-uploads.s3.us-west-2.amazonaws.com/krea+logo.png",
+        url: "https://www.krea.ai/",
+        badges: ["freemium"],
+        tags: ["images", "generation", "creative", "real-time"]
+    },
+    {
+        name: "Tabnine",
+        description: "AI code completion assistant for IDEs, trained on permissive code.",
+        categories: ["developer-tools", "coding", "productivity"],
+        logo: "https://www.tabnine.com/favicon.ico",
+        url: "https://www.tabnine.com/",
+        badges: ["freemium", "enterprise"],
+        tags: ["coding", "autocomplete", "IDE", "pair-programming"]
+    },
+    {
+        name: "Adept AI",
+        description: "AI agents and tools for automating complex software workflows.",
+        categories: ["automation", "productivity", "developer-tools"],
+        logo: "https://images.crunchbase.com/image/upload/c_pad,f_auto,q_auto:eco,dpr_1/b642d48886a540e894724df87b5d33cd",
+        url: "https://www.adept.ai/",
+        badges: ["beta"],
+        tags: ["agents", "workflows", "automation", "enterprise"]
+    },
+    {
         name: "KNIME",
         description: "Open-source data analytics platform for creating data science workflows and machine learning models.",
         categories: ["data-science"],
@@ -2216,6 +2288,7 @@ const aiTools = [
         badges: ["paid"],
         tags: ["search", "API", "ranking", "recommendations"]
     }
+
 ];
 
 // DOM Elements
