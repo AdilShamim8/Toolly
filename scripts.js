@@ -1,4 +1,4 @@
-// AI Tools Data (extended for demo)
+// AI Tools Data 
 const aiTools = [
     {
         name: "H2O.ai",
@@ -17,15 +17,6 @@ const aiTools = [
         url: "https://chat.openai.com",
         badges: ["featured", "trending", "freemium"],
         tags: ["chatbot", "writing assistant", "language model"]
-    },
-    {
-        name: "Claude",
-        description: "Anthropic's conversational AI assistant for enterprise and research.",
-        categories: ["nlp", "research"],
-        logo: "https://www.anthropic.com/favicon.ico",
-        url: "https://www.anthropic.com/claude",
-        badges: ["freemium"],
-        tags: ["chatbot", "enterprise", "assistant"]
     },
     {
         name: "Mistral AI",
@@ -139,7 +130,7 @@ const aiTools = [
         name: "Bolt",
         description: "AI-powered platform for building, running, and deploying full-stack web and mobile applications with an intuitive interface.",
         categories: ["coding", "productivity"],
-        logo: "https://pbs.twimg.com/profile_images/1880702021122342912/fe9TlQqJ_400x400.jpg",
+        logo: "https://cdn.prod.website-files.com/67a7a72aaa234d97b135b849/67bb57c7c62011c3b511a874_bolt-new-logo.png",
         url: "https://bolt.new",
         badges: ["featured", "trending"],
         tags: ["web development", "mobile apps", "full-stack", "deployment"]
@@ -319,7 +310,7 @@ const aiTools = [
         name: "Descript",
         description: "AI-powered audio and video editing platform.",
         categories: ["audio", "productivity"],
-        logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+        logo: "https://images.seeklogo.com/logo-png/44/2/descript-logo-png_seeklogo-448113.png",
         url: "https://www.descript.com",
         badges: ["freemium"],
         tags: ["audio editing", "video editing", "transcription"]
@@ -328,7 +319,7 @@ const aiTools = [
         name: "Stable Diffusion",
         description: "Open-source AI image generation model.",
         categories: ["vision", "design"],
-        logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+        logo: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/stability-color.png",
         url: "https://stability.ai",
         badges: ["freemium"],
         tags: ["image generation", "open source", "art"]
@@ -595,15 +586,6 @@ const aiTools = [
         tags: ["chatbot", "content", "search"]
     },
     {
-        name: "Jasper Art",
-        description: "AI art generator for creating unique images from text prompts.",
-        categories: ["vision", "design"],
-        logo: "https://www.camerareviews.com/wp-content/uploads/2022/11/Jasper-logo-squared.webp",
-        url: "https://www.jasper.ai/art",
-        badges: ["freemium"],
-        tags: ["art", "image generation", "creative"]
-    },
-    {
         name: "Synthesys",
         description: "AI voiceover and video creation platform for content creators.",
         categories: ["audio", "vision"],
@@ -638,15 +620,6 @@ const aiTools = [
         url: "https://www.photoroom.com",
         badges: ["freemium"],
         tags: ["photo editing", "background removal", "studio"]
-    },
-    {
-        name: "Descript Overdub",
-        description: "AI voice cloning tool for creating ultra-realistic voiceovers.",
-        categories: ["audio", "productivity"],
-        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrtsPhxm10Bkinahg8DPM_nLZBgpoqSuYi-Q&s",
-        url: "https://www.descript.com/overdub",
-        badges: ["freemium"],
-        tags: ["voice cloning", "voiceover", "audio"]
     },
     {
         name: "Speechify",
@@ -746,15 +719,6 @@ const aiTools = [
         url: "https://www.veed.io",
         badges: ["freemium"],
         tags: ["video editing", "audio", "online"]
-    },
-    {
-        name: "Descript Studio Sound",
-        description: "AI audio enhancement for studio-quality sound.",
-        categories: ["audio", "productivity"],
-        logo: "https://cdn.prod.website-files.com/61e09d67f0dcf4552c951a3a/634dc9fb0310cfee2728878b_Descript.png",
-        url: "https://www.descript.com/studio-sound",
-        badges: ["freemium"],
-        tags: ["audio", "enhancement", "studio"]
     },
     {
         name: "Auphonic",
@@ -1180,15 +1144,6 @@ const aiTools = [
         tags: ["photo", "effects", "fun"]
     },
     {
-        name: "Beautiful.ai",
-        description: "AI-powered presentation software for business professionals.",
-        categories: ["business"],
-        logo: "https://www.beautiful.ai/favicon.ico",
-        url: "https://www.beautiful.ai",
-        badges: ["paid"],
-        tags: ["presentations", "business", "design"]
-    },
-    {
         name: "Otter.ai Business",
         description: "AI meeting assistant for business teams and collaboration.",
         categories: ["business"],
@@ -1234,16 +1189,7 @@ const aiTools = [
         tags: ["chatbot", "assistant", "writing"]
     },
     {
-        name: "Microsoft Copilot Pro",
-        description: "Advanced AI assistant integrated with Microsoft 365 for enhanced productivity and creativity.",
-        categories: ["productivity", "business", "coding", "nlp"],
-        logo: "https://copilot.microsoft.com/favicon.ico",
-        url: "https://copilot.microsoft.com",
-        badges: ["featured", "paid"],
-        tags: ["office", "productivity", "assistant"]
-    },
-    {
-        name: "RunwayML",
+        name: "Runway ML",
         description: "Professional AI video editing and generation platform for filmmakers and creators.",
         categories: ["video", "design"],
         logo: "https://images.seeklogo.com/logo-png/49/1/runway-logo-png_seeklogo-496519.png",
@@ -1448,15 +1394,6 @@ const aiTools = [
         url: "https://www.carnegielearning.com",
         badges: ["featured", "paid"],
         tags: ["math", "learning", "education", "personalized"]
-    },
-    {
-        name: "QuillBot for Education",
-        description: "AI writing and paraphrasing tool specifically designed for students and educators.",
-        categories: ["education", "nlp"],
-        logo: "https://quillbot.com/favicon.ico",
-        url: "https://quillbot.com/education",
-        badges: ["featured", "freemium"],
-        tags: ["writing", "paraphrasing", "education", "learning"]
     },
     {
         name: "Pi by Inflection",
