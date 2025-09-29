@@ -2637,18 +2637,31 @@ if (savedTheme) {
     updateThemeIcon(savedTheme);
 }
 
-// Theme toggle click handler
+// Theme toggle click handler with enhanced transitions
 themeToggle.addEventListener('click', () => {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     
+    // Add transition class for smooth theme switching
+    document.documentElement.classList.add('theme-transitioning');
+    
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
     updateThemeIcon(newTheme);
+    
+    // Remove transition class after animation completes
+    setTimeout(() => {
+        document.documentElement.classList.remove('theme-transitioning');
+    }, 300);
 });
 
 function updateThemeIcon(theme) {
-    themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    // Add a subtle animation to the icon change
+    themeIcon.style.transform = 'rotate(180deg)';
+    setTimeout(() => {
+        themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        themeIcon.style.transform = 'rotate(0deg)';
+    }, 150);
 }
 
 // View toggle functionality
@@ -2693,3 +2706,281 @@ window.addEventListener('load', () => {
     // Initial render
     renderTools();
 });
+
+// --- My Tools Feature ---
+const toolsListEl = document.getElementById('tools-list');
+const editBtn = document.getElementById('edit-tools-btn');
+const modal = document.getElementById('tool-modal');
+const closeModalBtn = document.getElementById('close-modal');
+const toolForm = document.getElementById('tool-form');
+const modalTitle = document.getElementById('modal-title');
+
+// Check if all required elements exist
+if (!toolsListEl || !editBtn || !modal || !closeModalBtn || !toolForm || !modalTitle) {
+  console.error('My Tools: Required elements not found', {
+    toolsListEl, editBtn, modal, closeModalBtn, toolForm, modalTitle
+  });
+}
+
+// Initialize with some default tools if empty
+let myTools = JSON.parse(localStorage.getItem('myTools') || JSON.stringify([
+  {
+    name: 'ChatGPT',
+    icon: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg',
+    link: 'https://chat.openai.com'
+  },
+  {
+    name: 'Gemini',
+    icon: 'https://brandlogos.net/wp-content/uploads/2025/03/gemini_icon-logo_brandlogos.net_bqzeu-512x512.png',
+    link: 'https://gemini.google.com'
+  },
+  {
+    name: 'Perplexity',
+    icon: 'https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/perplexity-ai-icon.png',
+    link: 'https://perplexity.ai'
+  }
+]));
+
+let editIndex = null;
+let editMode = false;function renderMyTools() {
+  toolsListEl.innerHTML = '';
+  
+  if (myTools.length === 0 && !editMode) {
+    toolsListEl.innerHTML = `
+      <div style="text-align: center; width: 100%; color: var(--muted-text); padding: 40px 20px;">
+        <i class="fas fa-tools" style="font-size: 2rem; margin-bottom: 16px; opacity: 0.5;"></i>
+        <p>No tools added yet. Click Edit to add your favorite tools!</p>
+      </div>
+    `;
+    return;
+  }
+  
+  myTools.forEach((tool, idx) => {
+    const item = document.createElement('div');
+    item.className = 'tool-item';
+    item.draggable = editMode;
+    
+    const img = document.createElement('img');
+    img.src = tool.icon;
+    img.alt = tool.name;
+    img.className = 'tool-icon';
+    img.onerror = () => {
+      img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iMjQiIGZpbGw9IiNmMWY1ZjkiLz4KPHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4PSIxMiIgeT0iMTIiPgo8cGF0aCBkPSJNMTIgMkw2IDhMMTIgMTRMMTggOEwxMiAyWiIgZmlsbD0iIzk0YTNiOCIvPgo8L3N2Zz4KPC9zdmc+';
+    };
+    
+    const nameSpan = document.createElement('span');
+    nameSpan.className = 'tool-name';
+    nameSpan.textContent = tool.name;
+    
+    item.appendChild(img);
+    item.appendChild(nameSpan);
+    
+    if (editMode) {
+      const editButton = document.createElement('button');
+      editButton.className = 'tool-edit';
+      editButton.title = 'Edit';
+      editButton.innerHTML = '✏️';
+      editButton.onclick = (e) => {
+        e.stopPropagation();
+        openModal(idx);
+      };
+      
+      const deleteButton = document.createElement('button');
+      deleteButton.className = 'tool-delete';
+      deleteButton.title = 'Delete';
+      deleteButton.innerHTML = '🗑️';
+      deleteButton.onclick = (e) => {
+        e.stopPropagation();
+        if (confirm(`Remove "${tool.name}" from your tools?`)) {
+          myTools.splice(idx, 1);
+          saveTools();
+          renderMyTools();
+        }
+      };
+      
+      item.appendChild(editButton);
+      item.appendChild(deleteButton);
+      
+      // Drag & drop reordering
+      item.ondragstart = (e) => {
+        e.dataTransfer.setData('text/plain', idx);
+        item.style.opacity = '0.5';
+      };
+      
+      item.ondragend = () => {
+        item.style.opacity = '1';
+      };
+      
+      item.ondragover = (e) => {
+        e.preventDefault();
+        item.style.transform = 'scale(1.05)';
+        item.style.boxShadow = '0 0 0 2px var(--primary-color)';
+      };
+      
+      item.ondragleave = () => {
+        item.style.transform = '';
+        item.style.boxShadow = '';
+      };
+      
+      item.ondrop = (e) => {
+        e.preventDefault();
+        item.style.transform = '';
+        item.style.boxShadow = '';
+        const fromIdx = +e.dataTransfer.getData('text/plain');
+        if (fromIdx !== idx && fromIdx >= 0) {
+          const moved = myTools.splice(fromIdx, 1)[0];
+          myTools.splice(idx, 0, moved);
+          saveTools();
+          renderMyTools();
+        }
+      };
+    } else if (tool.link) {
+      item.onclick = () => window.open(tool.link, '_blank');
+      item.style.cursor = 'pointer';
+    }
+    
+    toolsListEl.appendChild(item);
+  });
+  
+  if (editMode) {
+    // Add button
+    const addBtn = document.createElement('div');
+    addBtn.className = 'tool-item';
+    addBtn.innerHTML = `
+      <div class='tool-icon' style='display:flex;align-items:center;justify-content:center;font-size:1.5rem;background:var(--primary-color);color:var(--text-color);border:2px dashed var(--primary-dark);'>+</div>
+      <span class='tool-name'>Add Tool</span>
+    `;
+    addBtn.onclick = () => openModal();
+    toolsListEl.appendChild(addBtn);
+  }
+}    function openModal(idx) {
+        modal.style.display = 'flex';
+        toolForm.reset();
+        editIndex = idx;
+        if (typeof idx === 'number') {
+            modalTitle.textContent = 'Edit Tool';
+            const t = myTools[idx];
+            document.getElementById('tool-name').value = t.name;
+            document.getElementById('tool-icon').value = t.icon;
+            document.getElementById('tool-link').value = t.link || '';
+        } else {
+            modalTitle.textContent = 'Add Tool';
+        }
+    }
+
+    function closeModal() {
+        modal.style.display = 'none';
+        editIndex = null;
+    }
+
+    function saveTools() {
+        localStorage.setItem('myTools', JSON.stringify(myTools));
+    }
+
+// Form submission handler will be set up in the conditional check below// Set up event handlers only if elements exist
+if (closeModalBtn && modal && editBtn && toolForm) {
+  closeModalBtn.onclick = closeModal;
+  
+  window.onclick = function(e) {
+    if (e.target === modal) closeModal();
+  };
+
+  editBtn.onclick = function() {
+    editMode = !editMode;
+    editBtn.textContent = editMode ? 'Done' : '✏️ Edit';
+    renderMyTools();
+  };
+
+  // Form submission handler
+  toolForm.onsubmit = function(e) {
+    e.preventDefault();
+    const submitBtn = toolForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    
+    // Check if form elements exist
+    const nameInput = document.getElementById('tool-name');
+    const iconInput = document.getElementById('tool-icon');
+    const linkInput = document.getElementById('tool-link');
+    
+    if (!nameInput || !iconInput || !linkInput) {
+      console.error('Form elements not found:', { nameInput, iconInput, linkInput });
+      alert('Form elements not found. Please refresh the page.');
+      return;
+    }
+
+    // Show loading state
+    submitBtn.textContent = 'Saving...';
+    submitBtn.disabled = true;
+    
+    setTimeout(() => {
+      const name = nameInput.value.trim();
+      const icon = iconInput.value.trim();
+      const link = linkInput.value.trim();
+      
+      if (!name) {
+        alert('Please enter a tool name');
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        nameInput.focus();
+        return;
+      }
+      
+      if (!icon) {
+        alert('Please enter an icon URL');
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        iconInput.focus();
+        return;
+      }
+      
+      // Check for duplicate names (except when editing the same tool)
+      const isDuplicate = myTools.some((tool, idx) => 
+        tool.name.toLowerCase() === name.toLowerCase() && idx !== editIndex
+      );
+      
+      if (isDuplicate) {
+        alert('A tool with this name already exists');
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        nameInput.focus();
+        return;
+      }
+      
+      const tool = { name, icon, link };
+      
+      if (typeof editIndex === 'number') {
+        myTools[editIndex] = tool;
+      } else {
+        myTools.push(tool);
+      }
+      
+      try {
+        saveTools();
+        renderMyTools();
+        closeModal();
+        
+        // Show success feedback
+        submitBtn.textContent = 'Saved!';
+        submitBtn.style.background = '#4ade80';
+        
+        setTimeout(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.style.background = '';
+          submitBtn.disabled = false;
+        }, 1000);
+        
+        console.log('Tool saved successfully:', tool);
+      } catch (error) {
+        console.error('Error saving tool:', error);
+        alert('Failed to save tool. Please try again.');
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    }, 300); // Small delay for better UX
+  };
+
+  // Initial render
+  renderMyTools();
+} else {
+  console.error('My Tools: Cannot set up event handlers - required elements missing');
+}
