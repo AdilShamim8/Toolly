@@ -124,6 +124,29 @@
                     </select>
                 </div>
             </header>
+            <!-- My Tools Section -->
+            <section id="my-tools-section" class="tools-section">
+              <h2>My Tools</h2>
+              <div id="tools-list" class="tools-list"></div>
+              <button id="edit-tools-btn" class="edit-btn">Edit</button>
+            </section>
+
+            <!-- Modal for adding/editing tools -->
+            <div id="tool-modal" class="modal" style="display:none;">
+              <div class="modal-content">
+                <span class="close" id="close-modal">&times;</span>
+                <h3 id="modal-title">Add/Edit Tool</h3>
+                <form id="tool-form">
+                  <label for="tool-name">Tool Name:</label>
+                  <input type="text" id="tool-name" name="tool-name" required>
+                  <label for="tool-icon">Icon URL:</label>
+                  <input type="text" id="tool-icon" name="tool-icon" required>
+                  <label for="tool-link">Tool Link (optional):</label>
+                  <input type="text" id="tool-link" name="tool-link">
+                  <button type="submit" id="save-tool-btn">Save</button>
+                </form>
+              </div>
+            </div>
             <section>
                 <div class="section-header">
                     <h2 class="featured-title">Featured Tools</h2>
