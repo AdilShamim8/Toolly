@@ -162,6 +162,49 @@ body {
 .edit-btn:hover {
     background: #e0e0e0;
 }
+
+/* Tool Edit and Delete Button Styles */
+.tool-edit, .tool-delete {
+  position: absolute;
+  top: 4px;
+  background: var(--card-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--text-color);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 2;
+  line-height: 1;
+}
+
+.tool-edit {
+  right: 60px;
+  background: var(--primary-color);
+  color: var(--text-color);
+}
+
+.tool-delete {
+  right: 4px;
+  background: #ef4444;
+  color: white;
+  border-color: #dc2626;
+}
+
+.tool-edit:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(176, 219, 156, 0.3);
+}
+
+.tool-delete:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+}
 /* Modal Styles */
 .modal {
   position: fixed;
@@ -307,8 +350,15 @@ body {
   color: var(--text-color);
 }
 
+[data-theme="dark"] .tool-edit {
+  background: var(--primary-color);
+  color: var(--text-color);
+}
+
 [data-theme="dark"] .tool-delete {
-  color: #ef4444;
+  background: #ef4444;
+  color: white;
+  border-color: #dc2626;
 }/* Custom Scrollbar Styles */
 /* For WebKit browsers (Chrome, Safari) */
 ::-webkit-scrollbar {
@@ -1143,14 +1193,17 @@ html {
     }
     
     .header-stats {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         width: 100%;
+        gap: 1rem;
     }
     
     .stat-item {
-        margin-bottom: 0.5rem;
-        width: 100%;
+        flex: 1;
+        text-align: center;
+        margin-bottom: 0;
     }
     
     .main-header-top h1 {
