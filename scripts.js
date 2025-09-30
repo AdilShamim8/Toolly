@@ -19,13 +19,13 @@ const aiTools = [
         tags: ["chatbot", "writing assistant", "language model"]
     },
     {
-        name: "Mistral AI",
-        description: "Open-source AI model provider offering powerful language models and APIs for developers. Known for efficient and high-performance models.",
-        categories: ["nlp", "coding"],
-        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Mistral_AI_logo_%282025%E2%80%93%29.svg/800px-Mistral_AI_logo_%282025%E2%80%93%29.svg.png",
-        url: "https://mistral.ai",
-        badges: ["featured"],
-        tags: ["language model", "open source", "API", "development"]
+        name: "LMAreana",
+        description: "Platform for comparing and evaluating large language models through interactive benchmarks and community voting.",
+        categories: ["nlp", "research"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeov_4j1_IJdFiiIUYoG6ddn12YsatqBtD8g&s",
+        url: "https://lmarena.ai/",
+        badges: ["freemium"],
+        tags: ["language models", "benchmarking", "evaluation", "comparison"]
     },
     {
         name: "Gemini",
@@ -62,6 +62,15 @@ const aiTools = [
         url: "https://deepseek.com",
         badges: ["featured"],
         tags: ["research", "deep learning", "neural networks", "development"]
+    },
+    {
+        name: "Mistral AI",
+        description: "Open-source AI model provider offering powerful language models and APIs for developers. Known for efficient and high-performance models.",
+        categories: ["nlp", "coding"],
+        logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Mistral_AI_logo_%282025%E2%80%93%29.svg/800px-Mistral_AI_logo_%282025%E2%80%93%29.svg.png",
+        url: "https://mistral.ai",
+        badges: ["featured"],
+        tags: ["language model", "open source", "API", "development"]
     },
     {
         name: "Black Box",
@@ -1039,8 +1048,8 @@ const aiTools = [
         name: "ShortlyAI",
         description: "AI writing assistant for short-form content.",
         categories: ["nlp", "productivity"],
-        logo: "https://www.shortlyai.com/favicon.ico",
-        url: "https://www.shortlyai.com",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjr8fEvnigVOdAtp_tGcjUj8VKRAiDZGz2fw&s",
+        url: "https://shortlyai.com/",
         badges: ["freemium"],
         tags: ["writing", "short-form", "assistant"]
     },
@@ -2256,7 +2265,7 @@ const aiTools = [
         name: "Albert.ai",
         description: "Autonomous AI for digital marketing that optimizes campaigns across channels.",
         categories: ["marketing", "business"],
-        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNZ4QQfxaDvEIaDN90a36K5qwFJ16I6H4Jpw&s",
+        logo: "https://prod-findmyaitool.s3.us-east-1.amazonaws.com/images/ai-tool/logo/Albert-1723796603408",
         url: "https://albert.ai/",
         badges: ["paid"],
         tags: ["marketing", "ads", "optimization", "automation"]
@@ -2778,8 +2787,8 @@ let editMode = false;function renderMyTools() {
     if (editMode) {
       const editButton = document.createElement('button');
       editButton.className = 'tool-edit';
-      editButton.title = 'Edit';
-      editButton.innerHTML = '✏️';
+      editButton.title = 'Edit this tool';
+      editButton.textContent = 'Edit';
       editButton.onclick = (e) => {
         e.stopPropagation();
         openModal(idx);
@@ -2787,8 +2796,8 @@ let editMode = false;function renderMyTools() {
       
       const deleteButton = document.createElement('button');
       deleteButton.className = 'tool-delete';
-      deleteButton.title = 'Delete';
-      deleteButton.innerHTML = '🗑️';
+      deleteButton.title = 'Delete this tool';
+      deleteButton.textContent = 'Delete';
       deleteButton.onclick = (e) => {
         e.stopPropagation();
         if (confirm(`Remove "${tool.name}" from your tools?`)) {
@@ -2887,7 +2896,7 @@ if (closeModalBtn && modal && editBtn && toolForm) {
 
   editBtn.onclick = function() {
     editMode = !editMode;
-    editBtn.textContent = editMode ? 'Done' : '✏️ Edit';
+    editBtn.textContent = editMode ? 'Done' : 'Edit';
     renderMyTools();
   };
 
