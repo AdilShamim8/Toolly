@@ -1,6 +1,6 @@
 /* Chatbot Styles */
 
-.chatbot-container {
+/* .chatbot-container {
     position: fixed;
     top: 20px;
     right: 20px;
@@ -224,7 +224,7 @@
 }
 
 /* Typing indicator */
-.typing-indicator, .typing-dots {
+/* .typing-indicator, .typing-dots {
     display: flex;
     gap: 4px;
     padding: 5px 0;
@@ -278,7 +278,7 @@
 }
 
 /* Tool recommendations styling */
-.chatbot-message-content h2,
+/* .chatbot-message-content h2,
 .chatbot-message-content h3,
 .chatbot-message-content h4 {
     margin-top: 15px;
@@ -319,17 +319,17 @@
 }
 
 /* Image styling in chatbot responses */
-.chatbot-image {
+/* .chatbot-image {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
     margin: 10px 0;
     display: block;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+} */
 
 /* Resize handle styling */
-.chatbot-panel {
+/* .chatbot-panel {
     position: relative;
 }
 
@@ -349,10 +349,10 @@
 
 .chatbot-panel:hover::after {
     opacity: 1;
-}
+} */
 
 /* Size controls */
-.chatbot-size-controls {
+/* .chatbot-size-controls {
     display: flex;
     gap: 5px;
     margin-right: 10px;
@@ -383,10 +383,10 @@
     background-color: rgba(255, 255, 255, 0.4);
     font-weight: bold;
     box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
-}
+} */
 
 /* Size variations */
-.chatbot-panel.size-small {
+/* .chatbot-panel.size-small {
     width: 280px;
     height: 400px;
 }
@@ -399,10 +399,10 @@
 .chatbot-panel.size-large {
     width: 450px;
     height: 600px;
-}
+} */
 
 /* Responsive adjustments */
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
     .chatbot-container {
         right: 10px;
     }
@@ -421,5 +421,5 @@
     .chatbot-toggle {
         width: 50px;
         height: 50px;
-    }
-}
+    } 
+} */ 
