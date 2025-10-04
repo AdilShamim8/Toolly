@@ -31,12 +31,12 @@ class ToollyAIAdvisor {
             <div class="chatbot-panel size-default">
                 <div class="chatbot-header">
                     <div class="chatbot-size-controls">
-                        <button class="chatbot-size-btn" data-size="small" id="size-small-btn">S</button>
-                        <button class="chatbot-size-btn active" data-size="default" id="size-default-btn">M</button>
-                        <button class="chatbot-size-btn" data-size="large" id="size-large-btn">L</button>
+                        <button class="chatbot-size-btn" data-size="small" id="size-small-btn" title="Small size (Ctrl+1)" aria-label="Set chatbot to small size">S</button>
+                        <button class="chatbot-size-btn active" data-size="default" id="size-default-btn" title="Medium size (Ctrl+2)" aria-label="Set chatbot to medium size">M</button>
+                        <button class="chatbot-size-btn" data-size="large" id="size-large-btn" title="Large size (Ctrl+3)" aria-label="Set chatbot to large size">L</button>
                     </div>
                     <h3>AI Tool Advisor</h3>
-                    <button class="chatbot-close"><i class="fas fa-times"></i></button>
+                    <button class="chatbot-close" title="Close AI Advisor" aria-label="Close chatbot"><i class="fas fa-times"></i></button>
                 </div>
                 <div class="chatbot-messages">
                     <div class="chatbot-message bot">
@@ -117,6 +117,9 @@ class ToollyAIAdvisor {
         const handleSizeButtonClick = function(size) {
             console.log('Size button clicked:', size);
             
+            // Add transitioning class for smooth animation
+            self.chatbotPanel.classList.add('size-transitioning');
+            
             // Remove active class from all buttons
             sizeButtons.forEach(btn => {
                 if (btn) btn.classList.remove('active');
@@ -128,8 +131,18 @@ class ToollyAIAdvisor {
             // Remove all size classes
             self.chatbotPanel.classList.remove('size-small', 'size-default', 'size-large');
             
-            // Add the selected size class
-            self.chatbotPanel.classList.add(`size-${size}`);
+            // Add the selected size class with a slight delay for smoother transition
+            setTimeout(() => {
+                self.chatbotPanel.classList.add(`size-${size}`);
+                
+                // Ensure the panel stays within viewport bounds
+                self.ensurePanelInViewport();
+                
+                // Remove transitioning class after animation completes
+                setTimeout(() => {
+                    self.chatbotPanel.classList.remove('size-transitioning');
+                }, 400);
+            }, 10);
             
             // Save the selected size to localStorage
             localStorage.setItem('chatbot_size', size);
@@ -137,7 +150,9 @@ class ToollyAIAdvisor {
             // Log the current state for debugging
             console.log('Applied size class:', `size-${size}`);
             console.log('Current classes:', self.chatbotPanel.className);
-            console.log('Panel dimensions:', self.chatbotPanel.offsetWidth, 'x', self.chatbotPanel.offsetHeight);
+            
+            // Add a subtle visual feedback
+            self.showSizeChangeConfirmation(size);
         };
         
         // Add click handlers to each button
@@ -161,74 +176,178 @@ class ToollyAIAdvisor {
         
         // Observe the chatbot panel for resize events
         resizeObserver.observe(this.chatbotPanel);
+        
+        // Add keyboard shortcuts for size controls
+        document.addEventListener('keydown', (e) => {
+            // Only handle shortcuts when chatbot is open and focused
+            if (!this.isOpen || !this.chatbotPanel.contains(document.activeElement)) return;
+            
+            // Ctrl/Cmd + 1/2/3 for size shortcuts
+            if ((e.ctrlKey || e.metaKey) && !e.shiftKey && !e.altKey) {
+                let targetSize = null;
+                let targetButton = null;
+                
+                switch(e.key) {
+                    case '1':
+                        targetSize = 'small';
+                        targetButton = smallBtn;
+                        break;
+                    case '2':
+                        targetSize = 'default';
+                        targetButton = defaultBtn;
+                        break;
+                    case '3':
+                        targetSize = 'large';
+                        targetButton = largeBtn;
+                        break;
+                }
+                
+                if (targetSize && targetButton) {
+                    e.preventDefault();
+                    handleSizeButtonClick.call(targetButton, targetSize);
+                }
+            }
+        });
     }
     
     ensurePanelInViewport() {
         const rect = this.chatbotPanel.getBoundingClientRect();
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
+        const containerRect = this.chatbotToggle.getBoundingClientRect();
+        
+        // Reset position to default (top-right alignment)
+        this.chatbotPanel.style.left = 'auto';
+        this.chatbotPanel.style.right = '0';
+        this.chatbotPanel.style.top = '70px';
+        
+        // Get the updated rect after reset
+        const updatedRect = this.chatbotPanel.getBoundingClientRect();
         
         // Check if panel extends beyond right edge of viewport
-        if (rect.right > viewportWidth) {
-            const newRight = Math.max(0, viewportWidth - rect.width);
+        if (updatedRect.right > viewportWidth) {
+            const newRight = Math.max(10, viewportWidth - updatedRect.width - 10);
             this.chatbotPanel.style.right = 'auto';
             this.chatbotPanel.style.left = newRight + 'px';
         }
         
         // Check if panel extends beyond bottom edge of viewport
-        if (rect.bottom > viewportHeight) {
-            const newTop = Math.max(0, viewportHeight - rect.height);
+        if (updatedRect.bottom > viewportHeight) {
+            const newTop = Math.max(10, viewportHeight - updatedRect.height - 10);
             this.chatbotPanel.style.top = newTop + 'px';
         }
+        
+        // Ensure minimum distance from edges
+        const finalRect = this.chatbotPanel.getBoundingClientRect();
+        if (finalRect.left < 10) {
+            this.chatbotPanel.style.left = '10px';
+            this.chatbotPanel.style.right = 'auto';
+        }
+        if (finalRect.top < 10) {
+            this.chatbotPanel.style.top = '10px';
+        }
+    }
+
+    showSizeChangeConfirmation(size) {
+        // Create a temporary notification element
+        const notification = document.createElement('div');
+        notification.className = 'size-change-notification';
+        notification.textContent = `Size: ${size.charAt(0).toUpperCase() + size.slice(1)}`;
+        notification.style.cssText = `
+            position: absolute;
+            top: -30px;
+            right: 50%;
+            transform: translateX(50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            z-index: 10001;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        `;
+        
+        this.chatbotPanel.appendChild(notification);
+        
+        // Show notification
+        setTimeout(() => {
+            notification.style.opacity = '1';
+        }, 10);
+        
+        // Hide and remove notification after delay
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }, 1500);
     }
 
     toggleChatbot(forceState = null) {
         this.isOpen = forceState !== null ? forceState : !this.isOpen;
         
         if (this.isOpen) {
-            // Restore saved size if available
-            const savedSize = localStorage.getItem('chatbot_size');
-            if (savedSize) {
-                // Remove all size classes
-                this.chatbotPanel.classList.remove('size-small', 'size-default', 'size-large');
-                
-                // Add the saved size class
-                this.chatbotPanel.classList.add(`size-${savedSize}`);
-                
-                // Update the active button - using direct ID selectors for better reliability
-                const smallBtn = document.getElementById('size-small-btn');
-                const defaultBtn = document.getElementById('size-default-btn');
-                const largeBtn = document.getElementById('size-large-btn');
-                
-                // Remove active class from all buttons
-                if (smallBtn) smallBtn.classList.remove('active');
-                if (defaultBtn) defaultBtn.classList.remove('active');
-                if (largeBtn) largeBtn.classList.remove('active');
-                
-                // Add active class to the appropriate button
-                if (savedSize === 'small' && smallBtn) smallBtn.classList.add('active');
-                if (savedSize === 'default' && defaultBtn) defaultBtn.classList.add('active');
-                if (savedSize === 'large' && largeBtn) largeBtn.classList.add('active');
-                
-                console.log('Restored size:', savedSize);
-            }
+            this.chatbotPanel.style.display = 'flex';
             
-            // Restore saved custom dimensions if available
-            if (localStorage.getItem('chatbot_width') && localStorage.getItem('chatbot_height')) {
+            // Restore saved size if available
+            const savedSize = localStorage.getItem('chatbot_size') || 'default';
+            
+            // Remove all size classes first
+            this.chatbotPanel.classList.remove('size-small', 'size-default', 'size-large');
+            
+            // Add the saved size class
+            this.chatbotPanel.classList.add(`size-${savedSize}`);
+            
+            // Update the active button - using direct ID selectors for better reliability
+            const smallBtn = document.getElementById('size-small-btn');
+            const defaultBtn = document.getElementById('size-default-btn');
+            const largeBtn = document.getElementById('size-large-btn');
+            
+            // Remove active class from all buttons
+            [smallBtn, defaultBtn, largeBtn].forEach(btn => {
+                if (btn) btn.classList.remove('active');
+            });
+            
+            // Add active class to the appropriate button
+            const activeBtn = savedSize === 'small' ? smallBtn : 
+                             savedSize === 'large' ? largeBtn : defaultBtn;
+            if (activeBtn) activeBtn.classList.add('active');
+            
+            console.log('Restored size:', savedSize);
+            
+            // Restore saved custom dimensions if available (but prioritize size classes)
+            if (localStorage.getItem('chatbot_width') && localStorage.getItem('chatbot_height') && !savedSize) {
                 this.chatbotPanel.style.width = localStorage.getItem('chatbot_width');
                 this.chatbotPanel.style.height = localStorage.getItem('chatbot_height');
-                console.log('Restored dimensions:', localStorage.getItem('chatbot_width'), 'x', localStorage.getItem('chatbot_height'));
+                console.log('Restored custom dimensions:', localStorage.getItem('chatbot_width'), 'x', localStorage.getItem('chatbot_height'));
             }
             
-            this.chatbotPanel.style.display = 'flex';
+            // Show the panel with animation
             setTimeout(() => {
                 this.chatbotPanel.classList.add('open');
                 this.chatbotToggle.classList.add('active');
+                
+                // Ensure proper viewport positioning after opening
+                setTimeout(() => {
+                    this.ensurePanelInViewport();
+                }, 100);
             }, 10);
         } else {
-            // Save current dimensions before closing
-            localStorage.setItem('chatbot_width', this.chatbotPanel.style.width || '350px');
-            localStorage.setItem('chatbot_height', this.chatbotPanel.style.height || '500px');
+            // Save current size preference before closing
+            const currentSizeClass = this.chatbotPanel.classList.contains('size-small') ? 'small' :
+                                   this.chatbotPanel.classList.contains('size-large') ? 'large' : 'default';
+            localStorage.setItem('chatbot_size', currentSizeClass);
+            
+            // Save current dimensions if they were manually resized
+            if (this.chatbotPanel.style.width && this.chatbotPanel.style.height) {
+                localStorage.setItem('chatbot_width', this.chatbotPanel.style.width);
+                localStorage.setItem('chatbot_height', this.chatbotPanel.style.height);
+            }
             
             this.chatbotPanel.classList.remove('open');
             this.chatbotToggle.classList.remove('active');
@@ -250,28 +369,75 @@ class ToollyAIAdvisor {
         }
     }
 
-    sendMessage() {
+    // Enhanced: Try to answer direct queries using local dataset before Gemini API
+    async sendMessage() {
         const message = this.chatbotInput.value.trim();
         if (!message) return;
-        
+
         // Check if API key is available
         if (!this.apiKey) {
             document.querySelector('.chatbot-api-key-container').style.display = 'block';
             this.addBotMessage('To use the AI Tool Advisor, please enter your Gemini API key first.');
             return;
         }
-        
+
         // Add user message to chat
         this.addUserMessage(message);
-        
-        // Clear input
         this.chatbotInput.value = '';
-        
-        // Show typing indicator
-        this.showTypingIndicator();
-        
-        // Process with Gemini API
+
+        // Try local dataset answer first
+        const localAnswer = this.answerFromLocalDataset(message);
+        if (localAnswer) {
+            this.addBotMessage(localAnswer, true);
+            return;
+        }
+
+        // Otherwise, process with Gemini API
         this.processWithGemini(message);
+    }
+
+    // New: Answer direct queries using aiTools dataset
+    answerFromLocalDataset(query) {
+        const q = query.toLowerCase();
+        // Tool count queries
+        if (q.includes('how many') && q.includes('tool')) {
+            return `<strong>Total AI Tools:</strong> ${this.toolsData.length}`;
+        }
+        // Featured count
+        if (q.includes('how many') && q.includes('featured')) {
+            const featured = this.toolsData.filter(t => t.badges && t.badges.includes('featured')).length;
+            return `<strong>Featured Tools:</strong> ${featured}`;
+        }
+        // Category count
+        if (q.includes('how many') && q.includes('category')) {
+            const cats = new Set(this.toolsData.flatMap(t => t.categories));
+            return `<strong>Categories:</strong> ${cats.size}`;
+        }
+        // List all tools in a category
+        const catMatch = q.match(/show me all (.+?) tools/);
+        if (catMatch) {
+            const cat = catMatch[1].replace(/ai|generator|assistant/g, '').trim();
+            const found = this.toolsData.filter(t => t.categories.some(c => c.includes(cat)));
+            if (found.length) {
+                return `<strong>${found.length} tools found in category '${cat}':</strong><ul>` + found.map(t => `<li><a href='${t.url}' target='_blank'>${t.name}</a></li>`).join('') + '</ul>';
+            }
+        }
+        // Tool info by name
+        for (const tool of this.toolsData) {
+            if (q.includes(tool.name.toLowerCase())) {
+                return `<strong>${tool.name}</strong><br>${tool.description}<br><a href='${tool.url}' target='_blank'>Visit Tool</a>`;
+            }
+        }
+        // Tag search
+        const tagMatch = q.match(/tools? for (.+)/);
+        if (tagMatch) {
+            const tag = tagMatch[1].trim();
+            const found = this.toolsData.filter(t => t.tags.some(tg => tg.toLowerCase().includes(tag)));
+            if (found.length) {
+                return `<strong>Tools for '${tag}':</strong><ul>` + found.map(t => `<li><a href='${t.url}' target='_blank'>${t.name}</a></li>`).join('') + '</ul>';
+            }
+        }
+        return null;
     }
 
     addUserMessage(message) {
@@ -306,16 +472,20 @@ class ToollyAIAdvisor {
         }
         
         // Remove typing indicator if present
-        const typingIndicator = document.querySelector('.chatbot-message.bot.typing');
-        if (typingIndicator) {
-            typingIndicator.remove();
-        }
+        const typingIndicators = document.querySelectorAll('.chatbot-message.bot.typing');
+        typingIndicators.forEach(indicator => indicator.remove());
         
         this.chatbotMessages.appendChild(messageElement);
         this.scrollToBottom();
     }
 
     showTypingIndicator() {
+        // Check if typing indicator already exists
+        const existingTyping = document.querySelector('.chatbot-message.bot.typing');
+        if (existingTyping) {
+            return existingTyping;
+        }
+        
         const typingElement = document.createElement('div');
         typingElement.className = 'chatbot-message bot typing';
         typingElement.innerHTML = `
@@ -354,6 +524,14 @@ class ToollyAIAdvisor {
         const typingIndicator = this.showTypingIndicator();
         
         try {
+            // Directly answer factual queries using local tools dataset when possible
+            const directAnswer = this.answerFactualQuery(userQuery);
+            if (directAnswer) {
+                // If a direct answer is found, display it and skip Gemini API call
+                this.addBotMessage(directAnswer, true);
+                return;
+            }
+            
             // Prepare tools data for context
             const toolsContext = this.prepareToolsContext();
             
@@ -407,6 +585,30 @@ Remember: Your recommendations must be strictly based on the AI tools listed on 
                 this.addBotMessage('Sorry, I encountered an error while processing your request. Please try again later.');
             }
         }
+    }
+
+    answerFactualQuery(query) {
+        // Simple keyword-based matching for direct answers
+        const lowerQuery = query.toLowerCase();
+        
+        // Example: Directly answer questions about tool categories
+        if (lowerQuery.includes('what ai tools') || lowerQuery.includes('ai tools for')) {
+            return 'Here are some popular AI tools you might find interesting:' +
+                   '<ul>' +
+                   this.toolsData.map(tool => `<li>${this.escapeHtml(tool.name)}: ${this.escapeHtml(tool.description)}</li>`).join('') +
+                   '</ul>';
+        }
+        
+        // Example: Directly answer questions about specific tools
+        for (const tool of this.toolsData) {
+            if (lowerQuery.includes(tool.name.toLowerCase())) {
+                return `The AI tool **${this.escapeHtml(tool.name)}** is designed for ${this.escapeHtml(tool.description)}.`;
+            }
+        }
+        
+        // Add more direct answer patterns as needed
+        
+        return null; // No direct answer found
     }
 
     prepareToolsContext() {
