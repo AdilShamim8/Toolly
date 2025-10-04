@@ -139,10 +139,17 @@
                 <form id="tool-form">
                   <label for="tool-name">Tool Name:</label>
                   <input type="text" id="tool-name" name="tool-name" required>
-                  <label for="tool-icon">Icon URL:</label>
-                  <input type="text" id="tool-icon" name="tool-icon" required>
-                  <label for="tool-link">Tool Link (optional):</label>
+                  <label for="tool-link">Tool Link:</label>
                   <input type="text" id="tool-link" name="tool-link">
+                  <label for="tool-icon">Icon URL:</label>
+                                    <input type="text" id="tool-icon" name="tool-icon" required>
+                                    <div class="icon-actions">
+                                        <button type="button" id="fetch-logo-btn" class="fetch-logo-btn" title="Automatically fetch a logo from the Tool Link">Auto Fetch Logo</button>
+                                        <small class="icon-hint">Leave Icon URL blank and click Auto Fetch, or edit manually.</small>
+                                    </div>
+                                    <div id="icon-preview" class="icon-preview" aria-live="polite">
+                                        <span class="icon-preview-placeholder">Logo preview</span>
+                                    </div>
                   <button type="submit" id="save-tool-btn">Save</button>
                 </form>
               </div>
