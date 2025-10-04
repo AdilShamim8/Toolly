@@ -2723,6 +2723,113 @@ const modal = document.getElementById('tool-modal');
 const closeModalBtn = document.getElementById('close-modal');
 const toolForm = document.getElementById('tool-form');
 const modalTitle = document.getElementById('modal-title');
+// New elements for auto logo fetch
+const fetchLogoBtn = document.getElementById('fetch-logo-btn');
+const iconPreview = document.getElementById('icon-preview');
+const iconInputEl = document.getElementById('tool-icon');
+const linkInputEl = document.getElementById('tool-link');
+
+// Utility: update preview box
+function updateIconPreview(src) {
+    if (!iconPreview) return;
+    iconPreview.classList.remove('loading');
+    iconPreview.innerHTML = '';
+    if (!src) {
+        iconPreview.innerHTML = '<span class="icon-preview-placeholder">Logo preview</span>';
+        return;
+    }
+    const img = document.createElement('img');
+    img.alt = 'Tool logo preview';
+    img.referrerPolicy = 'no-referrer';
+    img.loading = 'lazy';
+    img.src = src;
+    img.onerror = () => {
+        // Fallback placeholder on error
+        iconPreview.innerHTML = '<span class="icon-preview-placeholder">Not found</span>';
+    };
+    iconPreview.appendChild(img);
+}
+
+// Debounce helper
+function debounce(fn, delay = 400) {
+    let t; return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), delay); };
+}
+
+// Core auto-favicon discovery
+async function discoverFavicon(url) {
+    try {
+        if (!/^https?:\/\//i.test(url)) return null;
+        const u = new URL(url);
+        const origin = u.origin;
+        const host = u.hostname;
+        const candidates = [
+            `${origin}/favicon.ico`,
+            `https://www.google.com/s2/favicons?domain=${host}&sz=128`,
+            `https://icons.duckduckgo.com/ip3/${host}.ico`,
+            `${origin}/apple-touch-icon.png`,
+            `${origin}/apple-touch-icon-precomposed.png`
+        ];
+        for (const cand of candidates) {
+            const ok = await checkImage(cand);
+            if (ok) return cand;
+        }
+    } catch(e) {
+        console.warn('discoverFavicon error', e);
+    }
+    return null;
+}
+
+function checkImage(src, timeout = 6000) {
+    return new Promise(resolve => {
+        const img = new Image();
+        let done = false;
+        const timer = setTimeout(() => { if(!done){ done = true; img.src = ''; resolve(false);} }, timeout);
+        img.onload = () => { if (!done){ done = true; clearTimeout(timer); resolve(true);} };
+        img.onerror = () => { if (!done){ done = true; clearTimeout(timer); resolve(false);} };
+        img.referrerPolicy = 'no-referrer';
+        img.src = src;
+    });
+}
+
+async function autoFetchLogo() {
+    if (!fetchLogoBtn) return;
+    const linkVal = (linkInputEl && linkInputEl.value.trim()) || '';
+    if (!linkVal) {
+        alert('Enter a Tool Link first');
+        return;
+    }
+    if (iconPreview) {
+        iconPreview.classList.add('loading');
+    }
+    fetchLogoBtn.disabled = true;
+    const original = fetchLogoBtn.textContent;
+    fetchLogoBtn.textContent = 'Fetching...';
+    const favicon = await discoverFavicon(linkVal);
+    if (favicon) {
+        if (iconInputEl) iconInputEl.value = favicon;
+        updateIconPreview(favicon);
+        fetchLogoBtn.textContent = 'Found!';
+    } else {
+        updateIconPreview(null);
+        fetchLogoBtn.textContent = 'Not Found';
+    }
+    setTimeout(() => { fetchLogoBtn.textContent = original; fetchLogoBtn.disabled = false; }, 1200);
+}
+
+if (fetchLogoBtn) {
+    fetchLogoBtn.addEventListener('click', autoFetchLogo);
+}
+if (iconInputEl) {
+    iconInputEl.addEventListener('input', () => updateIconPreview(iconInputEl.value.trim()));
+}
+if (linkInputEl) {
+    linkInputEl.addEventListener('input', debounce(() => {
+        // If icon field empty, attempt silent fetch
+        if (iconInputEl && !iconInputEl.value.trim()) {
+            autoFetchLogo();
+        }
+    }, 1000));
+}
 
 // Check if all required elements exist
 if (!toolsListEl || !editBtn || !modal || !closeModalBtn || !toolForm || !modalTitle) {
@@ -2872,9 +2979,12 @@ let editMode = false;function renderMyTools() {
             document.getElementById('tool-name').value = t.name;
             document.getElementById('tool-icon').value = t.icon;
             document.getElementById('tool-link').value = t.link || '';
+            updateIconPreview(t.icon);
         } else {
             modalTitle.textContent = 'Add Tool';
+            updateIconPreview(null);
         }
+        if (fetchLogoBtn) { fetchLogoBtn.textContent = 'Auto Fetch Logo'; fetchLogoBtn.disabled = false; }
     }
 
     function closeModal() {
@@ -2934,58 +3044,60 @@ if (closeModalBtn && modal && editBtn && toolForm) {
         return;
       }
       
-      if (!icon) {
-        alert('Please enter an icon URL');
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-        iconInput.focus();
-        return;
-      }
+            let finalIcon = icon;
+            const proceed = async () => {
+                // Check for duplicate names (except when editing the same tool)
+                const isDuplicate = myTools.some((tool, idx) => 
+                    tool.name.toLowerCase() === name.toLowerCase() && idx !== editIndex
+                );
+                if (isDuplicate) {
+                    alert('A tool with this name already exists');
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    nameInput.focus();
+                    return;
+                }
+                const tool = { name, icon: finalIcon, link };
+                if (typeof editIndex === 'number') {
+                    myTools[editIndex] = tool;
+                } else {
+                    myTools.push(tool);
+                }
+                try {
+                    saveTools();
+                    renderMyTools();
+                    closeModal();
+                    submitBtn.textContent = 'Saved!';
+                    submitBtn.style.background = '#4ade80';
+                    setTimeout(() => { submitBtn.textContent = originalText; submitBtn.style.background = ''; submitBtn.disabled = false; }, 1000);
+                    console.log('Tool saved successfully:', tool);
+                } catch (error) {
+                    console.error('Error saving tool:', error);
+                    alert('Failed to save tool. Please try again.');
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
+            };
+
+            if (!finalIcon) {
+                if (link) {
+                    // Attempt auto fetch synchronously
+                        discoverFavicon(link).then(found => {
+                            finalIcon = found || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIGZpbGw9IiNmMWY1ZjkiIHJ4PSIxNCIvPjx0ZXh0IHg9IjM2IiB5PSI0MiIgZm9udC1mYW1pbHk9InN5c3RlbS1VSSIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzk0YTNiOCI+Tk8gSUNPTjwvdGV4dD48L3N2Zz4=';
+                            if (iconInput) iconInput.value = finalIcon;
+                            updateIconPreview(finalIcon);
+                            proceed();
+                        });
+                    return; // proceed will be called async
+                } else {
+                    finalIcon = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIGZpbGw9IiNmMWY1ZjkiIHJ4PSIxNCIvPjx0ZXh0IHg9IjM2IiB5PSI0MiIgZm9udC1mYW1pbHk9InN5c3RlbS1VSSIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzk0YTNiOCI+Tk8gSUNPTjwvdGV4dD48L3N2Zz4=';
+                }
+            }
+
+            // Continue if icon already present
+            proceed();
       
-      // Check for duplicate names (except when editing the same tool)
-      const isDuplicate = myTools.some((tool, idx) => 
-        tool.name.toLowerCase() === name.toLowerCase() && idx !== editIndex
-      );
-      
-      if (isDuplicate) {
-        alert('A tool with this name already exists');
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-        nameInput.focus();
-        return;
-      }
-      
-      const tool = { name, icon, link };
-      
-      if (typeof editIndex === 'number') {
-        myTools[editIndex] = tool;
-      } else {
-        myTools.push(tool);
-      }
-      
-      try {
-        saveTools();
-        renderMyTools();
-        closeModal();
-        
-        // Show success feedback
-        submitBtn.textContent = 'Saved!';
-        submitBtn.style.background = '#4ade80';
-        
-        setTimeout(() => {
-          submitBtn.textContent = originalText;
-          submitBtn.style.background = '';
-          submitBtn.disabled = false;
-        }, 1000);
-        
-        console.log('Tool saved successfully:', tool);
-      } catch (error) {
-        console.error('Error saving tool:', error);
-        alert('Failed to save tool. Please try again.');
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-      }
-    }, 300); // Small delay for better UX
+        }, 300); // Small delay for better UX
   };
 
   // Initial render
