@@ -2296,6 +2296,15 @@ const aiTools = [
         url: "https://www.algolia.com/",
         badges: ["paid"],
         tags: ["search", "API", "ranking", "recommendations"]
+    },
+    {
+        name: "Vibecode",
+        description: "AI-powered code assistant for developers. Streamlines coding, debugging, and project management with smart automation.",
+        categories: ["developer-tools", "productivity"],
+        logo: "https://pbs.twimg.com/profile_images/1904766425094291456/-jOncDrH_400x400.jpg",
+        url: "https://www.vibecodeapp.com/",
+        badges: ["new", "freemium"],
+        tags: ["code assistant", "automation", "debugging", "project management"]
     }
 
 ];
@@ -2881,7 +2890,7 @@ let editMode = false;function renderMyTools() {
     img.alt = tool.name;
     img.className = 'tool-icon';
     img.onerror = () => {
-      img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iMjQiIGZpbGw9IiNmMWY1ZjkiLz4KPHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4PSIxMiIgeT0iMTIiPgo8cGF0aCBkPSJNMTIgMkw2IDhMMTIgMTRMMTggOEwxMiAyWiIgZmlsbD0iIzk0YTNiOCIvPgo8L3N2Zz4KPC9zdmc+';
+      img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iMjQiIGZpbGw9IiNmMWY1ZjkiLz4KPHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1zbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4PSIxMiIgeT0iMTIiPgo8cGF0aCBkPSJNMTIgMkw2IDhMMTIgMTRMMTggOEwxMiAyWiIgZmlsbD0iIzk0YTNiOCIvPgo8L3N2Zz4KPC9zdmc+';
     };
     
     const nameSpan = document.createElement('span');
@@ -3083,14 +3092,14 @@ if (closeModalBtn && modal && editBtn && toolForm) {
                 if (link) {
                     // Attempt auto fetch synchronously
                         discoverFavicon(link).then(found => {
-                            finalIcon = found || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIGZpbGw9IiNmMWY1ZjkiIHJ4PSIxNCIvPjx0ZXh0IHg9IjM2IiB5PSI0MiIgZm9udC1mYW1pbHk9InN5c3RlbS1VSSIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzk0YTNiOCI+Tk8gSUNPTjwvdGV4dD48L3N2Zz4=';
+                            finalIcon = found || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1zbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIGZpbGw9IiNmMWY1ZjkiIHJ4PSIxNCIvPjx0ZXh0IHg9IjM2IiB5PSI0MiIgZm9udC1mYW1pbHk9InN5c3RlbS1VSSIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzk0YTNiOCI+Tk8gSUNPTjwvdGV4dD48L3N2Zz4=';
                             if (iconInput) iconInput.value = finalIcon;
                             updateIconPreview(finalIcon);
                             proceed();
                         });
                     return; // proceed will be called async
                 } else {
-                    finalIcon = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIGZpbGw9IiNmMWY1ZjkiIHJ4PSIxNCIvPjx0ZXh0IHg9IjM2IiB5PSI0MiIgZm9udC1mYW1pbHk9InN5c3RlbS1VSSIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzk0YTNiOCI+Tk8gSUNPTjwvdGV4dD48L3N2Zz4=';
+                    finalIcon = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1zbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIGZpbGw9IiNmMWY1ZjkiIHJ4PSIxNCIvPjx0ZXh0IHg9IjM2IiB5PSI0MiIgZm9udC1mYW1pbHk9InN5c3RlbS1VSSIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzk0YTNiOCI+Tk8gSUNPTjwvdGV4dD48L3N2Zz4=';
                 }
             }
 
