@@ -171,6 +171,31 @@
                     <p>Try adjusting your search or category filters</p>
                 </div>
             </section>
+
+            <!-- Submit a Tool Section -->
+            <section id="submit-tool" class="submission-section" aria-labelledby="submit-tool-heading">
+                <h2 id="submit-tool-heading">Submit a Tool</h2>
+                <p class="submission-intro">Know an awesome AI tool that's missing? Share it with us! We review submissions regularly and add qualified tools to the directory.</p>
+                <form id="tool-submission-form" class="submission-form" novalidate>
+                    <div class="form-row">
+                        <label for="submissionName">Tool Name <span aria-hidden="true">*</span></label>
+                        <input type="text" id="submissionName" name="submissionName" maxlength="60" required placeholder="e.g. AwesomeAI" autocomplete="off" />
+                        <div class="field-hint">Max 60 characters. Use the official product name.</div>
+                        <div class="field-error" id="errorName" role="alert" aria-live="polite"></div>
+                    </div>
+                    <div class="form-row">
+                        <label for="submissionUrl">Website URL <span aria-hidden="true">*</span></label>
+                        <input type="url" id="submissionUrl" name="submissionUrl" required placeholder="https://example.com" inputmode="url" />
+                        <div class="field-hint">Include https://. Direct product or landing page only.</div>
+                        <div class="field-error" id="errorUrl" role="alert" aria-live="polite"></div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="submissionSubmitBtn" class="submit-btn">Submit Tool</button>
+                        <button type="reset" class="reset-btn" id="submissionResetBtn">Reset</button>
+                    </div>
+                    <div class="form-status" id="submissionStatus" aria-live="polite"></div>
+                </form>
+            </section>
         </main>
         
     </div>
@@ -184,7 +209,7 @@
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#">Submit a Tool</a></li>
+                    <li><a href="#submit-tool">Submit a Tool</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Terms of Service</a></li>
                     <li><a href="#">Contact Us</a></li>
