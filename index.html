@@ -171,9 +171,91 @@
                     <p>Try adjusting your search or category filters</p>
                 </div>
             </section>
+
+            <!-- Submit a Tool Section -->
+            <section id="submit-tool" class="submission-section" aria-labelledby="submit-tool-heading">
+                <h2 id="submit-tool-heading">Submit a Tool</h2>
+                <p class="submission-intro">Know an awesome AI tool that's missing? Share it with us! We review submissions regularly and add qualified tools to the directory.</p>
+                <form id="tool-submission-form" class="submission-form" novalidate>
+                    <div class="form-row">
+                        <label for="submissionName">Tool Name <span aria-hidden="true">*</span></label>
+                        <input type="text" id="submissionName" name="submissionName" maxlength="60" required placeholder="e.g. AwesomeAI" autocomplete="off" />
+                        <div class="field-hint">Max 60 characters. Use the official product name.</div>
+                        <div class="field-error" id="errorName" role="alert" aria-live="polite"></div>
+                    </div>
+                    <div class="form-row">
+                        <label for="submissionUrl">Website URL <span aria-hidden="true">*</span></label>
+                        <input type="url" id="submissionUrl" name="submissionUrl" required placeholder="https://example.com" inputmode="url" />
+                        <div class="field-hint">Include https://. Direct product or landing page only.</div>
+                        <div class="field-error" id="errorUrl" role="alert" aria-live="polite"></div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" id="submissionSubmitBtn" class="submit-btn">Submit Tool</button>
+                        <button type="reset" class="reset-btn" id="submissionResetBtn">Reset</button>
+                    </div>
+                    <div class="form-status" id="submissionStatus" aria-live="polite"></div>
+                </form>
+            </section>
         </main>
         
     </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwlHHaJzEW33JG0871QbwTGupOIjLanbMAtIHl7k_3F8CfeomhdIYSbHNLs42T8-j_3/exec' // Replace with your actual Google Apps Script URL
+
+        const form = document.getElementById('tool-submission-form')
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            
+            // Basic form validation
+            const toolName = document.getElementById('submissionName').value.trim()
+            const toolUrl = document.getElementById('submissionUrl').value.trim()
+            
+            if (!toolName || !toolUrl) {
+                alert('Please fill in all required fields.')
+                return
+            }
+            
+            // Show loading state
+            const submitBtn = document.getElementById('submissionSubmitBtn')
+            const originalText = submitBtn.textContent
+            submitBtn.textContent = 'Submitting...'
+            submitBtn.disabled = true
+            
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                if (response.ok) {
+                    // Show success message in the form status area
+                    const statusDiv = document.getElementById('submissionStatus')
+                    statusDiv.innerHTML = '<span style="color: green;"><i class="fas fa-check-circle"></i> Tool submitted successfully! Thank you for your contribution.</span>'
+                    form.reset()
+                    
+                    // Clear success message after 5 seconds
+                    setTimeout(() => {
+                        statusDiv.innerHTML = ''
+                    }, 5000)
+                } else {
+                    throw new Error('Submission failed')
+                }
+            })
+            .catch(error => {
+                console.error('Error!', error.message)
+                const statusDiv = document.getElementById('submissionStatus')
+                statusDiv.innerHTML = '<span style="color: red;"><i class="fas fa-exclamation-circle"></i> Sorry, there was an error submitting your form. Please try again.</span>'
+                
+                // Clear error message after 5 seconds
+                setTimeout(() => {
+                    statusDiv.innerHTML = ''
+                }, 5000)
+            })
+            .finally(() => {
+                // Reset button state
+                submitBtn.textContent = originalText
+                submitBtn.disabled = false
+            })
+        })
+    </script>
     
     <footer class="site-footer">
         <div class="footer-content">
@@ -184,7 +266,7 @@
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#">Submit a Tool</a></li>
+                    <li><a href="#submit-tool">Submit a Tool</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Terms of Service</a></li>
                     <li><a href="#">Contact Us</a></li>
