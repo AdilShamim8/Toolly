@@ -2297,7 +2297,7 @@ const aiTools = [
         badges: ["paid"],
         tags: ["search", "API", "ranking", "recommendations"]
     },
-    {
+        {
         name: "Vibecode",
         description: "AI-powered code assistant for developers. Streamlines coding, debugging, and project management with smart automation.",
         categories: ["developer-tools", "productivity"],
@@ -2890,7 +2890,7 @@ let editMode = false;function renderMyTools() {
     img.alt = tool.name;
     img.className = 'tool-icon';
     img.onerror = () => {
-      img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iMjQiIGZpbGw9IiNmMWY1ZjkiLz4KPHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1zbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4PSIxMiIgeT0iMTIiPgo8cGF0aCBkPSJNMTIgMkw2IDhMMTIgMTRMMTggOEwxMiAyWiIgZmlsbD0iIzk0YTNiOCIvPgo8L3N2Zz4KPC9zdmc+';
+      img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iMjQiIGZpbGw9IiNmMWY1ZjkiLz4KPHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4PSIxMiIgeT0iMTIiPgo8cGF0aCBkPSJNMTIgMkw2IDhMMTIgMTRMMTggOEwxMiAyWiIgZmlsbD0iIzk0YTNiOCIvPgo8L3N2Zz4KPC9zdmc+';
     };
     
     const nameSpan = document.createElement('span');
@@ -3092,14 +3092,14 @@ if (closeModalBtn && modal && editBtn && toolForm) {
                 if (link) {
                     // Attempt auto fetch synchronously
                         discoverFavicon(link).then(found => {
-                            finalIcon = found || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1zbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIGZpbGw9IiNmMWY1ZjkiIHJ4PSIxNCIvPjx0ZXh0IHg9IjM2IiB5PSI0MiIgZm9udC1mYW1pbHk9InN5c3RlbS1VSSIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzk0YTNiOCI+Tk8gSUNPTjwvdGV4dD48L3N2Zz4=';
+                            finalIcon = found || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIGZpbGw9IiNmMWY1ZjkiIHJ4PSIxNCIvPjx0ZXh0IHg9IjM2IiB5PSI0MiIgZm9udC1mYW1pbHk9InN5c3RlbS1VSSIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzk0YTNiOCI+Tk8gSUNPTjwvdGV4dD48L3N2Zz4=';
                             if (iconInput) iconInput.value = finalIcon;
                             updateIconPreview(finalIcon);
                             proceed();
                         });
                     return; // proceed will be called async
                 } else {
-                    finalIcon = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1zbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIGZpbGw9IiNmMWY1ZjkiIHJ4PSIxNCIvPjx0ZXh0IHg9IjM2IiB5PSI0MiIgZm9udC1mYW1pbHk9InN5c3RlbS1VSSIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzk0YTNiOCI+Tk8gSUNPTjwvdGV4dD48L3N2Zz4=';
+                    finalIcon = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIGZpbGw9IiNmMWY1ZjkiIHJ4PSIxNCIvPjx0ZXh0IHg9IjM2IiB5PSI0MiIgZm9udC1mYW1pbHk9InN5c3RlbS1VSSIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzk0YTNiOCI+Tk8gSUNPTjwvdGV4dD48L3N2Zz4=';
                 }
             }
 
@@ -3114,3 +3114,89 @@ if (closeModalBtn && modal && editBtn && toolForm) {
 } else {
   console.error('My Tools: Cannot set up event handlers - required elements missing');
 }
+
+// ================= Submission Form Logic =================
+(function(){
+    const form = document.getElementById('tool-submission-form');
+    if(!form) return; // Page may not have form
+    const nameInput = document.getElementById('submissionName');
+    const urlInput = document.getElementById('submissionUrl');
+    const errorName = document.getElementById('errorName');
+    const errorUrl = document.getElementById('errorUrl');
+    const statusEl = document.getElementById('submissionStatus');
+    const submitBtn = document.getElementById('submissionSubmitBtn');
+    const resetBtn = document.getElementById('submissionResetBtn');
+
+    const urlPattern = /^(https?:\/\/)([\w.-]+)(:[0-9]+)?(\/[\w\-._~:/?#[\]@!$&'()*+,;=.]*?)?$/i;
+
+    function setError(inputEl, errorEl, msg){
+        if(!inputEl || !errorEl) return;
+        inputEl.classList.add('error');
+        errorEl.textContent = msg || '';
+    }
+    function clearError(inputEl, errorEl){
+        if(!inputEl || !errorEl) return;
+        inputEl.classList.remove('error');
+        errorEl.textContent='';
+    }
+    function validateName(){
+        const val = nameInput.value.trim();
+        if(!val){ setError(nameInput,errorName,'Tool name is required'); return false; }
+        if(val.length < 2){ setError(nameInput,errorName,'Name must be at least 2 characters'); return false; }
+        clearError(nameInput,errorName); return true;
+    }
+    function normalizeUrl(raw){
+        if(!raw) return raw;
+        if(!/^https?:\/\//i.test(raw)) return 'https://' + raw;
+        return raw;
+    }
+    function validateUrl(){
+        let val = urlInput.value.trim();
+        if(!val){ setError(urlInput,errorUrl,'Website URL is required'); return false; }
+        val = normalizeUrl(val);
+        if(!urlPattern.test(val)){ setError(urlInput,errorUrl,'Enter a valid URL including https://'); return false; }
+        // Additional simple checks
+        try {
+            const u = new URL(val);
+            if(!u.hostname.includes('.')) { setError(urlInput,errorUrl,'URL must include a valid domain'); return false; }
+        } catch(e){ setError(urlInput,errorUrl,'Malformed URL'); return false; }
+        urlInput.value = val; // normalized
+        clearError(urlInput,errorUrl); return true;
+    }
+
+    nameInput.addEventListener('input', ()=>{ if(errorName.textContent) validateName(); });
+    urlInput.addEventListener('input', ()=>{ if(errorUrl.textContent) validateUrl(); });
+
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+        statusEl.textContent='';
+        statusEl.className='form-status';
+        const validName = validateName();
+        const validUrl = validateUrl();
+        if(!validName || !validUrl){
+            statusEl.textContent='Please correct the highlighted fields.';
+            statusEl.classList.add('error');
+            return;
+        }
+
+        submitBtn.disabled = true;
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent='Submitting...';
+
+        // Simulate async submission (could be replaced with fetch to backend / form service)
+        setTimeout(()=>{
+            submitBtn.textContent='Submitted!';
+            statusEl.textContent='Thank you! Your tool has been submitted for review.';
+            statusEl.classList.add('success');
+            // Store locally so user sees their submission (optional queue)
+            const submissions = JSON.parse(localStorage.getItem('pendingSubmissions')||'[]');
+            submissions.push({ name: nameInput.value.trim(), url: urlInput.value.trim(), ts: Date.now() });
+            localStorage.setItem('pendingSubmissions', JSON.stringify(submissions));
+            setTimeout(()=>{ submitBtn.disabled=false; submitBtn.textContent=originalText; form.reset(); }, 1600);
+        }, 900);
+    });
+
+    resetBtn.addEventListener('click', ()=>{
+        clearError(nameInput,errorName); clearError(urlInput,errorUrl); statusEl.textContent=''; statusEl.className='form-status';
+    });
+})();
