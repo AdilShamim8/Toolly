@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Disallow admin or private areas if added later
+Disallow: /admin/
+Disallow: /private/
+
+Sitemap: https://toolly.tech/sitemap.xml
