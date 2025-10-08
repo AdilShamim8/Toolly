@@ -1252,15 +1252,6 @@ const aiTools = [
         tags: ["assistant", "conversation", "personal"]
     },
     {
-        name: "DataRobot",
-        description: "Enterprise AI platform for automated machine learning and model deployment.",
-        categories: ["data-science"],
-        logo: "https://www.datarobot.com/favicon.ico",
-        url: "https://www.datarobot.com",
-        badges: ["featured", "paid"],
-        tags: ["machine learning", "automation", "enterprise"]
-    },
-    {
         name: "TensorFlow AutoML",
         description: "Google's automated machine learning solution for custom model development.",
         categories: ["data-science"],
@@ -2305,6 +2296,52 @@ const aiTools = [
         url: "https://www.vibecodeapp.com/",
         badges: ["new", "freemium"],
         tags: ["code assistant", "automation", "debugging", "project management"]
+    }
+    ,
+    {
+        name: "Sourcegraph Cody",
+        description: "AI code assistant by Sourcegraph providing enterprise code search, context-aware completions, and multi-repo codebase Q&A.",
+        categories: ["coding", "productivity"],
+        logo: "https://sourcegraph.com/favicon.ico",
+        url: "https://sourcegraph.com/amp",
+        badges: ["freemium"],
+        tags: ["code assistant", "code search", "enterprise", "context"]
+    },
+    {
+        name: "Anyword",
+        description: "AI marketing copy generator with predictive performance scoring for ads, landing pages, emails, and social content.",
+        categories: ["marketing", "nlp"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQuiDMxw_1gEXK_0cv3Mc61RiQWOnXUjNPIQ&s",
+        url: "https://www.anyword.com/",
+        badges: ["freemium"],
+        tags: ["copywriting", "ads", "content", "optimization"]
+    },
+    {
+        name: "Opus Clip",
+        description: "AI video repurposing tool that turns long-form videos into viral-ready short clips with smart topic detection and auto reframing.",
+        categories: ["video", "marketing"],
+        logo: "https://cdn.prod.website-files.com/648e04d4bbae7004f1b35f15/65c2a852de94e97b6732bd05_opus-pro-icon.jpeg",
+        url: "https://www.opus.pro/",
+        badges: ["freemium", "trending"],
+        tags: ["video repurposing", "shorts", "clips", "social media"]
+    },
+    {
+        name: "CapCut",
+        description: "Full-featured online & mobile video editor with AI tools for captions, resizing, background removal, and effects.",
+        categories: ["video", "design"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpdwHXgG2fMqloi-qSt25WcLv4g_spjCc2Ew&s",
+        url: "https://www.capcut.com/",
+        badges: ["freemium"],
+        tags: ["video editing", "captioning", "templates", "creator"]
+    },
+    {
+        name: "Cohere",
+        description: "Enterprise-grade AI platform offering multilingual large language models and APIs for retrieval-augmented generation and workflow automation.",
+        categories: ["nlp", "coding"],
+        logo: "https://cohere.com/favicon.ico",
+        url: "https://cohere.com/",
+        badges: ["featured", "freemium"],
+        tags: ["language model", "RAG", "enterprise", "API"]
     }
 
 ];
