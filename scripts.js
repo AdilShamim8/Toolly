@@ -2342,6 +2342,78 @@ const aiTools = [
         url: "https://cohere.com/",
         badges: ["featured", "freemium"],
         tags: ["language model", "RAG", "enterprise", "API"]
+    },
+    {
+        name: "Aider",
+        description: "AI-powered command-line coding assistant that helps write, edit, and debug code directly in your terminal with Git integration.",
+        categories: ["coding", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLiSouKvoP-p1tBtlmf6apsyUomD6JemppgQ&s",
+        url: "https://aider.chat/",
+        badges: ["open source", "freemium"],
+        tags: ["command line", "coding assistant", "git", "terminal"]
+    },
+    {
+        name: "Ideogram",
+        description: "AI image generation platform specializing in creating high-quality images with accurate text rendering and creative visual content.",
+        categories: ["vision", "design"],
+        logo: "https://ideogram.ai/favicon.ico",
+        url: "https://ideogram.ai/t/explore",
+        badges: ["featured", "freemium"],
+        tags: ["image generation", "text rendering", "creative", "visual content"]
+    },
+    {
+        name: "Presentations.AI",
+        description: "AI-powered presentation creation platform that generates professional slide decks from prompts with smart design and content suggestions.",
+        categories: ["productivity", "business", "design"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT6PiVTWBJSCPwbZsoD_SySfw_EwlqlPLAwA&s",
+        url: "https://www.presentations.ai/",
+        badges: ["freemium"],
+        tags: ["presentations", "slides", "business", "design automation"]
+    },
+    {
+        name: "Aider AI",
+        description: "AI coding companion platform providing intelligent code assistance, debugging help, and development workflow optimization.",
+        categories: ["coding", "productivity"],
+        logo: "https://play-lh.googleusercontent.com/Vd-fKUUAVyoGbyK5FExqLi2ZwsdI44hj7a-4BB1tBFddTFaTupkTegTw0BuseR2WMcM",
+        url: "https://www.aider.ai/",
+        badges: ["freemium"],
+        tags: ["coding assistant", "debugging", "development", "workflow"]
+    },
+    {
+        name: "Glean",
+        description: "AI-powered workplace search and knowledge management platform that helps teams find information across all company tools and documents.",
+        categories: ["productivity", "business"],
+        logo: "https://glean.co/favicon.ico",
+        url: "https://glean.co/",
+        badges: ["featured", "paid"],
+        tags: ["workplace search", "knowledge management", "enterprise", "information retrieval"]
+    },
+    {
+        name: "Compose AI",
+        description: "AI writing assistant browser extension that helps compose emails, documents, and messages with context-aware suggestions and autocomplete.",
+        categories: ["productivity", "nlp"],
+        logo: "https://www.compose.ai/favicon.ico",
+        url: "https://www.compose.ai/",
+        badges: ["freemium"],
+        tags: ["writing assistant", "email", "browser extension", "autocomplete"]
+    },
+    {
+        name: "Scribe",
+        description: "AI-powered documentation tool that automatically creates step-by-step guides, tutorials, and process documentation by recording your actions.",
+        categories: ["productivity", "business"],
+        logo: "https://scribehow.com/favicon.ico",
+        url: "https://scribehow.com/",
+        badges: ["featured", "freemium"],
+        tags: ["documentation", "tutorials", "process automation", "screen recording"]
+    },
+    {
+        name: "Tome Lightfield",
+        description: "AI-powered immersive storytelling platform for creating interactive presentations and visual narratives with 3D elements.",
+        categories: ["design", "productivity"],
+        logo: "https://lightfield.app/favicon.ico",
+        url: "https://lightfield.app/",
+        badges: ["trending", "freemium"],
+        tags: ["storytelling", "3D presentations", "interactive", "immersive"]
     }
 
 ];
