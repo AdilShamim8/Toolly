@@ -8,14 +8,8 @@
     <meta property="og:title" content="Toolly - AI Tools Directory">
     <meta property="og:description" content="Discover the best AI tools for your needs. Toolly offers a comprehensive directory of AI tools across various categories.">
     <meta property="og:image" content="logo/Toolly.jpg">
-    <meta property="og:url" content="https://toolly.tech">
-    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="https://toolly.ai">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@Toolly_">
-    <meta name="twitter:creator" content="@Toolly_">
-    <link rel="canonical" href="https://toolly.tech/">
-    <meta name="robots" content="index, follow, max-snippet:160, max-image-preview:large, max-video-preview:-1">
-    <meta name="theme-color" content="#B0DB9C">
     <title>Toolly - AI Tools Directory</title>
     <!-- Preload critical assets -->
     <!-- Resource hints for faster loading -->
@@ -24,11 +18,6 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
-    <!-- Prefetch DNS for potential API/fonts -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Critical inline CSS for faster rendering -->
     <style>
         .loading-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-color:var(--background-color,#f8fafc);display:flex;justify-content:center;align-items:center;z-index:9999;transition:opacity 0.3s ease-out;}
@@ -70,12 +59,12 @@
     <div class="layout">
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                                <div class="sidebar-logo-container">
-                                    <img src="logo/Toolly.jpg" alt="Toolly - AI Tools Directory Logo" class="logo" width="64" height="64" loading="lazy" decoding="async" fetchpriority="high">
+                <div class="sidebar-logo-container">
+                  <img src="logo/Toolly.jpg" alt="Toolly Logo" class="logo" width="64" height="64" loading="eager">
                 </div>
                 <h2>Toolly</h2>
             </div>
-            <nav class="sidebar-categories" id="categories" aria-label="AI Tool Categories Navigation">
+            <nav class="sidebar-categories">
                 <h3>Categories</h3>
                 <ul id="categoryList">
                     <li class="active" data-category="all">All Tools</li>
@@ -181,18 +170,6 @@
                     <h3>No tools found</h3>
                     <p>Try adjusting your search or category filters</p>
                 </div>
-                <noscript>
-                    <div class="noscript-tools-fallback" style="margin-top:1.5rem;background:#fff;padding:1rem;border:1px solid #e2e8f0;border-radius:12px;">
-                        <h3>Popular AI Tools (JavaScript Disabled)</h3>
-                        <ul>
-                            <li>ChatGPT – Conversational AI (https://chat.openai.com)</li>
-                            <li>Midjourney – Image Generation (https://www.midjourney.com)</li>
-                            <li>Claude – Advanced LLM Assistant (https://claude.ai)</li>
-                            <li>Perplexity – AI Research (https://www.perplexity.ai)</li>
-                        </ul>
-                        <p>Enable JavaScript for full filtering, search and personalization features.</p>
-                    </div>
-                </noscript>
             </section>
 
             <!-- Submit a Tool Section -->
@@ -279,56 +256,6 @@
             })
         })
     </script>
-        <!-- Structured Data for SEO -->
-        <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "Toolly",
-            "url": "https://toolly.tech/",
-            "description": "Directory of AI tools across chatbot, productivity, developer, research, education, data, audio, video, image, design, business, marketing & more.",
-            "inLanguage": "en",
-            "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://toolly.tech/?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-            }
-        }
-        </script>
-        <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Toolly",
-            "url": "https://toolly.tech/",
-            "logo": "https://toolly.tech/logo/Toolly.jpg",
-            "sameAs": [
-                "https://x.com/Toolly_",
-                "https://www.linkedin.com/company/toolly8/",
-                "https://github.com/AdilShamim8/Toolly"
-            ],
-            "contactPoint": [{
-                "@type": "ContactPoint",
-                "email": "info@toolly.tech",
-                "contactType": "customer support",
-                "availableLanguage": ["en"]
-            }]
-        }
-        </script>
-        <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "name": "AI Tool Categories",
-            "itemListElement": [
-                {"@type":"ListItem","position":1,"name":"Chatbot AI Tools","url":"https://toolly.tech/#categories"},
-                {"@type":"ListItem","position":2,"name":"Productivity AI Tools","url":"https://toolly.tech/#categories"},
-                {"@type":"ListItem","position":3,"name":"Developer Tools AI","url":"https://toolly.tech/#categories"},
-                {"@type":"ListItem","position":4,"name":"Research AI Tools","url":"https://toolly.tech/#categories"},
-                {"@type":"ListItem","position":5,"name":"Education AI Tools","url":"https://toolly.tech/#categories"}
-            ]
-        }
-        </script>
     
     <footer class="site-footer">
         <div class="footer-content">
@@ -373,3 +300,4 @@
     <script src="chatbot.js" defer></script>
 </body>
 </html>
+
