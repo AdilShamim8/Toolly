@@ -2414,8 +2414,124 @@ const aiTools = [
         url: "https://lightfield.app/",
         badges: ["trending", "freemium"],
         tags: ["storytelling", "3D presentations", "interactive", "immersive"]
+    },
+    {
+        name: "ClipDrop",
+        description: "Image capture, background removal, and AI editing tools for creators and e-commerce.",
+        categories: ["vision", "design"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSy55vfr7hZsHaoxyCWKnsWycogb-hAnAmCQ&s",
+        url: "https://clipdrop.co",
+        badges: ["freemium"],
+        tags: ["image editing", "background removal", "capture", "creative"]
+    },
+    {
+        name: "Luma AI",
+        description: "Photoreal 3D scene capture and NeRF-based 3D generation from videos and photos.",
+        categories: ["vision", "3d", "design"],
+        logo: "https://play-lh.googleusercontent.com/AQybb5Ro1vvBtYOWKxxdgrvalnLFIsx7dh50DDAQFpPtmrZ1A-5CKTTO2xAr_A-EZ_CX",
+        url: "https://luma.ai",
+        badges: ["freemium"],
+        tags: ["3d", "nerf", "photogrammetry", "visualization"]
+    },
+    {
+        name: "Playground AI",
+        description: "Web-based image-generation playground with many models and customization options.",
+        categories: ["vision", "design"],
+        logo: "https://playgroundai.com/favicon.ico",
+        url: "https://playgroundai.com",
+        badges: ["freemium"],
+        tags: ["image generation", "creative", "models", "playground"]
+    },
+    {
+        name: "Humata",
+        description: "AI assistant for asking questions and extracting insights from your documents and PDFs.",
+        categories: ["productivity", "research"],
+        logo: "https://humata.ai/favicon.ico",
+        url: "https://humata.ai",
+        badges: ["freemium"],
+        tags: ["documents", "qa", "pdf", "research"]
+    },
+    {
+        name: "Fireflies.ai",
+        description: "Meeting assistant that records, transcribes, and summarizes voice conversations and calls.",
+        categories: ["audio", "productivity"],
+        logo: "https://fireflies.ai/favicon.ico",
+        url: "https://fireflies.ai",
+        badges: ["freemium"],
+        tags: ["transcription", "meetings", "summaries", "collaboration"]
+    },
+    {
+        name: "LangChain",
+        description: "Framework for developing LLM applications with chains, agents, and integrations (developer-focused).",
+        categories: ["developer-tools", "coding"],
+        logo: "https://logo.svgcdn.com/s/langchain-dark-8x.png",
+        url: "https://langchain.com",
+        badges: ["open source", "featured"],
+        tags: ["framework", "llm", "agents", "developer"]
+    },
+    {
+        name: "LlamaIndex",
+        description: "Tooling (formerly GPT-Index) to build context and retrieval layers over your data for LLMs.",
+        categories: ["developer-tools", "research"],
+        logo: "https://miro.medium.com/1*XRIQnYLa1oXQgCjkRZcG2Q.jpeg",
+        url: "https://llamaindex.ai",
+        badges: ["open source"],
+        tags: ["retrieval", "indexing", "knowledge", "llm"]
+    },
+    {
+        name: "Replicate",
+        description: "Host and run machine learning models in the cloud and share reproducible model APIs.",
+        categories: ["developer-tools", "ml"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHSxvbRITlPdnvXlSx6i3lexpcG8x2l8lJOA&s",
+        url: "https://replicate.com",
+        badges: ["freemium"],
+        tags: ["models", "hosting", "api", "deployment"]
+    },
+    {
+        name: "Runpod",
+        description: "On-demand GPU cloud for training and running ML models and apps with simple pricing.",
+        categories: ["infrastructure", "developer-tools"],
+        logo: "https://res.cloudinary.com/apideck/image/upload/w_196,f_auto/v1683414788/icons/runpod-io.png",
+        url: "https://runpod.io",
+        badges: ["paid"],
+        tags: ["gpu", "cloud", "training", "infrastructure"]
+    },
+    {
+        name: "Pinecone",
+        description: "Managed vector database for similarity search and retrieval-augmented workflows.",
+        categories: ["developer-tools", "infrastructure"],
+        logo: "https://www.pinecone.io/favicon.ico",
+        url: "https://www.pinecone.io",
+        badges: ["paid", "featured"],
+        tags: ["vector db", "search", "retrieval", "embeddings"]
+    },
+    {
+        name: "Weights & Biases",
+        description: "Experiment tracking, model monitoring, and MLOps platform for teams building ML models.",
+        categories: ["data-science", "mlops"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh8H3xi4Vh_qPRxg0fOJ-6kQuv4Ni0pWfhqQ&s",
+        url: "https://wandb.ai",
+        badges: ["freemium"],
+        tags: ["mlops", "tracking", "experiments", "monitoring"]
+    },
+    {
+        name: "Glasp",
+        description: "Social web highlighter and knowledge sharing tool that summarizes and saves highlights.",
+        categories: ["productivity", "research"],
+        logo: "https://glasp.co/favicon.ico",
+        url: "https://glasp.co",
+        badges: ["freemium"],
+        tags: ["highlighter", "notes", "web", "research"]
+    },
+    {
+        name: "Repurpose.io",
+        description: "AI-assisted platform to automatically repurpose long-form audio and video into short clips for social.",
+        categories: ["video", "productivity"],
+        logo: "https://pbs.twimg.com/profile_images/1430560562694524936/Q0Pp2iUs_200x200.jpg",
+        url: "https://repurpose.io",
+        badges: ["paid"],
+        tags: ["video", "repurposing", "social", "clips"]
     }
-
 ];
 
 // DOM Elements
