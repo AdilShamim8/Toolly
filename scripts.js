@@ -40,7 +40,7 @@ const aiTools = [
         name: "Perplexity",
         description: "AI-powered search engine that provides detailed, accurate answers with sources.",
         categories: ["nlp", "research"],
-        logo: "https://www.perplexity.ai/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuJtpuSPxCai6OZE-p61Ivmz9A_QSa414g7Q&s",
         url: "https://www.perplexity.ai",
         badges: ["featured","trending", "freemium"],
         tags: ["search", "research", "answers"]
@@ -49,7 +49,7 @@ const aiTools = [
         name: "Grok",
         description: "X's AI assistant with real-time knowledge and a rebellious streak. Known for its witty responses and ability to access current information.",
         categories: ["nlp", "productivity"],
-        logo: "https://images.seeklogo.com/logo-png/61/1/grok-logo-png_seeklogo-613403.png",
+        logo: "https://pngdownload.io/wp-content/uploads/2025/05/Grok-Logo-xAI-Futuristic-AI.webp",
         url: "https://grok.x.ai",
         badges: ["trending"],
         tags: ["chatbot", "assistant", "real-time", "x", "twitter"]
@@ -157,7 +157,7 @@ const aiTools = [
         name: "Quadratic",
         description: "AI-powered spreadsheet and data analysis platform with advanced automation capabilities.",
         categories: ["productivity", "data-science"],
-        logo: "https://www.quadratichq.com/images/og-image.png",
+        logo: "https://media2.dev.to/dynamic/image/width=320,height=320,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Forganization%2Fprofile_image%2F10472%2F5ec582d6-eb59-4e06-8d88-78c873f6dcfd.png",
         url: "https://app.quadratichq.com/",
         badges: ["featured", "freemium"],
         tags: ["spreadsheet", "data analysis", "automation", "productivity"]
@@ -166,7 +166,7 @@ const aiTools = [
         name: "HeyGen",
         description: "AI video creation with talking avatars.",
         categories: ["vision", "audio"],
-        logo: "https://images.seeklogo.com/logo-png/61/1/heygen-logo-png_seeklogo-617924.png",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmQlCfMbE0lUoY428MTly4cyHylVHgx9xlVQ&s",
         url: "https://www.heygen.com",
         badges: ["trending", "freemium"],
         tags: ["video", "avatar", "creation"]
@@ -413,15 +413,6 @@ const aiTools = [
         url: "https://lovable.dev",
         badges: ["featured", "freemium"],
         tags: ["customer support", "engagement", "automation", "productivity"]
-    },
-    {
-        name: "Canva Magic Studio",
-        description: "AI-powered design tools for creating graphics, presentations, and more.",
-        categories: ["design", "productivity"],
-        logo: "https://static.canva.com/static/images/favicon.ico",
-        url: "https://www.canva.com/magic/",
-        badges: ["freemium"],
-        tags: ["design", "graphics", "presentations"]
     },
     {
         name: "Synthesia",
@@ -2531,6 +2522,150 @@ const aiTools = [
         url: "https://repurpose.io",
         badges: ["paid"],
         tags: ["video", "repurposing", "social", "clips"]
+    },
+    {
+        name: "Clipchamp",
+        description: "Browser-based video editor with AI features for auto-captioning, scene suggestions and quick social clips.",
+        categories: ["video", "design"],
+        logo: "https://clipchamp.com/favicon.ico",
+        url: "https://www.clipchamp.com",
+        badges: ["freemium"],
+        tags: ["video editor", "captioning", "social", "editing"]
+    },
+    {
+        name: "Bardeen",
+        description: "Automation assistant that automates repetitive browser tasks and workflows with no-code playbooks.",
+        categories: ["productivity", "automation"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCdl5-QELULx2cCppBs2AGszqj0K6Lnx_WDg&s",
+        url: "https://www.bardeen.ai",
+        badges: ["freemium"],
+        tags: ["automation", "no-code", "workflow", "productivity"]
+    },
+    {
+        name: "Bloop",
+        description: "Fast code search and navigation powered by AI — find examples, usages and answers across repositories.",
+        categories: ["developer-tools", "coding"],
+        logo: "https://bloop.ai/favicon.ico",
+        url: "https://bloop.ai",
+        badges: ["freemium"],
+        tags: ["code search", "developer", "search", "IDE"]
+    },
+    {
+        name: "MeetGeek",
+        description: "AI meeting assistant that records, transcribes, and generates searchable summaries and action items.",
+        categories: ["productivity", "audio"],
+        logo: "https://play-lh.googleusercontent.com/eynrOTHXA2QDvEIltsECcgm3FgfENrt4KOz1S1xkEVX9pDZfAc1jtdEUy3A87ZLclK5e",
+        url: "https://meetgeek.ai",
+        badges: ["freemium"],
+        tags: ["meetings", "transcription", "summaries", "action items"]
+    },
+    {
+        name: "Tactiq",
+        description: "Capture live captions from Google Meet, Zoom and Teams and convert them into notes and highlights.",
+        categories: ["productivity", "audio"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSBE6Opr6z7fzw4Gnv2YJeJBdIATda52bQxQ&s",
+        url: "https://tactiq.io",
+        badges: ["freemium"],
+        tags: ["captions", "notes", "meetings", "transcription"]
+    },
+    {
+        name: "Mubert",
+        description: "Generative royalty-free music created by AI for streams, videos and apps in real-time.",
+        categories: ["audio", "design"],
+        logo: "https://mubert.com/favicon.ico",
+        url: "https://mubert.com",
+        badges: ["paid"],
+        tags: ["music", "generative audio", "streaming", "royalty-free"]
+    },
+    {
+        name: "Beatoven.ai",
+        description: "AI music composer for content creators — make mood-matched, customizable tracks for videos and podcasts.",
+        categories: ["audio", "design"],
+        logo: "https://spcdn.shortpixel.ai/spio/ret_img,q_orig,to_auto,s_webp:avif/https://cdn.prod.website-files.com/63daf1fa1abcbc5e7969d7c9/64906d7aa4eac480834cb249_beatoven-fav.png",
+        url: "https://beatoven.ai",
+        badges: ["freemium"],
+        tags: ["music", "composer", "background music", "content"]
+    },
+    {
+        name: "Arize AI",
+        description: "Model observability and monitoring platform for ML deployments: drift detection, explainability, and alerts.",
+        categories: ["mlops", "data-science"],
+        logo: "https://www.arize.com/favicon.ico",
+        url: "https://www.arize.com",
+        badges: ["paid"],
+        tags: ["monitoring", "mlops", "drift", "observability"]
+    },
+    {
+        name: "Streamlit",
+        description: "Open-source framework to build and share data apps quickly — ideal for prototyping ML demos and dashboards.",
+        categories: ["developer-tools", "data-science"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZslNSk4pgYd4cvWIY35bE9Hol5OvaL_xTvw&s",
+        url: "https://streamlit.io",
+        badges: ["open source"],
+        tags: ["dashboard", "prototyping", "data apps", "python"]
+    },
+    {
+        name: "Motion (useMotion)",
+        description: "AI-powered scheduling and task automation tool that optimizes calendar focus time and meeting placement.",
+        categories: ["productivity", "business"],
+        logo: "https://www.usemotion.com/favicon.ico",
+        url: "https://www.usemotion.com",
+        badges: ["paid", "freemium"],
+        tags: ["calendar", "scheduling", "time management", "automation"]
+    },
+    {
+        name: "Bito AI",
+        description: "AI assistant for developers that generates code suggestions, PR summaries and test scaffolding from context.",
+        categories: ["developer-tools", "coding"],
+        logo: "https://avatars.githubusercontent.com/u/86046978?s=280&v=4",
+        url: "https://bito.ai",
+        badges: ["paid"],
+        tags: ["code assistant", "pr", "automation", "developer"]
+    },
+    {
+        name: "Hotpot.ai",
+        description: "Creator toolkit offering AI image editing, magic retouch, and design templates for social and product visuals.",
+        categories: ["design", "vision"],
+        logo: "https://hotpot.ai/favicon.ico",
+        url: "https://hotpot.ai",
+        badges: ["freemium"],
+        tags: ["image editing", "design", "retouch", "templates"]
+    },
+    {
+        name: "Gong",
+        description: "Revenue intelligence platform that analyzes sales calls and customer conversations using AI to improve performance.",
+        categories: ["business", "audio"],
+        logo: "https://www.gong.io/favicon.ico",
+        url: "https://www.gong.io",
+        badges: ["paid"],
+        tags: ["sales", "conversation analytics", "insights", "crm"]
+    },
+    {
+        name: "Observe.ai",
+        description: "AI platform for contact centers that automates QA, extracts coaching insights and boosts agent performance.",
+        categories: ["business", "audio"],
+        logo: "https://cdn.prod.website-files.com/5caac3a8d636b7cfc2606d35/67253fc31c716c840bab91c1_OG%20Image.jpg",
+        url: "https://www.observe.ai",
+        badges: ["paid"],
+        tags: ["call center", "qa", "analytics", "agent coaching"]
+    },
+    {
+        name: "AWS Bedrock",
+        description: "Managed service from AWS that provides access to multiple foundation models and scalable model APIs.",
+        categories: ["ml", "infrastructure"],
+        logo: "https://aws.amazon.com/favicon.ico",
+        url: "https://aws.amazon.com/bedrock",
+        badges: ["paid", "enterprise"],
+        tags: ["foundation models", "api", "aws", "inference"]
+    },
+    {
+        name: "Canva",
+        description: "Design platform with Magic Write and AI image tools for rapid visual content creation and templates.",
+        categories: ["design", "marketing"],
+        logo: "https://www.canva.com/favicon.ico",
+        url: "https://www.canva.com",
+        badges: ["freemium"],
+        tags: ["design", "templates", "social", "image generation"]
     }
 ];
 
@@ -3086,7 +3221,7 @@ let myTools = JSON.parse(localStorage.getItem('myTools') || JSON.stringify([
   },
   {
     name: 'Perplexity',
-    icon: 'https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/perplexity-ai-icon.png',
+    icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuJtpuSPxCai6OZE-p61Ivmz9A_QSa414g7Q&s',
     link: 'https://perplexity.ai'
   }
 ]));
