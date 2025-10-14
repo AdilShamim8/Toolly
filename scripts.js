@@ -2666,6 +2666,132 @@ const aiTools = [
         url: "https://www.canva.com",
         badges: ["freemium"],
         tags: ["design", "templates", "social", "image generation"]
+    },
+    {
+        name: "Superhuman",
+        description: "An email client enhanced with AI features to summarize long threads, auto-draft replies, and speed up inbox management.",
+        categories: ["productivity", "business", "nlp"],
+        logo: "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/24/f3/43/24f343c5-bc4c-979e-0a63-69b63a895d05/mza_654420484617467227.jpg/1200x1200bf.webp",
+        url: "https://superhuman.com/",
+        badges: ["paid", "featured"],
+        tags: ["email", "productivity", "ai assistant", "writing"]
+    },
+    {
+        name: "Asana AI",
+        description: "AI features integrated into Asana for creating smarter project goals, generating status updates, and providing personalized workflow suggestions.",
+        categories: ["productivity", "business"],
+        logo: "https://asana.com/favicon.ico",
+        url: "https://asana.com/product/ai",
+        badges: ["paid", "featured"],
+        tags: ["project management", "automation", "collaboration", "goals"]
+    },
+    {
+        name: "Monday AI",
+        description: "The AI assistant built into Monday.com to automate tasks, generate formulas, create email drafts, and summarize project data.",
+        categories: ["productivity", "business"],
+        logo: "https://monday.com/favicon.ico",
+        url: "https://monday.com/ai-assistant",
+        badges: ["paid", "featured"],
+        tags: ["project management", "automation", "workflow", "workos"]
+    },
+    {
+        name: "Airtable AI",
+        description: "Allows you to leverage AI directly within your Airtable bases to summarize text, categorize feedback, and build custom automated workflows.",
+        categories: ["productivity", "data-science", "business"],
+        logo: "https://airtable.com/favicon.ico",
+        url: "https://www.airtable.com/product/ai",
+        badges: ["paid", "featured"],
+        tags: ["database", "automation", "workflow", "no-code"]
+    },
+    {
+        name: "Devin AI",
+        description: "An autonomous AI software engineer that can handle entire development projects, from coding to debugging and deployment.",
+        categories: ["coding", "productivity"],
+        logo: "https://www.cognition-labs.com/favicon.ico",
+        url: "https://www.cognition-labs.com/introducing-devin",
+        badges: ["trending", "beta"],
+        tags: ["ai software engineer", "automation", "development", "code generation"]
+    },
+    {
+        name: "v0.dev",
+        description: "A generative UI tool by Vercel that creates React components based on text prompts and image references.",
+        categories: ["coding", "design"],
+        logo: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/v0.png",
+        url: "https://v0.dev/",
+        badges: ["freemium", "trending"],
+        tags: ["generative ui", "react", "components", "vercel", "frontend"]
+    },
+    {
+        name: "Mutable AI",
+        description: "An AI-accelerated development tool designed to improve existing codebases by refactoring code, generating documentation, and creating tests.",
+        categories: ["coding", "developer-tools"],
+        logo: "https://prod-findmyaitool.s3.us-east-1.amazonaws.com/images/ai-tool/logo/Mutable-1723797121219",
+        url: "https://mutable.ai/",
+        badges: ["freemium"],
+        tags: ["code quality", "refactoring", "testing", "documentation"]
+    },
+    {
+        name: "Magnific AI",
+        description: "A powerful AI image upscaler and enhancer that is highly regarded for its ability to add intricate details and reimagine images.",
+        categories: ["vision", "design"],
+        logo: "https://netflixmartbd.net/wp-content/uploads/2024/09/MAGNIFIC-AI.jpg",
+        url: "https://magnific.ai/",
+        badges: ["paid", "trending"],
+        tags: ["upscaler", "enhancer", "photo editing", "details", "art"]
+    },
+    {
+        name: "Spline",
+        description: "A collaborative 3D design tool that uses AI to generate 3D models, textures, and scenes from text prompts or 2D images.",
+        categories: ["design", "3d", "vision"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDn6WoO122WPGS32xFuiCVtplXHSzgNK8U-g&s",
+        url: "https://spline.design/",
+        badges: ["freemium", "featured"],
+        tags: ["3d design", "collaboration", "prototyping", "generative 3d"]
+    },
+    {
+        name: "Galileo AI",
+        description: "A specialized AI tool that generates high-fidelity, editable UI designs directly from natural language prompts.",
+        categories: ["design", "productivity", "coding"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0fAFiLnETbwl0KLwOHTEAYlx121ZKC4x8qA&s",
+        url: "https://www.usegalileo.ai/",
+        badges: ["beta"],
+        tags: ["ui design", "prototyping", "figma", "generative ui", "ux"]
+    },
+    {
+        name: "Fliki",
+        description: "An AI-powered platform that transforms text into videos with realistic AI voices, popular for creating social media and promotional content.",
+        categories: ["video", "audio", "marketing"],
+        logo: "https://play-lh.googleusercontent.com/mAR2h6_Jlsa2643EU9R9cXgErsZEbByGtN9v9uQoDQvRLVxd738gE45MHk66-WPLr6E",
+        url: "https://fliki.ai/",
+        badges: ["freemium", "trending"],
+        tags: ["text-to-video", "voiceover", "social media", "content creation"]
+    },
+    {
+        name: "Adobe Podcast",
+        description: "A web-based audio tool with powerful AI features, including 'Enhance Speech' to make voice recordings sound professional.",
+        categories: ["audio", "productivity"],
+        logo: "https://podcast.adobe.com/favicon.ico",
+        url: "https://podcast.adobe.com/",
+        badges: ["free", "featured"],
+        tags: ["audio editing", "noise reduction", "voice enhancement", "podcast"]
+    },
+    {
+        name: "Voicera",
+        description: "A high-quality AI voice generation platform that offers realistic voice cloning and text-to-speech capabilities for creators.",
+        categories: ["audio", "nlp"],
+        logo: "https://voicera.co/favicon.ico",
+        url: "https://voicera.co/",
+        badges: ["freemium"],
+        tags: ["voice cloning", "text-to-speech", "ai voice", "dubbing"]
+    },
+    {
+        name: "Connected Papers",
+        description: "A visual tool for researchers that generates a graph of related academic papers to help discover prior and subsequent work.",
+        categories: ["research", "education"],
+        logo: "https://www.connectedpapers.com/favicon.ico",
+        url: "https://www.connectedpapers.com/",
+        badges: ["freemium"],
+        tags: ["research", "visualization", "academic", "literature review"]
     }
 ];
 
