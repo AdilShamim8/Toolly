@@ -2792,6 +2792,87 @@ const aiTools = [
         url: "https://www.connectedpapers.com/",
         badges: ["freemium"],
         tags: ["research", "visualization", "academic", "literature review"]
+    },
+    {
+        name: "Dom-o",
+        description: "D-ID's text-to-video model for generating expressive, realistic digital people and characters from a single prompt.",
+        categories: ["video", "vision", "design"],
+        logo: "https://cdn.brandfetch.io/domo.com?c=1idGuZjjNQsbnvHtiGk",
+        url: "https://www.d-id.com/dom-o/",
+        badges: ["new", "trending"],
+        tags: ["video generation", "avatar", "digital human", "text-to-video"]
+    },
+    {
+        name: "Reflect",
+        description: "An AI-powered note-taking tool for networked thought, featuring backlinking, daily notes, and an integrated AI assistant.",
+        categories: ["productivity", "nlp"],
+        logo: "https://reflect.app/favicon.ico",
+        url: "https://reflect.app/",
+        badges: ["paid", "featured"],
+        tags: ["note-taking", "knowledge management", "writing assistant", "networked thought"]
+    },
+    {
+        name: "Webflow AI",
+        description: "AI features integrated into the Webflow platform to generate, rewrite, and translate website content directly in the designer, including alt text generation.",
+        categories: ["design", "coding", "productivity", "marketing"],
+        logo: "https://webflow.com/favicon.ico",
+        url: "https://webflow.com/ai",
+        badges: ["featured", "freemium"],
+        tags: ["website builder", "no-code", "content generation", "localization", "seo", "copywriting"]
+    },
+    {
+        name: "Klaviyo AI",
+        description: "AI-powered features within the Klaviyo marketing platform for predictive analytics, audience segmentation, and personalized email/SMS content generation.",
+        categories: ["marketing", "business", "nlp"],
+        logo: "https://images.seeklogo.com/logo-png/51/2/klaviyo-logo-png_seeklogo-512370.png",
+        url: "https://www.klaviyo.com/platform/ai",
+        badges: ["featured", "paid"],
+        tags: ["email marketing", "ecommerce", "automation", "predictive analytics"]
+    },
+    {
+        name: "Tidio",
+        description: "A customer service platform featuring AI-powered chatbots and live chat to automate support and engage website visitors.",
+        categories: ["business", "nlp", "marketing"],
+        logo: "https://www.tidio.com/favicon.ico",
+        url: "https://www.tidio.com/",
+        badges: ["freemium", "featured"],
+        tags: ["chatbot", "customer support", "live chat", "automation"]
+    },
+    {
+        name: "Phind",
+        description: "An AI-powered search engine and pair programmer designed for developers to get instant answers and solve complex problems with code examples.",
+        categories: ["coding", "research", "developer-tools"],
+        logo: "https://phind.com/favicon.ico",
+        url: "https://www.phind.com",
+        badges: ["freemium", "trending"],
+        tags: ["code search", "developer", "answers", "pair programming"]
+    },
+    {
+        name: "Arc Browser",
+        description: "A modern web browser with a suite of built-in AI features called Arc Max for tidying tabs, summarizing web pages, and getting quick answers.",
+        categories: ["productivity", "business"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStJrLTz_7SfD6SaVwJns7u7cm3zbxJA93C-Q&s",
+        url: "https://arc.net/",
+        badges: ["free", "featured"],
+        tags: ["browser", "productivity", "web", "organization", "ui"]
+    },
+    {
+        name: "Reka AI",
+        description: "A next-generation multimodal AI assistant capable of understanding text, images, video, and audio to perform complex reasoning tasks.",
+        categories: ["nlp", "vision", "audio", "productivity"],
+        logo: "https://images.squarespace-cdn.com/content/v1/66ab79c1fd8e9e59980a8536/c1f5b44c-2cbf-48ba-b8a3-a1262b2dd5b2/reka-logo-flat-%28white%29+%281%29.png?format=1500w",
+        url: "https://reka.ai/",
+        badges: ["trending", "freemium"],
+        tags: ["multimodal", "chatbot", "assistant", "research"]
+    },
+    {
+        name: "FigJam AI",
+        description: "AI features within Figma's online whiteboard to accelerate brainstorming, diagramming, and planning with generative suggestions and summaries.",
+        categories: ["productivity", "design", "business"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSytghZVfHtnkmlv6Toplt5OwydyFaLSsgh2w&s",
+        url: "https://www.figma.com/figjam/ai/",
+        badges: ["freemium", "featured"],
+        tags: ["whiteboard", "brainstorming", "collaboration", "diagramming", "figma"]
     }
 ];
 
