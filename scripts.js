@@ -2873,6 +2873,87 @@ const aiTools = [
         url: "https://www.figma.com/figjam/ai/",
         badges: ["freemium", "featured"],
         tags: ["whiteboard", "brainstorming", "collaboration", "diagramming", "figma"]
+    },
+    {
+        name: "FlowiseAI",
+        description: "An open-source and low-code tool for developers to build customized Large Language Model (LLM) orchestration flows and AI agents.",
+        categories: ["coding", "developer-tools", "productivity"],
+        logo: "https://flowiseai.com/favicon.ico",
+        url: "https://flowiseai.com/",
+        badges: ["open source", "freemium"],
+        tags: ["llm", "orchestration", "agents", "low-code", "langchain"]
+    },
+    {
+        name: "D-ID",
+        description: "An AI platform to generate videos featuring talking avatars from a single image, using text-to-video and text-to-speech technology.",
+        categories: ["video", "vision", "marketing"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0UZ-mhaKFS6OL1XUW6yYHebDZOdQPYGYMmQ&s",
+        url: "https://www.d-id.com/",
+        badges: ["freemium", "trending"],
+        tags: ["avatar", "video generation", "text-to-video", "creative"]
+    },
+    {
+        name: "Colossyan Creator",
+        description: "An AI video generation platform that helps create videos with AI avatars and automated translation, ideal for workplace training and communication.",
+        categories: ["video", "business", "education"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGTvP3z_JYp7SUnXrnPY3v_eW7o63AEhJB4A&s",
+        url: "https://www.colossyan.com/",
+        badges: ["paid", "freemium"],
+        tags: ["video creation", "avatar", "training", "localization"]
+    },
+    {
+        name: "AgentGPT",
+        description: "A platform that allows you to create, configure, and deploy autonomous AI agents directly in your browser to achieve specific goals.",
+        categories: ["productivity", "automation", "developer-tools"],
+        logo: "https://agentgpt.reworkd.ai/favicon.ico",
+        url: "https://agentgpt.reworkd.ai/",
+        badges: ["open source", "freemium"],
+        tags: ["ai agents", "automation", "goal-oriented", "productivity"]
+    },
+    {
+        name: "Magic Eden AI",
+        description: "An AI art and NFT creation suite that allows users to generate and mint NFTs on various blockchains.",
+        categories: ["design", "vision", "web3"],
+        logo: "https://images.seeklogo.com/logo-png/44/1/magic-eden-nft-marketplace-logo-png_seeklogo-441876.png",
+        url: "https://magiceden.io/create",
+        badges: ["freemium"],
+        tags: ["nft", "image generation", "art", "crypto", "web3"]
+    },
+    {
+        name: "Vercel AI SDK",
+        description: "An open-source library for building conversational, streaming, and chat user interfaces with React, Svelte, and Vue.",
+        categories: ["coding", "developer-tools"],
+        logo: "https://vercel.com/favicon.ico",
+        url: "https://sdk.vercel.ai/",
+        badges: ["open source", "featured"],
+        tags: ["sdk", "frontend", "chatbot", "ui", "development"]
+    },
+    {
+        name: "Decktopus AI",
+        description: "An AI-powered presentation generator that creates professional slide decks in minutes based on a single prompt.",
+        categories: ["productivity", "business", "design"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2jG26kd7QTpq76RliSdGw5XCeFhD-n4X0YQ&s",
+        url: "https://www.decktopus.com/",
+        badges: ["freemium", "trending"],
+        tags: ["presentations", "slides", "business", "design automation"]
+    },
+    {
+        name: "Cogniflow",
+        description: "A no-code platform for building and deploying custom AI models from text, images, or audio without writing any code.",
+        categories: ["data-science", "productivity", "business"],
+        logo: "https://cdn-1.webcatalog.io/catalog/cogniflow/cogniflow-icon.png?v=1714780738717",
+        url: "https://www.cogniflow.ai/",
+        badges: ["freemium", "no-code"],
+        tags: ["no-code", "machine learning", "automation", "model building"]
+    },
+    {
+        name: "DeepMotion",
+        description: "An AI-powered platform that generates realistic 3D animations from 2D video files, transforming live-action into animated characters.",
+        categories: ["vision", "design", "3d"],
+        logo: "https://cdn-1.webcatalog.io/catalog/deepmotion/deepmotion-icon-filled-256.webp?v=1714780780343",
+        url: "https://www.deepmotion.com/",
+        badges: ["freemium"],
+        tags: ["animation", "3d", "motion capture", "vfx", "game development"]
     }
 ];
 
