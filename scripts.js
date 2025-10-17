@@ -2148,7 +2148,7 @@ const aiTools = [
         name: "Gumloop",
         description: "AI automation platform with a visual builder to orchestrate apps, data, and AI into end‑to‑end workflows.",
         categories: ["productivity", "business"],
-        logo: "https://www.gumloop.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjNfR-Uq9J8FRz7gp0MzQ1PYWV_LpClpMRBQ&s",
         url: "https://www.gumloop.com/home",
         badges: ["freemium"],
         tags: ["automation", "workflows", "integrations", "AI router", "no-code"]
@@ -2964,6 +2964,7 @@ const backToTopButton = document.getElementById('backToTop');
 const toolCount = document.getElementById('toolCount');
 const totalToolCount = document.getElementById('totalToolCount');
 const featuredCount = document.getElementById('featuredCount');
+const categoriesCount = document.getElementById('categoriesCount');
 const categoryList = document.getElementById('categoryList');
 const sortSelect = document.getElementById('sortSelect');
 const loadingOverlay = document.getElementById('loadingOverlay');
@@ -2985,12 +2986,26 @@ function initializeStats() {
         const featuredTools = aiTools.filter(tool => tool.badges && tool.badges.includes('featured'));
         featuredCount.textContent = featuredTools.length;
     }
+    if (categoriesCount) {
+        const cats = document.querySelectorAll('#categoryList li');
+        categoriesCount.textContent = cats ? cats.length - 1 : 0; // exclude "All Tools"
+    }
 }
 
 function renderTools() {
     // Filter
     let filtered = aiTools.filter(tool => {
-        const matchesCategory = currentCategory === 'all' || tool.categories.includes(currentCategory);
+        let matchesCategory = currentCategory === 'all' || (Array.isArray(tool.categories) && tool.categories.includes(currentCategory));
+        // Extend category matching for composite/alias categories
+        if (!matchesCategory) {
+            if (currentCategory === 'automation') {
+                // Some entries use 'automation' or are automation tools in tags/description
+                const tagText = (tool.tags || []).join(' ').toLowerCase();
+                const nameDesc = `${tool.name} ${tool.description}`.toLowerCase();
+                matchesCategory = /\b(automation|automate|workflow|workflows|rpa|playbook|orchestration)\b/.test(tagText) ||
+                                  /\b(automation|automate|workflow|rpa|orchestration)\b/.test(nameDesc);
+            }
+        }
         const matchesSearch =
             tool.name.toLowerCase().includes(currentSearch) ||
             tool.description.toLowerCase().includes(currentSearch) ||
@@ -3184,6 +3199,7 @@ function categoryLabel(cat) {
         case 'audio': return 'Audio/Video';
         case 'design': return 'Design';
         case 'coding': return 'Developer Tools';
+        case 'automation': return 'Automation & Workflows';
         case 'productivity': return 'Productivity';
         case 'research': return 'Research';
         case 'life-assistant': return 'Life Assistant';
@@ -3354,8 +3370,10 @@ if (viewButtons) {
     });
 }
 
-// Loading animation
-window.addEventListener('load', () => {
+// Loading animation and robust boot
+function boot() {
+    if (boot.hasRun) return; // idempotent
+    boot.hasRun = true;
     // Hide loading overlay after a short delay
     setTimeout(() => {
         if (loadingOverlay) {
@@ -3364,14 +3382,18 @@ window.addEventListener('load', () => {
                 loadingOverlay.style.display = 'none';
             }, 500);
         }
-    }, 800);
-    
-    // Initialize stats
+    }, 300);
     initializeStats();
-    
-    // Initial render
     renderTools();
-});
+}
+
+// Prefer DOMContentLoaded for earlier render, with load as fallback
+document.addEventListener('DOMContentLoaded', boot, { once: true });
+window.addEventListener('load', boot, { once: true });
+if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    // In case script runs after DOMContentLoaded
+    setTimeout(boot, 0);
+}
 
 // --- My Tools Feature ---
 const toolsListEl = document.getElementById('tools-list');
