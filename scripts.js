@@ -262,6 +262,15 @@ const aiTools = [
         tags: ["video generation", "text-to-video", "creative", "cinematic"]
     },
     {
+        name: "Grammarly",
+        description: "AI-powered writing assistant that helps you improve grammar, spelling, and clarity in your text.",
+        categories: ["writing", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcc-4w3ZxZ4GkRUL-ZZ5U3PxywWaao0RitWg&s",
+        url: "https://app.grammarly.com/",
+        badges: ["featured", "freemium"],
+        tags: ["writing assistant", "grammar", "clarity", "spelling"]
+    },
+    {
         name: "Lumen5",
         description: "AI video creation platform that transforms articles and blog posts into engaging social media videos. Features automatic scene creation and content repurposing.",
         categories: ["video", "marketing"],
@@ -3870,3 +3879,4 @@ if (closeModalBtn && modal && editBtn && toolForm) {
         clearError(nameInput,errorName); clearError(urlInput,errorUrl); statusEl.textContent=''; statusEl.className='form-status';
     });
 })();
+
