@@ -5,6 +5,7 @@ class ToollyAIAdvisor {
         this.isOpen = false;
         this.apiKey = null; // Will be set by user or from environment
         this.toolsData = [];
+        this.recommender = null; // Deterministic recommender
         this.initChatbot();
     }
 
@@ -17,6 +18,11 @@ class ToollyAIAdvisor {
         
         // Get tools data from the global aiTools variable
         this.toolsData = window.aiTools || [];
+        
+        // Initialize deterministic recommender
+        if (typeof ToollyRecommender !== 'undefined') {
+            this.recommender = new ToollyRecommender(this.toolsData);
+        }
     }
 
     createChatbotUI() {
@@ -374,21 +380,30 @@ class ToollyAIAdvisor {
         const message = this.chatbotInput.value.trim();
         if (!message) return;
 
-        // Check if API key is available
-        if (!this.apiKey) {
-            document.querySelector('.chatbot-api-key-container').style.display = 'block';
-            this.addBotMessage('To use the AI Tool Advisor, please enter your Gemini API key first.');
-            return;
-        }
-
         // Add user message to chat
         this.addUserMessage(message);
         this.chatbotInput.value = '';
 
-        // Try local dataset answer first
+        // Try deterministic recommender first (no API key needed)
+        if (this.recommender) {
+            const recommendation = this.getDeterministicRecommendation(message);
+            if (recommendation) {
+                this.displayRecommendationJSON(recommendation);
+                return;
+            }
+        }
+
+        // Try local dataset answer
         const localAnswer = this.answerFromLocalDataset(message);
         if (localAnswer) {
             this.addBotMessage(localAnswer, true);
+            return;
+        }
+
+        // Check if API key is available for Gemini
+        if (!this.apiKey) {
+            document.querySelector('.chatbot-api-key-container').style.display = 'block';
+            this.addBotMessage('For more advanced queries, please enter your Gemini API key.');
             return;
         }
 
@@ -438,6 +453,64 @@ class ToollyAIAdvisor {
             }
         }
         return null;
+    }
+
+    // New: Deterministic recommendation system
+    getDeterministicRecommendation(query) {
+        if (!this.recommender) return null;
+
+        // Check if this is a recommendation query
+        const isRecommendationQuery = /best|recommend|suggest|top|need|looking for|want|help.*with|tool.*for|ai.*for/i.test(query);
+        
+        if (!isRecommendationQuery) {
+            return null; // Let other handlers deal with non-recommendation queries
+        }
+
+        try {
+            const result = this.recommender.recommend(query);
+            
+            // Only return if we have recommendations
+            if (result.recommendations && result.recommendations.length > 0) {
+                return result;
+            }
+            
+            return null;
+        } catch (error) {
+            console.error('Error in deterministic recommender:', error);
+            return null;
+        }
+    }
+
+    // Display recommendation as formatted HTML (from JSON)
+    displayRecommendationJSON(jsonResponse) {
+        let html = '<div class="recommendation-response">';
+        
+        if (jsonResponse.recommendations && jsonResponse.recommendations.length > 0) {
+            html += '<p><strong>Here are my recommendations:</strong></p>';
+            
+            jsonResponse.recommendations.forEach((rec, index) => {
+                html += `
+                    <div class="tool-recommendation">
+                        <h4>${index + 1}. <a href="${rec.url}" target="_blank" rel="noopener">${this.escapeHtml(rec.name)}</a></h4>
+                        <p><strong>Description:</strong> ${this.escapeHtml(rec.short_description)}</p>
+                        <p><strong>Why recommended:</strong> ${this.escapeHtml(rec.why_recommended)}</p>
+                        <p><strong>Tags:</strong> ${rec.tags.map(t => `<span class="tag">${this.escapeHtml(t)}</span>`).join(' ')}</p>
+                        <p><strong>Confidence:</strong> ${(rec.confidence * 100).toFixed(0)}%</p>
+                    </div>
+                `;
+            });
+            
+            // Show intent tags if any
+            if (jsonResponse.intent_tags && jsonResponse.intent_tags.length > 0) {
+                html += `<p class="intent-tags"><em>Detected categories: ${jsonResponse.intent_tags.join(', ')}</em></p>`;
+            }
+        } else {
+            html += `<p>${this.escapeHtml(jsonResponse.note || 'No recommendations found.')}</p>`;
+        }
+        
+        html += '</div>';
+        
+        this.addBotMessage(html, true);
     }
 
     addUserMessage(message) {
@@ -551,13 +624,15 @@ Based on the user's query, provide tailored recommendations for AI tools from ou
    - Explain why it's the best fit for their specific needs
    - Provide a brief description of the tool's key capabilities
    - Mention any relevant features, limitations, or pricing considerations
-   - Include the tool's URL from our website
+   - IMPORTANT: Reference tools by NAME only (e.g., "ChatGPT", "DALL-E", "GitHub Copilot")
+   - DO NOT include raw URLs in your response - the system will automatically add the correct links
 
 4. If the user's query is vague, ask clarifying questions to better understand their needs
 5. ONLY recommend tools that are in our website's inventory (listed above)
 6. Format your response with clear headings and bullet points for readability
+7. CRITICAL: Always use tool NAMES, never raw URLs. The system will automatically link tool names to their official URLs from our database.
 
-Remember: Your recommendations must be strictly based on the AI tools listed on our website rather than generic external suggestions.`;
+Remember: Your recommendations must be strictly based on the AI tools listed on our website rather than generic external suggestions. Reference tools by their exact names as shown in the inventory above.`;
 
             // Call Gemini API
             const response = await this.callGeminiAPI(prompt);
@@ -577,8 +652,19 @@ Remember: Your recommendations must be strictly based on the AI tools listed on 
             if (error.message.includes('API key')) {
                 this.addBotMessage('Your API key seems to be invalid or has expired. Please update your Gemini API key to continue using the AI Tool Advisor.');
                 document.querySelector('.chatbot-api-key-container').style.display = 'block';
-            } else if (error.message.includes('quota')) {
-                this.addBotMessage('You have reached your Gemini API quota limit. Please try again later or use a different API key.');
+                // Clear the current API key field so user can enter a new one
+                this.chatbotApiKey.value = '';
+                this.chatbotApiKey.focus();
+            } else if (error.message.includes('quota') || error.message.includes('rate limit')) {
+                this.addBotMessage('⚠️ You have reached your Gemini API quota limit. Please enter a different API key below to continue using advanced AI features.');
+                // Show API key input box so user can enter a different key
+                document.querySelector('.chatbot-api-key-container').style.display = 'block';
+                // Clear the current API key field so user can easily enter a new one
+                this.chatbotApiKey.value = '';
+                this.chatbotApiKey.focus();
+                // Clear the saved API key from localStorage
+                localStorage.removeItem('gemini_api_key');
+                this.apiKey = null;
             } else if (error.message.includes('network') || error.message.includes('timeout')) {
                 this.addBotMessage('There seems to be a network issue. Please check your internet connection and try again.');
             } else {
@@ -704,7 +790,17 @@ URL: ${tool.url}
             
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(`Gemini API error: ${errorData.error?.message || 'Unknown error'}`);
+                const errorMessage = errorData.error?.message || 'Unknown error';
+                
+                // Enhance error message to better identify quota issues
+                if (errorMessage.toLowerCase().includes('quota') || 
+                    errorMessage.toLowerCase().includes('rate limit') ||
+                    errorMessage.toLowerCase().includes('exceeded') ||
+                    response.status === 429) {
+                    throw new Error(`quota: ${errorMessage}`);
+                }
+                
+                throw new Error(`Gemini API error: ${errorMessage}`);
             }
             
             const data = await response.json();
@@ -761,20 +857,29 @@ URL: ${tool.url}
     }
 
     addToolLinks(html) {
-        // Add links to tool names in the response
+        // Create a map of valid tool URLs from Data.json for validation
+        const validToolUrls = new Set(this.toolsData.map(tool => tool.url.toLowerCase()));
+        
+        // Add links to tool names in the response (ONLY using URLs from Data.json)
         this.toolsData.forEach(tool => {
+            // Validate that tool has a proper URL from Data.json
+            if (!tool.url) {
+                console.warn(`Tool ${tool.name} is missing URL in Data.json`);
+                return;
+            }
+            
             // Create a regex that handles variations in tool name capitalization
             const escapedName = tool.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
             const regex = new RegExp(`(?<!<[^>]*)(${escapedName})(?![^<]*>)`, 'gi');
             
-            // Replace tool names with linked versions
+            // Replace tool names with linked versions using ONLY Data.json URLs
             html = html.replace(regex, match => {
                 return `<a href="${tool.url}" target="_blank" rel="noopener" class="tool-link" title="Visit ${tool.name}">${match}</a>`;
             });
         });
         
-        // Improved URL detection and linking
-        // This regex handles URLs more comprehensively, including those with query parameters and fragments
+        // Improved URL detection and linking - BUT ONLY for URLs that exist in Data.json
+        // This ensures we NEVER link to URLs outside of our Data.json database
         const urlRegex = /\b(https?:\/\/[^\s<>"']+[^\s.,;:!?)<>"'])/g;
         html = html.replace(urlRegex, (match) => {
             // Only replace if not already in an anchor tag or image tag
@@ -784,7 +889,15 @@ URL: ${tool.url}
                 if (cleanUrl.endsWith('.') || cleanUrl.endsWith(',') || cleanUrl.endsWith(';') || cleanUrl.endsWith(':')) {
                     cleanUrl = cleanUrl.slice(0, -1);
                 }
-                return `<a href="${cleanUrl}" target="_blank" rel="noopener" class="tool-link">${match}</a>`;
+                
+                // CRITICAL: Only link if URL exists in our Data.json
+                if (validToolUrls.has(cleanUrl.toLowerCase())) {
+                    return `<a href="${cleanUrl}" target="_blank" rel="noopener" class="tool-link">${match}</a>`;
+                } else {
+                    // URL not in Data.json - return as plain text (no link)
+                    console.warn(`URL not in Data.json, not linking: ${cleanUrl}`);
+                    return match;
+                }
             }
             return match;
         });
