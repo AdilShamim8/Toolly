@@ -94,7 +94,7 @@ const aiTools = [
         name: "Sora",
         description: "OpenAI's revolutionary text-to-video model that can create realistic and imaginative video scenes from text descriptions. Known for its ability to generate high-quality, coherent videos with complex camera movements and detailed scenes.",
         categories: ["video", "vision"],
-        logo: "https://openai.com/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROcrc2VQ9_5l7PiOYPcHmb-_ezQDo_9JMYVg&s",
         url: "https://openai.com/sora",
         badges: ["featured", "trending"],
         tags: ["video generation", "text-to-video", "openai", "creative"]
@@ -161,6 +161,15 @@ const aiTools = [
         url: "https://app.quadratichq.com/",
         badges: ["featured", "freemium"],
         tags: ["spreadsheet", "data analysis", "automation", "productivity"]
+    },
+    {
+        name: "Grammarly",
+        description: "AI-powered writing assistant that helps you improve grammar, spelling, and clarity in your text.",
+        categories: ["writing", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcc-4w3ZxZ4GkRUL-ZZ5U3PxywWaao0RitWg&s",
+        url: "https://app.grammarly.com/",
+        badges: ["featured", "freemium"],
+        tags: ["writing assistant", "grammar", "clarity", "spelling"]
     },
     {
         name: "HeyGen",
@@ -377,15 +386,6 @@ const aiTools = [
         url: "https://relevanceai.com",
         badges: ["featured", "freemium"],
         tags: ["AI agents", "automation", "business", "integration"]
-    },
-    {
-        name: "Grammarly",
-        description: "AI-powered writing assistant that helps you improve grammar, spelling, and clarity in your text.",
-        categories: ["writing", "productivity"],
-        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcc-4w3ZxZ4GkRUL-ZZ5U3PxywWaao0RitWg&s",
-        url: "https://app.grammarly.com/",
-        badges: ["featured", "freemium"],
-        tags: ["writing assistant", "grammar", "clarity", "spelling"]
     },
     {
         name: "Recraft",
@@ -3879,4 +3879,3 @@ if (closeModalBtn && modal && editBtn && toolForm) {
         clearError(nameInput,errorName); clearError(urlInput,errorUrl); statusEl.textContent=''; statusEl.className='form-status';
     });
 })();
-
