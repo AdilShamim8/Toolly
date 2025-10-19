@@ -497,3 +497,90 @@
         max-width: calc(100vw - 40px);
     }
 }
+
+/* Recommendation Response Styles */
+.recommendation-response {
+    margin-top: 10px;
+}
+
+.tool-recommendation {
+    background-color: #f8f9fa;
+    border-left: 3px solid var(--primary-color);
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tool-recommendation:hover {
+    transform: translateX(2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tool-recommendation h4 {
+    margin: 0 0 8px 0;
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+.tool-recommendation h4 a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.tool-recommendation h4 a:hover {
+    text-decoration: underline;
+}
+
+.tool-recommendation p {
+    margin: 6px 0;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.tool-recommendation p strong {
+    color: #333;
+    font-weight: 600;
+}
+
+.tool-recommendation .tag {
+    display: inline-block;
+    background-color: #e3f2fd;
+    color: #1976d2;
+    padding: 3px 8px;
+    margin: 2px 3px 2px 0;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.intent-tags {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #e0e0e0;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Mobile optimizations for recommendations */
+@media (max-width: 480px) {
+    .tool-recommendation {
+        padding: 10px;
+        font-size: 12px;
+    }
+    
+    .tool-recommendation h4 {
+        font-size: 14px;
+    }
+    
+    .tool-recommendation p {
+        font-size: 12px;
+    }
+    
+    .tool-recommendation .tag {
+        font-size: 10px;
+        padding: 2px 6px;
+    }
+}
+
