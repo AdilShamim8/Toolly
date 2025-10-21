@@ -2963,6 +2963,186 @@ const aiTools = [
         url: "https://www.deepmotion.com/",
         badges: ["freemium"],
         tags: ["animation", "3d", "motion capture", "vfx", "game development"]
+    },
+    {
+        name: "Miro Assist",
+        description: "AI-powered features within the Miro collaborative whiteboard to generate ideas, summarize content, create diagrams, and automate tasks.",
+        categories: ["productivity", "business", "design"],
+        logo: "https://miro.com/favicon.ico",
+        url: "https://miro.com/ai",
+        badges: ["featured", "freemium"],
+        tags: ["whiteboard", "collaboration", "brainstorming", "diagramming"]
+    },
+    {
+        name: "CodiumAI",
+        description: "An AI-powered toolkit for developers that analyzes code and generates meaningful tests to catch bugs before deployment.",
+        categories: ["coding", "developer-tools"],
+        logo: "https://www.codium.ai/favicon.ico",
+        url: "https://www.codium.ai/",
+        badges: ["freemium", "featured"],
+        tags: ["code analysis", "testing", "development", "IDE"]
+    },
+    {
+        name: "Readwise",
+        description: "A service that saves and resurfaces highlights from articles and books, with an AI-powered app (Reader) to summarize content and ask questions.",
+        categories: ["productivity", "research", "education"],
+        logo: "https://readwise.io/favicon.ico",
+        url: "https://readwise.io/",
+        badges: ["paid", "freemium"],
+        tags: ["knowledge management", "reading", "summarization", "notes"]
+    },
+    {
+        name: "Visla",
+        description: "An all-in-one AI video generation and editing platform designed for teams, helping to create business videos from text, audio, or existing footage.",
+        categories: ["video", "business", "marketing"],
+        logo: "https://www.visla.us/favicon.ico",
+        url: "https://www.visla.us/",
+        badges: ["freemium"],
+        tags: ["video creation", "collaboration", "marketing", "text-to-video"]
+    },
+    {
+        name: "Khroma",
+        description: "An AI color tool for designers that learns your preferences to generate limitless color palettes for your projects.",
+        categories: ["design", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToa89Ecotwhw-G4h8Z4BxZhrFlN_oAtihEJw&s",
+        url: "https://www.khroma.co/",
+        badges: ["free", "featured"],
+        tags: ["color palette", "design", "ui", "branding"]
+    },
+    {
+        name: "Resemble.AI",
+        description: "A complete generative voice AI toolkit that allows you to clone voices, create text-to-speech with emotion, and perform speech-to-speech transformations.",
+        categories: ["audio", "nlp"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS24LWokAUm8ZZX_GHb-YH7L77VoJK5LCeBxg&s",
+        url: "https://www.resemble.ai/",
+        badges: ["paid", "freemium"],
+        tags: ["voice cloning", "text-to-speech", "audio", "voiceover"]
+    },
+    {
+        name: "Sembly AI",
+        description: "An AI meeting assistant that joins your calls, records them, and provides transcripts, summaries, and actionable insights.",
+        categories: ["productivity", "business", "audio"],
+        logo: "https://www.sembly.ai/favicon.ico",
+        url: "https://www.sembly.ai/",
+        badges: ["freemium"],
+        tags: ["meetings", "transcription", "summarization", "collaboration"]
+    },
+    {
+        name: "ResearchRabbit",
+        description: "An AI-powered 'Spotify for papers' that helps researchers discover relevant literature and visualize academic networks.",
+        categories: ["research", "education"],
+        logo: "https://image.pngaaa.com/530/8702530-middle.png",
+        url: "https://www.researchrabbit.ai/",
+        badges: ["free", "featured"],
+        tags: ["academic", "papers", "literature review", "visualization"]
+    },
+    {
+        name: "Copyleaks",
+        description: "A comprehensive plagiarism and AI content detector used by educational institutions and businesses to ensure originality.",
+        categories: ["education", "business", "writing"],
+        logo: "https://copyleaks.com/favicon.ico",
+        url: "https://copyleaks.com/",
+        badges: ["freemium", "paid"],
+        tags: ["ai detection", "plagiarism", "content quality", "verification"]
+    },
+    {
+        name: "BuildShip",
+        description: "A low-code visual backend builder that allows you to create APIs, schedule tasks, and connect to AI models like OpenAI and Replicate.",
+        categories: ["coding", "automation", "developer-tools"],
+        logo: "https://logowik.com/content/uploads/images/buildship-icon4614.logowik.com.webp",
+        url: "https://buildship.com/",
+        badges: ["freemium", "trending"],
+        tags: ["low-code", "backend", "workflow", "api", "automation"]
+    },
+    {
+        name: "LeiaPix Converter",
+        description: "An AI tool that instantly converts 2D images into 3D Lightfield images with depth and motion.",
+        categories: ["vision", "design", "3d"],
+        logo: "https://convert.leiapix.com/favicon.ico",
+        url: "https://convert.leiapix.com/",
+        badges: ["free", "freemium"],
+        tags: ["3d", "image conversion", "animation", "depth map"]
+    },
+    {
+        name: "Gradio",
+        description: "An open-source Python library that allows you to quickly build and share web demos for your machine learning models.",
+        categories: ["developer-tools", "data-science", "coding"],
+        logo: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/gradio-color.png",
+        url: "https://www.gradio.app/",
+        badges: ["open source", "featured"],
+        tags: ["machine learning", "demo", "prototyping", "python"]
+    },
+    {
+        name: "ProWritingAid",
+        description: "An AI-powered writing assistant that provides grammar checking, style editing, and in-depth reports to improve your writing.",
+        categories: ["writing", "nlp", "productivity"],
+        logo: "https://prowritingaid.com/favicon.ico",
+        url: "https://prowritingaid.com/",
+        badges: ["freemium", "paid"],
+        tags: ["writing assistant", "grammar", "style editor", "education"]
+    },
+    {
+        name: "Civitai",
+        description: "A platform for sharing and discovering open-source AI art models, primarily for Stable Diffusion, with a vast library of styles and concepts.",
+        categories: ["vision", "design", "research"],
+        logo: "https://civitai.com/favicon.ico",
+        url: "https://civitai.com/",
+        badges: ["free", "trending"],
+        tags: ["stable diffusion", "models", "image generation", "community"]
+    },
+    {
+        name: "Guidde",
+        description: "An AI-powered platform that helps teams create video documentation and step-by-step how-to guides in seconds.",
+        categories: ["productivity", "business", "education"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw6t1FLJC5phjkAdYfVAex63sN2f-VOVPr1w&s",
+        url: "https://www.guidde.com/",
+        badges: ["freemium"],
+        tags: ["documentation", "tutorials", "video", "onboarding"]
+    },
+    {
+        name: "Tango",
+        description: "A browser extension that automatically creates beautiful step-by-step how-to guides with screenshots as you work.",
+        categories: ["productivity", "business", "automation"],
+        logo: "https://www.tango.us/favicon.ico",
+        url: "https://www.tango.us/",
+        badges: ["freemium", "featured"],
+        tags: ["how-to guide", "documentation", "workflow", "screenshots"]
+    },
+    {
+        name: "Harvey AI",
+        description: "An AI platform designed for elite law firms to handle complex legal work, from contract analysis to due diligence and litigation.",
+        categories: ["business", "legal"],
+        logo: "https://www.harvey.ai/favicon.ico",
+        url: "https://www.harvey.ai/",
+        badges: ["paid", "enterprise"],
+        tags: ["legal tech", "law", "automation", "research"]
+    },
+    {
+        name: "Lavender",
+        description: "An AI-powered sales email coach that helps you write better sales emails, improve response rates, and track email performance.",
+        categories: ["marketing", "business", "productivity"],
+        logo: "https://freeappsai.com/wp-content/uploads/2024/04/lavender.png",
+        url: "https://www.lavender.ai/",
+        badges: ["freemium", "paid"],
+        tags: ["sales", "email", "copywriting", "assistant"]
+    },
+    {
+        name: "Microsoft Designer",
+        description: "A graphic design app that uses AI to help you create stunning designs, social media posts, invitations, and more from a text prompt.",
+        categories: ["design", "marketing"],
+        logo: "https://store-images.s-microsoft.com/image/apps.59519.14282385397322807.60151050-41c3-444e-98c5-303abbe5ca61.9171383a-0488-48f6-b2b9-ce81b097fbeb",
+        url: "https://designer.microsoft.com/",
+        badges: ["free", "featured"],
+        tags: ["graphic design", "image generation", "social media", "microsoft"]
+    },
+    {
+        name: "Andi",
+        description: "A conversational search engine that uses generative AI to provide direct answers and summaries instead of just links.",
+        categories: ["research", "productivity", "nlp"],
+        logo: "https://andisearch.com/favicon.ico",
+        url: "https://andisearch.com/",
+        badges: ["free", "trending"],
+        tags: ["search engine", "conversational", "answers", "research"]
     }
 ];
 
