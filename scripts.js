@@ -3103,7 +3103,7 @@ const aiTools = [
         name: "Tango",
         description: "A browser extension that automatically creates beautiful step-by-step how-to guides with screenshots as you work.",
         categories: ["productivity", "business", "automation"],
-        logo: "https://www.tango.us/favicon.ico",
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh0-RNTRorTjbNQ3Mqed7o9_LhayLl_IRFvg&s",
         url: "https://www.tango.us/",
         badges: ["freemium", "featured"],
         tags: ["how-to guide", "documentation", "workflow", "screenshots"]
@@ -3112,7 +3112,7 @@ const aiTools = [
         name: "Harvey AI",
         description: "An AI platform designed for elite law firms to handle complex legal work, from contract analysis to due diligence and litigation.",
         categories: ["business", "legal"],
-        logo: "https://www.harvey.ai/favicon.ico",
+        logo: "https://www.fahimai.com/wp-content/uploads/2024/08/CTA-1-2.png",
         url: "https://www.harvey.ai/",
         badges: ["paid", "enterprise"],
         tags: ["legal tech", "law", "automation", "research"]
@@ -3143,6 +3143,132 @@ const aiTools = [
         url: "https://andisearch.com/",
         badges: ["free", "trending"],
         tags: ["search engine", "conversational", "answers", "research"]
+    },
+    {
+        name: "Photoshop Generative Fill",
+        description: "An AI feature within Adobe Photoshop that allows users to add, remove, or extend content in images using simple text prompts.",
+        categories: ["design", "vision", "productivity"],
+        logo: "https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg",
+        url: "https://www.adobe.com/products/photoshop/generative-fill.html",
+        badges: ["featured", "paid"],
+        tags: ["image editing", "generative ai", "photo", "adobe"]
+    },
+    {
+        name: "Stable Audio",
+        description: "An AI music and sound effect generation tool by Stability AI for creating high-quality, royalty-free audio tracks and effects from text prompts.",
+        categories: ["audio", "design", "creative"],
+        logo: "https://stability.ai/favicon.ico",
+        url: "https://www.stableaudio.com/",
+        badges: ["freemium", "trending"],
+        tags: ["music generation", "sound effects", "audio", "creative"]
+    },
+    {
+        name: "Kore.ai",
+        description: "An enterprise-grade conversational AI platform for building advanced virtual assistants and process automation for business.",
+        categories: ["business", "nlp", "automation"],
+        logo: "https://play-lh.googleusercontent.com/tDIiw4Mm7yndvcWuHS9aL9tBXsgYWswWy2zBw2ozM095vsuA-7xZAZAA_caJX-85xw",
+        url: "https://kore.ai/",
+        badges: ["enterprise", "paid"],
+        tags: ["chatbot", "customer service", "automation", "enterprise"]
+    },
+    {
+        name: "Roboflow",
+        description: "An end-to-end computer vision platform for developers to build, train, and deploy custom vision models.",
+        categories: ["vision", "developer-tools", "coding"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTTtGcu3CULhh1-vzeEZfq23gCXTVStR1bsg&s",
+        url: "https://roboflow.com/",
+        badges: ["freemium", "featured"],
+        tags: ["computer vision", "machine learning", "datasets", "deployment"]
+    },
+    {
+        name: "Topaz Labs AI Suite",
+        description: "A suite of AI-powered applications (Gigapixel, DeNoise, Sharpen, Video AI) for upscaling, denoising, and sharpening photos and videos.",
+        categories: ["vision", "design", "video"],
+        logo: "https://i.pcmag.com/imagery/reviews/03i0OIGngA04fnfRKrm8lwR-13.fit_lim.size_1050x591.v1723743107.png",
+        url: "https://www.topazlabs.com/",
+        badges: ["paid", "featured"],
+        tags: ["photo editing", "video enhancement", "upscaling", "denoise"]
+    },
+    {
+        name: "LM Studio",
+        description: "A popular desktop application for discovering, downloading, and running large language models locally on a personal computer.",
+        categories: ["productivity", "developer-tools", "research"],
+        logo: "https://lmstudio.ai/favicon.ico",
+        url: "https://lmstudio.ai/",
+        badges: ["free", "trending"],
+        tags: ["llm", "local", "offline", "chatbot", "models"]
+    },
+    {
+        name: "Ollama",
+        description: "A lightweight, extensible tool for running large language models like Llama 3 and Mistral locally from the command line.",
+        categories: ["developer-tools", "coding"],
+        logo: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/light/ollama.png",
+        url: "https://ollama.com/",
+        badges: ["open source", "featured"],
+        tags: ["llm", "local", "cli", "models", "development"]
+    },
+    {
+        name: "AnythingLLM",
+        description: "An open-source, private chatbot solution that allows you to chat with your documents and data securely on your own infrastructure.",
+        categories: ["productivity", "business", "developer-tools"],
+        logo: "https://pbs.twimg.com/profile_images/1689841935320797184/yMN81vNK_400x400.jpg",
+        url: "https://anythingllm.com/",
+        badges: ["open source", "freemium"],
+        tags: ["chatbot", "documents", "rag", "privacy", "enterprise"]
+    },
+    {
+        name: "Viggle AI",
+        description: "A viral AI tool that animates static characters based on a reference video, creating character-to-video animations.",
+        categories: ["video", "vision", "design"],
+        logo: "https://viggle.ai/favicon.ico",
+        url: "https://viggle.ai/",
+        badges: ["freemium", "trending"],
+        tags: ["animation", "video generation", "character", "creative"]
+    },
+    {
+        name: "Together AI",
+        description: "A cloud platform providing fast inference for leading open-source generative AI models and tools for fine-tuning.",
+        categories: ["developer-tools", "infrastructure"],
+        logo: "https://images.seeklogo.com/logo-png/61/1/together-ai-icon-logo-png_seeklogo-611708.png",
+        url: "https://www.together.ai/",
+        badges: ["paid", "featured"],
+        tags: ["inference", "api", "cloud", "fine-tuning", "models"]
+    },
+    {
+        name: "Anyscale",
+        description: "An enterprise platform for scaling AI and Python applications, enabling developers to build and deploy complex AI workloads efficiently.",
+        categories: ["developer-tools", "infrastructure", "data-science"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWHRfC6VXvf5j8r8twtxb7IIeJV3Wdmvp3kw&s",
+        url: "https://www.anyscale.com/",
+        badges: ["enterprise", "paid"],
+        tags: ["scaling", "python", "ray", "enterprise", "mlops"]
+    },
+    {
+        name: "Gensler AI",
+        description: "An AI image generator developed by the global architecture firm Gensler, trained on curated data for architectural and design concepts.",
+        categories: ["design", "business"],
+        logo: "https://www.gensler.com/favicon.ico",
+        url: "https://www.gensler.com/blog/harnessing-the-power-of-ai-to-create-our-own-image-generator",
+        badges: ["enterprise"],
+        tags: ["architecture", "design", "image generation", "interior design"]
+    },
+    {
+        name: "Finalsite AI",
+        description: "A suite of AI tools integrated into the Finalsite platform to help schools generate website content, news, and communications.",
+        categories: ["education", "marketing", "writing"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPnY7F_B6f4CGdk-Lbu1eR8Vn8lqD64-a4Ng&s",
+        url: "https://www.finalsite.com/ai-for-schools",
+        badges: ["paid"],
+        tags: ["education", "content creation", "schools", "communication"]
+    },
+    {
+        name: "DiffusionBee",
+        description: "A simple, one-click installer for running Stable Diffusion on Apple Silicon Macs for free, offline image generation.",
+        categories: ["design", "vision"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvAahWlTNLRSLKZy2kWD0DiBNDxz81Klk26g&s",
+        url: "https://diffusionbee.com/",
+        badges: ["free", "open source"],
+        tags: ["stable diffusion", "image generation", "mac", "local", "offline"]
     }
 ];
 
