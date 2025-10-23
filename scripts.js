@@ -3269,6 +3269,51 @@ const aiTools = [
         url: "https://diffusionbee.com/",
         badges: ["free", "open source"],
         tags: ["stable diffusion", "image generation", "mac", "local", "offline"]
+    },
+    {
+        name: "Groq",
+        description: "An AI inference company that provides ultra-low-latency access to large language models (LLMs) through its custom-built LPU (Language Processing Unit) hardware.",
+        categories: ["developer-tools", "infrastructure", "productivity"],
+        logo: "https://groq.com/favicon.ico",
+        url: "https://groq.com/",
+        badges: ["featured", "trending", "freemium"],
+        tags: ["inference", "llm", "lpu", "developer", "speed"]
+    },
+    {
+        name: "Luma Dream Machine",
+        description: "A highly capable and scalable text-to-video generation model from Luma AI, known for creating realistic and imaginative video clips from prompts.",
+        categories: ["video", "vision", "design"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbSuHat92wNVmfqc8GDH2xov3AFwnRqhIzrQ&s",
+        url: "https://lumalabs.ai/dream-machine",
+        badges: ["trending", "freemium", "featured"],
+        tags: ["video generation", "text-to-video", "ai video", "creative"]
+    },
+    {
+        name: "Janitor AI",
+        description: "A popular platform for engaging in conversational chat with a wide variety of AI-powered characters (bots), with a focus on immersive and creative role-playing.",
+        categories: ["nlp", "productivity", "chat"],
+        logo: "https://janitorai.com/favicon.ico",
+        url: "https://janitorai.com/",
+        badges: ["trending", "freemium"],
+        tags: ["chatbot", "character", "role-playing", "entertainment"]
+    },
+    {
+        name: "Kimi",
+        description: "An AI chatbot developed by Kuaishou Technology, famous for its exceptionally large context window, allowing it to process and analyze very long documents (up to 2 million words).",
+        categories: ["nlp", "productivity", "research"],
+        logo: "https://kimi.moonshot.cn/favicon.ico",
+        url: "https://kimi.moonshot.cn/",
+        badges: ["featured", "trending", "free"],
+        tags: ["chatbot", "long context", "document analysis", "research"]
+    },
+    {
+        name: "Warp",
+        description: "A modern, high-performance terminal for developers, rebuilt from the ground up with AI command search, workflows, and team collaboration features.",
+        categories: ["developer-tools", "coding", "productivity"],
+        logo: "https://pbs.twimg.com/profile_images/1894734059160457216/fQoxAaVh_400x400.jpg",
+        url: "https://www.warp.dev/",
+        badges: ["free", "featured"],
+        tags: ["terminal", "developer", "cli", "ai assistant", "coding"]
     }
 ];
 
