@@ -98,38 +98,59 @@
             </div>
         </aside>
         <main class="main-content">
-            <header class="main-header">
-                <div class="main-header-top">
-                    <div class="header-content">
-                        <h1>Discover the Best AI Tools</h1>
-                        <p class="subtitle">Don’t drag your life away in work—let AI speed it to freedom.</p>
-                        <div class="header-stats">
-                            <div class="stat-item">
-                                <span class="stat-number" id="totalToolCount">100+</span>
-                                <span class="stat-label">AI Tools</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number" id="categoriesCount">15</span>
-                                <span class="stat-label">Categories</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number" id="featuredCount">20+</span>
-                                <span class="stat-label">Featured</span>
-                            </div>
+            <!-- Hero Section - Redesigned -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-headline">Your All-in-One Suite for AI Tools</h1>
+                    <p class="hero-subheadline">Discover, compare, and access 350+ powerful AI tools across 15 categories. From chatbots to image generators, find the perfect AI solution to boost your productivity and creativity.</p>
+                    
+                    <!-- Primary CTA -->
+                    <button class="hero-cta" id="heroCtaBtn" aria-label="Explore all AI tools">
+                        <span>Explore All Tools</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                    <!-- Featured Tool Icons -->
+                    <div class="hero-featured-tools">
+                        <p class="featured-label">Featured Tools:</p>
+                        <div class="hero-tool-icons" id="heroToolIcons">
+                            <!-- Dynamically populated with top 3 featured tools -->
                         </div>
                     </div>
-                    <span id="toolCount" class="tools-counter">Showing 0 tools</span>
+
+                    <!-- Stats Bar -->
+                    <div class="hero-stats">
+                        <div class="hero-stat-item">
+                            <span class="hero-stat-number" id="totalToolCount">100+</span>
+                            <span class="hero-stat-label">AI Tools</span>
+                        </div>
+                        <div class="hero-stat-divider"></div>
+                        <div class="hero-stat-item">
+                            <span class="hero-stat-number" id="categoriesCount">15</span>
+                            <span class="hero-stat-label">Categories</span>
+                        </div>
+                        <div class="hero-stat-divider"></div>
+                        <div class="hero-stat-item">
+                            <span class="hero-stat-number" id="featuredCount">20+</span>
+                            <span class="hero-stat-label">Featured</span>
+                        </div>
+                    </div>
                 </div>
+            </section>
+
+            <!-- Search & Filter Section -->
+            <header class="main-header">
                 <div class="main-header-actions">
                     <div class="search-container">
                         <input type="text" id="searchInput" placeholder="Search AI tools...">
                         <i class="fas fa-search"></i>
                     </div>
-                    <select id="sortSelect">
+                    <select id="sortSelect" aria-label="Sort tools">
                         <option value="default">Sort by</option>
                         <option value="name">Name</option>
                         <option value="featured">Featured</option>
                     </select>
+                    <span id="toolCount" class="tools-counter">Showing 0 tools</span>
                 </div>
             </header>
             <!-- My Tools Section -->
