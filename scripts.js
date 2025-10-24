@@ -514,15 +514,6 @@ const aiTools = [
         tags: ["music", "composition", "creative"]
     },
     {
-        name: "Grammarly",
-        description: "AI-powered writing assistant that helps improve your writing.",
-        categories: ["nlp", "productivity"],
-        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM34CCdspT0QP8vyW66b_Dred0jfmSgQosyw&s",
-        url: "https://www.grammarly.com",
-        badges: ["freemium"],
-        tags: ["writing", "grammar", "assistant"]
-    },
-    {
         name: "Google Bard",
         description: "Conversational generative AI chatbot developed by Google.",
         categories: ["nlp", "productivity"],
@@ -3388,7 +3379,29 @@ function renderTools() {
         if (emptyState) emptyState.style.display = 'block';
     } else {
         if (emptyState) emptyState.style.display = 'none';
-        filtered.forEach(tool => toolsGrid.appendChild(createToolCard(tool)));
+        
+        // Performance optimization: Batch render tool cards using requestAnimationFrame
+        // This prevents blocking the main thread and improves INP (Interaction to Next Paint)
+        const batchSize = 20; // Render 20 cards at a time
+        let currentIndex = 0;
+        
+        const renderBatch = () => {
+            const fragment = document.createDocumentFragment();
+            const endIndex = Math.min(currentIndex + batchSize, filtered.length);
+            
+            for (let i = currentIndex; i < endIndex; i++) {
+                fragment.appendChild(createToolCard(filtered[i]));
+            }
+            
+            toolsGrid.appendChild(fragment);
+            currentIndex = endIndex;
+            
+            if (currentIndex < filtered.length) {
+                requestAnimationFrame(renderBatch);
+            }
+        };
+        
+        requestAnimationFrame(renderBatch);
     }
     
     // Update count
@@ -3409,6 +3422,9 @@ function createToolCard(tool) {
     logo.className = 'tool-logo';
     logo.src = tool.logo;
     logo.alt = `${tool.name} logo`;
+    logo.loading = 'lazy'; // Optimize LCP: lazy load below-the-fold images
+    logo.width = 48; // Prevent CLS: explicit dimensions
+    logo.height = 48;
     logo.onerror = function() {
         // Fallback for broken images
         this.src = 'logo/favicon.svg';
@@ -3919,6 +3935,9 @@ let editMode = false;function renderMyTools() {
     img.src = tool.icon;
     img.alt = tool.name;
     img.className = 'tool-icon';
+    img.loading = 'lazy'; // Optimize LCP: lazy load
+    img.width = 48; // Prevent CLS: explicit dimensions
+    img.height = 48;
     img.onerror = () => {
       img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iMjQiIGZpbGw9IiNmMWY1ZjkiLz4KPHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4PSIxMiIgeT0iMTIiPgo8cGF0aCBkPSJNMTIgMkw2IDhMMTIgMTRMMTggOEwxMiAyWiIgZmlsbD0iIzk0YTNiOCIvPgo8L3N2Zz4KPC9zdmc+';
     };
