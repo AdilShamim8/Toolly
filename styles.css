@@ -536,6 +536,226 @@ html {
     width: 100%;
 }
 
+/* ===== Hero Section - Redesigned ===== */
+.hero-section {
+    background: linear-gradient(135deg, var(--card-bg) 0%, var(--background-color) 100%);
+    border-radius: var(--border-radius);
+    padding: 4rem 3rem;
+    margin-bottom: 3rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--input-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(176, 219, 156, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.hero-headline {
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+.hero-headline::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    margin: 1rem auto 0;
+    border-radius: 3px;
+}
+
+.hero-subheadline {
+    font-size: 1.25rem;
+    color: var(--muted-text);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
+}
+
+/* Hero CTA Button */
+.hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--primary-color);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 24px rgba(176, 219, 156, 0.35);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 3rem;
+}
+
+.hero-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-dark));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.hero-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(176, 219, 156, 0.45);
+}
+
+.hero-cta:hover::before {
+    opacity: 1;
+}
+
+.hero-cta:active {
+    transform: translateY(-1px);
+}
+
+.hero-cta span,
+.hero-cta i {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-cta i {
+    transition: transform 0.3s ease;
+}
+
+.hero-cta:hover i {
+    transform: translateX(5px);
+}
+
+/* Featured Tools Section */
+.hero-featured-tools {
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.featured-label {
+    font-size: 0.95rem;
+    color: var(--muted-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.hero-tool-icons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.hero-tool-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    background: var(--card-bg);
+    border: 2px solid var(--input-border);
+}
+
+.hero-tool-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8px;
+    transition: transform 0.3s ease;
+}
+
+.hero-tool-icon:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 24px rgba(176, 219, 156, 0.3);
+    border-color: var(--primary-color);
+}
+
+.hero-tool-icon:hover img {
+    transform: scale(1.1);
+}
+
+/* Hero Stats */
+.hero-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.5rem 2rem;
+    background: var(--tag-bg);
+    border-radius: 50px;
+    max-width: fit-content;
+    margin: 0 auto;
+}
+
+.hero-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.hero-stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.hero-stat-label {
+    font-size: 0.85rem;
+    color: var(--muted-text);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.hero-stat-divider {
+    width: 2px;
+    height: 40px;
+    background: var(--input-border);
+    border-radius: 1px;
+}
+
+/* ===== Search & Filter Section ===== */
 .main-header {
     margin-bottom: 2rem;
 }
@@ -611,9 +831,13 @@ html {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-top: 1.2rem;
     width: 100%;
     flex-wrap: wrap;
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--input-border);
 }
 .search-container {
     position: relative;
@@ -1157,6 +1381,26 @@ html {
     }
 }
 
+/* Tablet / Medium Screens */
+@media (max-width: 1024px) {
+    .hero-section {
+        padding: 3rem 2rem;
+    }
+    
+    .hero-headline {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subheadline {
+        font-size: 1.15rem;
+    }
+    
+    .hero-stats {
+        gap: 1.5rem;
+    }
+}
+
+/* Mobile / Small Screens */
 @media (max-width: 768px) {
     .main-layout {
         grid-template-columns: 1fr;
@@ -1252,6 +1496,77 @@ html {
         flex: 1;
         text-align: center;
         margin-bottom: 0;
+    }
+    
+    /* Hero Section Mobile Styles */
+    .hero-section {
+        padding: 2.5rem 1.5rem;
+    }
+    
+    .hero-headline {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    
+    .hero-headline::after {
+        width: 60px;
+        height: 4px;
+        margin-top: 0.75rem;
+    }
+    
+    .hero-subheadline {
+        font-size: 1.05rem;
+        margin-bottom: 2rem;
+    }
+    
+    .hero-cta {
+        font-size: 1rem;
+        padding: 0.875rem 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .hero-featured-tools {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .hero-tool-icons {
+        gap: 0.75rem;
+    }
+    
+    .hero-tool-icon {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .hero-tool-icon img {
+        padding: 6px;
+    }
+    
+    .featured-label {
+        font-size: 0.85rem;
+    }
+    
+    .hero-stats {
+        gap: 1rem;
+        padding: 1.25rem 1.5rem;
+        flex-wrap: wrap;
+    }
+    
+    .hero-stat-item {
+        min-width: 70px;
+    }
+    
+    .hero-stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .hero-stat-label {
+        font-size: 0.75rem;
+    }
+    
+    .hero-stat-divider {
+        height: 30px;
     }
     
     .main-header-top h1 {
