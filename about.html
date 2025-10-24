@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>About Toolly - Your Trusted AI Tools Directory</title>
+    <meta name="description" content="Learn about Toolly's mission to provide free, curated AI tools. Discover how we help users find the perfect AI solutions while prioritizing privacy and transparency.">
+    <meta name="keywords" content="about toolly, AI tools directory, privacy-focused, free AI tools, how it works">
+    <meta name="author" content="Toolly">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://toolly.tech/about.html">
+    
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Toolly">
+    <meta property="og:title" content="About Toolly - Your Trusted AI Tools Directory">
+    <meta property="og:description" content="Learn about Toolly's mission to provide free, curated AI tools with a focus on privacy and user empowerment.">
+    <meta property="og:image" content="https://toolly.tech/logo/Toolly.jpg">
+    <meta property="og:url" content="https://toolly.tech/about.html">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Toolly - Your Trusted AI Tools Directory">
+    <meta name="twitter:description" content="Learn about Toolly's mission to provide free, curated AI tools with a focus on privacy and user empowerment.">
+    <meta name="twitter:image" content="https://toolly.tech/logo/Toolly.jpg">
+    
+    <!-- Stylesheets -->
+    <link rel="preload" href="logo/Toolly.jpg" as="image">
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="icon" href="logo/Toolly_logo.png" type="image/svg+xml">
+    
+    <style>
+        /* About Page Specific Styles */
+        .about-hero {
+            background: linear-gradient(135deg, var(--card-bg) 0%, var(--background-color) 100%);
+            border-radius: var(--border-radius);
+            padding: 4rem 3rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(176, 219, 156, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .about-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .about-hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .about-hero p {
+            font-size: 1.25rem;
+            color: var(--muted-text);
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+        
+        .about-section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--input-border);
+        }
+        
+        .about-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .about-section h2 i {
+            font-size: 1.75rem;
+        }
+        
+        .about-section p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+        }
+        
+        .about-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+        
+        .about-section li {
+            font-size: 1.05rem;
+            color: var(--text-color);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .about-section li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+        
+        .privacy-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--tag-bg);
+            color: var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-top: 1rem;
+            border: 2px solid var(--primary-color);
+        }
+        
+        .privacy-badge i {
+            font-size: 1.25rem;
+        }
+        
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .step-card {
+            background: var(--background-color);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            border: 2px solid var(--input-border);
+            position: relative;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(176, 219, 156, 0.2);
+            border-color: var(--primary-color);
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: 900;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 4px 12px rgba(176, 219, 156, 0.3);
+        }
+        
+        .step-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+        
+        .step-card p {
+            font-size: 1rem;
+            color: var(--muted-text);
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: var(--border-radius);
+            margin-top: 3rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .cta-section h2 {
+            color: #fff;
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.15rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #fff;
+            color: var(--primary-color);
+            font-size: 1.15rem;
+            font-weight: 700;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .value-card {
+            background: var(--background-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 2px solid var(--input-border);
+        }
+        
+        .value-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
+        }
+        
+        .value-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 0.75rem;
+        }
+        
+        .value-card p {
+            font-size: 0.95rem;
+            color: var(--muted-text);
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: 2.5rem 1.5rem;
+            }
+            
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-hero p {
+                font-size: 1.05rem;
+            }
+            
+            .about-section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .about-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-section h2 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Open sidebar">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo-container">
+                    <img src="logo/Toolly.jpg" alt="Toolly Logo" class="logo" width="64" height="64" loading="eager">
+                </div>
+                <h2>Toolly</h2>
+            </div>
+            <nav class="sidebar-categories">
+                <h3>Navigation</h3>
+                <ul id="navList">
+                    <li><a href="index.html" style="text-decoration: none; color: inherit; display: block;">Home</a></li>
+                    <li class="active"><a href="about.html" style="text-decoration: none; color: inherit; display: block;">About</a></li>
+                    <li><a href="index.html#submit-tool" style="text-decoration: none; color: inherit; display: block;">Submit a Tool</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-about">
+                <h3>About</h3>
+                <p>Toolly is your comprehensive directory of AI tools, helping you discover the perfect solutions for your needs.</p>
+                <div class="copyright">© 2025 Toolly. All rights reserved.</div>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <!-- Hero Section -->
+            <div class="about-hero">
+                <div class="about-hero-content">
+                    <h1>About Toolly</h1>
+                    <p>Your trusted directory for discovering, comparing, and accessing the best AI tools available today. We curate hundreds of tools to help you find exactly what you need.</p>
+                </div>
+            </div>
+            
+            <!-- Mission Section -->
+            <section class="about-section">
+                <h2><i class="fas fa-bullseye"></i> Our Mission</h2>
+                <p>At Toolly, we believe that powerful AI tools should be accessible to everyone. Our mission is to provide a comprehensive, easy-to-navigate directory of AI tools that empowers individuals and businesses to discover the perfect solutions for their needs.</p>
+                <p>We carefully curate and categorize over 350+ AI tools across 15+ categories, from chatbots and image generators to productivity apps and developer tools. Every tool in our directory is vetted for quality, functionality, and user value.</p>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-users"></i></div>
+                        <h3>User-Centric</h3>
+                        <p>We prioritize your needs with clear categorization and honest tool descriptions</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3>Privacy-Focused</h3>
+                        <p>Your browsing and searches stay private - we don't track or sell your data</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-gem"></i></div>
+                        <h3>Quality First</h3>
+                        <p>Every tool is carefully reviewed before being added to our directory</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-bolt"></i></div>
+                        <h3>Always Updated</h3>
+                        <p>We continuously add new tools and remove outdated ones</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Privacy Section -->
+            <section class="about-section">
+                <h2><i class="fas fa-lock"></i> Your Privacy Matters</h2>
+                <p><strong>All browsing and search operations happen locally in your browser.</strong> When you search for tools or filter by category on Toolly, everything runs on your device. Your search queries, browsing history, and tool preferences are never transmitted to our servers or any third parties.</p>
+                
+                <h3 style="font-size: 1.4rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--text-color);">What We Do:</h3>
+                <ul>
+                    <li>Provide a static, fast-loading directory of AI tools</li>
+                    <li>Run all search and filtering operations in your browser</li>
+                    <li>Use localStorage only for your personal tool preferences (stays on your device)</li>
+                    <li>Provide direct links to official tool websites</li>
+                </ul>
+                
+                <h3 style="font-size: 1.4rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--text-color);">What We DON'T Do:</h3>
+                <ul>
+                    <li>Track your searches or browsing behavior</li>
+                    <li>Store any personal information on our servers</li>
+                    <li>Sell or share your data with third parties</li>
+                    <li>Require account creation or login</li>
+                    <li>Use intrusive analytics or tracking cookies</li>
+                </ul>
+                
+                <div class="privacy-badge">
+                    <i class="fas fa-check-circle"></i>
+                    <span>100% Privacy-Focused</span>
+                </div>
+            </section>
+            
+            <!-- How It Works Section -->
+            <section class="about-section">
+                <h2><i class="fas fa-cogs"></i> How It Works</h2>
+                <p>Toolly is designed to be intuitive and efficient. Whether you're looking for a specific type of AI tool or just browsing for inspiration, we make it easy to find what you need.</p>
+                
+                <div class="steps-container">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Browse Categories</h3>
+                        <p>Explore 15+ categories including Chatbots, Image Generation, Video Tools, Developer Tools, and more. Click the quick category pills in the hero section or use the sidebar for detailed categories.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Search & Filter</h3>
+                        <p>Use the search bar to find tools by name, description, or tags. Filter by category, sort by name or featured status, and switch between grid or list view for your preferred browsing experience.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Compare Tools</h3>
+                        <p>Read detailed descriptions, check badges (Featured, Trending, Free, Freemium, Paid), and view tags to understand each tool's capabilities. All information is curated and regularly updated.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3>Visit & Try</h3>
+                        <p>Click "Visit Site" on any tool card to open the official website in a new tab. Test the tool directly from the source - we provide direct links to ensure you always get the latest version.</p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 2.5rem; padding: 1.5rem; background: var(--tag-bg); border-radius: 12px; border-left: 4px solid var(--primary-color);">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem; color: var(--text-color);"><i class="fas fa-lightbulb"></i> Pro Tip</h3>
+                    <p style="margin: 0; color: var(--text-color);">Use the "My Tools" section to save your favorite tools for quick access. You can add custom tools, organize them with drag-and-drop, and even auto-fetch logos from any website!</p>
+                </div>
+            </section>
+            
+            <!-- Features Section -->
+            <section class="about-section">
+                <h2><i class="fas fa-star"></i> Key Features</h2>
+                <ul>
+                    <li><strong>350+ Curated AI Tools:</strong> From ChatGPT and Midjourney to niche productivity apps, we cover the entire AI tools landscape</li>
+                    <li><strong>15+ Categories:</strong> Organized into logical categories like Chatbots, Image Generation, Video, Audio, Developer Tools, Productivity, and more</li>
+                    <li><strong>Smart Search:</strong> Find tools instantly by name, description, or tags - all processed locally in your browser</li>
+                    <li><strong>Multiple Views:</strong> Switch between grid and list view to match your browsing preference</li>
+                    <li><strong>Regular Updates:</strong> New tools added weekly, outdated tools removed, descriptions kept current</li>
+                    <li><strong>Featured & Trending:</strong> Discover the most popular and newly released AI tools with special badges</li>
+                    <li><strong>Personal Collection:</strong> Save and organize your favorite tools in the "My Tools" section</li>
+                    <li><strong>Mobile Optimized:</strong> Full responsive design works perfectly on phones, tablets, and desktop</li>
+                    <li><strong>Dark Mode:</strong> Easy on the eyes with automatic theme switching</li>
+                    <li><strong>Fast & Lightweight:</strong> Optimized for speed with lazy loading and efficient rendering</li>
+                </ul>
+            </section>
+            
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h2>Ready to Discover Amazing AI Tools?</h2>
+                <p>Join thousands of users who trust Toolly to find the perfect AI solutions for their needs. Start exploring now - completely free, no signup required.</p>
+                <a href="index.html" class="cta-button">
+                    <span>Explore AI Tools</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <!-- Contact Section -->
+            <section class="about-section" style="margin-top: 2rem;">
+                <h2><i class="fas fa-envelope"></i> Get In Touch</h2>
+                <p>Have a question, suggestion, or want to submit a tool for inclusion? We'd love to hear from you!</p>
+                <ul style="margin-top: 1.5rem;">
+                    <li><strong>Submit a Tool:</strong> Use our <a href="index.html#submit-tool" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">submission form</a> to suggest new AI tools</li>
+                    <li><strong>Report Issues:</strong> Found a broken link or outdated information? Let us know so we can fix it</li>
+                    <li><strong>Feedback:</strong> Share your thoughts on how we can improve Toolly</li>
+                </ul>
+                <p style="margin-top: 1.5rem; font-size: 1rem; color: var(--muted-text);">We review all submissions and typically respond within 48 hours. Thank you for helping us build the best AI tools directory!</p>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+    <script>
+        // Sidebar toggle for mobile
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        
+        function openSidebar() {
+            sidebar.classList.add('open');
+            sidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        if (sidebarToggle) {
+            sidebarToggle.addEventListener('click', openSidebar);
+        }
+        
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', closeSidebar);
+        }
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.classList.add('theme-transitioning');
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            themeIcon.style.transform = 'rotate(180deg)';
+            setTimeout(() => {
+                themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                themeIcon.style.transform = 'rotate(0deg)';
+            }, 150);
+            
+            setTimeout(() => {
+                document.documentElement.classList.remove('theme-transitioning');
+            }, 300);
+        });
+    </script>
+</body>
+</html>
