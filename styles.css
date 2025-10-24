@@ -573,8 +573,11 @@ html {
     font-weight: 900;
     color: var(--text-color);
     margin-bottom: 1.5rem;
-    line-height: 1.15;
+    line-height: 1.2;
     letter-spacing: -0.02em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 .hero-headline::after {
