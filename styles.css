@@ -660,6 +660,39 @@ html {
     transform: translateX(5px);
 }
 
+/* Quick Categories in Hero */
+.hero-quick-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 0 0 2rem;
+}
+
+.category-pill {
+    appearance: none;
+    border: 1.5px solid var(--input-border);
+    background: var(--tag-bg);
+    color: var(--text-color);
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.category-pill:hover {
+    background: var(--primary-color);
+    color: #fff;
+    transform: translateY(-1px);
+}
+.category-pill.active {
+    background: var(--primary-color);
+    border-color: var(--primary-dark);
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(176, 219, 156, 0.35);
+}
+
 /* Featured Tools Section */
 .hero-featured-tools {
     margin-bottom: 2.5rem;
@@ -1086,6 +1119,7 @@ html {
 }
 
 .tools-grid.list-view .tool-description {
+    line-clamp: 2;
     -webkit-line-clamp: 2;
 }
 
@@ -1140,6 +1174,7 @@ html {
     margin-bottom: 0.3rem;
     flex-grow: 1;
     display: -webkit-box;
+    line-clamp: 3;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -1766,6 +1801,7 @@ html {
     }
     .tool-description {
         font-size: 0.8rem;
+        line-clamp: 2;
         -webkit-line-clamp: 2;
         margin-bottom: 0.2rem;
     }
