@@ -17,6 +17,13 @@
     <link rel="preload" href="styles.css" as="style">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <!-- Resource hints for external tool logo domains (performance optimization) -->
+    <link rel="dns-prefetch" href="https://www.h2o.ai">
+    <link rel="dns-prefetch" href="https://upload.wikimedia.org">
+    <link rel="dns-prefetch" href="https://encrypted-tbn0.gstatic.com">
+    <link rel="dns-prefetch" href="https://brandlogos.net">
+    <link rel="dns-prefetch" href="https://pngdownload.io">
+    <link rel="dns-prefetch" href="https://logosandtypes.com">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style">
     <!-- Critical inline CSS for faster rendering -->
     <style>
@@ -60,7 +67,7 @@
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <div class="sidebar-logo-container">
-                  <img src="logo/Toolly.jpg" alt="Toolly Logo" class="logo" width="64" height="64" loading="eager">
+                  <img src="logo/Toolly.jpg" alt="Toolly Logo" class="logo" width="64" height="64" loading="eager" fetchpriority="high">
                 </div>
                 <h2>Toolly</h2>
             </div>
