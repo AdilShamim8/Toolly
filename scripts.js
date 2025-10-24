@@ -3343,6 +3343,62 @@ function initializeStats() {
     }
 }
 
+// Initialize Hero Section with Featured Tools
+function initializeHero() {
+    const heroToolIcons = document.getElementById('heroToolIcons');
+    const heroCtaBtn = document.getElementById('heroCtaBtn');
+    
+    // Populate featured tool icons (top 3 featured tools)
+    if (heroToolIcons) {
+        const featuredTools = aiTools
+            .filter(tool => tool.badges && tool.badges.includes('featured'))
+            .slice(0, 3);
+        
+        featuredTools.forEach(tool => {
+            const iconWrapper = document.createElement('div');
+            iconWrapper.className = 'hero-tool-icon';
+            iconWrapper.title = tool.name;
+            iconWrapper.setAttribute('aria-label', `View ${tool.name}`);
+            
+            const icon = document.createElement('img');
+            icon.src = tool.logo;
+            icon.alt = `${tool.name} logo`;
+            icon.width = 56;
+            icon.height = 56;
+            icon.loading = 'eager'; // Load hero icons immediately for LCP
+            icon.onerror = function() {
+                this.src = 'logo/favicon.svg';
+            };
+            
+            iconWrapper.appendChild(icon);
+            
+            // Make icon clickable to navigate to tool
+            iconWrapper.addEventListener('click', () => {
+                window.open(tool.url, '_blank');
+            });
+            
+            heroToolIcons.appendChild(iconWrapper);
+        });
+    }
+    
+    // Hero CTA button functionality
+    if (heroCtaBtn) {
+        heroCtaBtn.addEventListener('click', () => {
+            // Scroll to the tools grid section
+            const toolsSection = document.querySelector('.tools-grid');
+            if (toolsSection) {
+                toolsSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }
+            
+            // Optional: Add analytics tracking here
+            console.log('Hero CTA clicked - User exploring tools');
+        });
+    }
+}
+
 function renderTools() {
     // Filter
     let filtered = aiTools.filter(tool => {
@@ -3760,6 +3816,7 @@ function boot() {
         }
     }, 300);
     initializeStats();
+    initializeHero(); // Initialize hero section
     renderTools();
 }
 
