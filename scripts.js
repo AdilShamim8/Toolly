@@ -3323,9 +3323,20 @@ const emptyState = document.getElementById('emptyState');
 const viewButtons = document.querySelectorAll('.view-btn');
 
 let currentCategory = 'all';
+let currentCategoryGroup = null; // 'chatbots' | 'image' | 'video' | 'audio' | 'developer' | 'productivity'
 let currentSearch = '';
 let currentSort = 'default';
 let currentView = 'grid';
+
+// Top-level category grouping for quick filters
+const categoryGroups = {
+    chatbots: ['nlp', 'writing'],
+    image: ['vision', 'design'],
+    video: ['video'],
+    audio: ['audio'],
+    developer: ['coding', 'developer-tools'],
+    productivity: ['productivity', 'automation']
+};
 
 // Initialize stats
 function initializeStats() {
@@ -3343,14 +3354,104 @@ function initializeStats() {
     }
 }
 
+// Initialize Hero Section with Featured Tools
+function initializeHero() {
+    const heroToolIcons = document.getElementById('heroToolIcons');
+    const heroCtaBtn = document.getElementById('heroCtaBtn');
+    const quickCats = document.querySelectorAll('.hero-quick-categories .category-pill');
+    
+    // Populate featured tool icons (top 3 featured tools)
+    if (heroToolIcons) {
+        const featuredTools = aiTools
+            .filter(tool => tool.badges && tool.badges.includes('featured'))
+            .slice(0, 3);
+        
+        featuredTools.forEach(tool => {
+            const iconWrapper = document.createElement('div');
+            iconWrapper.className = 'hero-tool-icon';
+            iconWrapper.title = tool.name;
+            iconWrapper.setAttribute('aria-label', `View ${tool.name}`);
+            
+            const icon = document.createElement('img');
+            icon.src = tool.logo;
+            icon.alt = `${tool.name} logo`;
+            icon.width = 56;
+            icon.height = 56;
+            icon.loading = 'eager'; // Load hero icons immediately for LCP
+            icon.onerror = function() {
+                this.src = 'logo/favicon.svg';
+            };
+            
+            iconWrapper.appendChild(icon);
+            
+            // Make icon clickable to navigate to tool
+            iconWrapper.addEventListener('click', () => {
+                window.open(tool.url, '_blank');
+            });
+            
+            heroToolIcons.appendChild(iconWrapper);
+        });
+    }
+    
+    // Hero CTA button functionality
+    if (heroCtaBtn) {
+        heroCtaBtn.addEventListener('click', () => {
+            // Scroll to the tools grid section
+            const toolsSection = document.querySelector('.tools-grid');
+            if (toolsSection) {
+                toolsSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }
+            
+            // Optional: Add analytics tracking here
+            console.log('Hero CTA clicked - User exploring tools');
+        });
+    }
+
+    // Quick Categories click handling
+    if (quickCats && quickCats.length) {
+        quickCats.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Toggle active state
+                quickCats.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+                btn.classList.add('active');
+                btn.setAttribute('aria-pressed', 'true');
+                // Update filter state
+                const group = btn.dataset.group;
+                if (!group || group === 'all') {
+                    currentCategoryGroup = null;
+                    currentCategory = 'all';
+                } else {
+                    currentCategoryGroup = group;
+                    currentCategory = 'all'; // ensure sidebar filter doesn't conflict
+                }
+                // Re-render
+                renderTools();
+                // Scroll to tools grid
+                const toolsSection = document.querySelector('.tools-grid');
+                if (toolsSection) toolsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    }
+}
+
 function renderTools() {
     // Filter
     let filtered = aiTools.filter(tool => {
-        let matchesCategory = currentCategory === 'all' || (Array.isArray(tool.categories) && tool.categories.includes(currentCategory));
+        // Group filter has priority if set
+        let matchesCategory = true;
+        if (currentCategoryGroup && categoryGroups[currentCategoryGroup]) {
+            const groupCats = categoryGroups[currentCategoryGroup];
+            matchesCategory = Array.isArray(tool.categories) && tool.categories.some(c => groupCats.includes(c));
+        } else {
+            matchesCategory = currentCategory === 'all' || (Array.isArray(tool.categories) && tool.categories.includes(currentCategory));
+        }
         // Extend category matching for composite/alias categories
         if (!matchesCategory) {
-            if (currentCategory === 'automation') {
-                // Some entries use 'automation' or are automation tools in tags/description
+            if (currentCategory === 'automation' || (currentCategoryGroup === 'productivity')) {
+                // Automation heuristics for broader productivity group
                 const tagText = (tool.tags || []).join(' ').toLowerCase();
                 const nameDesc = `${tool.name} ${tool.description}`.toLowerCase();
                 matchesCategory = /\b(automation|automate|workflow|workflows|rpa|playbook|orchestration)\b/.test(tagText) ||
@@ -3760,6 +3861,7 @@ function boot() {
         }
     }, 300);
     initializeStats();
+    initializeHero(); // Initialize hero section
     renderTools();
 }
 
