@@ -3,14 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Toolly - The ultimate directory of AI tools across various categories. Find the perfect AI tool for your needs.">
-    <meta name="keywords" content="AI tools, artificial intelligence, chatbot, productivity, developer tools, research, education, data science, audio generator, video generator, image generator, design, business, marketing">
-    <meta property="og:title" content="Toolly - AI Tools Directory">
-    <meta property="og:description" content="Discover the best AI tools for your needs. Toolly offers a comprehensive directory of AI tools across various categories.">
-    <meta property="og:image" content="logo/Toolly.jpg">
-    <meta property="og:url" content="https://toolly.tech">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>Toolly - Free AI Tools for Chatbots, Image Generation, Productivity</title>
+    <meta name="description" content="Discover 350+ free AI tools for chatbots, image generation, video creation, and productivity. Compare ChatGPT, Midjourney, and more in one directory.">
+    <meta name="keywords" content="AI tools, free AI tools, ChatGPT, Midjourney, AI chatbot, AI image generator, AI video generator, productivity tools, artificial intelligence, machine learning tools">
+    <meta name="author" content="Toolly">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <link rel="canonical" href="https://toolly.tech/">
+    
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Toolly">
+    <meta property="og:title" content="Toolly - Free AI Tools for Chatbots, Image Generation, Productivity">
+    <meta property="og:description" content="Discover 350+ free AI tools for chatbots, image generation, video creation, and productivity. Compare ChatGPT, Midjourney, and more in one directory.">
+    <meta property="og:image" content="https://toolly.tech/logo/Toolly.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://toolly.tech/">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <title>Toolly - AI Tools Directory</title>
+    <meta name="twitter:title" content="Toolly - Free AI Tools for Chatbots, Image Generation, Productivity">
+    <meta name="twitter:description" content="Discover 350+ free AI tools for chatbots, image generation, video creation, and productivity. Compare ChatGPT, Midjourney, and more.">
+    <meta name="twitter:image" content="https://toolly.tech/logo/Toolly.jpg">
+    <meta name="twitter:site" content="@toolly">
+    <meta name="twitter:creator" content="@toolly">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#B0DB9C">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Toolly">
+    <meta name="application-name" content="Toolly">
+    <meta name="msapplication-TileColor" content="#B0DB9C">
+    <meta name="format-detection" content="telephone=no">
+    
+    <!-- Structured Data (JSON-LD) for Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Toolly",
+      "description": "Free AI Tools Directory - Discover 350+ AI tools for chatbots, image generation, video creation, and productivity",
+      "url": "https://toolly.tech/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://toolly.tech/?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Toolly",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://toolly.tech/logo/Toolly.jpg"
+        }
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "AI Tools Directory",
+      "description": "Comprehensive directory of 350+ AI tools across 15 categories",
+      "numberOfItems": 350,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Chatbot AI Tools",
+          "description": "AI-powered chatbots including ChatGPT, Claude, and Gemini"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Image Generator AI Tools",
+          "description": "AI image generation tools like Midjourney, DALL-E, and Stable Diffusion"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Video Generator AI Tools",
+          "description": "AI video creation and editing tools"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Productivity AI Tools",
+          "description": "AI tools to boost productivity and workflow automation"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Developer AI Tools",
+          "description": "AI coding assistants and development tools"
+        }
+      ]
+    }
+    </script>
     <!-- Preload critical assets -->
     <!-- Resource hints for faster loading -->
     <link rel="preload" href="logo/Toolly.jpg" as="image">
@@ -91,6 +184,12 @@
                     <li data-category="life-assistant">Life Assistant</li>
                 </ul>
             </nav>
+            <nav class="sidebar-categories" style="margin-top: 1.5rem;">
+                <h3>Navigation</h3>
+                <ul>
+                    <li style="cursor: pointer;"><a href="about.html" style="text-decoration: none; color: inherit; display: block;"><i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i>About Toolly</a></li>
+                </ul>
+            </nav>
             <div class="sidebar-about">
                 <h3>About</h3>
                 <p>This is a comprehensive directory of AI tools that lets you explore various tools across different categories.<br><br>Click on a category to filter the tools or use the search bar to find specific tools.</p>
@@ -98,38 +197,70 @@
             </div>
         </aside>
         <main class="main-content">
-            <header class="main-header">
-                <div class="main-header-top">
-                    <div class="header-content">
-                        <h1>Discover the Best AI Tools</h1>
-                        <p class="subtitle">Don’t drag your life away in work—let AI speed it to freedom.</p>
-                        <div class="header-stats">
-                            <div class="stat-item">
-                                <span class="stat-number" id="totalToolCount">100+</span>
-                                <span class="stat-label">AI Tools</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number" id="categoriesCount">15</span>
-                                <span class="stat-label">Categories</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number" id="featuredCount">20+</span>
-                                <span class="stat-label">Featured</span>
-                            </div>
+            <!-- Hero Section - Redesigned -->
+            <section class="hero-section" itemscope itemtype="https://schema.org/SoftwareApplication">
+                <div class="hero-content">
+                    <h1 class="hero-headline" itemprop="name">Your All-in-One Suite for AI Tools</h1>
+                    <p class="hero-subheadline" itemprop="description">Discover, compare, and access 350+ powerful AI tools across 15 categories. From chatbots to image generators, find the perfect AI solution to boost your productivity and creativity.</p>
+                    
+                    <!-- Primary CTA -->
+                    <button class="hero-cta" id="heroCtaBtn" aria-label="Explore all AI tools">
+                        <span>Explore All Tools</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                    <!-- Quick Categories (no scrolling required) -->
+                    <div class="hero-quick-categories" aria-label="Quick categories">
+                        <button class="category-pill active" data-group="all" aria-pressed="true">All</button>
+                        <button class="category-pill" data-group="chatbots">Chatbots</button>
+                        <button class="category-pill" data-group="image">Image</button>
+                        <button class="category-pill" data-group="video">Video</button>
+                        <button class="category-pill" data-group="audio">Audio</button>
+                        <button class="category-pill" data-group="developer">Developer</button>
+                        <button class="category-pill" data-group="productivity">Productivity</button>
+                    </div>
+
+                    <!-- Featured Tool Icons -->
+                    <div class="hero-featured-tools">
+                        <p class="featured-label">Featured Tools:</p>
+                        <div class="hero-tool-icons" id="heroToolIcons">
+                            <!-- Dynamically populated with top 3 featured tools -->
                         </div>
                     </div>
-                    <span id="toolCount" class="tools-counter">Showing 0 tools</span>
+
+                    <!-- Stats Bar -->
+                    <div class="hero-stats">
+                        <div class="hero-stat-item">
+                            <span class="hero-stat-number" id="totalToolCount">100+</span>
+                            <span class="hero-stat-label">AI Tools</span>
+                        </div>
+                        <div class="hero-stat-divider"></div>
+                        <div class="hero-stat-item">
+                            <span class="hero-stat-number" id="categoriesCount">15</span>
+                            <span class="hero-stat-label">Categories</span>
+                        </div>
+                        <div class="hero-stat-divider"></div>
+                        <div class="hero-stat-item">
+                            <span class="hero-stat-number" id="featuredCount">20+</span>
+                            <span class="hero-stat-label">Featured</span>
+                        </div>
+                    </div>
                 </div>
+            </section>
+
+            <!-- Search & Filter Section -->
+            <header class="main-header">
                 <div class="main-header-actions">
                     <div class="search-container">
                         <input type="text" id="searchInput" placeholder="Search AI tools...">
                         <i class="fas fa-search"></i>
                     </div>
-                    <select id="sortSelect">
+                    <select id="sortSelect" aria-label="Sort tools">
                         <option value="default">Sort by</option>
                         <option value="name">Name</option>
                         <option value="featured">Featured</option>
                     </select>
+                    <span id="toolCount" class="tools-counter">Showing 0 tools</span>
                 </div>
             </header>
             <!-- My Tools Section -->
@@ -308,4 +439,3 @@
     <script src="chatbot.js" defer></script>
 </body>
 </html>
-
