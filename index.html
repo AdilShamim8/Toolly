@@ -309,6 +309,15 @@
                     <h3>No tools found</h3>
                     <p>Try adjusting your search or category filters</p>
                 </div>
+                <div class="load-more-container" id="loadMoreContainer" style="display: none;">
+                    <button class="load-more-btn" id="loadMoreBtn">
+                        <span class="load-more-text">Load More Tools</span>
+                        <span class="load-more-spinner" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Loading...
+                        </span>
+                    </button>
+                    <p class="load-more-info" id="loadMoreInfo"></p>
+                </div>
             </section>
 
             <!-- Submit a Tool Section -->
@@ -439,3 +448,4 @@
     <script src="chatbot.js" defer></script>
 </body>
 </html>
+
