@@ -3305,7 +3305,43 @@ const aiTools = [
         url: "https://www.warp.dev/",
         badges: ["free", "featured"],
         tags: ["terminal", "developer", "cli", "ai assistant", "coding"]
-    }
+    },
+    {
+        name: "Rask AI",
+        description: "An AI-powered video localization platform that offers translation, voice cloning, and automated lip-syncing for over 130 languages.",
+        categories: ["video", "audio", "marketing"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNBz0U0wK87LTl5c_Snq-9nuoM-WSJtbJIoQ&s",
+        url: "https://www.rask.ai/",
+        badges: ["trending", "freemium"],
+        tags: ["video localization", "translation", "dubbing", "lip-sync", "voice cloning"]
+    },
+    {
+        name: "Meshy AI",
+        description: "A leading AI-powered 3D asset generation tool that creates high-quality 3D models and textures from text prompts or 2D images in minutes.",
+        categories: ["3d", "design", "vision", "coding"],
+        logo: "https://www.meshy.ai/favicon.ico",
+        url: "https://www.meshy.ai/",
+        badges: ["trending", "freemium", "featured"],
+        tags: ["text-to-3d", "image-to-3d", "3d modeling", "game development", "vfx"]
+    },
+    {
+        name: "Kaedim",
+        description: "An AI-powered platform that transforms 2D images, sketches, or concept art into fully textured 3D models, with plugins for major game engines.",
+        categories: ["3d", "design", "vision", "coding"],
+        logo: "https://www.kaedim3d.com/favicon.ico",
+        url: "https://www.kaedim3d.com/",
+        badges: ["paid", "featured"],
+        tags: ["image-to-3d", "3d modeling", "game development", "prototyping"]
+    },
+    {
+        name: "CrewAI",
+        description: "An open-source framework for orchestrating role-playing, autonomous AI agents to work together to accomplish complex tasks.",
+        categories: ["developer-tools", "productivity", "automation"],
+        logo: "https://images.seeklogo.com/logo-png/61/2/crew-ai-logo-png_seeklogo-619843.png",
+        url: "https://www.crewai.com/",
+        badges: ["open source", "featured", "trending"],
+        tags: ["ai agents", "autonomous", "collaboration", "framework"]
+    },
 ];
 
 // DOM Elements
