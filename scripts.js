@@ -4783,7 +4783,7 @@ if (closeModalBtn && modal && editBtn && toolForm) {
         const originalText = submitBtn.textContent;
         submitBtn.textContent='Submitting...';
 
-        // Simulate async submission (could be replaced with fetch to backend / form service)
+        // Simulate async submission (could be replaced with fetch to backend/form service)
         setTimeout(()=>{
             submitBtn.textContent='Submitted!';
             statusEl.textContent='Thank you! Your tool has been submitted for review.';
