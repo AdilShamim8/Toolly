@@ -3357,12 +3357,21 @@ const sortSelect = document.getElementById('sortSelect');
 const loadingOverlay = document.getElementById('loadingOverlay');
 const emptyState = document.getElementById('emptyState');
 const viewButtons = document.querySelectorAll('.view-btn');
+const loadMoreBtn = document.getElementById('loadMoreBtn');
+const loadMoreContainer = document.getElementById('loadMoreContainer');
+const loadMoreInfo = document.getElementById('loadMoreInfo');
 
 let currentCategory = 'all';
 let currentCategoryGroup = null; // 'chatbots' | 'image' | 'video' | 'audio' | 'developer' | 'productivity'
 let currentSearch = '';
 let currentSort = 'default';
 let currentView = 'grid';
+
+// Pagination state
+let currentPage = 1;
+let itemsPerPage = 20; // Initial load: 20 tools
+let filteredTools = [];
+let isLoading = false;
 
 // Top-level category grouping for quick filters
 const categoryGroups = {
@@ -3373,6 +3382,46 @@ const categoryGroups = {
     developer: ['coding', 'developer-tools'],
     productivity: ['productivity', 'automation']
 };
+
+// Show More preferences storage
+const showMorePreferences = {
+    descriptions: new Map(), // Store tool name -> expanded state
+    tags: new Map(), // Store tool name -> expanded state
+    
+    save() {
+        try {
+            localStorage.setItem('showMoreDescriptions', JSON.stringify(Array.from(this.descriptions.entries())));
+            localStorage.setItem('showMoreTags', JSON.stringify(Array.from(this.tags.entries())));
+        } catch (e) {
+            console.warn('Could not save Show More preferences:', e);
+        }
+    },
+    
+    load() {
+        try {
+            const descriptions = localStorage.getItem('showMoreDescriptions');
+            const tags = localStorage.getItem('showMoreTags');
+            
+            if (descriptions) {
+                this.descriptions = new Map(JSON.parse(descriptions));
+            }
+            if (tags) {
+                this.tags = new Map(JSON.parse(tags));
+            }
+        } catch (e) {
+            console.warn('Could not load Show More preferences:', e);
+        }
+    },
+    
+    clear() {
+        this.descriptions.clear();
+        this.tags.clear();
+        this.save();
+    }
+};
+
+// Load preferences on startup
+showMorePreferences.load();
 
 // Initialize stats
 function initializeStats() {
@@ -3473,9 +3522,14 @@ function initializeHero() {
     }
 }
 
-function renderTools() {
+function renderTools(resetPage = true) {
+    // Reset pagination when filters change
+    if (resetPage) {
+        currentPage = 1;
+    }
+    
     // Filter
-    let filtered = aiTools.filter(tool => {
+    filteredTools = aiTools.filter(tool => {
         // Group filter has priority if set
         let matchesCategory = true;
         if (currentCategoryGroup && categoryGroups[currentCategoryGroup]) {
@@ -3503,38 +3557,52 @@ function renderTools() {
     
     // Sort
     if (currentSort === 'name') {
-        filtered.sort((a, b) => a.name.localeCompare(b.name));
+        filteredTools.sort((a, b) => a.name.localeCompare(b.name));
     } else if (currentSort === 'featured') {
-        filtered.sort((a, b) => (b.badges?.includes('featured') ? 1 : 0) - (a.badges?.includes('featured') ? 1 : 0));
+        filteredTools.sort((a, b) => (b.badges?.includes('featured') ? 1 : 0) - (a.badges?.includes('featured') ? 1 : 0));
     }
     
-    // Render
-    toolsGrid.innerHTML = '';
+    // Clear grid only if resetting
+    if (resetPage) {
+        toolsGrid.innerHTML = '';
+    }
     
     // Show/hide empty state
-    if (filtered.length === 0) {
+    if (filteredTools.length === 0) {
         if (emptyState) emptyState.style.display = 'block';
+        if (loadMoreContainer) loadMoreContainer.style.display = 'none';
     } else {
         if (emptyState) emptyState.style.display = 'none';
         
+        // Calculate pagination
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = Math.min(startIndex + itemsPerPage, filteredTools.length);
+        const toolsToRender = filteredTools.slice(startIndex, endIndex);
+        
         // Performance optimization: Batch render tool cards using requestAnimationFrame
         // This prevents blocking the main thread and improves INP (Interaction to Next Paint)
-        const batchSize = 20; // Render 20 cards at a time
+        const batchSize = 10; // Render 10 cards at a time
         let currentIndex = 0;
         
         const renderBatch = () => {
             const fragment = document.createDocumentFragment();
-            const endIndex = Math.min(currentIndex + batchSize, filtered.length);
+            const batchEnd = Math.min(currentIndex + batchSize, toolsToRender.length);
             
-            for (let i = currentIndex; i < endIndex; i++) {
-                fragment.appendChild(createToolCard(filtered[i]));
+            for (let i = currentIndex; i < batchEnd; i++) {
+                const card = createToolCard(toolsToRender[i]);
+                // Add staggered animation delay for smooth appearance
+                card.style.animationDelay = `${(i % batchSize) * 0.05}s`;
+                fragment.appendChild(card);
             }
             
             toolsGrid.appendChild(fragment);
-            currentIndex = endIndex;
+            currentIndex = batchEnd;
             
-            if (currentIndex < filtered.length) {
+            if (currentIndex < toolsToRender.length) {
                 requestAnimationFrame(renderBatch);
+            } else {
+                // Batch rendering complete, update UI
+                updateLoadMoreButton();
             }
         };
         
@@ -3543,8 +3611,195 @@ function renderTools() {
     
     // Update count
     if (toolCount) {
-        toolCount.textContent = `Showing ${filtered.length} tool${filtered.length !== 1 ? 's' : ''}`;
+        const displayedCount = Math.min(currentPage * itemsPerPage, filteredTools.length);
+        toolCount.textContent = `Showing ${displayedCount} of ${filteredTools.length} tool${filteredTools.length !== 1 ? 's' : ''}`;
     }
+}
+
+function updateLoadMoreButton() {
+    if (!loadMoreContainer || !loadMoreBtn || !loadMoreInfo) return;
+    
+    const totalDisplayed = currentPage * itemsPerPage;
+    const hasMore = totalDisplayed < filteredTools.length;
+    
+    if (hasMore) {
+        loadMoreContainer.style.display = 'flex';
+        const remaining = filteredTools.length - totalDisplayed;
+        const nextBatch = Math.min(itemsPerPage, remaining);
+        loadMoreInfo.textContent = `${remaining} more tool${remaining !== 1 ? 's' : ''} available`;
+    } else {
+        loadMoreContainer.style.display = 'none';
+    }
+}
+
+function loadMoreTools() {
+    // Prevent double-loading
+    if (isLoading) {
+        console.warn('Load already in progress');
+        return;
+    }
+    
+    const totalDisplayed = currentPage * itemsPerPage;
+    if (totalDisplayed >= filteredTools.length) {
+        console.info('All tools already loaded');
+        return;
+    }
+    
+    try {
+        // Set loading state
+        isLoading = true;
+        loadMoreBtn.disabled = true;
+        loadMoreContainer.classList.add('loading');
+        
+        // Show spinner, hide text
+        const loadText = loadMoreBtn.querySelector('.load-more-text');
+        const loadSpinner = loadMoreBtn.querySelector('.load-more-spinner');
+        if (loadText) loadText.style.display = 'none';
+        if (loadSpinner) loadSpinner.style.display = 'flex';
+        
+        // Store scroll position before loading
+        const scrollY = window.scrollY;
+        
+        // Add visual feedback to button
+        loadMoreBtn.setAttribute('aria-busy', 'true');
+        loadMoreBtn.setAttribute('aria-label', 'Loading more tools...');
+        
+        // Simulate network delay for smooth UX (optional - remove in production if not needed)
+        setTimeout(() => {
+            try {
+                currentPage++;
+                
+                // Render next page without resetting
+                const startIndex = (currentPage - 1) * itemsPerPage;
+                const endIndex = Math.min(startIndex + itemsPerPage, filteredTools.length);
+                const toolsToRender = filteredTools.slice(startIndex, endIndex);
+                
+                // Validate data
+                if (!toolsToRender || toolsToRender.length === 0) {
+                    throw new Error('No tools to render');
+                }
+                
+                // Batch render
+                const batchSize = 10;
+                let currentIndex = 0;
+                
+                const renderBatch = () => {
+                    try {
+                        const fragment = document.createDocumentFragment();
+                        const batchEnd = Math.min(currentIndex + batchSize, toolsToRender.length);
+                        
+                        for (let i = currentIndex; i < batchEnd; i++) {
+                            const card = createToolCard(toolsToRender[i]);
+                            // Add staggered animation delay for smooth appearance
+                            card.style.animationDelay = `${(i % batchSize) * 0.05}s`;
+                            fragment.appendChild(card);
+                        }
+                        
+                        toolsGrid.appendChild(fragment);
+                        currentIndex = batchEnd;
+                        
+                        if (currentIndex < toolsToRender.length) {
+                            requestAnimationFrame(renderBatch);
+                        } else {
+                            // Complete loading successfully
+                            completeLoading(scrollY);
+                        }
+                    } catch (error) {
+                        console.error('Error rendering batch:', error);
+                        handleLoadingError(error, scrollY);
+                    }
+                };
+                
+                requestAnimationFrame(renderBatch);
+            } catch (error) {
+                console.error('Error preparing tools:', error);
+                handleLoadingError(error, scrollY);
+            }
+        }, 300); // 300ms delay for smooth loading animation
+    } catch (error) {
+        console.error('Error initiating load:', error);
+        handleLoadingError(error, window.scrollY);
+    }
+}
+
+// Helper function to complete loading successfully
+function completeLoading(scrollY) {
+    isLoading = false;
+    loadMoreBtn.disabled = false;
+    loadMoreContainer.classList.remove('loading');
+    
+    const loadText = loadMoreBtn.querySelector('.load-more-text');
+    const loadSpinner = loadMoreBtn.querySelector('.load-more-spinner');
+    if (loadText) loadText.style.display = 'inline';
+    if (loadSpinner) loadSpinner.style.display = 'none';
+    
+    // Reset ARIA attributes
+    loadMoreBtn.setAttribute('aria-busy', 'false');
+    loadMoreBtn.setAttribute('aria-label', 'Load more tools');
+    
+    // Show success feedback briefly
+    loadMoreContainer.classList.add('success');
+    setTimeout(() => {
+        loadMoreContainer.classList.remove('success');
+    }, 2000);
+    
+    // Update UI
+    updateLoadMoreButton();
+    
+    // Update count
+    if (toolCount) {
+        const displayedCount = Math.min(currentPage * itemsPerPage, filteredTools.length);
+        toolCount.textContent = `Showing ${displayedCount} of ${filteredTools.length} tool${filteredTools.length !== 1 ? 's' : ''}`;
+    }
+    
+    // Maintain scroll position (prevent jump)
+    window.scrollTo(0, scrollY);
+    
+    // Log success
+    console.info(`Successfully loaded ${itemsPerPage} more tools`);
+}
+
+// Helper function to handle loading errors
+function handleLoadingError(error, scrollY) {
+    // Reset loading state
+    isLoading = false;
+    loadMoreBtn.disabled = false;
+    loadMoreContainer.classList.remove('loading');
+    
+    const loadText = loadMoreBtn.querySelector('.load-more-text');
+    const loadSpinner = loadMoreBtn.querySelector('.load-more-spinner');
+    if (loadText) {
+        loadText.style.display = 'inline';
+        loadText.textContent = 'Try Again';
+    }
+    if (loadSpinner) loadSpinner.style.display = 'none';
+    
+    // Reset ARIA attributes
+    loadMoreBtn.setAttribute('aria-busy', 'false');
+    loadMoreBtn.setAttribute('aria-label', 'Error loading tools - click to try again');
+    
+    // Maintain scroll position
+    window.scrollTo(0, scrollY);
+    
+    // Show error feedback
+    if (loadMoreInfo) {
+        loadMoreInfo.textContent = '⚠️ Error loading tools. Please try again.';
+        loadMoreInfo.style.color = 'var(--badge-paid)'; // Red color for error
+        
+        // Reset error message after 5 seconds
+        setTimeout(() => {
+            if (loadMoreInfo) {
+                loadMoreInfo.style.color = '';
+                updateLoadMoreButton(); // Restore normal message
+            }
+            if (loadText) {
+                loadText.textContent = 'Load More Tools';
+            }
+        }, 5000);
+    }
+    
+    // Log error for debugging
+    console.error('Load More Error:', error);
 }
 
 function createToolCard(tool) {
@@ -3661,11 +3916,48 @@ function createToolCard(tool) {
             card.appendChild(badges);
         }
         
-        // Description
+        // Description with Show More
+        const descContainer = document.createElement('div');
+        descContainer.className = 'tool-description-container';
+        
         const desc = document.createElement('p');
         desc.className = 'tool-description';
-        desc.textContent = tool.description;
-        card.appendChild(desc);
+        const isLongDescription = tool.description.length > 120;
+        
+        // Check if user previously expanded this description
+        const wasExpanded = showMorePreferences.descriptions.get(tool.name);
+        
+        if (isLongDescription) {
+            desc.setAttribute('data-full-text', tool.description);
+            
+            if (wasExpanded) {
+                desc.textContent = tool.description;
+            } else {
+                desc.classList.add('truncated');
+                desc.textContent = tool.description.substring(0, 120) + '...';
+            }
+        } else {
+            desc.textContent = tool.description;
+        }
+        
+        descContainer.appendChild(desc);
+        
+        if (isLongDescription) {
+            const showMoreBtn = document.createElement('button');
+            showMoreBtn.className = 'show-more-btn';
+            showMoreBtn.textContent = wasExpanded ? 'Show Less' : 'Show More';
+            showMoreBtn.setAttribute('aria-expanded', wasExpanded ? 'true' : 'false');
+            showMoreBtn.setAttribute('aria-label', wasExpanded ? 'Show less description' : 'Show full description');
+            
+            showMoreBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleDescription(desc, showMoreBtn);
+            });
+            
+            descContainer.appendChild(showMoreBtn);
+        }
+        
+        card.appendChild(descContainer);
         
         // Category tags
         if (tool.categories && tool.categories.length) {
@@ -3680,17 +3972,62 @@ function createToolCard(tool) {
             card.appendChild(tags);
         }
         
-        // Regular tags
+        // Regular tags with Show More
         if (tool.tags && tool.tags.length) {
+            const tagsContainer = document.createElement('div');
+            tagsContainer.className = 'tool-tags-container';
+            
             const tags = document.createElement('div');
             tags.className = 'tool-tags';
-            tool.tags.forEach(t => {
+            const maxVisibleTags = 3;
+            const hasMoreTags = tool.tags.length > maxVisibleTags;
+            
+            // Check if user previously expanded tags
+            const tagsWereExpanded = showMorePreferences.tags.get(tool.name);
+            
+            tool.tags.slice(0, maxVisibleTags).forEach(t => {
                 const tag = document.createElement('span');
                 tag.className = 'tag';
                 tag.textContent = t;
                 tags.appendChild(tag);
             });
-            card.appendChild(tags);
+            
+            if (hasMoreTags) {
+                const hiddenTags = document.createElement('div');
+                hiddenTags.className = 'tool-tags hidden-tags';
+                hiddenTags.style.display = tagsWereExpanded ? 'flex' : 'none';
+                if (!tagsWereExpanded) {
+                    hiddenTags.classList.add('collapsed');
+                }
+                
+                tool.tags.slice(maxVisibleTags).forEach(t => {
+                    const tag = document.createElement('span');
+                    tag.className = 'tag';
+                    tag.textContent = t;
+                    hiddenTags.appendChild(tag);
+                });
+                
+                const showMoreTagsBtn = document.createElement('button');
+                showMoreTagsBtn.className = 'show-more-tags-btn';
+                showMoreTagsBtn.textContent = tagsWereExpanded ? 'Show Less' : `+${tool.tags.length - maxVisibleTags} more`;
+                showMoreTagsBtn.setAttribute('aria-expanded', tagsWereExpanded ? 'true' : 'false');
+                showMoreTagsBtn.setAttribute('aria-label', tagsWereExpanded 
+                    ? 'Show fewer tags' 
+                    : `Show ${tool.tags.length - maxVisibleTags} more tags`);
+                
+                showMoreTagsBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleTags(hiddenTags, showMoreTagsBtn, tool.tags.length - maxVisibleTags);
+                });
+                
+                tags.appendChild(showMoreTagsBtn);
+                tagsContainer.appendChild(tags);
+                tagsContainer.appendChild(hiddenTags);
+            } else {
+                tagsContainer.appendChild(tags);
+            }
+            
+            card.appendChild(tagsContainer);
         }
         
         // Link
@@ -3703,6 +4040,62 @@ function createToolCard(tool) {
     }
     
     return card;
+}
+
+// Show More functionality helpers
+function toggleDescription(descElement, button) {
+    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+    const fullText = descElement.getAttribute('data-full-text');
+    const toolCard = descElement.closest('.tool-card');
+    const toolName = toolCard.querySelector('.tool-name')?.textContent || '';
+    
+    if (isExpanded) {
+        // Collapse
+        descElement.textContent = fullText.substring(0, 120) + '...';
+        descElement.classList.add('truncated');
+        button.textContent = 'Show More';
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-label', 'Show full description');
+        showMorePreferences.descriptions.set(toolName, false);
+    } else {
+        // Expand
+        descElement.textContent = fullText;
+        descElement.classList.remove('truncated');
+        button.textContent = 'Show Less';
+        button.setAttribute('aria-expanded', 'true');
+        button.setAttribute('aria-label', 'Show less description');
+        showMorePreferences.descriptions.set(toolName, true);
+    }
+    
+    // Save preferences
+    showMorePreferences.save();
+}
+
+function toggleTags(hiddenTagsElement, button, hiddenCount) {
+    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+    const toolCard = button.closest('.tool-card');
+    const toolName = toolCard.querySelector('.tool-name')?.textContent || '';
+    
+    if (isExpanded) {
+        // Collapse
+        hiddenTagsElement.style.display = 'none';
+        hiddenTagsElement.classList.add('collapsed');
+        button.textContent = `+${hiddenCount} more`;
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-label', `Show ${hiddenCount} more tags`);
+        showMorePreferences.tags.set(toolName, false);
+    } else {
+        // Expand
+        hiddenTagsElement.style.display = 'flex';
+        hiddenTagsElement.classList.remove('collapsed');
+        button.textContent = 'Show Less';
+        button.setAttribute('aria-expanded', 'true');
+        button.setAttribute('aria-label', 'Show fewer tags');
+        showMorePreferences.tags.set(toolName, true);
+    }
+    
+    // Save preferences
+    showMorePreferences.save();
 }
 
 function categoryLabel(cat) {
@@ -3750,6 +4143,26 @@ if (sortSelect) {
         renderTools();
     });
 }
+
+// Load More Button - Click-only (no auto-loading)
+if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        loadMoreTools();
+    });
+}
+
+// Keyboard shortcuts for accessibility
+document.addEventListener('keydown', (e) => {
+    // Ctrl/Cmd + M to load more tools
+    if ((e.ctrlKey || e.metaKey) && e.key === 'm') {
+        e.preventDefault();
+        if (loadMoreBtn && !loadMoreBtn.disabled && loadMoreContainer.style.display !== 'none') {
+            loadMoreTools();
+        }
+    }
+});
+
 // Back to top and mobile icons visibility control
 let lastScrollTop = 0;
 let scrollDirection = 'up';
