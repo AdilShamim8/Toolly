@@ -3342,6 +3342,78 @@ const aiTools = [
         badges: ["open source", "featured", "trending"],
         tags: ["ai agents", "autonomous", "collaboration", "framework"]
     },
+    {
+        name: "Meta AI",
+        description: "Meta's conversational AI assistant, integrated across Facebook, Instagram, WhatsApp, and Ray-Ban smart glasses, powered by Llama 3.",
+        categories: ["nlp", "productivity", "chat"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPLRH_0dK5pOW6AApDtSpUFZij_DrFOpc3ww&s",
+        url: "https://ai.meta.com/",
+        badges: ["trending", "free"],
+        tags: ["chatbot", "assistant", "llama 3", "social media", "integrated"]
+    },
+    {
+        name: "Gemma 2",
+        description: "A family of lightweight, state-of-the-art open models from Google, built from the same research and technology used to create the Gemini models.",
+        categories: ["nlp", "research", "coding"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxw-5wfIb3r0RvopPlUl7ofPu-1ngNAhPL2w&s",
+        url: "https://ai.google.dev/gemma",
+        badges: ["open source", "featured", "free"],
+        tags: ["language model", "open source", "google", "gemini", "research"]
+    },
+    {
+        name: "Amazon Q Developer",
+        description: "A generative AI-powered conversational assistant from AWS that can help you understand, build, extend, and operate AWS applications. Integrated into the IDE and AWS console.",
+        categories: ["coding", "productivity", "developer-tools"],
+        logo: "https://aws.amazon.com/favicon.ico",
+        url: "https://aws.amazon.com/q/developer/",
+        badges: ["featured", "freemium", "enterprise"],
+        tags: ["code assistant", "aws", "enterprise", "IDE", "development"]
+    },
+    {
+        name: "Arc Search",
+        description: "An AI-powered mobile browser app that searches for you, reading multiple webpages and creating a clean, summarized page with the answer.",
+        categories: ["productivity", "research", "nlp"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBysSlxfQ2gfku-2xty4gVhVGejhGfNlJpKw&s",
+        url: "https://arc.net/search",
+        badges: ["free", "trending", "mobile"],
+        tags: ["search", "mobile", "browser", "summarization", "answers"]
+    },
+    {
+        name: "Julius.ai",
+        description: "An AI data analyst that can analyze and visualize complex data, create forecasts, and generate insights from spreadsheets, PDFs, and articles using natural language.",
+        categories: ["data-science", "productivity", "research"],
+        logo: "https://julius.ai/favicon.ico",
+        url: "https://julius.ai",
+        badges: ["freemium", "featured"],
+        tags: ["data analysis", "visualization", "statistics", "spreadsheets", "research"]
+    },
+    {
+        name: "ChatPDF",
+        description: "An AI tool that lets you chat with any PDF document. Ask questions, request summaries, or quickly find information. Ideal for students, researchers, and professionals.",
+        categories: ["productivity", "research", "education"],
+        logo: "https://www.chatpdf.com/apple-touch-icon.png",
+        url: "https://www.chatpdf.com",
+        badges: ["freemium", "featured", "popular"],
+        tags: ["pdf", "documents", "chat", "summarization", "research"]
+    },
+    {
+        name: "Winston AI",
+        description: "An industry-leading AI detector with 99.98% accuracy for content from ChatGPT, GPT-4, Gemini, and other LLMs. Built for educators and publishers.",
+        categories: ["research", "education", "productivity", "nlp"],
+        logo: "https://gowinston.ai/favicon.ico",
+        url: "https://gowinston.ai",
+        badges: ["freemium", "featured"],
+        tags: ["ai detection", "writing", "education", "plagiarism"]
+    },
+    {
+        name: "GPTZero",
+        description: "The leading AI detector for checking text from ChatGPT, GPT-5, Gemini, and more. Provides advanced insights, plagiarism checking, and writing feedback.",
+        categories: ["research", "education", "productivity", "nlp"],
+        logo: "https://gptzero.me/favicon.ico",
+        url: "https://gptzero.me",
+        badges: ["freemium", "featured", "popular"],
+        tags: ["ai detection", "writing", "education", "plagiarism", "research"]
+    }
 ];
 
 // DOM Elements
