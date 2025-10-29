@@ -514,15 +514,6 @@ const aiTools = [
         tags: ["music", "composition", "creative"]
     },
     {
-        name: "Google Bard",
-        description: "Conversational generative AI chatbot developed by Google.",
-        categories: ["nlp", "productivity"],
-        logo: "https://logowik.com/content/uploads/images/google-bard3872.logowik.com.webp",
-        url: "https://bard.google.com",
-        badges: ["trending", "freemium"],
-        tags: ["chatbot", "google", "language model"]
-    },
-    {
         name: "OpenAI Whisper",
         description: "Automatic speech recognition system trained on a large dataset of diverse audio.",
         categories: ["audio", "nlp"],
