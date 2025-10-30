@@ -1189,15 +1189,6 @@ const aiTools = [
         tags: ["video editing", "generation", "creative"]
     },
     {
-        name: "ElevenLabs",
-        description: "Advanced AI voice generation and cloning platform with ultra-realistic voices.",
-        categories: ["audio"],
-        logo: "https://elevenlabs.io/favicon.ico",
-        url: "https://elevenlabs.io",
-        badges: ["featured", "trending"],
-        tags: ["voice", "audio", "generation"]
-    },
-    {
         name: "Notion AI",
         description: "AI writing and organization assistant integrated into Notion workspace.",
         categories: ["productivity", "business"],
@@ -1205,15 +1196,6 @@ const aiTools = [
         url: "https://www.notion.so/product/ai",
         badges: ["featured", "freemium"],
         tags: ["writing", "organization", "productivity"]
-    },
-    {
-        name: "Leonardo.AI",
-        description: "Advanced AI image generation platform with specialized models for different styles.",
-        categories: ["vision", "design"],
-        logo: "https://app.leonardo.ai/favicon.ico",
-        url: "https://leonardo.ai",
-        badges: ["featured", "freemium"],
-        tags: ["image generation", "art", "creative"]
     },
     {
         name: "Beautiful.ai",
@@ -1639,15 +1621,6 @@ const aiTools = [
         tags: ["automated ML", "model deployment", "enterprise", "analytics"]
     },
     // Business Tools
-    {
-        name: "Gong",
-        description: "AI-powered revenue intelligence platform that analyzes sales conversations and provides insights.",
-        categories: ["business"],
-        logo: "https://www.gong.io/favicon.ico",
-        url: "https://www.gong.io",
-        badges: ["featured", "paid"],
-        tags: ["sales", "revenue intelligence", "conversation analytics", "business"]
-    },
     {
         name: "Chorus.ai",
         description: "Conversation intelligence platform that helps sales teams improve performance through AI analysis.",
@@ -2628,7 +2601,7 @@ const aiTools = [
         categories: ["business", "audio"],
         logo: "https://www.gong.io/favicon.ico",
         url: "https://www.gong.io",
-        badges: ["paid"],
+        badges: ["featured","paid"],
         tags: ["sales", "conversation analytics", "insights", "crm"]
     },
     {
