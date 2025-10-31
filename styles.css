@@ -1330,6 +1330,32 @@ html {
     border-radius: 8px;
     background: #f1f5f9;
     margin-bottom: 0.3rem;
+    /* Image optimization: prevent layout shift and improve rendering */
+    contain: layout style paint;
+    will-change: auto;
+}
+
+/* Skeleton placeholder for loading images */
+.tool-logo[src*="data:image"],
+.tool-logo:not([src]) {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+[data-theme="dark"] .tool-logo {
+    background: #334155;
+}
+
+[data-theme="dark"] .tool-logo[src*="data:image"],
+[data-theme="dark"] .tool-logo:not([src]) {
+    background: linear-gradient(90deg, #334155 25%, #475569 50%, #334155 75%);
+    background-size: 200% 100%;
 }
 .tool-header {
     display: flex;
