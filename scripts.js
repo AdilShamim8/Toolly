@@ -3499,8 +3499,11 @@ function initializeHero() {
             icon.width = 56;
             icon.height = 56;
             icon.loading = 'eager'; // Load hero icons immediately for LCP
+            icon.decoding = 'async'; // Enable async decode for smoother rendering
+            icon.fetchPriority = 'high'; // Prioritize hero images for LCP
             icon.onerror = function() {
                 this.src = 'logo/favicon.svg';
+                this.onerror = null; // Prevent error loops
             };
             
             iconWrapper.appendChild(icon);
@@ -3853,9 +3856,21 @@ function createToolCard(tool) {
     logo.loading = 'lazy'; // Optimize LCP: lazy load below-the-fold images
     logo.width = 48; // Prevent CLS: explicit dimensions
     logo.height = 48;
+    logo.decoding = 'async'; // Enable async image decode for better performance
+    logo.fetchPriority = 'low'; // Deprioritize below-fold images
     logo.onerror = function() {
-        // Fallback for broken images
+        // Fallback for broken images with performance tracking
         this.src = 'logo/favicon.svg';
+        this.onerror = null; // Prevent infinite error loops
+        if (window.imageLoadErrors) {
+            window.imageLoadErrors.push({ tool: tool.name, url: tool.logo, timestamp: Date.now() });
+        }
+    };
+    logo.onload = function() {
+        // Track successful image loads for performance monitoring
+        if (window.imageLoadSuccess) {
+            window.imageLoadSuccess++;
+        }
     };
     header.appendChild(logo);
     
@@ -4134,6 +4149,73 @@ function toggleTags(hiddenTagsElement, button, hiddenCount) {
     showMorePreferences.save();
 }
 
+// Image optimization utilities
+const ImageOptimizer = {
+    // Check WebP support (cached result)
+    supportsWebP: null,
+    
+    async checkWebPSupport() {
+        if (this.supportsWebP !== null) return this.supportsWebP;
+        
+        return new Promise((resolve) => {
+            const webP = 'data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=';
+            const img = new Image();
+            img.onload = img.onerror = () => {
+                this.supportsWebP = img.height === 1;
+                resolve(this.supportsWebP);
+            };
+            img.src = webP;
+        });
+    },
+    
+    // Convert external image URLs to optimized format if possible
+    optimizeUrl(url) {
+        if (!url) return url;
+        
+        // For external CDN images, append optimization parameters
+        // (This works with services like Cloudinary, imgix, etc.)
+        try {
+            const urlObj = new URL(url);
+            
+            // Skip local images
+            if (urlObj.hostname === window.location.hostname) {
+                return url;
+            }
+            
+            // Add optimization hints for known CDN services
+            if (urlObj.hostname.includes('cloudinary.com')) {
+                // Cloudinary: add quality and format transforms
+                return url.replace('/upload/', '/upload/q_auto,f_auto,w_64,h_64/');
+            }
+            
+            // For other external images, return as-is
+            // In production, consider using an image proxy service
+            return url;
+        } catch (e) {
+            return url;
+        }
+    },
+    
+    // Generate a data URL placeholder for smoother loading
+    generatePlaceholder(width, height) {
+        // 1x1 transparent GIF
+        return 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+    },
+    
+    // Preload critical images
+    preloadImage(url, priority = 'low') {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = url;
+        link.fetchPriority = priority;
+        document.head.appendChild(link);
+    }
+};
+
+// Initialize WebP detection on page load
+ImageOptimizer.checkWebPSupport();
+
 function categoryLabel(cat) {
     switch (cat) {
         case 'nlp': return 'Natural Language Processing';
@@ -4331,6 +4413,30 @@ if (viewButtons) {
         });
     });
 }
+
+// Image performance monitoring
+window.imageLoadErrors = [];
+window.imageLoadSuccess = 0;
+window.imageLoadMetrics = {
+    start: Date.now(),
+    firstImageLoad: null,
+    allImagesLoaded: false
+};
+
+// Track first image load for performance metrics
+window.addEventListener('load', () => {
+    window.imageLoadMetrics.allImagesLoaded = true;
+    window.imageLoadMetrics.duration = Date.now() - window.imageLoadMetrics.start;
+    
+    // Log image loading performance
+    console.log('[Image Perf] Total loaded:', window.imageLoadSuccess);
+    console.log('[Image Perf] Errors:', window.imageLoadErrors.length);
+    console.log('[Image Perf] Load duration:', window.imageLoadMetrics.duration + 'ms');
+    
+    if (window.imageLoadErrors.length > 0) {
+        console.warn('[Image Perf] Failed images:', window.imageLoadErrors);
+    }
+});
 
 // Loading animation and robust boot
 function boot() {
@@ -4819,7 +4925,7 @@ if (closeModalBtn && modal && editBtn && toolForm) {
         const originalText = submitBtn.textContent;
         submitBtn.textContent='Submitting...';
 
-        // Simulate async submission (could be replaced with fetch to backend/form service)
+        // Simulate async submission (could be replaced with fetch to backend / form service)
         setTimeout(()=>{
             submitBtn.textContent='Submitted!';
             statusEl.textContent='Thank you! Your tool has been submitted for review.';
