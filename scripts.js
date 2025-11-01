@@ -1210,7 +1210,7 @@ const aiTools = [
         name: "Inflection AI",
         description: "Personal AI assistant focused on emotional intelligence and helpful conversations.",
         categories: ["life-assistant", "productivity"],
-        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShirXl4FhieiUSy5vtV3qedpTHLgtm6RzlFw&s",
+        logo: "https://images.seeklogo.com/logo-png/49/2/inflection-ai-logo-png_seeklogo-496568.png",
         url: "https://inflection.ai",
         badges: ["featured", "freemium"],
         tags: ["assistant", "conversation", "personal"]
@@ -4925,7 +4925,7 @@ if (closeModalBtn && modal && editBtn && toolForm) {
         const originalText = submitBtn.textContent;
         submitBtn.textContent='Submitting...';
 
-        // Simulate async submission (could be replaced with fetch to backend / form service)
+        // Simulate async submission (could be replaced with fetch to backend/form service)
         setTimeout(()=>{
             submitBtn.textContent='Submitted!';
             statusEl.textContent='Thank you! Your tool has been submitted for review.';
