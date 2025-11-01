@@ -962,6 +962,8 @@ html {
     gap: 1rem;
     width: 100%;
     box-sizing: border-box;
+    /* Stretch items to equal height per row so action buttons align */
+    align-items: stretch;
 }
 
 .tools-grid.list-view {
@@ -1323,6 +1325,10 @@ html {
     align-items: center;
     margin-top: auto;
 }
+/* In list view (row layout), keep natural spacing for the CTA */
+.tools-grid.list-view .tool-link {
+    margin-top: 0.5rem;
+}
 .tool-logo {
     width: 32px;
     height: 32px;
@@ -1566,7 +1572,8 @@ html {
     font-weight: 600;
     transition: var(--transition);
     text-align: center;
-    margin-top: 0.5rem;
+    /* Push CTA to bottom inside flex column cards for consistent alignment */
+    margin-top: auto;
 }
 
 .tool-link:hover {
