@@ -678,11 +678,15 @@ Remember: Your recommendations must be strictly based on the AI tools listed on 
         const lowerQuery = query.toLowerCase();
         
         // Example: Directly answer questions about tool categories
-        if (lowerQuery.includes('what ai tools') || lowerQuery.includes('ai tools for')) {
-            return 'Here are some popular AI tools you might find interesting:' +
-                   '<ul>' +
-                   this.toolsData.map(tool => `<li>${this.escapeHtml(tool.name)}: ${this.escapeHtml(tool.description)}</li>`).join('') +
-                   '</ul>';
+        if (
+            lowerQuery.includes('what ai tools') ||
+            lowerQuery.includes('ai tools for') ||
+            lowerQuery.includes('popular ai tools') ||
+            lowerQuery.includes('best ai tools') ||
+            lowerQuery.includes('recommend ai tools')
+        ) {
+            // Build a structured, categorized recommendation list with robust fallbacks
+            return this.buildCategorizedRecommendations(lowerQuery);
         }
         
         // Example: Directly answer questions about specific tools
@@ -695,6 +699,152 @@ Remember: Your recommendations must be strictly based on the AI tools listed on 
         // Add more direct answer patterns as needed
         
         return null; // No direct answer found
+    }
+
+    /**
+     * Build a structured, categorized recommendations block.
+     * - Guarantees at least 5 tools with short descriptions
+     * - Adds section headers and bullet lists
+     * - Includes links when available
+     * - Conversational tone with a follow-up question
+     * - Robust fallback when dataset is empty or filters return nothing
+     */
+    buildCategorizedRecommendations(lowerQuery = '') {
+        // Helper: Friendly names for sections
+        const sectionTitles = {
+            coding: 'For coding assistance',
+            image: 'For image generation',
+            research: 'For search and research',
+            data: 'For data science & machine learning',
+            media: 'For video & audio creation',
+            productivity: 'For productivity & automation'
+        };
+
+        // Helper: Map Data.json category to our sections
+        const mapCategoryToSection = (cat) => {
+            switch (cat) {
+                case 'coding': return 'coding';
+                case 'vision':
+                case 'design': return 'image';
+                case 'research':
+                case 'nlp': return 'research';
+                case 'data-science': return 'data';
+                case 'video':
+                case 'audio': return 'media';
+                case 'productivity': return 'productivity';
+                default: return null;
+            }
+        };
+
+        // If tools dataset is available, prepare categorized picks
+        const categorized = {
+            coding: [], image: [], research: [], data: [], media: [], productivity: []
+        };
+
+        const scoreTool = (t) => {
+            // Simple scoring to push featured/trending/freemium to top
+            let s = 0;
+            if (t.badges) {
+                if (t.badges.includes('featured')) s += 3;
+                if (t.badges.includes('trending')) s += 2;
+                if (t.badges.includes('freemium') || t.badges.includes('open source')) s += 1;
+            }
+            return s;
+        };
+
+        try {
+            (this.toolsData || []).forEach(t => {
+                (t.categories || []).forEach(c => {
+                    const sec = mapCategoryToSection(c);
+                    if (sec) categorized[sec].push(t);
+                });
+            });
+        } catch (e) {
+            console.warn('Error categorizing tools, will use fallback list.', e);
+        }
+
+        // Sort and de-dup within categories
+        const seen = new Set();
+        Object.keys(categorized).forEach(sec => {
+            categorized[sec] = (categorized[sec] || [])
+                .sort((a, b) => scoreTool(b) - scoreTool(a))
+                .filter(t => {
+                    const key = t.name + '|' + (t.url || '');
+                    if (seen.has(key)) return false;
+                    seen.add(key);
+                    return true;
+                })
+                .slice(0, 3); // keep lists compact per section
+        });
+
+        // Curated fallback entries in case dataset is empty or too sparse
+        const curated = [
+            { name: 'ChatGPT', url: 'https://chat.openai.com', desc: 'Conversational AI for brainstorming, writing help, and Q&A across many topics.', sec: 'research' },
+            { name: 'GitHub Copilot', url: 'https://github.com/features/copilot', desc: 'AI pair programmer inside your IDE that suggests code and tests in real time.', sec: 'coding' },
+            { name: 'Hugging Face', url: 'https://huggingface.co', desc: 'Hub of open-source ML models and datasets; great for experimentation and deployment.', sec: 'data' },
+            { name: 'Midjourney', url: 'https://www.midjourney.com', desc: 'High‑quality image generation from text prompts; strong for concept art and mood boards.', sec: 'image' },
+            { name: 'Perplexity', url: 'https://www.perplexity.ai', desc: 'Answer engine that cites sources; excellent for research with quick, verifiable results.', sec: 'research' },
+            { name: 'Runway', url: 'https://runwayml.com', desc: 'Creative suite for video editing and text‑to‑video effects powered by generative AI.', sec: 'media' }
+        ];
+
+        // If any section is empty, backfill from curated list
+        Object.keys(categorized).forEach(sec => {
+            if (categorized[sec].length === 0) {
+                curated.filter(c => c.sec === sec).forEach(c => {
+                    categorized[sec].push({ name: c.name, url: c.url, description: c.desc, badges: ['freemium'], tags: [] });
+                });
+            }
+        });
+
+        // Compose HTML
+        const sectionsOrder = ['coding', 'image', 'research', 'data', 'media', 'productivity'];
+        let totalCount = 0;
+        let html = '<div class="recommendation-response">';
+        html += '<p><strong>Here are some popular AI tools you might find interesting:</strong></p>';
+
+        sectionsOrder.forEach(sec => {
+            const items = categorized[sec];
+            if (!items || items.length === 0) return;
+            html += `<h4>${sectionTitles[sec]}:</h4>`;
+            html += '<ul>';
+            items.forEach(t => {
+                const name = this.escapeHtml(t.name);
+                const url = t.url ? t.url : '#';
+                const desc = this.escapeHtml((t.description || '').split(/\s+/).slice(0, 30).join(' '));
+                html += `<li><strong><a href="${url}" target="_blank" rel="noopener">${name}</a></strong> — ${desc}</li>`;
+                totalCount += 1;
+            });
+            html += '</ul>';
+        });
+
+        // Ensure at least 5 entries overall; if not, pad from curated list
+        if (totalCount < 5) {
+            const needed = 5 - totalCount;
+            let added = 0;
+            html += '<h4>More options:</h4><ul>';
+            for (const c of curated) {
+                if (added >= needed) break;
+                const key = `${c.name}|${c.url}`;
+                if (seen.has(key)) continue;
+                html += `<li><strong><a href="${c.url}" target="_blank" rel="noopener">${this.escapeHtml(c.name)}</a></strong> — ${this.escapeHtml(c.desc)}</li>`;
+                added++;
+            }
+            html += '</ul>';
+            totalCount += added;
+        }
+
+        // Safety: in the unlikely event we still have nothing, return a simple fallback
+        if (totalCount === 0) {
+            return '<p>Here are some popular AI tools you might find interesting:</p>'+
+                   '<ul>'+
+                   curated.slice(0, 5).map(c => `<li><strong><a href="${c.url}" target="_blank" rel="noopener">${this.escapeHtml(c.name)}</a></strong> — ${this.escapeHtml(c.desc)}</li>`).join('')+
+                   '</ul>'+
+                   '<p>Would you like more details about any of these?</p>';
+        }
+
+        html += '<p>Would you like more details about any of these, or help narrowing down by features or budget?</p>';
+        html += '</div>';
+        return html;
     }
 
     prepareToolsContext() {
