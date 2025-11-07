@@ -3377,6 +3377,15 @@ const aiTools = [
         url: "https://gptzero.me",
         badges: ["freemium", "featured", "popular"],
         tags: ["ai detection", "writing", "education", "plagiarism", "research"]
+    },
+    {
+        name: "BypassGPT",
+        description: "An AI-powered tool designed to rewrite and 'humanize' AI-generated text to make it bypass AI detectors, while maintaining quality and coherence.",
+        categories: ["nlp", "writing", "productivity"],
+        logo: "https://www.bypassgpt.ai/favicon.ico",
+        url: "https://www.bypassgpt.ai",
+        badges: ["paid", "trending", "freemium"],
+        tags: ["writing", "humanizer", "paraphrasing", "ai detection", "seo"]
     }
 ];
 
