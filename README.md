@@ -86,5 +86,6 @@ Released under the **MIT License**. See `LICENSE` for details.
 
 <div align="center">
   <i>Designed and built with by <a href="https://adilshamim.me/">Adil Shamim</a></i>
+  
   [Live](http://www.toolly.tech/)
 </div>
