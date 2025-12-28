@@ -140,6 +140,27 @@
             <p>Loading amazing AI tools...</p>
         </div>
     </div>
+    <!-- New Year Message -->
+        <div id="new-year-message" style="display:flex;justify-content:center;align-items:center;height:120px;background:linear-gradient(90deg,#ffecd2 0%,#fcb69f 100%);margin:30px 0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,0.08);">
+            <h1 style="font-family:'Segoe UI',sans-serif;font-size:2.5rem;color:#ff6f61;text-shadow:2px 2px 8px #fff,0 0 4px #fcb69f;animation:pop 1.2s cubic-bezier(.68,-0.55,.27,1.55) infinite alternate;">Happy New Year 2026 — Let’s build something remarkable with Toolly.</h1>
+        </div>
+        <script>
+            // Animate the message for aesthetics
+            const msg = document.getElementById('new-year-message');
+            msg.addEventListener('mouseenter',()=>{
+                msg.style.background='linear-gradient(90deg,#fcb69f 0%,#ffecd2 100%)';
+            });
+            msg.addEventListener('mouseleave',()=>{
+                msg.style.background='linear-gradient(90deg,#ffecd2 0%,#fcb69f 100%)';
+            });
+        </script>
+        <style>
+            @keyframes pop {
+                0% { transform: scale(1); }
+                100% { transform: scale(1.08) rotate(-2deg); }
+            }
+        </style>
+        <!-- New year message -->
     <script>
     // Inline critical script to handle loading state
     document.addEventListener('DOMContentLoaded', function() {
@@ -202,7 +223,7 @@
                 <div class="hero-content">
                     <h1 class="hero-headline" itemprop="name">Discover, Compare, and Access the Best AI Tools</h1>
                     <h2 class="hero-subtitle">Your comprehensive directory for finding the perfect AI solution</h2>
-                    <p class="hero-subheadline" itemprop="description">Explore 350+ curated AI tools across 15 categories. Compare features, pricing, and ratings to find exactly what you need—from chatbots to image generators, all in one place.</p>
+                    <p class="hero-subheadline" itemprop="description">Explore 400+ curated AI tools across 15 categories. Compare features, pricing, and ratings to find exactly what you need—from chatbots to image generators, all in one place.</p>
                     
                     <!-- Primary CTA -->
                     <button class="hero-cta" id="heroCtaBtn" aria-label="Explore all AI tools">
