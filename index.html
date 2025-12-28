@@ -140,26 +140,83 @@
             <p>Loading amazing AI tools...</p>
         </div>
     </div>
+
     <!-- New Year Message -->
-        <div id="new-year-message" style="display:flex;justify-content:center;align-items:center;height:120px;background:linear-gradient(90deg,#ffecd2 0%,#fcb69f 100%);margin:30px 0;border-radius:16px;box-shadow:0 4px 16px rgba(0,0,0,0.08);">
-            <h1 style="font-family:'Segoe UI',sans-serif;font-size:2.5rem;color:#ff6f61;text-shadow:2px 2px 8px #fff,0 0 4px #fcb69f;animation:pop 1.2s cubic-bezier(.68,-0.55,.27,1.55) infinite alternate;">Happy New Year 2026 — Let’s build something remarkable with Toolly.</h1>
-        </div>
-        <script>
-            // Animate the message for aesthetics
-            const msg = document.getElementById('new-year-message');
-            msg.addEventListener('mouseenter',()=>{
-                msg.style.background='linear-gradient(90deg,#fcb69f 0%,#ffecd2 100%)';
-            });
-            msg.addEventListener('mouseleave',()=>{
-                msg.style.background='linear-gradient(90deg,#ffecd2 0%,#fcb69f 100%)';
-            });
-        </script>
-        <style>
-            @keyframes pop {
-                0% { transform: scale(1); }
-                100% { transform: scale(1.08) rotate(-2deg); }
-            }
-        </style>
+
+<div class="ny-banner">
+  <div class="confetti"></div>
+
+  <div class="ny-content">
+    <h1>Happy New Year 2026 —</h1>
+    <p>Let’s build something remarkable with <strong>Toolly</strong>.</p>
+  </div>
+
+  <div class="rocket">🚀</div>
+</div>
+
+<style>
+.ny-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 120px;
+  padding: 0 40px;
+  margin: 30px 0;
+  background: linear-gradient(90deg, #ffd6c9 0%, #ffe8df 100%);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* Text */
+.ny-content h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  color: #ff6f61;
+  font-weight: 700;
+}
+
+.ny-content p {
+  margin: 4px 0 0;
+  font-size: 1.2rem;
+  color: #d65b52;
+}
+
+/* Rocket */
+.rocket {
+  font-size: 3.5rem;
+  animation: launch 2.5s ease-in-out infinite;
+}
+
+/* Confetti */
+.confetti {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, #ff6f61 2px, transparent 3px),
+    radial-gradient(circle, #ffd166 2px, transparent 3px),
+    radial-gradient(circle, #06d6a0 2px, transparent 3px);
+  background-size: 40px 40px, 50px 50px, 60px 60px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Animations */
+@keyframes launch {
+  0%   { transform: translateY(0) rotate(0); }
+  50%  { transform: translateY(-6px) rotate(-6deg); }
+  100% { transform: translateY(0) rotate(0); }
+}
+
+/* Hover effect */
+.ny-banner:hover {
+  background: linear-gradient(90deg, #ffe8df 0%, #ffd6c9 100%);
+}
+</style>
+
+
         <!-- New year message -->
     <script>
     // Inline critical script to handle loading state
