@@ -3386,6 +3386,249 @@ const aiTools = [
         url: "https://www.bypassgpt.ai",
         badges: ["paid", "trending", "freemium"],
         tags: ["writing", "humanizer", "paraphrasing", "ai detection", "seo"]
+    },
+    {
+        name: "Flux.1",
+        description: "State-of-the-art open-weights image generation model by Black Forest Labs, known for exceptional prompt adherence and text rendering.",
+        categories: ["vision", "design"],
+        logo: "https://blackforestlabs.ai/favicon.ico",
+        url: "https://blackforestlabs.ai",
+        badges: ["open source", "trending"],
+        tags: ["image generation", "open source", "black forest labs", "art"]
+    },
+    {
+        name: "ComfyUI",
+        description: "The most powerful, modular, node-based GUI for running Stable Diffusion and Flux workflows.",
+        categories: ["vision", "design", "developer-tools"],
+        logo: "https://preview.redd.it/new-comfyui-logo-icon-v0-c05cowjywfze1.png?auto=webp&s=a2f9a1a7ec7cd9276b947c71beb1433cdf83e4a3",
+        url: "https://www.comfy.org/",
+        badges: ["open source", "popular"],
+        tags: ["stable diffusion", "nodes", "workflow", "image generation"]
+    },
+    {
+        name: "Vectorizer.ai",
+        description: "AI tool that converts JPEG and PNG bitmap images into scalable SVG vectors with high color and shape accuracy.",
+        categories: ["design", "productivity"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwsLRNbzoL0mhyzyOpYfpEaK1mhtfBRqG6ZA&s",
+        url: "https://vectorizer.ai",
+        badges: ["freemium", "featured"],
+        tags: ["vector", "svg", "design", "conversion"]
+    },
+    {
+        name: "Blockade Labs",
+        description: "AI tool for generating high-quality 360° panoramic skyboxes and worlds for 3D environments and games.",
+        categories: ["vision", "3d", "design"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5wGqE0nP4gJV_Ad8FGzQJsNot0qnGxASA-A&s",
+        url: "https://skybox.blockadelabs.com",
+        badges: ["freemium", "trending"],
+        tags: ["360", "skybox", "3d environment", "game dev"]
+    },
+    {
+        name: "Haiper",
+        description: "Generative AI platform for creating high-quality, lifelike videos from text and images.",
+        categories: ["video", "design"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAX7ZPndFqFMoKjhto9o19_Gf8Te10o2lwAQ&s",
+        url: "https://haiper.ai",
+        badges: ["freemium", "trending"],
+        tags: ["video generation", "creative", "animation", "text-to-video"]
+    },
+    {
+        name: "Wonder Dynamics",
+        description: "AI tool that automatically animates, lights, and composes CG characters into live-action scenes.",
+        categories: ["video", "vision", "3d"],
+        logo: "https://www.logo-designer.co/storage/2021/09/2021-autodesk-new-logo-design.png",
+        url: "https://wonderdynamics.com",
+        badges: ["paid", "featured"],
+        tags: ["vfx", "animation", "character", "compositing"]
+    },
+    {
+        name: "Vidu",
+        description: "Powerful AI video generation model capable of creating high-definition, physically consistent video clips.",
+        categories: ["video", "design"],
+        logo: "https://registry.npmmirror.com/@lobehub/icons-static-png/latest/files/dark/vidu.png",
+        url: "https://www.vidu.studio",
+        badges: ["freemium", "new"],
+        tags: ["video generation", "creative", "physics", "text-to-video"]
+    },
+    {
+        name: "Morph Studio",
+        description: "AI filmmaking platform for generating consistent characters and meme-worthy video content.",
+        categories: ["video", "design"],
+        logo: "https://www.morphstudio.com/favicon.ico",
+        url: "https://www.morphstudio.com",
+        badges: ["freemium", "trending"],
+        tags: ["video generation", "memes", "storytelling", "filmmaking"]
+    },
+    {
+        name: "Hedra",
+        description: "Generative AI for creating talking, singing, and expressive characters from a single image and audio.",
+        categories: ["video", "audio", "vision"],
+        logo: "https://www.hedra.com/favicon.ico",
+        url: "https://www.hedra.com",
+        badges: ["freemium", "trending"],
+        tags: ["character", "lip-sync", "animation", "singing"]
+    },
+    {
+        name: "Supermaven",
+        description: "Ultra-fast AI coding assistant with a massive 1-million-token context window for understanding large codebases.",
+        categories: ["coding", "developer-tools"],
+        logo: "https://supermaven.com/favicon.ico",
+        url: "https://supermaven.com",
+        badges: ["freemium", "featured"],
+        tags: ["code completion", "large context", "speed", "developer"]
+    },
+    {
+        name: "Open Interpreter",
+        description: "Open-source tool that lets LLMs run code (Python, Javascript, Shell, etc.) locally on your computer to complete tasks.",
+        categories: ["coding", "productivity", "automation"],
+        logo: "https://openinterpreter.com/favicon.ico",
+        url: "https://openinterpreter.com",
+        badges: ["open source", "trending"],
+        tags: ["local", "automation", "terminal", "interpreter"]
+    },
+    {
+        name: "AutoGPT",
+        description: "Experimental open-source attempt to make GPT-4 fully autonomous, capable of self-prompting to achieve complex goals.",
+        categories: ["developer-tools", "automation"],
+        logo: "https://openuk.uk/wp-content/uploads/2024/12/AUTOgpt_Logo_dark_RGB.png",
+        url: "https://agpt.co",
+        badges: ["open source", "featured"],
+        tags: ["agents", "autonomous", "automation", "goals"]
+    },
+    {
+        name: "Pinokio",
+        description: "A browser that lets you install, run, and control various AI applications and models locally with one click.",
+        categories: ["developer-tools", "productivity"],
+        logo: "https://pinokio.computer/favicon.ico",
+        url: "https://pinokio.computer",
+        badges: ["free", "open source"],
+        tags: ["local ai", "installer", "browser", "automation"]
+    },
+    {
+        name: "Jan",
+        description: "Open-source alternative to ChatGPT that runs 100% offline on your computer using local AI models.",
+        categories: ["productivity", "nlp", "developer-tools"],
+        logo: "https://jan.ai/favicon.ico",
+        url: "https://jan.ai",
+        badges: ["open source", "free"],
+        tags: ["offline", "local", "privacy", "chatbot"]
+    },
+    {
+        name: "Voice.ai",
+        description: "Real-time AI voice changer for gamers, streamers, and content creators.",
+        categories: ["audio", "productivity"],
+        logo: "https://voice.ai/favicon.ico",
+        url: "https://voice.ai",
+        badges: ["freemium", "popular"],
+        tags: ["voice changer", "streaming", "gaming", "audio"]
+    },
+    {
+        name: "Wondercraft",
+        description: "AI-powered audio studio that turns blog posts and newsletters into studio-quality podcasts and audiobooks.",
+        categories: ["audio", "marketing"],
+        logo: "https://www.wondercraft.ai/favicon.ico",
+        url: "https://www.wondercraft.ai",
+        badges: ["paid", "freemium"],
+        tags: ["podcast", "text-to-speech", "content creation", "audio"]
+    },
+    {
+        name: "Riffusion",
+        description: "An app for generating music from text prompts using visual spectrograms.",
+        categories: ["audio", "design"],
+        logo: "https://www.riffusion.com/favicon.ico",
+        url: "https://www.riffusion.com",
+        badges: ["free", "open source"],
+        tags: ["music generation", "creative", "spectrogram", "audio"]
+    },
+    {
+        name: "Sonauto",
+        description: "A controllable AI music generator that creates full songs with lyrics, allowing high flexibility in style and composition.",
+        categories: ["audio", "design"],
+        logo: "https://sonauto.ai/favicon.ico",
+        url: "https://sonauto.ai",
+        badges: ["freemium", "trending"],
+        tags: ["music generation", "songwriting", "lyrics", "audio"]
+    },
+    {
+        name: "Limitless",
+        description: "Personalized AI powered by what you've seen, said, and heard. Formerly known as Rewind AI.",
+        categories: ["productivity", "life-assistant"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdBS_Q76p_nPYrXo3EgPjqEgpWgPI6Tit0Gg&s",
+        url: "https://limitless.ai",
+        badges: ["paid", "featured"],
+        tags: ["memory", "meeting assistant", "recording", "search"]
+    },
+    {
+        name: "Taskade",
+        description: "AI-powered productivity platform that combines tasks, notes, and mind maps with autonomous AI agents.",
+        categories: ["productivity", "business"],
+        logo: "https://www.taskade.com/favicon.ico",
+        url: "https://www.taskade.com",
+        badges: ["freemium", "featured"],
+        tags: ["project management", "agents", "mind maps", "collaboration"]
+    },
+    {
+        name: "Harpa.ai",
+        description: "Chrome extension that integrates AI into your browser for web automation, summarization, and monitoring.",
+        categories: ["productivity", "automation"],
+        logo: "https://harpa.ai/favicon.ico",
+        url: "https://harpa.ai",
+        badges: ["freemium", "popular"],
+        tags: ["browser extension", "automation", "web scraping", "monitoring"]
+    },
+    {
+        name: "Monica",
+        description: "All-in-one AI browser assistant that integrates GPT-4, Claude, and Gemini into a sidebar for search, writing, and summarization.",
+        categories: ["productivity", "nlp"],
+        logo: "https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F20ed0f19-a77d-4f4e-8e7e-38faf2317359%2Fef9d734c-3e79-4c9d-81c2-4f16679f52a4%2Fmonica-logo.png?table=block&id=1695e585-942f-81bf-912d-e40ab41cc079&t=1695e585-942f-81bf-912d-e40ab41cc079&width=360&cache=v2",
+        url: "https://monica.im",
+        badges: ["freemium", "trending"],
+        tags: ["browser extension", "assistant", "writing", "sidebar"]
+    },
+    {
+        name: "Sider",
+        description: "ChatGPT sidebar for Chrome that lets you use AI tools alongside any website for translation, explanation, and writing.",
+        categories: ["productivity", "nlp"],
+        logo: "https://play-lh.googleusercontent.com/VghuZRn0-oLvbaGqptsM-9Qr6Ka7Pmw7lfmu6_UQ56mZS6bsXbET9Uf0wF0FECP8lEM",
+        url: "https://sider.ai",
+        badges: ["freemium", "popular"],
+        tags: ["sidebar", "browser extension", "reading", "translation"]
+    },
+    {
+        name: "ChatHub",
+        description: "All-in-one chatbot client that allows you to chat with multiple LLMs (ChatGPT, Bing, Claude, etc.) simultaneously.",
+        categories: ["productivity", "nlp", "chat"],
+        logo: "https://chathub.gg/logo.png",
+        url: "https://chathub.gg",
+        badges: ["freemium", "open source"],
+        tags: ["chatbot", "comparison", "multi-model", "client"]
+    },
+    {
+        name: "Jenni AI",
+        description: "AI writing assistant designed specifically for academic research, helping users write and cite papers faster.",
+        categories: ["research", "education", "writing"],
+        logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmjWrS14D2yV6mMhSUlvKAra40BX1o0TFsIQ&s",
+        url: "https://jenni.ai",
+        badges: ["freemium", "featured"],
+        tags: ["academic writing", "citations", "research", "essay"]
+    },
+    {
+        name: "StealthGPT",
+        description: "AI writing tool designed to generate human-like text that is undetectable by AI detection systems.",
+        categories: ["writing", "productivity"],
+        logo: "https://stealthgpt.ai/favicon.ico",
+        url: "https://stealthgpt.ai",
+        badges: ["paid", "trending"],
+        tags: ["humanizer", "undetectable", "writing", "stealth"]
+    },
+    {
+        name: "Hix.AI",
+        description: "All-in-one AI writing copilot offering a vast suite of tools for content creation, email, and academic writing.",
+        categories: ["writing", "productivity", "marketing"],
+        logo: "https://hix.ai/favicon.ico",
+        url: "https://hix.ai",
+        badges: ["freemium", "featured"],
+        tags: ["writing assistant", "content creation", "copilot", "marketing"]
     }
 ];
 
