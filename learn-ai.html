@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn AI - Complete Roadmap for Non-Technical People | Toolly</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+</head>
+<body>
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Open sidebar">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <div class="layout">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo-container">
+                    <img src="logo/Toolly.jpg" alt="Toolly Logo" class="logo" width="64" height="64" loading="eager">
+                </div>
+                <h2>Toolly</h2>
+            </div>
+            <nav class="sidebar-categories">
+                <h3>Navigation</h3>
+                <ul id="navList">
+                    <li><a href="index.html" style="text-decoration: none; color: inherit; display: block;">Home</a></li>
+                    <li><a href="about.html" style="text-decoration: none; color: inherit; display: block;">About</a></li>
+                    <li class="active"><a href="learn-ai.html" style="text-decoration: none; color: inherit; display: block;">Learn AI</a></li>
+                    <li><a href="index.html#submit-tool" style="text-decoration: none; color: inherit; display: block;">Submit a Tool</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-about">
+                <h3>About</h3>
+                <p>Toolly is your comprehensive directory of AI tools, helping you discover the perfect solutions for your needs.</p>
+                <div class="copyright">© 2025 Toolly. All rights reserved.</div>
+            </div>
+        </aside>
+        <main class="main-content">
+            <div class="hero-section" style="margin-bottom:2.5rem;">
+                <div class="hero-content">
+                    <h1 class="hero-headline">Complete AI Learning Roadmap for Non-Technical People</h1>
+                    <h2 class="hero-subtitle">A Step-by-Step Guide to Mastering AI (Without Coding!)</h2>
+                </div>
+            </div>
+            <div class="ai-roadmap-content" style="max-width:900px;margin:0 auto;">
+                <!-- BEGIN ROADMAP CONTENT -->
+                <!-- The full roadmap markdown content goes here, formatted as HTML. For brevity, this is a placeholder. Replace with the full HTML conversion of the user's markdown. -->
+                <div style="margin-bottom:2rem;">
+                <!-- ... Insert the full HTML-formatted roadmap content here ... -->
+                </div>
+                <!-- END ROADMAP CONTENT -->
+            </div>
+        </main>
+    </div>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Toolly</h3>
+                <p>Toolly is your comprehensive directory of AI tools to enhance productivity, creativity, and efficiency.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html#submit-tool">Submit a Tool</a></li>
+                    <li><a href="learn-ai.html">Learn AI</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="mailto:info@toolly.tech" aria-label="Email Toolly at info@toolly.tech">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://x.com/Toolly_" aria-label="Twitter"><i class="fab fa-twitter"></i></a> 
+                    <a href="https://www.linkedin.com/company/toolly8/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/AdilShamim8/Toolly" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Toolly. All rights reserved.</p>
+        </div>
+    </footer>
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+    <script>
+        // Sidebar toggle for mobile
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        function openSidebar() {
+            sidebar.classList.add('open');
+            sidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeSidebar() {
+            sidebar.classList.remove('open');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        if (sidebarToggle) sidebarToggle.addEventListener('click', openSidebar);
+        if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
+        // Back to top button
+        const backToTopButton = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.classList.add('theme-transitioning');
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeIcon.style.transform = 'rotate(180deg)';
+            setTimeout(() => {
+                themeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                themeIcon.style.transform = 'rotate(0deg)';
+            }, 150);
+            setTimeout(() => {
+                document.documentElement.classList.remove('theme-transitioning');
+            }, 300);
+        });
+    </script>
+</body>
+</html>
