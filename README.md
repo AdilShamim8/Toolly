@@ -45,12 +45,12 @@ In the spirit of relentless innovation, Toolly was born from a belief: that the 
 2. **Install**
 
    ```bash
-   npm install        # or yarn install
+   npm install    # or yarn install
    ```
 3. **Run**
 
    ```bash
-   toolly --help      # see available commands
+   toolly --help    # see available commands
    ```
 
 That's it. You're ready to unlock your potential.
