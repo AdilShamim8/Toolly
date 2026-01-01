@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +6,64 @@
     <title>Learn AI - Complete Roadmap for Non-Technical People | Toolly</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <style>
+        /* Roadmap specific styles for the inserted content */
+        .roadmap-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+        .roadmap-container th, .roadmap-container td {
+            border: 1px solid #e0e0e0;
+            padding: 10px;
+            text-align: left;
+        }
+        .roadmap-container th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+        .roadmap-container tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+        .roadmap-container blockquote {
+            border-left: 4px solid #007bff;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            font-style: italic;
+        }
+        .roadmap-container pre {
+            background-color: #1e1e1e;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.4;
+        }
+        .roadmap-container code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        /* Dark mode overrides for roadmap content */
+        [data-theme="dark"] .roadmap-container th {
+            background-color: #2d2d2d;
+            border-color: #444;
+            color: #fff;
+        }
+        [data-theme="dark"] .roadmap-container td {
+            border-color: #444;
+            color: #ddd;
+        }
+        [data-theme="dark"] .roadmap-container tr:nth-child(even) {
+            background-color: #252525;
+        }
+        [data-theme="dark"] .roadmap-container blockquote {
+            background-color: #252525;
+            color: #ddd;
+        }
+    </style>
 </head>
 <body>
     <button class="sidebar-toggle" id="sidebarToggle" aria-label="Open sidebar">
@@ -43,14 +100,2099 @@
                     <h2 class="hero-subtitle">A Step-by-Step Guide to Mastering AI (Without Coding!)</h2>
                 </div>
             </div>
-            <div class="ai-roadmap-content" style="max-width:900px;margin:0 auto;">
-                <!-- BEGIN ROADMAP CONTENT -->
-                <!-- The full roadmap markdown content goes here, formatted as HTML. For brevity, this is a placeholder. Replace with the full HTML conversion of the user's markdown. -->
-                <div style="margin-bottom:2rem;">
-                <!-- ... Insert the full HTML-formatted roadmap content here ... -->
+            
+            <div class="ai-roadmap-content roadmap-container" style="max-width:900px;margin:0 auto; padding: 0 1rem;">
+                
+                <section id="visual-roadmap">
+                    <h2>📍 VISUAL ROADMAP</h2>
+                    <pre>
+╔═══════════════════════════════════════════════════════════════════╗
+║                    AI LEARNING JOURNEY                            ║
+║                  (For Non-Technical People)                       ║
+╚═══════════════════════════════════════════════════════════════════╝
+
+        📅 Month 1-2                    📅 Month 2-3
+    ┌─────────────────┐             ┌─────────────────┐
+    │   🎯 STAGE 1    │             │   🎯 STAGE 2    │
+    │   FOUNDATION    │────────────▶│   EXPLORER      │
+    │                 │             │                 │
+    │ • What is AI?   │             │ • ChatGPT       │
+    │ • AI vs ML vs   │             │ • Claude        │
+    │   Deep Learning │             │ • Gemini        │
+    │ • AI History    │             │ • Copilot       │
+    │ • Key Terms     │             │ • Image AI      │
+    └────────┬────────┘             └────────┬────────┘
+             │                               │
+             ▼                               ▼
+        📅 Month 3-4                    📅 Month 5-6
+    ┌─────────────────┐             ┌─────────────────┐
+    │   🎯 STAGE 3    │             │   🎯 STAGE 4    │
+    │   PRACTITIONER  │────────────▶│   SPECIALIST    │
+    │                 │             │                 │
+    │ • Prompt Eng.   │             │ • Choose Niche  │
+    │ • AI Workflows  │             │ • Automation    │
+    │ • Automation    │             │ • AI + Your Job │
+    │ • No-Code AI    │             │ • Portfolio     │
+    └────────┬────────┘             └────────┬────────┘
+             │                               │
+             ▼                               ▼
+        📅 Month 7-9                    📅 Month 10-12
+    ┌─────────────────┐             ┌─────────────────┐
+    │   🎯 STAGE 5    │             │   🎯 STAGE 6    │
+    │   ADVANCED      │────────────▶│   EXPERT        │
+    │                 │             │                 │
+    │ • AI Strategy   │             │ • Teach Others  │
+    │ • Custom GPTs   │             │ • Consult       │
+    │ • AI Agents     │             │ • Stay Updated  │
+    │ • Ethics & Law  │             │ • Build Brand   │
+    └─────────────────┘             └─────────────────┘
+
+═══════════════════════════════════════════════════════════════════
+                    🏆 YOU ARE NOW AN AI EXPERT! 🏆
+═══════════════════════════════════════════════════════════════════
+                    </pre>
+                </section>
+
+                <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #ddd;">
+
+                <h1 style="text-align:center; margin-bottom: 2rem;">📚 DETAILED LEARNING PATH</h1>
+
+                <section id="stage-1">
+                    <h2>🎯 STAGE 1: FOUNDATION (Weeks 1-6)</h2>
+                    
+                    <h3><strong>Goal: Understand What AI Actually Is</strong></h3>
+                    <blockquote>
+                        "Before using AI tools, understand what's happening behind the scenes"
+                    </blockquote>
+
+                    <h3>📖 What You'll Learn:</h3>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Topic</th>
+                                    <th>Description</th>
+                                    <th>Time Needed</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>What is AI?</td>
+                                    <td>Basic definition, how it works</td>
+                                    <td>2-3 hours</td>
+                                </tr>
+                                <tr>
+                                    <td>AI vs ML vs Deep Learning</td>
+                                    <td>Key differences explained simply</td>
+                                    <td>2 hours</td>
+                                </tr>
+                                <tr>
+                                    <td>History of AI</td>
+                                    <td>From 1950s to ChatGPT</td>
+                                    <td>1-2 hours</td>
+                                </tr>
+                                <tr>
+                                    <td>Types of AI</td>
+                                    <td>Narrow AI vs General AI</td>
+                                    <td>1 hour</td>
+                                </tr>
+                                <tr>
+                                    <td>Key Terminology</td>
+                                    <td>50+ essential AI terms</td>
+                                    <td>3-4 hours</td>
+                                </tr>
+                                <tr>
+                                    <td>How AI Learns</td>
+                                    <td>Training, data, models</td>
+                                    <td>2-3 hours</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>🆓 FREE Resources:</h3>
+                    
+                    <h4><strong>Video Courses:</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Resource</th>
+                                    <th>Platform</th>
+                                    <th>Duration</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>AI For Everyone</td>
+                                    <td>Coursera (DeepLearning.AI)</td>
+                                    <td>6 hours</td>
+                                    <td><a href="https://coursera.org/learn/ai-for-everyone" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Elements of AI</td>
+                                    <td>University of Helsinki</td>
+                                    <td>6 hours</td>
+                                    <td><a href="https://elementsofai.com" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Introduction to AI</td>
+                                    <td>IBM SkillsBuild</td>
+                                    <td>4 hours</td>
+                                    <td><a href="https://skillsbuild.org" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>AI Fundamentals</td>
+                                    <td>Google</td>
+                                    <td>3 hours</td>
+                                    <td><a href="https://grow.google/intl/en_uk/google-ai-essentials/" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4><strong>YouTube Channels:</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Channel</th>
+                                    <th>What You'll Learn</th>
+                                    <th>Best For</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>3Blue1Brown</td>
+                                    <td>Neural networks visually</td>
+                                    <td>Visual learners</td>
+                                </tr>
+                                <tr>
+                                    <td>Fireship</td>
+                                    <td>AI news in 100 seconds</td>
+                                    <td>Quick updates</td>
+                                </tr>
+                                <tr>
+                                    <td>Matt Wolfe</td>
+                                    <td>AI tools & tutorials</td>
+                                    <td>Tool discovery</td>
+                                </tr>
+                                <tr>
+                                    <td>The AI Advantage</td>
+                                    <td>Practical AI use</td>
+                                    <td>Beginners</td>
+                                </tr>
+                                <tr>
+                                    <td>AI Explained</td>
+                                    <td>Deep AI concepts</td>
+                                    <td>Understanding</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4><strong>Articles & Websites:</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Resource</th>
+                                    <th>Type</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Google AI Learning</td>
+                                    <td>Interactive course</td>
+                                    <td><a href="https://ai.google" target="_blank">ai.google</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Microsoft AI Basics</td>
+                                    <td>Beginner guide</td>
+                                    <td><a href="https://www.microsoft.com/en-us/ai" target="_blank">microsoft.com/ai</a></td>
+                                </tr>
+                                <tr>
+                                    <td>AI Glossary (Google)</td>
+                                    <td>Terminology</td>
+                                    <td><a href="https://developers.google.com/machine-learning/glossary" target="_blank">developers.google.com/machine-learning/glossary</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>📝 Stage 1 Checklist:</h3>
+                    <pre>
+□ Complete "AI For Everyone" course
+□ Finish "Elements of AI" course  
+□ Watch 10+ beginner AI YouTube videos
+□ Memorize 30+ AI terms
+□ Explain AI to a friend in simple words
+□ Write down 5 ways AI could help your life/work
+                    </pre>
+                </section>
+
+                <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #ddd;">
+
+                <section id="stage-2">
+                    <h2>🎯 STAGE 2: AI EXPLORER (Weeks 7-12)</h2>
+                    <h3><strong>Goal: Master All Major AI Tools</strong></h3>
+                    <blockquote>
+                        "Get hands-on experience with every popular AI tool"
+                    </blockquote>
+
+                    <h3>🤖 AI Tools to Master:</h3>
+
+                    <h4><strong>Category 1: Text AI (Chatbots)</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tool</th>
+                                    <th>What It Does</th>
+                                    <th>Free/Paid</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ChatGPT</td>
+                                    <td>General AI assistant</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://chat.openai.com" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Claude</td>
+                                    <td>Writing & analysis</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://claude.ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Gemini</td>
+                                    <td>Google's AI</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://gemini.google.com" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Copilot</td>
+                                    <td>Microsoft AI</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://copilot.microsoft.com" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Perplexity</td>
+                                    <td>AI search engine</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://perplexity.ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Poe</td>
+                                    <td>Multiple AI models</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://poe.com" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4><strong>Category 2: Image AI</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tool</th>
+                                    <th>What It Does</th>
+                                    <th>Free/Paid</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Midjourney</td>
+                                    <td>Art generation</td>
+                                    <td>Paid</td>
+                                    <td><a href="https://midjourney.com" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>DALL-E 3</td>
+                                    <td>Image creation</td>
+                                    <td>Via ChatGPT+</td>
+                                    <td><a href="https://openai.com" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Leonardo AI</td>
+                                    <td>Art & design</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://leonardo.ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Ideogram</td>
+                                    <td>Text in images</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://ideogram.ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Canva AI</td>
+                                    <td>Design assistance</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://canva.com" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Adobe Firefly</td>
+                                    <td>Creative tools</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://firefly.adobe.com" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4><strong>Category 3: Video AI</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tool</th>
+                                    <th>What It Does</th>
+                                    <th>Free/Paid</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Runway</td>
+                                    <td>Video generation</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://runway.ml" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Synthesia</td>
+                                    <td>AI avatars</td>
+                                    <td>Paid</td>
+                                    <td><a href="https://synthesia.io" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>HeyGen</td>
+                                    <td>Video creation</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://heygen.com" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Pika</td>
+                                    <td>Video generation</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://pika.art" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Descript</td>
+                                    <td>Video editing</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://descript.com" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>CapCut</td>
+                                    <td>Editing with AI</td>
+                                    <td>Free</td>
+                                    <td><a href="https://capcut.com" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4><strong>Category 4: Audio AI</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tool</th>
+                                    <th>What It Does</th>
+                                    <th>Free/Paid</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ElevenLabs</td>
+                                    <td>Voice cloning</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://elevenlabs.io" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Murf</td>
+                                    <td>Voiceovers</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://murf.ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Suno</td>
+                                    <td>Music creation</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://suno.ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Udio</td>
+                                    <td>Music generation</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://udio.com" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Whisper</td>
+                                    <td>Transcription</td>
+                                    <td>Free</td>
+                                    <td><a href="https://openai.com/whisper" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4><strong>Category 5: Writing & Content AI</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tool</th>
+                                    <th>What It Does</th>
+                                    <th>Free/Paid</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jasper</td>
+                                    <td>Marketing copy</td>
+                                    <td>Paid</td>
+                                    <td><a href="https://jasper.ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Copy.ai</td>
+                                    <td>Content writing</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://copy.ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Grammarly</td>
+                                    <td>Grammar + AI writing</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://grammarly.com" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Writesonic</td>
+                                    <td>Blog & articles</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://writesonic.com" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Rytr</td>
+                                    <td>Short-form content</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://rytr.me" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4><strong>Category 6: Productivity AI</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tool</th>
+                                    <th>What It Does</th>
+                                    <th>Free/Paid</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Notion AI</td>
+                                    <td>Notes & docs</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://notion.so" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Otter.ai</td>
+                                    <td>Meeting notes</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://otter.ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Gamma</td>
+                                    <td>Presentations</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://gamma.app" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Tome</td>
+                                    <td>Storytelling</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://tome.app" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Beautiful.ai</td>
+                                    <td>Slides</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://beautiful.ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Mem</td>
+                                    <td>AI memory</td>
+                                    <td>Free + Paid</td>
+                                    <td><a href="https://mem.ai" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>🆓 FREE Learning Resources:</h3>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Resource</th>
+                                    <th>What You'll Learn</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>OpenAI Tutorials</td>
+                                    <td>ChatGPT mastery</td>
+                                    <td><a href="https://platform.openai.com/docs" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Google AI Learning</td>
+                                    <td>Gemini skills</td>
+                                    <td><a href="https://ai.google.dev" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Anthropic Docs</td>
+                                    <td>Claude usage</td>
+                                    <td><a href="https://docs.anthropic.com" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>📝 Stage 2 Weekly Practice Plan:</h3>
+                    <pre>
+Week 7-8: Text AI
+├── Day 1-2: ChatGPT basics
+├── Day 3-4: Claude comparison
+├── Day 5-6: Gemini & Copilot
+└── Day 7: Compare all tools
+
+Week 9-10: Visual AI
+├── Day 1-3: Image generation
+├── Day 4-6: Video creation
+└── Day 7: Build a portfolio
+
+Week 11-12: Specialized AI
+├── Day 1-2: Audio tools
+├── Day 3-4: Writing tools
+├── Day 5-6: Productivity tools
+└── Day 7: Find your favorites
+                    </pre>
+
+                    <h3>📝 Stage 2 Checklist:</h3>
+                    <pre>
+□ Create accounts on all major AI tools
+□ Generate 50+ conversations with different chatbots
+□ Create 20+ AI images
+□ Make 3+ AI videos
+□ Generate AI voiceover for a project
+□ Write 5+ articles using AI assistance
+□ Compare tools and pick favorites
+□ Document what each tool does best
+                    </pre>
+                </section>
+
+                <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #ddd;">
+
+                <section id="stage-3">
+                    <h2>🎯 STAGE 3: AI PRACTITIONER (Weeks 13-20)</h2>
+                    <h3><strong>Goal: Master Prompt Engineering & AI Workflows</strong></h3>
+                    <blockquote>
+                        "The quality of AI output depends on the quality of your input"
+                    </blockquote>
+
+                    <h3>🎨 Prompt Engineering Mastery:</h3>
+
+                    <h4><strong>Part 1: Prompt Frameworks</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Framework</th>
+                                    <th>Structure</th>
+                                    <th>Best For</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>RTF</strong></td>
+                                    <td>Role + Task + Format</td>
+                                    <td>General tasks</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>RISEN</strong></td>
+                                    <td>Role, Instructions, Steps, End goal, Narrowing</td>
+                                    <td>Complex tasks</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>COSTAR</strong></td>
+                                    <td>Context, Objective, Style, Tone, Audience, Response</td>
+                                    <td>Content creation</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>CREATE</strong></td>
+                                    <td>Character, Request, Examples, Adjustments, Type, Extras</td>
+                                    <td>Detailed outputs</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>RACE</strong></td>
+                                    <td>Role, Action, Context, Expectation</td>
+                                    <td>Quick tasks</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4><strong>Part 2: Prompt Templates Library</strong></h4>
+                    <p><strong>For Writing:</strong></p>
+                    <pre>
+PROMPT TEMPLATE: BLOG POST
+
+You are an expert [TOPIC] writer with 10 years of experience.
+
+Write a comprehensive blog post about [SUBJECT].
+
+Requirements:
+- Target audience: [AUDIENCE]
+- Tone: [FORMAL/CASUAL/PROFESSIONAL]
+- Length: [WORD COUNT]
+- Include: [SPECIFIC ELEMENTS]
+
+Structure:
+1. Attention-grabbing headline
+2. Hook introduction
+3. Main points with examples
+4. Actionable takeaways
+5. Compelling conclusion
+
+Avoid: [WHAT TO EXCLUDE]
+                    </pre>
+
+                    <p><strong>For Analysis:</strong></p>
+                    <pre>
+PROMPT TEMPLATE: ANALYSIS
+
+Act as a senior [INDUSTRY] analyst.
+
+Analyze the following [DATA/TEXT/SITUATION]:
+[INSERT CONTENT]
+
+Provide:
+1. Key findings (bullet points)
+2. Patterns observed
+3. Potential implications
+4. Recommendations
+5. Risk assessment
+
+Format: [TABLE/REPORT/SUMMARY]
+                    </pre>
+
+                    <p><strong>For Learning:</strong></p>
+                    <pre>
+PROMPT TEMPLATE: LEARNING
+
+You are a patient, expert teacher specialized in [SUBJECT].
+
+Teach me [TOPIC] as if I were a [BEGINNER/INTERMEDIATE/ADVANCED] student.
+
+Please:
+1. Start with a simple analogy
+2. Explain the core concept
+3. Give 3 real-world examples
+4. Provide a practice exercise
+5. Summarize key points
+6. Suggest next topics to learn
+
+Use simple language. Avoid jargon unless you explain it.
+                    </pre>
+
+                    <h4><strong>Part 3: Advanced Prompting Techniques</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Technique</th>
+                                    <th>What It Does</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Chain-of-Thought</td>
+                                    <td>Step-by-step reasoning</td>
+                                    <td>"Think through this step by step..."</td>
+                                </tr>
+                                <tr>
+                                    <td>Few-Shot</td>
+                                    <td>Provide examples</td>
+                                    <td>"Here are 3 examples. Now do one like this..."</td>
+                                </tr>
+                                <tr>
+                                    <td>Zero-Shot</td>
+                                    <td>No examples needed</td>
+                                    <td>"Classify this text as positive/negative"</td>
+                                </tr>
+                                <tr>
+                                    <td>Tree of Thoughts</td>
+                                    <td>Multiple reasoning paths</td>
+                                    <td>"Consider 3 different approaches..."</td>
+                                </tr>
+                                <tr>
+                                    <td>Self-Consistency</td>
+                                    <td>Multiple answers, pick best</td>
+                                    <td>"Give me 5 different solutions..."</td>
+                                </tr>
+                                <tr>
+                                    <td>Persona Setting</td>
+                                    <td>Assign expert identity</td>
+                                    <td>"You are a Harvard professor of economics..."</td>
+                                </tr>
+                                <tr>
+                                    <td>Constraint Setting</td>
+                                    <td>Set boundaries</td>
+                                    <td>"In exactly 100 words, explain..."</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>⚙️ AI Workflow Automation:</h3>
+
+                    <h4><strong>No-Code Automation Tools:</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tool</th>
+                                    <th>What It Does</th>
+                                    <th>Difficulty</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Zapier</td>
+                                    <td>Connect AI to 5000+ apps</td>
+                                    <td>Easy</td>
+                                    <td><a href="https://zapier.com" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Make</td>
+                                    <td>Visual workflow builder</td>
+                                    <td>Medium</td>
+                                    <td><a href="https://make.com" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>n8n</td>
+                                    <td>Open-source automation</td>
+                                    <td>Medium</td>
+                                    <td><a href="https://n8n.io" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Bardeen</td>
+                                    <td>Browser automation</td>
+                                    <td>Easy</td>
+                                    <td><a href="https://bardeen.ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Relay</td>
+                                    <td>AI workflow automation</td>
+                                    <td>Easy</td>
+                                    <td><a href="https://relay.app" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4><strong>Sample Workflows to Build:</strong></h4>
+                    <pre>
+WORKFLOW 1: Content Creation Pipeline
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│   Input:    │───▶│   AI:       │───▶│   Output:   │
+│   Topic     │    │   ChatGPT   │    │   Draft     │
+└─────────────┘    └─────────────┘    └─────────────┘
+                          │
+                          ▼
+                   ┌─────────────┐    ┌─────────────┐
+                   │   AI:       │───▶│   Final:    │
+                   │   Grammarly │    │   Published │
+                   └─────────────┘    └─────────────┘
+
+WORKFLOW 2: Email Automation
+New Email ─▶ AI Summarize ─▶ Categorize ─▶ Draft Reply ─▶ Send
+
+WORKFLOW 3: Research Assistant
+Topic ─▶ Perplexity Search ─▶ Summarize ─▶ Format ─▶ Save to Notion
+                    </pre>
+
+                    <h3>🆓 FREE Resources for Stage 3:</h3>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Resource</th>
+                                    <th>Topic</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Learn Prompting</td>
+                                    <td>Complete prompt guide</td>
+                                    <td><a href="https://learnprompting.org" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Prompt Engineering Guide</td>
+                                    <td>GitHub resource</td>
+                                    <td><a href="https://promptingguide.ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>OpenAI Prompt Guide</td>
+                                    <td>Official best practices</td>
+                                    <td><a href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Zapier University</td>
+                                    <td>Automation courses</td>
+                                    <td><a href="https://zapier.com/learn" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Make Academy</td>
+                                    <td>Workflow tutorials</td>
+                                    <td><a href="https://academy.make.com" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>📝 Stage 3 Checklist:</h3>
+                    <pre>
+□ Master 5 prompt frameworks
+□ Build a personal prompt library (50+ prompts)
+□ Create 3 automated workflows
+□ Connect AI to your daily apps
+□ Reduce manual work by 50% using AI
+□ Document your best prompts
+□ Test same prompt across different AI models
+□ Achieve consistent, high-quality outputs
+                    </pre>
+                </section>
+
+                <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #ddd;">
+
+                <section id="stage-4">
+                    <h2>🎯 STAGE 4: AI SPECIALIST (Weeks 21-28)</h2>
+                    <h3><strong>Goal: Apply AI to Your Specific Field</strong></h3>
+                    <blockquote>
+                        "Become the AI expert in YOUR industry"
+                    </blockquote>
+
+                    <h3>🎯 Choose Your Specialization:</h3>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Specialization</th>
+                                    <th>AI Skills Needed</th>
+                                    <th>Career Opportunities</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Marketing AI</strong></td>
+                                    <td>Content, ads, analytics</td>
+                                    <td>Marketing Manager, Growth</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Business AI</strong></td>
+                                    <td>Strategy, automation</td>
+                                    <td>Consultant, Operations</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Creative AI</strong></td>
+                                    <td>Image, video, audio</td>
+                                    <td>Designer, Creator</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Writing AI</strong></td>
+                                    <td>Copywriting, editing</td>
+                                    <td>Writer, Editor</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Education AI</strong></td>
+                                    <td>Tutoring, curriculum</td>
+                                    <td>Teacher, Course Creator</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Research AI</strong></td>
+                                    <td>Analysis, summarization</td>
+                                    <td>Analyst, Researcher</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sales AI</strong></td>
+                                    <td>CRM, outreach, pitches</td>
+                                    <td>Sales, BDR</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>HR AI</strong></td>
+                                    <td>Hiring, training</td>
+                                    <td>HR Manager, Recruiter</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Legal AI</strong></td>
+                                    <td>Document review, research</td>
+                                    <td>Paralegal, Legal Assistant</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Healthcare AI</strong></td>
+                                    <td>Admin, communication</td>
+                                    <td>Healthcare Admin</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>📚 Industry-Specific AI Skills:</h3>
+
+                    <h4><strong>For Marketing Professionals:</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Skill</th>
+                                    <th>Tools to Learn</th>
+                                    <th>Use Case</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>AI Copywriting</td>
+                                    <td>ChatGPT, Claude, Jasper</td>
+                                    <td>Ad copy, landing pages</td>
+                                </tr>
+                                <tr>
+                                    <td>AI Image Creation</td>
+                                    <td>Midjourney, DALL-E</td>
+                                    <td>Social media, ads</td>
+                                </tr>
+                                <tr>
+                                    <td>AI Video</td>
+                                    <td>Synthesia, HeyGen</td>
+                                    <td>Video ads, explainers</td>
+                                </tr>
+                                <tr>
+                                    <td>AI Analytics</td>
+                                    <td>Google AI, ChatGPT</td>
+                                    <td>Data insights</td>
+                                </tr>
+                                <tr>
+                                    <td>AI SEO</td>
+                                    <td>Surfer, Clearscope</td>
+                                    <td>Content optimization</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><strong>Recommended Course:</strong></p>
+                    <ul>
+                        <li>HubSpot AI Marketing Certification (FREE)</li>
+                        <li>Google AI Marketing Courses (FREE)</li>
+                    </ul>
+
+                    <h4><strong>For Business Professionals:</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Skill</th>
+                                    <th>Tools to Learn</th>
+                                    <th>Use Case</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>AI Strategy</td>
+                                    <td>ChatGPT, Claude</td>
+                                    <td>Business planning</td>
+                                </tr>
+                                <tr>
+                                    <td>AI Presentations</td>
+                                    <td>Gamma, Tome</td>
+                                    <td>Pitch decks</td>
+                                </tr>
+                                <tr>
+                                    <td>AI Data Analysis</td>
+                                    <td>ChatGPT, Claude</td>
+                                    <td>Reports, insights</td>
+                                </tr>
+                                <tr>
+                                    <td>AI Automation</td>
+                                    <td>Zapier, Make</td>
+                                    <td>Process efficiency</td>
+                                </tr>
+                                <tr>
+                                    <td>AI Communication</td>
+                                    <td>Grammarly, Otter</td>
+                                    <td>Emails, meetings</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><strong>Recommended Course:</strong></p>
+                    <ul>
+                        <li>Wharton AI for Business (Coursera)</li>
+                        <li>LinkedIn Learning AI Courses</li>
+                    </ul>
+
+                    <h4><strong>For Creative Professionals:</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Skill</th>
+                                    <th>Tools to Learn</th>
+                                    <th>Use Case</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>AI Art</td>
+                                    <td>Midjourney, Leonardo</td>
+                                    <td>Digital art, concepts</td>
+                                </tr>
+                                <tr>
+                                    <td>AI Design</td>
+                                    <td>Canva AI, Adobe Firefly</td>
+                                    <td>Graphics, layouts</td>
+                                </tr>
+                                <tr>
+                                    <td>AI Video</td>
+                                    <td>Runway, Pika</td>
+                                    <td>Video content</td>
+                                </tr>
+                                <tr>
+                                    <td>AI Music</td>
+                                    <td>Suno, Udio</td>
+                                    <td>Background music, jingles</td>
+                                </tr>
+                                <tr>
+                                    <td>AI Writing</td>
+                                    <td>Claude, ChatGPT</td>
+                                    <td>Scripts, stories</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><strong>Recommended Course:</strong></p>
+                    <ul>
+                        <li>Domestika AI Courses</li>
+                        <li>Skillshare AI Creation Courses</li>
+                    </ul>
+
+                    <h3>🏗️ Build Your AI Portfolio:</h3>
+                    
+                    <h4><strong>Project Ideas by Specialization:</strong></h4>
+
+                    <p><strong>Marketing Portfolio:</strong></p>
+                    <pre>
+□ Create 30-day social media content calendar with AI
+□ Design 10 ad creatives using AI
+□ Write 5 complete landing pages
+□ Build automated email sequence
+□ Create marketing strategy document for fictional company
+                    </pre>
+
+                    <p><strong>Business Portfolio:</strong></p>
+                    <pre>
+□ Develop business plan using AI
+□ Create financial analysis report
+□ Build automated workflow documentation
+□ Design pitch deck for startup idea
+□ Write standard operating procedures
+                    </pre>
+
+                    <p><strong>Creative Portfolio:</strong></p>
+                    <pre>
+□ Generate 20-piece art collection with consistent style
+□ Create brand identity package
+□ Produce short video advertisement
+□ Design children's book with AI illustrations
+□ Create music album cover series
+                    </pre>
+
+                    <h3>📝 Stage 4 Checklist:</h3>
+                    <pre>
+□ Choose your specialization
+□ Complete industry-specific courses
+□ Master tools relevant to your field
+□ Build 5+ portfolio projects
+□ Document your AI process
+□ Create case studies showing results
+□ Network with others in your niche
+□ Start sharing your expertise online
+                    </pre>
+                </section>
+
+                <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #ddd;">
+
+                <section id="stage-5">
+                    <h2>🎯 STAGE 5: ADVANCED AI USER (Weeks 29-40)</h2>
+                    <h3><strong>Goal: Master Advanced AI Capabilities</strong></h3>
+                    <blockquote>
+                        "Go beyond basic usage into power-user territory"
+                    </blockquote>
+
+                    <h3>🤖 Custom GPTs & AI Agents:</h3>
+
+                    <h4><strong>Creating Custom GPTs (ChatGPT Plus):</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Component</th>
+                                    <th>Purpose</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Instructions</td>
+                                    <td>Define behavior</td>
+                                    <td>"You are a legal assistant..."</td>
+                                </tr>
+                                <tr>
+                                    <td>Knowledge</td>
+                                    <td>Upload files</td>
+                                    <td>Company documents, guides</td>
+                                </tr>
+                                <tr>
+                                    <td>Actions</td>
+                                    <td>Connect APIs</td>
+                                    <td>Fetch data, send emails</td>
+                                </tr>
+                                <tr>
+                                    <td>Conversation Starters</td>
+                                    <td>Guide users</td>
+                                    <td>"Help me draft a contract"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p><strong>Custom GPT Ideas to Build:</strong></p>
+                    <pre>
+1. Personal Writing Coach
+   - Trained on your writing style
+   - Suggests improvements
+   - Maintains consistency
+
+2. Company Knowledge Base
+   - Upload all company docs
+   - Answer employee questions
+   - Onboarding assistant
+
+3. Industry Expert
+   - Specialized knowledge
+   - Specific frameworks
+   - Domain vocabulary
+
+4. Personal Productivity Assistant
+   - Your schedule preferences
+   - Task management style
+   - Communication templates
+                    </pre>
+
+                    <h4><strong>AI Agents & Multi-Step AI:</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tool</th>
+                                    <th>What It Does</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ChatGPT (with browsing)</td>
+                                    <td>Search + analyze</td>
+                                    <td>Built-in</td>
+                                </tr>
+                                <tr>
+                                    <td>Auto-GPT (via AgentGPT)</td>
+                                    <td>Autonomous tasks</td>
+                                    <td><a href="https://agentgpt.reworkd.ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Claude Projects</td>
+                                    <td>Multi-file analysis</td>
+                                    <td>Built-in</td>
+                                </tr>
+                                <tr>
+                                    <td>CustomGPT.ai</td>
+                                    <td>Build AI agents</td>
+                                    <td><a href="https://customgpt.ai" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>📊 AI Data Analysis (Without Coding):</h3>
+
+                    <h4><strong>Tools for Non-Technical Data Analysis:</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tool</th>
+                                    <th>Capability</th>
+                                    <th>Best For</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ChatGPT Advanced Data</td>
+                                    <td>Upload CSV, Excel</td>
+                                    <td>Quick analysis</td>
+                                </tr>
+                                <tr>
+                                    <td>Claude</td>
+                                    <td>Document analysis</td>
+                                    <td>Long documents</td>
+                                </tr>
+                                <tr>
+                                    <td>Julius AI</td>
+                                    <td>Data visualization</td>
+                                    <td>Charts, graphs</td>
+                                </tr>
+                                <tr>
+                                    <td>Obviously AI</td>
+                                    <td>Predictive analytics</td>
+                                    <td>Forecasting</td>
+                                </tr>
+                                <tr>
+                                    <td>Rows AI</td>
+                                    <td>Spreadsheet AI</td>
+                                    <td>Excel-like analysis</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p><strong>What You Can Analyze:</strong></p>
+                    <pre>
+✅ Sales data and trends
+✅ Customer feedback patterns
+✅ Financial reports
+✅ Survey results
+✅ Website analytics
+✅ Market research data
+✅ Competitor analysis
+✅ Social media metrics
+                    </pre>
+
+                    <h3>⚖️ AI Ethics & Governance:</h3>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Topic</th>
+                                    <th>What to Learn</th>
+                                    <th>Resource</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>AI Bias</td>
+                                    <td>Understanding & preventing</td>
+                                    <td>IBM AI Fairness</td>
+                                </tr>
+                                <tr>
+                                    <td>AI Privacy</td>
+                                    <td>Data protection</td>
+                                    <td>GDPR Guidelines</td>
+                                </tr>
+                                <tr>
+                                    <td>AI Transparency</td>
+                                    <td>Explainability</td>
+                                    <td>Google AI Principles</td>
+                                </tr>
+                                <tr>
+                                    <td>AI Safety</td>
+                                    <td>Risk assessment</td>
+                                    <td>Anthropic's Approach</td>
+                                </tr>
+                                <tr>
+                                    <td>AI Regulation</td>
+                                    <td>Legal landscape</td>
+                                    <td>EU AI Act, US Guidelines</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p><strong>Essential Ethics Concepts:</strong></p>
+                    <pre>
+1. Bias & Fairness
+   - Training data bias
+   - Representation issues
+   - Fairness metrics
+
+2. Privacy
+   - Data handling
+   - Consent requirements
+   - Anonymization
+
+3. Transparency
+   - AI disclosure
+   - Explainability
+   - User rights
+
+4. Accountability
+   - Who's responsible?
+   - Error handling
+   - Audit trails
+                    </pre>
+
+                    <h3>🆓 FREE Resources for Stage 5:</h3>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Resource</th>
+                                    <th>Topic</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>OpenAI GPT Guide</td>
+                                    <td>Custom GPTs</td>
+                                    <td><a href="https://help.openai.com/en/collections/9504609-gpts" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>AI Ethics Course</td>
+                                    <td>MIT</td>
+                                    <td><a href="https://www.media.mit.edu/courses/the-ethics-and-governance-of-artificial-intelligence/" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Google Responsible AI</td>
+                                    <td>Ethics</td>
+                                    <td><a href="https://ai.google/responsibility/responsible-ai-practices/" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Future of Life Institute</td>
+                                    <td>AI Safety</td>
+                                    <td><a href="https://futureoflife.org" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>📝 Stage 5 Checklist:</h3>
+                    <pre>
+□ Build 3+ Custom GPTs
+□ Create an AI agent for a specific task
+□ Analyze a real dataset using AI
+□ Complete AI ethics course
+□ Understand AI regulations in your region
+□ Develop AI usage policy for your work
+□ Master multi-modal AI (text + image + data)
+□ Explore AI API connections (no-code)
+                    </pre>
+                </section>
+
+                <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #ddd;">
+
+                <section id="stage-6">
+                    <h2>🎯 STAGE 6: AI EXPERT (Weeks 41-52)</h2>
+                    <h3><strong>Goal: Teach, Consult, and Lead in AI</strong></h3>
+                    <blockquote>
+                        "True mastery is being able to teach and guide others"
+                    </blockquote>
+
+                    <h3>👨‍🏫 Teaching & Consulting:</h3>
+
+                    <h4><strong>Ways to Share Your Expertise:</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Method</th>
+                                    <th>Platform</th>
+                                    <th>Difficulty</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Blog Writing</td>
+                                    <td>Medium, LinkedIn, Personal site</td>
+                                    <td>Easy</td>
+                                </tr>
+                                <tr>
+                                    <td>Video Tutorials</td>
+                                    <td>YouTube, TikTok, Instagram</td>
+                                    <td>Medium</td>
+                                </tr>
+                                <tr>
+                                    <td>Online Courses</td>
+                                    <td>Udemy, Skillshare, Teachable</td>
+                                    <td>Medium</td>
+                                </tr>
+                                <tr>
+                                    <td>Workshops</td>
+                                    <td>Local, Virtual, Corporate</td>
+                                    <td>Medium</td>
+                                </tr>
+                                <tr>
+                                    <td>Consulting</td>
+                                    <td>Freelance, Agency</td>
+                                    <td>Advanced</td>
+                                </tr>
+                                <tr>
+                                    <td>Speaking</td>
+                                    <td>Conferences, Podcasts</td>
+                                    <td>Advanced</td>
+                                </tr>
+                                <tr>
+                                    <td>Newsletter</td>
+                                    <td>Substack, ConvertKit</td>
+                                    <td>Easy</td>
+                                </tr>
+                                <tr>
+                                    <td>Community</td>
+                                    <td>Discord, Slack, Circle</td>
+                                    <td>Medium</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4><strong>Building Your AI Personal Brand:</strong></h4>
+                    <pre>
+STEP 1: Define Your Niche
+├── What industries do you know?
+├── What AI tools are you best at?
+└── What problems can you solve?
+
+STEP 2: Create Content
+├── Weekly blog posts/articles
+├── Daily LinkedIn/Twitter posts
+├── Monthly YouTube videos
+└── Regular newsletter
+
+STEP 3: Build Authority
+├── Get certifications
+├── Collect testimonials
+├── Share case studies
+└── Speak at events
+
+STEP 4: Monetize
+├── Consulting services
+├── Online courses
+├── Workshops
+└── Affiliate partnerships
+                    </pre>
+
+                    <h3>📰 Staying Updated:</h3>
+
+                    <h4><strong>Daily/Weekly AI News Sources:</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Source</th>
+                                    <th>Type</th>
+                                    <th>Frequency</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>The Rundown AI</td>
+                                    <td>Newsletter</td>
+                                    <td>Daily</td>
+                                    <td><a href="https://therundown.ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>TLDR AI</td>
+                                    <td>Newsletter</td>
+                                    <td>Daily</td>
+                                    <td><a href="https://tldr.tech/ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Ben's Bites</td>
+                                    <td>Newsletter</td>
+                                    <td>Daily</td>
+                                    <td><a href="https://bensbites.co" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>AI Breakfast</td>
+                                    <td>Newsletter</td>
+                                    <td>Daily</td>
+                                    <td><a href="https://aibreakfast.beehiiv.com/" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>The Neuron</td>
+                                    <td>Newsletter</td>
+                                    <td>Daily</td>
+                                    <td><a href="https://www.theneurondaily.com/" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>There's An AI For That</td>
+                                    <td>Tool Discovery</td>
+                                    <td>Daily</td>
+                                    <td><a href="https://theresanaiforthat.com" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Future Tools</td>
+                                    <td>Tool Discovery</td>
+                                    <td>Weekly</td>
+                                    <td><a href="https://futuretools.io" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>AI Tool Report</td>
+                                    <td>Newsletter</td>
+                                    <td>Weekly</td>
+                                    <td><a href="https://aitoolreport.beehiiv.com/" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4><strong>Podcasts:</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Podcast</th>
+                                    <th>Focus</th>
+                                    <th>Where to Listen</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>The AI Podcast (NVIDIA)</td>
+                                    <td>Industry trends</td>
+                                    <td>Spotify, Apple</td>
+                                </tr>
+                                <tr>
+                                    <td>Practical AI</td>
+                                    <td>Real applications</td>
+                                    <td>Spotify, Apple</td>
+                                </tr>
+                                <tr>
+                                    <td>Eye on AI</td>
+                                    <td>News & analysis</td>
+                                    <td>Spotify, Apple</td>
+                                </tr>
+                                <tr>
+                                    <td>AI in Business</td>
+                                    <td>Enterprise AI</td>
+                                    <td>Spotify, Apple</td>
+                                </tr>
+                                <tr>
+                                    <td>Latent Space</td>
+                                    <td>Technical trends</td>
+                                    <td>Spotify, Apple</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4><strong>YouTube Channels to Follow:</strong></h4>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Channel</th>
+                                    <th>Content Type</th>
+                                    <th>Subscriber Level</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Matt Wolfe</td>
+                                    <td>AI tools & news</td>
+                                    <td>Beginner-Advanced</td>
+                                </tr>
+                                <tr>
+                                    <td>The AI Advantage</td>
+                                    <td>Tutorials</td>
+                                    <td>Beginner-Intermediate</td>
+                                </tr>
+                                <tr>
+                                    <td>AI Jason</td>
+                                    <td>Technical tutorials</td>
+                                    <td>Intermediate</td>
+                                </tr>
+                                <tr>
+                                    <td>David Ondrej</td>
+                                    <td>AI news</td>
+                                    <td>Beginner-Advanced</td>
+                                </tr>
+                                <tr>
+                                    <td>All About AI</td>
+                                    <td>Tutorials</td>
+                                    <td>Beginner-Intermediate</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>🏆 Certifications to Earn:</h3>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Certification</th>
+                                    <th>Provider</th>
+                                    <th>Cost</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>AI Fundamentals</td>
+                                    <td>IBM</td>
+                                    <td>Free</td>
+                                    <td><a href="https://www.ibm.com/training/collection/artificialintelligence" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Google AI Essentials</td>
+                                    <td>Google</td>
+                                    <td>Free</td>
+                                    <td><a href="https://grow.google/intl/en_uk/google-ai-essentials/" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>AI For Everyone Certificate</td>
+                                    <td>DeepLearning.AI</td>
+                                    <td>Free</td>
+                                    <td><a href="https://coursera.org" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Microsoft AI Fundamentals</td>
+                                    <td>Microsoft</td>
+                                    <td>Paid</td>
+                                    <td><a href="https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>AI Product Management</td>
+                                    <td>Pendo</td>
+                                    <td>Free</td>
+                                    <td><a href="https://www.pendo.io/" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Prompt Engineering</td>
+                                    <td>Vanderbilt</td>
+                                    <td>Free</td>
+                                    <td><a href="https://www.coursera.org/learn/prompt-engineering" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3>📝 Stage 6 Checklist:</h3>
+                    <pre>
+□ Create educational content (blog/video/course)
+□ Build email list (100+ subscribers)
+□ Get AI certifications (3+)
+□ Help 10+ people learn AI
+□ Consult for a business/individual
+□ Speak at an event or podcast
+□ Build community around your expertise
+□ Stay updated with AI news daily
+□ Contribute to AI discussions online
+□ Develop your unique AI perspective/framework
+                    </pre>
+                </section>
+
+                <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #ddd;">
+
+                <section id="resource-summary">
+                    <h1>📋 COMPLETE RESOURCE SUMMARY</h1>
+
+                    <h2>🎓 Top FREE Courses (By Stage)</h2>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Stage</th>
+                                    <th>Course</th>
+                                    <th>Provider</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>AI For Everyone</td>
+                                    <td>DeepLearning.AI/Coursera</td>
+                                    <td>6 hours</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Elements of AI</td>
+                                    <td>University of Helsinki</td>
+                                    <td>6 hours</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>ChatGPT Prompt Engineering</td>
+                                    <td>OpenAI/DeepLearning.AI</td>
+                                    <td>1 hour</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Learn Prompting Course</td>
+                                    <td>Learn Prompting</td>
+                                    <td>10 hours</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>AI for Marketing</td>
+                                    <td>HubSpot</td>
+                                    <td>4 hours</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>AI Ethics</td>
+                                    <td>Google</td>
+                                    <td>3 hours</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Teaching AI</td>
+                                    <td>Various</td>
+                                    <td>Ongoing</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2>🛠️ Essential Tools (All Stages)</h2>
+
+                    <h3><strong>Must-Have FREE Tools:</strong></h3>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tool</th>
+                                    <th>Purpose</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ChatGPT</td>
+                                    <td>General AI</td>
+                                    <td><a href="https://chat.openai.com" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Claude</td>
+                                    <td>Writing/Analysis</td>
+                                    <td><a href="https://claude.ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Perplexity</td>
+                                    <td>AI Search</td>
+                                    <td><a href="https://perplexity.ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Canva AI</td>
+                                    <td>Design</td>
+                                    <td><a href="https://canva.com" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Gamma</td>
+                                    <td>Presentations</td>
+                                    <td><a href="https://gamma.app" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Leonardo AI</td>
+                                    <td>Images</td>
+                                    <td><a href="https://leonardo.ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Otter.ai</td>
+                                    <td>Transcription</td>
+                                    <td><a href="https://otter.ai" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Grammarly</td>
+                                    <td>Writing</td>
+                                    <td><a href="https://grammarly.com" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h3><strong>Worth Paying For:</strong></h3>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tool</th>
+                                    <th>Cost</th>
+                                    <th>Why It's Worth It</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>ChatGPT Plus</td>
+                                    <td>$20/month</td>
+                                    <td>GPT-4, DALL-E 3, Advanced Data</td>
+                                </tr>
+                                <tr>
+                                    <td>Claude Pro</td>
+                                    <td>$20/month</td>
+                                    <td>Longer context, priority</td>
+                                </tr>
+                                <tr>
+                                    <td>Midjourney</td>
+                                    <td>$10/month</td>
+                                    <td>Best image quality</td>
+                                </tr>
+                                <tr>
+                                    <td>Notion AI</td>
+                                    <td>$10/month</td>
+                                    <td>Integrated workspace</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2>📚 Best Books for Non-Technical Learners</h2>
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Book</th>
+                                    <th>Author</th>
+                                    <th>Topic</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>AI Superpowers</td>
+                                    <td>Kai-Fu Lee</td>
+                                    <td>AI future & strategy</td>
+                                </tr>
+                                <tr>
+                                    <td>Human Compatible</td>
+                                    <td>Stuart Russell</td>
+                                    <td>AI safety</td>
+                                </tr>
+                                <tr>
+                                    <td>The Coming Wave</td>
+                                    <td>Mustafa Suleyman</td>
+                                    <td>AI impact</td>
+                                </tr>
+                                <tr>
+                                    <td>Life 3.0</td>
+                                    <td>Max Tegmark</td>
+                                    <td>AI & humanity</td>
+                                </tr>
+                                <tr>
+                                    <td>AI 2041</td>
+                                    <td>Kai-Fu Lee & Chen Qiufan</td>
+                                    <td>AI future scenarios</td>
+                                </tr>
+                                <tr>
+                                    <td>Architects of Intelligence</td>
+                                    <td>Martin Ford</td>
+                                    <td>AI leader interviews</td>
+                                </tr>
+                                <tr>
+                                    <td>The Prompt Report</td>
+                                    <td>Various</td>
+                                    <td>Prompting techniques</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h2>📅 Weekly Study Schedule Template</h2>
+                    <pre>
+MONDAY (1 hour)
+├── Read AI newsletter (15 min)
+├── Practice with one AI tool (30 min)
+└── Write down learnings (15 min)
+
+TUESDAY (1 hour)
+├── Watch YouTube tutorial (30 min)
+├── Apply what you learned (30 min)
+└── Save useful prompts
+
+WEDNESDAY (1 hour)
+├── Work on current stage course (45 min)
+└── Take notes (15 min)
+
+THURSDAY (1 hour)
+├── Build a mini-project (45 min)
+└── Document process (15 min)
+
+FRIDAY (1 hour)
+├── Explore new AI tool (30 min)
+├── Compare with familiar tools (15 min)
+└── Update resource list (15 min)
+
+SATURDAY (2 hours)
+├── Deep work on portfolio project (1.5 hours)
+└── Share progress on social media (30 min)
+
+SUNDAY (30 min)
+├── Plan next week's learning (15 min)
+└── Review & reflect on progress (15 min)
+
+TOTAL: 7.5 hours/week
+                    </pre>
+
+                    <h2>🎯 Success Metrics Tracker</h2>
+                    <h3><strong>Track Your Progress:</strong></h3>
+                    <pre>
+STAGE 1: Foundation                    □ Complete
+├── Hours studied: ___/15
+├── Courses completed: ___/2
+├── Terms memorized: ___/50
+└── Date completed: ________
+
+STAGE 2: Explorer                      □ Complete
+├── Tools tried: ___/20
+├── AI images created: ___/20
+├── Conversations had: ___/50
+└── Date completed: ________
+
+STAGE 3: Practitioner                  □ Complete
+├── Prompts saved: ___/50
+├── Workflows built: ___/3
+├── Frameworks mastered: ___/5
+└── Date completed: ________
+
+STAGE 4: Specialist                    □ Complete
+├── Specialization: __________
+├── Projects completed: ___/5
+├── Case studies: ___/3
+└── Date completed: ________
+
+STAGE 5: Advanced                      □ Complete
+├── Custom GPTs built: ___/3
+├── Data analyses done: ___/5
+├── Ethics course: □ Complete
+└── Date completed: ________
+
+STAGE 6: Expert                        □ Complete
+├── Content pieces created: ___/10
+├── People taught: ___/10
+├── Certifications: ___/3
+└── Date completed: ________
+                    </pre>
+                </section>
+
+                <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #ddd;">
+
+                <section id="quick-start">
+                    <h1>✅ QUICK-START ACTION PLAN</h1>
+
+                    <h2><strong>This Week (First 7 Days):</strong></h2>
+                    <pre>
+DAY 1: Setup
+□ Create accounts: ChatGPT, Claude, Gemini
+□ Bookmark learning resources
+□ Set learning goals
+
+DAY 2-3: First Course
+□ Start "Elements of AI" course
+□ Complete first 2 modules
+
+DAY 4-5: Hands-On
+□ Have 10 conversations with ChatGPT
+□ Try 5 different types of tasks
+
+DAY 6: Explore
+□ Try Claude for comparison
+□ Generate first AI image
+
+DAY 7: Reflect
+□ Write down key learnings
+□ Plan next week
+□ Join 1 AI community
+                    </pre>
+
+                    <h2>🙋 Common Questions Answered</h2>
+                    
+                    <p><strong>Q: Do I need to learn coding?</strong></p>
+                    <blockquote>
+                        No! This entire roadmap is designed for non-coders. You can become an AI expert using no-code tools only.
+                    </blockquote>
+
+                    <p><strong>Q: How long will this take?</strong></p>
+                    <blockquote>
+                        Following this roadmap: 6-12 months to expert level. With 7-10 hours/week commitment.
+                    </blockquote>
+
+                    <p><strong>Q: Do I need to pay for tools?</strong></p>
+                    <blockquote>
+                        Start with free versions. Upgrade only when you hit limits. Budget $20-50/month once you're serious.
+                    </blockquote>
+
+                    <p><strong>Q: Which AI tool should I start with?</strong></p>
+                    <blockquote>
+                        ChatGPT (free version). It's the most versatile and has the best learning resources.
+                    </blockquote>
+
+                    <p><strong>Q: Can I skip stages?</strong></p>
+                    <blockquote>
+                        Not recommended. Each stage builds on the previous. Foundation is crucial!
+                    </blockquote>
+
+                    <p><strong>Q: How do I know if I'm progressing?</strong></p>
+                    <blockquote>
+                        Use the checklists. If you can teach someone what you learned, you've mastered it.
+                    </blockquote>
+                </section>
+
+                <hr style="margin: 3rem 0; border: 0; border-top: 1px solid #ddd;">
+
+                <section id="final-message">
+                    <h1>🎉 FINAL MESSAGE</h1>
+                    <pre>
+╔════════════════════════════════════════════════════════════════╗
+║                                                                ║
+║   🚀 YOU NOW HAVE EVERYTHING YOU NEED TO MASTER AI! 🚀         ║
+║                                                                ║
+║   Remember:                                                    ║
+║   • Start today, not tomorrow                                  ║
+║   • Consistency beats intensity                                ║
+║   • Practice > Theory                                          ║
+║   • Share what you learn                                       ║
+║   • Stay curious                                               ║
+║                                                                ║
+║   The best time to learn AI was yesterday.                     ║
+║   The second best time is NOW.                                 ║
+║                                                                ║
+║   Good luck on your AI journey! 🌟                             ║
+║                                                                ║
+╚════════════════════════════════════════════════════════════════╝
+                    </pre>
+                </section>
+
                 </div>
-                <!-- END ROADMAP CONTENT -->
-            </div>
         </main>
     </div>
     <footer class="site-footer">
