@@ -50,7 +50,7 @@ In the spirit of relentless innovation, Toolly was born from a belief: that the 
 3. **Run**
 
    ```bash
-   toolly --help    # see available commands
+   toolly --help   # see available commands
    ```
 
 That's it. You're ready to unlock your potential.
