@@ -51,19 +51,19 @@ class ToollyAIAdvisor {
                         <div class="model-menu" id="modelMenu" role="menu" aria-label="Model selection">
                             <div class="model-section">
                                 <div class="model-section-title">Basic</div>
-                                <button class="model-item" data-model="toolly-local"><img src="logo/Toolly_logo.png" alt="Toolly" class="model-icon"><span>Toolly (Local)</span></button>
+                                <button class="model-item" data-model="toolly-local"><img src="logo/Toolly_logo.png" alt="Toolly" class="model-icon"><span>Toolly (Local)</span><i class="fas fa-lock model-lock-icon"></i></button>
                                 <button class="model-item" data-model="gemini-flash"><i class="fas fa-bolt model-icon"></i><span>Gemini 3.0 Flash</span></button>
-                                <button class="model-item" data-model="gpt5-mini"><i class="fas fa-circle-notch model-icon"></i><span>GPT-5 mini</span></button>
-                                <button class="model-item" data-model="claude-haiku"><i class="fas fa-feather-alt model-icon"></i><span>Claude Haiku 4.5</span></button>
-                                <button class="model-item" data-model="qwen-max"><i class="fas fa-brain model-icon"></i><span>Qwen3-Max</span></button>
+                                <button class="model-item" data-model="gpt5-mini"><i class="fas fa-circle-notch model-icon"></i><span>GPT-5 mini</span><i class="fas fa-lock model-lock-icon"></i></button>
+                                <button class="model-item" data-model="claude-haiku"><i class="fas fa-feather-alt model-icon"></i><span>Claude Haiku 4.5</span><i class="fas fa-lock model-lock-icon"></i></button>
+                                <button class="model-item" data-model="qwen-max"><i class="fas fa-brain model-icon"></i><span>Qwen3-Max</span><i class="fas fa-lock model-lock-icon"></i></button>
                             </div>
                             <div class="model-section">
                                 <div class="model-section-title">Advanced</div>
-                                <button class="model-item" data-model="gpt5-2"><i class="fas fa-star model-icon"></i><span>GPT-5.2</span><span class="model-badge">Best for Chat</span></button>
-                                <button class="model-item" data-model="gemini-pro"><i class="fas fa-gem model-icon"></i><span>Gemini 3 Pro</span></button>
-                                <button class="model-item" data-model="claude-sonnet"><i class="fas fa-pen-nib model-icon"></i><span>Claude Sonnet 4.5</span></button>
-                                <button class="model-item" data-model="grok4"><i class="fas fa-asterisk model-icon"></i><span>Grok 4</span></button>
-                                <button class="model-item" data-model="deepseek-v32"><i class="fas fa-wave-square model-icon"></i><span>DeepSeek v3.2</span></button>
+                                <button class="model-item" data-model="gpt5-2"><i class="fas fa-star model-icon"></i><span>GPT-5.2</span><span class="model-badge">Best for Chat</span><i class="fas fa-lock model-lock-icon"></i></button>
+                                <button class="model-item" data-model="gemini-pro"><i class="fas fa-gem model-icon"></i><span>Gemini 3 Pro</span><i class="fas fa-lock model-lock-icon"></i></button>
+                                <button class="model-item" data-model="claude-sonnet"><i class="fas fa-pen-nib model-icon"></i><span>Claude Sonnet 4.5</span><i class="fas fa-lock model-lock-icon"></i></button>
+                                <button class="model-item" data-model="grok4"><i class="fas fa-asterisk model-icon"></i><span>Grok 4</span><i class="fas fa-lock model-lock-icon"></i></button>
+                                <button class="model-item" data-model="deepseek-v32"><i class="fas fa-wave-square model-icon"></i><span>DeepSeek v3.2</span><i class="fas fa-lock model-lock-icon"></i></button>
                             </div>
                         </div>
                     </div>
