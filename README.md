@@ -12,6 +12,67 @@
 
 Welcome to **Toolly**, crafted with purpose and simplicity to empower every developer's journey. Here, we don't just provide utilities—we spark creativity, ignite innovation, and remove barriers between your ideas and reality.
 
+
+graph TD
+    %% Main Project Node
+    Project["🚀 Toolly<br/><i>The tools you need to build the future, all in one place.</i><br/>Created by Adil Shamim"]
+
+    %% Repository Structure Subgraph
+    subgraph Repo [📁 Repository Structure]
+        direction TB
+        Docs["📄 README.md<br/>⚖️ LICENSE"]
+        Assets["🖼️ logo/<br/>🖼️ Toolly.jpg<br/>🖼️ Toolly_logo.png"]
+        HTML["🌐 index.html<br/>🌐 about.html<br/>🌐 learn-ai.html"]
+        Code["📜 scripts.js<br/>📜 chatbot.js<br/>🎨 chatbot.css"]
+    end
+
+    %% Core Features Subgraph
+    subgraph Features [✨ Core Features]
+        direction TB
+        F1["⚡ Instant Scaffolding"]
+        F2["🧹 Smart Formatting"]
+        F3["💻 Unified CLI"]
+        F4["🔌 Extensible Plugins"]
+        F5["📊 Insightful Analytics"]
+        F6["🛠️ Intelligent Refactoring"]
+        F7["📚 Integrated Docs"]
+    end
+
+    %% Use Cases Subgraph
+    subgraph UseCases [🎯 Use Cases]
+        direction TB
+        UC1["🎨 Frontend Developers"]
+        UC2["⚙️ Backend Engineers"]
+        UC3["🚀 DevOps Specialists"]
+        UC4["🤝 Open Source Contributors"]
+    end
+
+    %% Quick Start Subgraph
+    subgraph QuickStart [⚡ Quick Start Workflow]
+        direction LR
+        S1["Clone Repo"] --> S2["npm install"] --> S3["toolly --help"]
+    end
+
+    %% Node Connections
+    Project --> Repo
+    Project --> Features
+    Project --> UseCases
+    Project --> QuickStart
+
+    %% Styling Elements
+    classDef primary fill:#2563eb,stroke:#1e40af,stroke-width:2px,color:#fff,rx:8px,ry:8px;
+    classDef files fill:#f3f4f6,stroke:#d1d5db,stroke-width:1px,color:#1f2937,rx:5px,ry:5px;
+    classDef highlight fill:#10b981,stroke:#047857,stroke-width:2px,color:#fff,rx:5px,ry:5px;
+    classDef user fill:#8b5cf6,stroke:#6d28d9,stroke-width:2px,color:#fff,rx:5px,ry:5px;
+    classDef cmd fill:#1f2937,stroke:#111827,stroke-width:2px,color:#10b981,font-family:monospace,rx:5px,ry:5px;
+
+    class Project primary;
+    class Docs,Assets,HTML,Code files;
+    class F1,F2,F3,F4,F5,F6,F7 highlight;
+    class UC1,UC2,UC3,UC4 user;
+    class S1,S2,S3 cmd;
+
+
 ## Vision
 
 In the spirit of relentless innovation, Toolly was born from a belief: that the right tool, at the right time, can change everything. We imagine a world where developers focus on solving problems, not wrestling with setup. Toolly is that world made real.
