@@ -140,7 +140,7 @@ Get up and running with Toolly in seconds.
 **1. Clone the repository**
 
 ```bash
-git clone [https://github.com/AdilShamim8/Toolly.git](https://github.com/AdilShamim8/Toolly.git)
+git clone https://github.com/AdilShamim8/Toolly.git
 cd Toolly
 
 ```
