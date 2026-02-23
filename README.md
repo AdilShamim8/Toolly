@@ -1,7 +1,5 @@
 <div align="center">
   <img src="https://github.com/AdilShamim8/Toolly/blob/main/logo/Toolly.jpg" alt="Toolly Logo" width="250"/>
-
-  <h1>Toolly</h1>
   
   <p><strong><em>The tools you need to build the future, all in one place.</em></strong></p>
 
@@ -16,7 +14,7 @@
 Welcome to **Toolly**, crafted with purpose and simplicity to empower every developer's journey. Here, we don't just provide utilities—we spark creativity, ignite innovation, and remove barriers between your ideas and reality.
 
 <details>
-<summary><strong>📖 Table of Contents</strong></summary>
+<summary><strong> Table of Contents</strong></summary>
 
 - [Project Overview](#-project-overview)
 - [Vision & Philosophy](#-vision--philosophy)
@@ -31,7 +29,7 @@ Welcome to **Toolly**, crafted with purpose and simplicity to empower every deve
 
 ---
 
-## 🗺️ Project Overview
+##  Project Overview
 
 ```mermaid
 graph TD
@@ -109,7 +107,7 @@ graph TD
 
 ```
 
-## 🔭 Vision & Philosophy
+##  Vision & Philosophy
 
 > *"Innovation distinguishes between a leader and a follower."*
 
@@ -117,7 +115,7 @@ In the spirit of relentless innovation, Toolly was born from a belief: that the 
 
 We believe leadership in software comes from clarity of purpose. Every line in Toolly is intentional, and every feature is designed to empower. Our tools don't just solve problems—they transform how you think about solving them.
 
-## ⭐ What Makes Toolly Special
+##  What Makes Toolly Special
 
 * **Elegant Simplicity:** A curated suite of utilities, each refined to do exactly what you need—no clutter, no confusion.
 * **Seamless Integration:** Designed to plug into your existing workflow; whether you're scripting, prototyping, or deploying, Toolly is there.
@@ -125,17 +123,17 @@ We believe leadership in software comes from clarity of purpose. Every line in T
 * **Developer-First Approach:** Built by developers, for developers—with the intuitive interfaces and powerful capabilities you actually need.
 * **Cross-Platform:** Works flawlessly across Windows, macOS, and Linux environments.
 
-## ✨ Core Features
+##  Core Features
 
-1. **⚡ Instant Scaffolding:** Bootstrap any project with a single command.
-2. **🧹 Smart Formatting:** Keep your code clean and consistent—automatically.
-3. **💻 Unified CLI:** One interface to rule them all; no more context switching.
-4. **🔌 Extensible Plugins:** Build or install plugins that speak your language.
-5. **📊 Insightful Analytics:** Track your workflow, then optimize with real data.
-6. **🛠️ Intelligent Refactoring:** Transform your codebase with confidence through automated refactoring tools.
-7. **📚 Integrated Documentation:** Generate comprehensive docs directly from your code comments.
+1. ** Instant Scaffolding:** Bootstrap any project with a single command.
+2. ** Smart Formatting:** Keep your code clean and consistent—automatically.
+3. ** Unified CLI:** One interface to rule them all; no more context switching.
+4. ** Extensible Plugins:** Build or install plugins that speak your language.
+5. ** Insightful Analytics:** Track your workflow, then optimize with real data.
+6. ** Intelligent Refactoring:** Transform your codebase with confidence through automated refactoring tools.
+7. ** Integrated Documentation:** Generate comprehensive docs directly from your code comments.
 
-## 🚀 Quick Start
+##  Quick Start
 
 Get up and running with Toolly in seconds.
 
@@ -163,16 +161,16 @@ toolly --help  # see available commands
 
 *That's it. You're ready to unlock your potential.*
 
-## 🎯 Use Cases
+##  Use Cases
 
 | Role | How Toolly Helps |
 | --- | --- |
-| 🎨 **Frontend Developers** | Rapidly prototype UI components, optimize assets, and validate markup. |
-| ⚙️ **Backend Engineers** | Test APIs, manage database migrations, and monitor performance. |
-| 🚀 **DevOps Specialists** | Streamline deployment workflows, automate testing, and ensure consistency across environments. |
-| 🤝 **Open Source Contributors** | Standardize code style, generate changelogs, and simplify release management. |
+|  **Frontend Developers** | Rapidly prototype UI components, optimize assets, and validate markup. |
+|  **Backend Engineers** | Test APIs, manage database migrations, and monitor performance. |
+|  **DevOps Specialists** | Streamline deployment workflows, automate testing, and ensure consistency across environments. |
+|  **Open Source Contributors** | Standardize code style, generate changelogs, and simplify release management. |
 
-## 🤝 Contributing
+##  Contributing
 
 Your ideas fuel this project! Whether you find a bug, dream up a new feature, or want to improve the documentation, we welcome your contributions:
 
@@ -184,17 +182,13 @@ Your ideas fuel this project! Whether you find a bug, dream up a new feature, or
 
 Let's build the future—together.
 
-## ⚖️ License
+##  License
 
 Released under the **MIT License**. See the [LICENSE](https://www.google.com/search?q=./LICENSE) file for details.
 
----
 
 <div align="center">
-<i>Designed and built with ❤️ by <a href="https://adilshamim.me/">Adil Shamim</a></i>
-
+<i>Designed and built with by <a href="https://adilshamim.me/">Adil Shamim</a></i>
 
 <a href="http://www.toolly.tech/"><strong>Visit Toolly</strong></a>
 </div>
-
-```
