@@ -189,7 +189,6 @@
                 <h3>Navigation</h3>
                 <ul>
                     <li style="cursor: pointer;"><a href="about.html" style="text-decoration: none; color: inherit; display: block;"><i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i>About Toolly</a></li>
-                    <li style="cursor: pointer;"><a href="learn-ai.html" style="text-decoration: none; color: inherit; display: block;"><i class="fas fa-graduation-cap" style="margin-right: 0.5rem;"></i>Learn AI</a></li>
                 </ul>
             </nav>
             <div class="sidebar-about">
@@ -206,11 +205,21 @@
                     <h2 class="hero-subtitle">Your comprehensive directory for finding the perfect AI solution</h2>
                     <p class="hero-subheadline" itemprop="description">Explore 400+ curated AI tools across 15 categories. Compare features, pricing, and ratings to find exactly what you need—from chatbots to image generators, all in one place.</p>
                     
-                    <!-- Primary CTA -->
-                    <button class="hero-cta" id="heroCtaBtn" aria-label="Explore all AI tools">
-                        <span>Explore All Tools</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
+                    <!-- Primary CTA + Navigation Actions -->
+                    <div class="hero-primary-actions">
+                        <button class="hero-cta" id="heroCtaBtn" aria-label="Explore all AI tools">
+                            <span>Explore All Tools</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <a class="hero-nav-action" href="learn-ai.html" aria-label="Open Learn AI page">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Learn AI</span>
+                        </a>
+                        <a class="hero-nav-action" href="https://toollystudio.streamlit.app/" target="_blank" rel="noopener noreferrer" aria-label="Open Toolly Studio">
+                            <i class="fas fa-cube"></i>
+                            <span>Toolly Studio</span>
+                        </a>
+                    </div>
 
                     <!-- Quick Categories (no scrolling required) -->
                     <div class="hero-quick-categories" aria-label="Quick categories">
@@ -417,8 +426,9 @@
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#submit-tool">Submit a Tool</a></li>
                     <li><a href="learn-ai.html">Learn AI</a></li>
+                    <li><a href="https://toollystudio.streamlit.app/" target="_blank" rel="noopener noreferrer">Toolly Studio</a></li>
+                    <li><a href="#submit-tool">Submit a Tool</a></li>
                     <li><a href="#">Privacy Policy</a></li>
                     <li><a href="#">Terms of Service</a></li>
                     <li><a href="mailto:info@toolly.tech" aria-label="Email Toolly at info@toolly.tech">Contact Us</a></li>

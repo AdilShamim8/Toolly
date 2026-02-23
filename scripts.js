@@ -3654,6 +3654,7 @@ let currentCategoryGroup = null; // 'chatbots' | 'image' | 'video' | 'audio' | '
 let currentSearch = '';
 let currentSort = 'default';
 let currentView = 'grid';
+let isAllToolsCollapsed = false;
 
 // Pagination state
 let currentPage = 1;
@@ -3803,6 +3804,18 @@ function initializeHero() {
                     currentCategoryGroup = group;
                     currentCategory = 'all'; // ensure sidebar filter doesn't conflict
                 }
+                isAllToolsCollapsed = false;
+
+                if (categoryList) {
+                    categoryList.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+                    const allToolsItem = categoryList.querySelector('li[data-category="all"]');
+                    if (allToolsItem) {
+                        allToolsItem.classList.add('active');
+                    }
+                }
+
+                updateCategoryListVisibility();
+
                 // Re-render
                 renderTools();
                 // Scroll to tools grid
@@ -3817,6 +3830,17 @@ function renderTools(resetPage = true) {
     // Reset pagination when filters change
     if (resetPage) {
         currentPage = 1;
+    }
+
+    if (isAllToolsCollapsed && currentCategory === 'all' && !currentCategoryGroup) {
+        toolsGrid.innerHTML = '';
+        filteredTools = [];
+        if (emptyState) emptyState.style.display = 'none';
+        if (loadMoreContainer) loadMoreContainer.style.display = 'none';
+        if (toolCount) {
+            toolCount.textContent = 'All tools are hidden. Click All Tools again to show.';
+        }
+        return;
     }
     
     // Filter
@@ -4488,13 +4512,46 @@ function categoryLabel(cat) {
     }
 }
 
+function updateCategoryListVisibility() {
+    if (!categoryList) return;
+
+    const categoryItems = categoryList.querySelectorAll('li');
+    const showAllCategories = currentCategory === 'all' && !currentCategoryGroup;
+
+    categoryItems.forEach(item => {
+        const isAllToolsItem = item.dataset.category === 'all';
+        const isActiveItem = item.classList.contains('active');
+
+        if (showAllCategories) {
+            item.style.display = '';
+        } else {
+            item.style.display = (isAllToolsItem || isActiveItem) ? '' : 'none';
+        }
+    });
+}
+
 // Sidebar category click
 if (categoryList) {
     categoryList.addEventListener('click', e => {
         if (e.target.tagName === 'LI') {
+            const clickedItem = e.target;
+            const clickedCategory = clickedItem.dataset.category;
+            const isAllToolsItem = clickedCategory === 'all';
+            const wasActive = clickedItem.classList.contains('active');
+
+            if (isAllToolsItem && wasActive && !currentCategoryGroup) {
+                isAllToolsCollapsed = !isAllToolsCollapsed;
+                updateCategoryListVisibility();
+                renderTools();
+                return;
+            }
+
             categoryList.querySelectorAll('li').forEach(li => li.classList.remove('active'));
-            e.target.classList.add('active');
-            currentCategory = e.target.dataset.category;
+            clickedItem.classList.add('active');
+            currentCategory = clickedCategory;
+            currentCategoryGroup = null;
+            isAllToolsCollapsed = false;
+            updateCategoryListVisibility();
             renderTools();
         }
     });
@@ -4705,6 +4762,8 @@ function boot() {
     }, 300);
     initializeStats();
     initializeHero(); // Initialize hero section
+    isAllToolsCollapsed = false;
+    updateCategoryListVisibility();
     renderTools();
 }
 
