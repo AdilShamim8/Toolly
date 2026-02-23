@@ -125,13 +125,13 @@ We believe leadership in software comes from clarity of purpose. Every line in T
 
 ##  Core Features
 
-1. ** Instant Scaffolding:** Bootstrap any project with a single command.
-2. ** Smart Formatting:** Keep your code clean and consistent—automatically.
-3. ** Unified CLI:** One interface to rule them all; no more context switching.
-4. ** Extensible Plugins:** Build or install plugins that speak your language.
-5. ** Insightful Analytics:** Track your workflow, then optimize with real data.
-6. ** Intelligent Refactoring:** Transform your codebase with confidence through automated refactoring tools.
-7. ** Integrated Documentation:** Generate comprehensive docs directly from your code comments.
+1. **Instant Scaffolding:** Bootstrap any project with a single command.
+2. **Smart Formatting:** Keep your code clean and consistent—automatically.
+3. **Unified CLI:** One interface to rule them all; no more context switching.
+4. **Extensible Plugins:** Build or install plugins that speak your language.
+5. **Insightful Analytics:** Track your workflow, then optimize with real data.
+6. **Intelligent Refactoring:** Transform your codebase with confidence through automated refactoring tools.
+7. **Integrated Documentation:** Generate comprehensive docs directly from your code comments.
 
 ##  Quick Start
 
