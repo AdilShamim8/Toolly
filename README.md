@@ -12,7 +12,7 @@
 
 Welcome to **Toolly**, crafted with purpose and simplicity to empower every developer's journey. Here, we don't just provide utilities—we spark creativity, ignite innovation, and remove barriers between your ideas and reality.
 
-
+```mermaid
 graph TD
     %% Main Project Node
     Project["🚀 Toolly<br/><i>The tools you need to build the future, all in one place.</i><br/>Created by Adil Shamim"]
@@ -71,7 +71,7 @@ graph TD
     class F1,F2,F3,F4,F5,F6,F7 highlight;
     class UC1,UC2,UC3,UC4 user;
     class S1,S2,S3 cmd;
-
+```
 
 ## Vision
 
