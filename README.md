@@ -24,6 +24,9 @@ graph TD
         Assets["🖼️ logo/<br/>🖼️ Toolly.jpg<br/>🖼️ Toolly_logo.png"]
         HTML["🌐 index.html<br/>🌐 about.html<br/>🌐 learn-ai.html"]
         Code["📜 scripts.js<br/>📜 chatbot.js<br/>🎨 chatbot.css"]
+        
+        %% Invisible links to force vertical stacking
+        Docs ~~~ Assets ~~~ HTML ~~~ Code
     end
 
     %% Core Features Subgraph
@@ -36,6 +39,9 @@ graph TD
         F5["📊 Insightful Analytics"]
         F6["🛠️ Intelligent Refactoring"]
         F7["📚 Integrated Docs"]
+        
+        %% Invisible links to force vertical stacking
+        F1 ~~~ F2 ~~~ F3 ~~~ F4 ~~~ F5 ~~~ F6 ~~~ F7
     end
 
     %% Use Cases Subgraph
@@ -45,12 +51,20 @@ graph TD
         UC2["⚙️ Backend Engineers"]
         UC3["🚀 DevOps Specialists"]
         UC4["🤝 Open Source Contributors"]
+        
+        %% Invisible links to force vertical stacking
+        UC1 ~~~ UC2 ~~~ UC3 ~~~ UC4
     end
 
     %% Quick Start Subgraph
     subgraph QuickStart [⚡ Quick Start Workflow]
-        direction LR
-        S1["Clone Repo"] --> S2["npm install"] --> S3["toolly --help"]
+        direction TB
+        S1["1. Clone Repo"]
+        S2["2. npm install"]
+        S3["3. toolly --help"]
+        
+        %% Visible links for workflow
+        S1 --> S2 --> S3
     end
 
     %% Node Connections
