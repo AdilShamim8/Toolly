@@ -183,7 +183,6 @@ Your ideas fuel this project! Whether you find a bug, dream up a new feature, or
 Let's build the future—together.
 
 ##  License
-
 Released under the **MIT License**. See the [LICENSE](https://www.google.com/search?q=./LICENSE) file for details.
 
 
