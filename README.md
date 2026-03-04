@@ -185,7 +185,6 @@ Let's build the future—together.
 ##  License
 Released under the **MIT License**. See the [LICENSE](https://www.google.com/search?q=./LICENSE) file for details.
 
-
 <div align="center">
 <i>Designed and built with by <a href="https://adilshamim.me/">Adil Shamim</a></i>
 
