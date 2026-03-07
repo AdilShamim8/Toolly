@@ -130,7 +130,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="chatbot.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
-    <link rel="icon" href="logo/Toolly_logo.png" type="image/svg+xml">
+    <link rel="icon" href="logo/Toolly_logo.png" type="image/png">
 </head>
 <body>
     <!-- Loading Animation with improved performance -->
@@ -141,18 +141,6 @@
         </div>
     </div>
 
-    <script>
-    // Inline critical script to handle loading state
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-            document.getElementById('loadingOverlay').style.opacity = '0';
-            setTimeout(function() {
-                document.getElementById('loadingOverlay').style.display = 'none';
-            }, 300);
-        }, 500);
-    });
-    </script>
-    
     <button class="sidebar-toggle" id="sidebarToggle" aria-label="Open sidebar">
         <i class="fas fa-bars"></i>
     </button>
@@ -185,10 +173,10 @@
                     <li data-category="life-assistant">Life Assistant</li>
                 </ul>
             </nav>
-            <nav class="sidebar-categories" style="margin-top: 1.5rem;">
+            <nav class="sidebar-categories sidebar-nav">
                 <h3>Navigation</h3>
                 <ul>
-                    <li style="cursor: pointer;"><a href="about.html" style="text-decoration: none; color: inherit; display: block;"><i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i>About Toolly</a></li>
+                    <li><a href="about.html" class="sidebar-nav-link"><i class="fas fa-info-circle sidebar-nav-icon"></i>About Toolly</a></li>
                 </ul>
             </nav>
             <div class="sidebar-about">
@@ -264,7 +252,7 @@
             <header class="main-header">
                 <div class="main-header-actions">
                     <div class="search-container">
-                        <input type="text" id="searchInput" placeholder="Search AI tools...">
+                        <input type="text" id="searchInput" placeholder="Search AI tools..." aria-label="Search AI tools">
                         <i class="fas fa-search"></i>
                     </div>
                     <select id="sortSelect" aria-label="Sort tools">
@@ -285,7 +273,7 @@
             <!-- Modal for adding/editing tools -->
             <div id="tool-modal" class="modal" style="display:none;">
               <div class="modal-content">
-                <span class="close" id="close-modal">&times;</span>
+                <button type="button" class="close" id="close-modal" aria-label="Close add/edit tool modal">&times;</button>
                 <h3 id="modal-title">Add/Edit Tool</h3>
                 <form id="tool-form">
                   <label for="tool-name">Tool Name:</label>
@@ -305,9 +293,9 @@
                 </form>
               </div>
             </div>
-            <section>
+            <section class="tools-catalog-section" aria-labelledby="featured-tools-heading">
                 <div class="section-header">
-                    <h2 class="featured-title">Featured Tools</h2>
+                    <h2 class="featured-title" id="featured-tools-heading">Featured Tools</h2>
                     <div class="view-options">
                         <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
                         <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
@@ -360,63 +348,6 @@
         
     </div>
 
-    <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwlHHaJzEW33JG0871QbwTGupOIjLanbMAtIHl7k_3F8CfeomhdIYSbHNLs42T8-j_3/exec' // Replace with your actual Google Apps Script URL
-
-        const form = document.getElementById('tool-submission-form')
-
-        form.addEventListener('submit', e => {
-            e.preventDefault()
-            
-            // Basic form validation
-            const toolName = document.getElementById('submissionName').value.trim()
-            const toolUrl = document.getElementById('submissionUrl').value.trim()
-            
-            if (!toolName || !toolUrl) {
-                alert('Please fill in all required fields.')
-                return
-            }
-            
-            // Show loading state
-            const submitBtn = document.getElementById('submissionSubmitBtn')
-            const originalText = submitBtn.textContent
-            submitBtn.textContent = 'Submitting...'
-            submitBtn.disabled = true
-            
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => {
-                if (response.ok) {
-                    // Show success message in the form status area
-                    const statusDiv = document.getElementById('submissionStatus')
-                    statusDiv.innerHTML = '<span style="color: green;"><i class="fas fa-check-circle"></i> Tool submitted successfully! Thank you for your contribution.</span>'
-                    form.reset()
-                    
-                    // Clear success message after 5 seconds
-                    setTimeout(() => {
-                        statusDiv.innerHTML = ''
-                    }, 5000)
-                } else {
-                    throw new Error('Submission failed')
-                }
-            })
-            .catch(error => {
-                console.error('Error!', error.message)
-                const statusDiv = document.getElementById('submissionStatus')
-                statusDiv.innerHTML = '<span style="color: red;"><i class="fas fa-exclamation-circle"></i> Sorry, there was an error submitting your form. Please try again.</span>'
-                
-                // Clear error message after 5 seconds
-                setTimeout(() => {
-                    statusDiv.innerHTML = ''
-                }, 5000)
-            })
-            .finally(() => {
-                // Reset button state
-                submitBtn.textContent = originalText
-                submitBtn.disabled = false
-            })
-        })
-    </script>
-    
     <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-section">
@@ -457,8 +388,6 @@
     </button>
     <!-- Defer non-critical JavaScript -->
     <script src="scripts.js" defer></script>
-    <script src="ios-enhancements.js" defer></script>
-    <script src="toolly-recommender.js" defer></script>
     <script src="chatbot.js" defer></script>
 </body>
 </html>
