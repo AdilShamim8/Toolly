@@ -1,5 +1,9 @@
 // Chatbot powered by Gemini-2.5-Flash API
 
+const CHATBOT_DEBUG = window.location.hostname === 'localhost' || localStorage.getItem('toolly_debug') === '1';
+const chatbotDebugLog = (...args) => { if (CHATBOT_DEBUG) console.log(...args); };
+const chatbotDebugWarn = (...args) => { if (CHATBOT_DEBUG) console.warn(...args); };
+
 class ToollyAIAdvisor {
     constructor() {
         this.isOpen = false;
@@ -150,7 +154,7 @@ class ToollyAIAdvisor {
         
         // Function to handle size button clicks
         const handleSizeButtonClick = function(size) {
-            console.log('Size button clicked:', size);
+            chatbotDebugLog('Size button clicked:', size);
             
             // Add transitioning class for smooth animation
             self.chatbotPanel.classList.add('size-transitioning');
@@ -183,8 +187,8 @@ class ToollyAIAdvisor {
             localStorage.setItem('chatbot_size', size);
             
             // Log the current state for debugging
-            console.log('Applied size class:', `size-${size}`);
-            console.log('Current classes:', self.chatbotPanel.className);
+            chatbotDebugLog('Applied size class:', `size-${size}`);
+            chatbotDebugLog('Current classes:', self.chatbotPanel.className);
             
             // Add a subtle visual feedback
             self.showSizeChangeConfirmation(size);
@@ -387,13 +391,13 @@ class ToollyAIAdvisor {
                              savedSize === 'large' ? largeBtn : defaultBtn;
             if (activeBtn) activeBtn.classList.add('active');
             
-            console.log('Restored size:', savedSize);
+            chatbotDebugLog('Restored size:', savedSize);
             
             // Restore saved custom dimensions if available (but prioritize size classes)
             if (localStorage.getItem('chatbot_width') && localStorage.getItem('chatbot_height') && !savedSize) {
                 this.chatbotPanel.style.width = localStorage.getItem('chatbot_width');
                 this.chatbotPanel.style.height = localStorage.getItem('chatbot_height');
-                console.log('Restored custom dimensions:', localStorage.getItem('chatbot_width'), 'x', localStorage.getItem('chatbot_height'));
+                chatbotDebugLog('Restored custom dimensions:', localStorage.getItem('chatbot_width'), 'x', localStorage.getItem('chatbot_height'));
             }
             
             // Show the panel with animation
@@ -947,7 +951,7 @@ URL: ${tool.url}
         this.toolsData.forEach(tool => {
             // Validate that tool has a proper URL from Data.json
             if (!tool.url) {
-                console.warn(`Tool ${tool.name} is missing URL in Data.json`);
+                chatbotDebugWarn(`Tool ${tool.name} is missing URL in Data.json`);
                 return;
             }
             
@@ -978,7 +982,7 @@ URL: ${tool.url}
                     return `<a href="${cleanUrl}" target="_blank" rel="noopener" class="tool-link">${match}</a>`;
                 } else {
                     // URL not in Data.json - return as plain text (no link)
-                    console.warn(`URL not in Data.json, not linking: ${cleanUrl}`);
+                    chatbotDebugWarn(`URL not in Data.json, not linking: ${cleanUrl}`);
                     return match;
                 }
             }

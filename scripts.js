@@ -3629,8 +3629,43 @@ const aiTools = [
         url: "https://hix.ai",
         badges: ["freemium", "featured"],
         tags: ["writing assistant", "content creation", "copilot", "marketing"]
+    },
+    {
+        name: "InvokeAI",
+        description: "A professional-grade, open-source creative engine for Stable Diffusion. It offers a highly advanced unified canvas for precise image editing, outpainting, and inpainting, giving users granular control over the enhancement process.",
+        categories: ["vision", "design"],
+        logo: "https://invoke.ai/favicon.ico",
+        url: "https://invoke.ai",
+        badges: ["open source", "featured"],
+        tags: ["image editing", "stable diffusion", "open source", "canvas"]
+    },
+    {
+        name: "Tripo3D",
+        description: "A leading, exceptionally fast text-to-3D and image-to-3D model generator. It's widely used in modern 3D modeling and design workflows to rapidly prototype game assets and figurines.",
+        categories: ["design", "vision"],
+        logo: "https://www.tripo3d.ai/favicon.ico",
+        url: "https://www.tripo3d.ai",
+        badges: ["freemium", "trending"],
+        tags: ["3d modeling", "text-to-3d", "game development", "design"]
+    },
+    {
+        name: "Vanna AI",
+        description: "An open-source Python-based AI SQL agent that allows you to chat with your database, turning natural language questions into complex SQL queries.",
+        categories: ["data-science", "coding"],
+        logo: "https://vanna.ai/favicon.ico",
+        url: "https://vanna.ai",
+        badges: ["open source", "featured"],
+        tags: ["data analysis", "sql", "database", "open source"]
     }
 ];
+
+// Non-critical diagnostics are gated behind a local debug flag.
+const TOOLLY_DEBUG = window.location.hostname === 'localhost' || localStorage.getItem('toolly_debug') === '1';
+const debugLog = (...args) => { if (TOOLLY_DEBUG) console.log(...args); };
+const debugInfo = (...args) => { if (TOOLLY_DEBUG) console.info(...args); };
+const debugWarn = (...args) => { if (TOOLLY_DEBUG) console.warn(...args); };
+const DEFAULT_TOOL_ICON = 'logo/favicon.svg';
+const openExternalLink = (url) => window.open(url, '_blank', 'noopener,noreferrer');
 
 // DOM Elements
 const toolsGrid = document.getElementById('toolsGrid');
@@ -3682,7 +3717,7 @@ const showMorePreferences = {
             localStorage.setItem('showMoreDescriptions', JSON.stringify(Array.from(this.descriptions.entries())));
             localStorage.setItem('showMoreTags', JSON.stringify(Array.from(this.tags.entries())));
         } catch (e) {
-            console.warn('Could not save Show More preferences:', e);
+            debugWarn('Could not save Show More preferences:', e);
         }
     },
     
@@ -3698,7 +3733,7 @@ const showMorePreferences = {
                 this.tags = new Map(JSON.parse(tags));
             }
         } catch (e) {
-            console.warn('Could not load Show More preferences:', e);
+            debugWarn('Could not load Show More preferences:', e);
         }
     },
     
@@ -3763,7 +3798,7 @@ function initializeHero() {
             
             // Make icon clickable to navigate to tool
             iconWrapper.addEventListener('click', () => {
-                window.open(tool.url, '_blank');
+                openExternalLink(tool.url);
             });
             
             heroToolIcons.appendChild(iconWrapper);
@@ -3783,7 +3818,7 @@ function initializeHero() {
             }
             
             // Optional: Add analytics tracking here
-            console.log('Hero CTA clicked - User exploring tools');
+            debugLog('Hero CTA clicked - User exploring tools');
         });
     }
 
@@ -3950,13 +3985,13 @@ function updateLoadMoreButton() {
 function loadMoreTools() {
     // Prevent double-loading
     if (isLoading) {
-        console.warn('Load already in progress');
+        debugWarn('Load already in progress');
         return;
     }
     
     const totalDisplayed = currentPage * itemsPerPage;
     if (totalDisplayed >= filteredTools.length) {
-        console.info('All tools already loaded');
+        debugInfo('All tools already loaded');
         return;
     }
     
@@ -3979,58 +4014,55 @@ function loadMoreTools() {
         loadMoreBtn.setAttribute('aria-busy', 'true');
         loadMoreBtn.setAttribute('aria-label', 'Loading more tools...');
         
-        // Simulate network delay for smooth UX (optional - remove in production if not needed)
-        setTimeout(() => {
-            try {
-                currentPage++;
-                
-                // Render next page without resetting
-                const startIndex = (currentPage - 1) * itemsPerPage;
-                const endIndex = Math.min(startIndex + itemsPerPage, filteredTools.length);
-                const toolsToRender = filteredTools.slice(startIndex, endIndex);
-                
-                // Validate data
-                if (!toolsToRender || toolsToRender.length === 0) {
-                    throw new Error('No tools to render');
-                }
-                
-                // Batch render
-                const batchSize = 10;
-                let currentIndex = 0;
-                
-                const renderBatch = () => {
-                    try {
-                        const fragment = document.createDocumentFragment();
-                        const batchEnd = Math.min(currentIndex + batchSize, toolsToRender.length);
-                        
-                        for (let i = currentIndex; i < batchEnd; i++) {
-                            const card = createToolCard(toolsToRender[i]);
-                            // Add staggered animation delay for smooth appearance
-                            card.style.animationDelay = `${(i % batchSize) * 0.05}s`;
-                            fragment.appendChild(card);
-                        }
-                        
-                        toolsGrid.appendChild(fragment);
-                        currentIndex = batchEnd;
-                        
-                        if (currentIndex < toolsToRender.length) {
-                            requestAnimationFrame(renderBatch);
-                        } else {
-                            // Complete loading successfully
-                            completeLoading(scrollY);
-                        }
-                    } catch (error) {
-                        console.error('Error rendering batch:', error);
-                        handleLoadingError(error, scrollY);
-                    }
-                };
-                
-                requestAnimationFrame(renderBatch);
-            } catch (error) {
-                console.error('Error preparing tools:', error);
-                handleLoadingError(error, scrollY);
+        try {
+            currentPage++;
+            
+            // Render next page without resetting
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = Math.min(startIndex + itemsPerPage, filteredTools.length);
+            const toolsToRender = filteredTools.slice(startIndex, endIndex);
+            
+            // Validate data
+            if (!toolsToRender || toolsToRender.length === 0) {
+                throw new Error('No tools to render');
             }
-        }, 300); // 300ms delay for smooth loading animation
+            
+            // Batch render
+            const batchSize = 10;
+            let currentIndex = 0;
+            
+            const renderBatch = () => {
+                try {
+                    const fragment = document.createDocumentFragment();
+                    const batchEnd = Math.min(currentIndex + batchSize, toolsToRender.length);
+                    
+                    for (let i = currentIndex; i < batchEnd; i++) {
+                        const card = createToolCard(toolsToRender[i]);
+                        // Add staggered animation delay for smooth appearance
+                        card.style.animationDelay = `${(i % batchSize) * 0.05}s`;
+                        fragment.appendChild(card);
+                    }
+                    
+                    toolsGrid.appendChild(fragment);
+                    currentIndex = batchEnd;
+                    
+                    if (currentIndex < toolsToRender.length) {
+                        requestAnimationFrame(renderBatch);
+                    } else {
+                        // Complete loading successfully
+                        completeLoading(scrollY);
+                    }
+                } catch (error) {
+                    console.error('Error rendering batch:', error);
+                    handleLoadingError(error, scrollY);
+                }
+            };
+            
+            requestAnimationFrame(renderBatch);
+        } catch (error) {
+            console.error('Error preparing tools:', error);
+            handleLoadingError(error, scrollY);
+        }
     } catch (error) {
         console.error('Error initiating load:', error);
         handleLoadingError(error, window.scrollY);
@@ -4071,7 +4103,7 @@ function completeLoading(scrollY) {
     window.scrollTo(0, scrollY);
     
     // Log success
-    console.info(`Successfully loaded ${itemsPerPage} more tools`);
+    debugInfo(`Successfully loaded ${itemsPerPage} more tools`);
 }
 
 // Helper function to handle loading errors
@@ -4221,6 +4253,7 @@ function createToolCard(tool) {
         link.className = 'tool-link';
         link.href = tool.url;
         link.target = '_blank';
+        link.rel = 'noopener noreferrer';
         link.textContent = 'Visit Site';
         footer.appendChild(link);
         
@@ -4362,6 +4395,7 @@ function createToolCard(tool) {
         link.className = 'tool-link';
         link.href = tool.url;
         link.target = '_blank';
+        link.rel = 'noopener noreferrer';
         link.textContent = 'Visit Site';
         card.appendChild(link);
     }
@@ -4558,9 +4592,14 @@ if (categoryList) {
 }
 // Search
 if (searchInput) {
+    let searchDebounceTimer;
     searchInput.addEventListener('input', e => {
-        currentSearch = e.target.value.toLowerCase();
-        renderTools();
+        clearTimeout(searchDebounceTimer);
+        const nextSearch = e.target.value.toLowerCase();
+        searchDebounceTimer = setTimeout(() => {
+            currentSearch = nextSearch;
+            renderTools();
+        }, 120);
     });
 }
 // Sort
@@ -4738,12 +4777,12 @@ window.addEventListener('load', () => {
     window.imageLoadMetrics.duration = Date.now() - window.imageLoadMetrics.start;
     
     // Log image loading performance
-    console.log('[Image Perf] Total loaded:', window.imageLoadSuccess);
-    console.log('[Image Perf] Errors:', window.imageLoadErrors.length);
-    console.log('[Image Perf] Load duration:', window.imageLoadMetrics.duration + 'ms');
+    debugLog('[Image Perf] Total loaded:', window.imageLoadSuccess);
+    debugLog('[Image Perf] Errors:', window.imageLoadErrors.length);
+    debugLog('[Image Perf] Load duration:', window.imageLoadMetrics.duration + 'ms');
     
     if (window.imageLoadErrors.length > 0) {
-        console.warn('[Image Perf] Failed images:', window.imageLoadErrors);
+        debugWarn('[Image Perf] Failed images:', window.imageLoadErrors);
     }
 });
 
@@ -4833,7 +4872,7 @@ async function discoverFavicon(url) {
             if (ok) return cand;
         }
     } catch(e) {
-        console.warn('discoverFavicon error', e);
+        debugWarn('discoverFavicon error', e);
     }
     return null;
 }
@@ -4942,9 +4981,9 @@ let editMode = false;function renderMyTools() {
     img.loading = 'lazy'; // Optimize LCP: lazy load
     img.width = 48; // Prevent CLS: explicit dimensions
     img.height = 48;
-    img.onerror = () => {
-      img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iMjQiIGZpbGw9IiNmMWY1ZjkiLz4KPHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4PSIxMiIgeT0iMTIiPgo8cGF0aCBkPSJNMTIgMkw2IDhMMTIgMTRMMTggOEwxMiAyWiIgZmlsbD0iIzk0YTNiOCIvPgo8L3N2Zz4KPC9zdmc+';
-    };
+            img.onerror = () => {
+            img.src = DEFAULT_TOOL_ICON;
+        };
     
     const nameSpan = document.createElement('span');
     nameSpan.className = 'tool-name';
@@ -5013,7 +5052,7 @@ let editMode = false;function renderMyTools() {
         }
       };
     } else if (tool.link) {
-      item.onclick = () => window.open(tool.link, '_blank');
+    item.onclick = () => openExternalLink(tool.link);
       item.style.cursor = 'pointer';
     }
     
@@ -5093,10 +5132,9 @@ if (closeModalBtn && modal && editBtn && toolForm) {
     submitBtn.textContent = 'Saving...';
     submitBtn.disabled = true;
     
-    setTimeout(() => {
-      const name = nameInput.value.trim();
-      const icon = iconInput.value.trim();
-      const link = linkInput.value.trim();
+        const name = nameInput.value.trim();
+        const icon = iconInput.value.trim();
+        const link = linkInput.value.trim();
       
       if (!name) {
         alert('Please enter a tool name');
@@ -5132,7 +5170,7 @@ if (closeModalBtn && modal && editBtn && toolForm) {
                     submitBtn.textContent = 'Saved!';
                     submitBtn.style.background = '#4ade80';
                     setTimeout(() => { submitBtn.textContent = originalText; submitBtn.style.background = ''; submitBtn.disabled = false; }, 1000);
-                    console.log('Tool saved successfully:', tool);
+                    debugLog('Tool saved successfully:', tool);
                 } catch (error) {
                     console.error('Error saving tool:', error);
                     alert('Failed to save tool. Please try again.');
@@ -5145,21 +5183,19 @@ if (closeModalBtn && modal && editBtn && toolForm) {
                 if (link) {
                     // Attempt auto fetch synchronously
                         discoverFavicon(link).then(found => {
-                            finalIcon = found || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIGZpbGw9IiNmMWY1ZjkiIHJ4PSIxNCIvPjx0ZXh0IHg9IjM2IiB5PSI0MiIgZm9udC1mYW1pbHk9InN5c3RlbS1VSSIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzk0YTNiOCI+Tk8gSUNPTjwvdGV4dD48L3N2Zz4=';
+                            finalIcon = found || DEFAULT_TOOL_ICON;
                             if (iconInput) iconInput.value = finalIcon;
                             updateIconPreview(finalIcon);
                             proceed();
                         });
                     return; // proceed will be called async
                 } else {
-                    finalIcon = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIHZpZXdCb3g9IjAgMCA3MiA3MiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNzIiIGhlaWdodD0iNzIiIGZpbGw9IiNmMWY1ZjkiIHJ4PSIxNCIvPjx0ZXh0IHg9IjM2IiB5PSI0MiIgZm9udC1mYW1pbHk9InN5c3RlbS1VSSIgZm9udC1zaXplPSIxMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzk0YTNiOCI+Tk8gSUNPTjwvdGV4dD48L3N2Zz4=';
+                    finalIcon = DEFAULT_TOOL_ICON;
                 }
             }
 
             // Continue if icon already present
             proceed();
-      
-        }, 300); // Small delay for better UX
   };
 
   // Initial render
@@ -5172,6 +5208,7 @@ if (closeModalBtn && modal && editBtn && toolForm) {
 (function(){
     const form = document.getElementById('tool-submission-form');
     if(!form) return; // Page may not have form
+    const submissionEndpoint = 'https://script.google.com/macros/s/AKfycbwlHHaJzEW33JG0871QbwTGupOIjLanbMAtIHl7k_3F8CfeomhdIYSbHNLs42T8-j_3/exec';
     const nameInput = document.getElementById('submissionName');
     const urlInput = document.getElementById('submissionUrl');
     const errorName = document.getElementById('errorName');
@@ -5220,7 +5257,7 @@ if (closeModalBtn && modal && editBtn && toolForm) {
     nameInput.addEventListener('input', ()=>{ if(errorName.textContent) validateName(); });
     urlInput.addEventListener('input', ()=>{ if(errorUrl.textContent) validateUrl(); });
 
-    form.addEventListener('submit', function(e){
+    form.addEventListener('submit', async function(e){
         e.preventDefault();
         statusEl.textContent='';
         statusEl.className='form-status';
@@ -5235,18 +5272,34 @@ if (closeModalBtn && modal && editBtn && toolForm) {
         submitBtn.disabled = true;
         const originalText = submitBtn.textContent;
         submitBtn.textContent='Submitting...';
+        try {
+            const response = await fetch(submissionEndpoint, {
+                method: 'POST',
+                body: new FormData(form)
+            });
 
-        // Simulate async submission (could be replaced with fetch to backend / form service)
-        setTimeout(()=>{
-            submitBtn.textContent='Submitted!';
-            statusEl.textContent='Thank you! Your tool has been submitted for review.';
+            if (!response.ok) {
+                throw new Error(`Submission failed with status ${response.status}`);
+            }
+
+            submitBtn.textContent = 'Submitted!';
+            statusEl.textContent = 'Thank you! Your tool has been submitted for review.';
             statusEl.classList.add('success');
-            // Store locally so user sees their submission (optional queue)
-            const submissions = JSON.parse(localStorage.getItem('pendingSubmissions')||'[]');
-            submissions.push({ name: nameInput.value.trim(), url: urlInput.value.trim(), ts: Date.now() });
-            localStorage.setItem('pendingSubmissions', JSON.stringify(submissions));
-            setTimeout(()=>{ submitBtn.disabled=false; submitBtn.textContent=originalText; form.reset(); }, 1600);
-        }, 900);
+            form.reset();
+
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                statusEl.textContent = '';
+                statusEl.className = 'form-status';
+            }, 2000);
+        } catch (error) {
+            console.error('Submission error:', error);
+            statusEl.textContent = 'Sorry, there was an error submitting your form. Please try again.';
+            statusEl.classList.add('error');
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        }
     });
 
     resetBtn.addEventListener('click', ()=>{

@@ -33,6 +33,15 @@ html {
     --footer-bg: #1e293b;
     --footer-text: #e2e8f0;
     --footer-link: #B0DB9C;
+    --content-max-width: 1320px;
+    --content-gap: 2rem;
+    --card-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    --card-shadow-hover: 0 14px 34px rgba(15, 23, 42, 0.12);
+    --bg-color: var(--background-color);
+    --border-color: var(--input-border);
+    --heading-color: var(--text-color);
+    --text-muted: var(--muted-text);
+    --primary: var(--primary-color);
 }
 
 [data-theme="dark"] {
@@ -53,6 +62,13 @@ html {
     --footer-bg: #0f172a;
     --footer-text: #e2e8f0;
     --footer-link: #B0DB9C;
+    --card-shadow: 0 10px 30px rgba(2, 6, 23, 0.35);
+    --card-shadow-hover: 0 16px 36px rgba(2, 6, 23, 0.5);
+    --bg-color: var(--background-color);
+    --border-color: var(--input-border);
+    --heading-color: var(--text-color);
+    --text-muted: var(--muted-text);
+    --primary: var(--primary-color);
 }
 
 html,
@@ -358,6 +374,9 @@ body {
   position: absolute;
   top: 16px;
   right: 20px;
+    border: none;
+    background: transparent;
+    padding: 0;
   font-size: 1.5rem;
   color: var(--muted-text);
   cursor: pointer;
@@ -493,6 +512,21 @@ html {
     transition: var(--transition);
     font-size: 1rem;
 }
+
+.sidebar-nav {
+    margin-top: 1.5rem;
+}
+
+.sidebar-nav-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.sidebar-nav-icon {
+    margin-right: 0.5rem;
+}
+
 .sidebar-categories li.active,
 .sidebar-categories li:hover {
     background: var(--primary-color);
@@ -534,10 +568,18 @@ html {
 .main-content {
     flex: 1;
     padding: 2.5rem 2rem 2rem 2rem;
-    max-width: 100%;
+    max-width: var(--content-max-width);
     margin: 0 auto;
     box-sizing: border-box;
     width: 100%;
+}
+
+.main-content > section {
+    margin-bottom: var(--content-gap);
+}
+
+.main-content > section:last-of-type {
+    margin-bottom: 0;
 }
 
 /* ===== Hero Section - Redesigned ===== */
@@ -567,7 +609,7 @@ html {
 .hero-content {
     position: relative;
     z-index: 1;
-    max-width: 900px;
+    max-width: min(1200px, 100%);
     margin: 0 auto;
     text-align: center;
 }
@@ -599,10 +641,44 @@ html {
     color: var(--muted-text);
     line-height: 1.7;
     margin-bottom: 2.5rem;
-    max-width: 720px;
+    max-width: 980px;
     margin-left: auto;
     margin-right: auto;
     font-weight: 400;
+}
+
+/* Desktop: reduce side gutters so hero/content fills the viewport better */
+@media (min-width: 1200px) {
+    .main-content {
+        max-width: none;
+        margin: 0;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .hero-section {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-subheadline {
+        max-width: 1050px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .main-content {
+        padding-left: 0.9rem;
+        padding-right: 0.9rem;
+    }
+
+    .tools-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
 }
 
 /* Hero CTA Button */
@@ -832,7 +908,7 @@ html {
 
 /* ===== Search & Filter Section ===== */
 .main-header {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 .main-header-top {
     display: flex;
@@ -903,25 +979,26 @@ html {
 }
 
 .main-header-actions {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) auto auto;
+    align-items: stretch;
     gap: 1rem;
     width: 100%;
-    flex-wrap: wrap;
     background: var(--card-bg);
-    padding: 1.5rem;
+    padding: 1.1rem;
     border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
+    box-shadow: var(--card-shadow);
     border: 1px solid var(--input-border);
 }
 .search-container {
     position: relative;
-    flex: 1;
+    min-width: 0;
     width: 100%;
     box-sizing: border-box;
 }
 .search-container input {
     width: 100%;
+    min-height: 46px;
     padding: 0.75rem 1rem 0.75rem 2.5rem;
     border: 2px solid var(--input-border);
     border-radius: var(--border-radius);
@@ -943,6 +1020,8 @@ html {
     color: #a1a1aa;
 }
 #sortSelect {
+    min-height: 46px;
+    min-width: 140px;
     padding: 0.7rem 1.2rem;
     border-radius: var(--border-radius);
     border: 2px solid var(--input-border);
@@ -957,7 +1036,13 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.15rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--input-border);
+}
+
+.tools-catalog-section {
+    scroll-margin-top: 2rem;
 }
 
 .featured-title {
@@ -993,8 +1078,8 @@ html {
 
 .tools-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.25rem;
     width: 100%;
     box-sizing: border-box;
     /* Stretch items to equal height per row so action buttons align */
@@ -1241,8 +1326,9 @@ html {
 
 .tool-card {
     background-color: var(--card-bg);
-    border-radius: 8px;
-    padding: 1.5rem;
+    border-radius: 14px;
+    padding: 1.2rem;
+    border: 1px solid var(--input-border);
     box-shadow: var(--card-shadow);
     transition: transform 0.2s, box-shadow 0.2s, opacity 0.3s ease-in;
     display: flex;
@@ -1266,7 +1352,7 @@ html {
 }
 
 .tool-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
     box-shadow: var(--card-shadow-hover);
 }
 
@@ -1401,7 +1487,7 @@ html {
 .tool-header {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 0.9rem;
 }
 .tool-name {
     font-size: 1rem;
@@ -1431,10 +1517,10 @@ html {
 
 .tool-description {
     color: var(--muted-text);
-    font-size: 0.85rem;
-    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
     flex-grow: 1;
-    line-height: 1.5;
+    line-height: 1.55;
     transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
@@ -1882,6 +1968,10 @@ html {
         width: 100%;
         margin-top: 1rem;
     }
+
+    .main-header-actions {
+        grid-template-columns: 1fr;
+    }
     
     .sort-container {
         margin-top: 1rem;
@@ -2218,7 +2308,7 @@ html {
         width: 100%;
     }
     .main-header-actions {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         width: 100%;
         gap: 0.5rem;
     }
