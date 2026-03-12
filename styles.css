@@ -999,7 +999,7 @@ html {
 .search-container input {
     width: 100%;
     min-height: 46px;
-    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    padding: 0.75rem 2.8rem 0.75rem 2.5rem;
     border: 2px solid var(--input-border);
     border-radius: var(--border-radius);
     font-size: 1rem;
@@ -1012,12 +1012,40 @@ html {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(176, 219, 156, 0.2);
 }
-.search-container i {
+.search-container > i {
     position: absolute;
     left: 1rem;
     top: 50%;
     transform: translateY(-50%);
     color: #a1a1aa;
+}
+
+.search-clear-btn {
+    position: absolute;
+    right: 0.55rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.8rem;
+    height: 1.8rem;
+    border: none;
+    border-radius: 999px;
+    background: var(--tag-bg);
+    color: var(--muted-text);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.search-clear-btn:hover {
+    color: var(--text-color);
+    background: var(--input-border);
+}
+
+.search-clear-btn:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
 }
 #sortSelect {
     min-height: 46px;
