@@ -3670,6 +3670,7 @@ const openExternalLink = (url) => window.open(url, '_blank', 'noopener,noreferre
 // DOM Elements
 const toolsGrid = document.getElementById('toolsGrid');
 const searchInput = document.getElementById('searchInput');
+const clearSearchBtn = document.getElementById('clearSearchBtn');
 const backToTopButton = document.getElementById('backToTop');
 const toolCount = document.getElementById('toolCount');
 const totalToolCount = document.getElementById('totalToolCount');
@@ -3706,6 +3707,86 @@ const categoryGroups = {
     developer: ['coding', 'developer-tools'],
     productivity: ['productivity', 'automation']
 };
+
+const browseStatePreferences = {
+    key: 'toollyBrowseState',
+
+    save() {
+        try {
+            const payload = {
+                category: currentCategory,
+                categoryGroup: currentCategoryGroup,
+                sort: currentSort
+            };
+            localStorage.setItem(this.key, JSON.stringify(payload));
+        } catch (e) {
+            debugWarn('Could not save browse state:', e);
+        }
+    },
+
+    load() {
+        try {
+            const raw = localStorage.getItem(this.key);
+            if (!raw) return null;
+            return JSON.parse(raw);
+        } catch (e) {
+            debugWarn('Could not load browse state:', e);
+            return null;
+        }
+    }
+};
+
+function applySavedBrowseState() {
+    const state = browseStatePreferences.load();
+    if (!state) return;
+
+    const nextSort = typeof state.sort === 'string' ? state.sort : 'default';
+    const nextCategory = typeof state.category === 'string' ? state.category : 'all';
+    const nextCategoryGroup = typeof state.categoryGroup === 'string' ? state.categoryGroup : null;
+
+    if (sortSelect && Array.from(sortSelect.options).some(opt => opt.value === nextSort)) {
+        currentSort = nextSort;
+        sortSelect.value = nextSort;
+    }
+
+    if (nextCategoryGroup && categoryGroups[nextCategoryGroup]) {
+        currentCategoryGroup = nextCategoryGroup;
+        currentCategory = 'all';
+    } else if (categoryList && categoryList.querySelector(`li[data-category="${nextCategory}"]`)) {
+        currentCategoryGroup = null;
+        currentCategory = nextCategory;
+    } else {
+        currentCategoryGroup = null;
+        currentCategory = 'all';
+    }
+
+    isAllToolsCollapsed = false;
+
+    if (categoryList) {
+        categoryList.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+        const activeCategory = currentCategoryGroup
+            ? categoryList.querySelector('li[data-category="all"]')
+            : categoryList.querySelector(`li[data-category="${currentCategory}"]`);
+        if (activeCategory) activeCategory.classList.add('active');
+    }
+
+    const quickCats = document.querySelectorAll('.hero-quick-categories .category-pill');
+    if (quickCats && quickCats.length) {
+        quickCats.forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-pressed', 'false');
+        });
+
+        const quickTarget = currentCategoryGroup || 'all';
+        const activeQuick = document.querySelector(`.hero-quick-categories .category-pill[data-group="${quickTarget}"]`) ||
+            document.querySelector('.hero-quick-categories .category-pill[data-group="all"]');
+
+        if (activeQuick) {
+            activeQuick.classList.add('active');
+            activeQuick.setAttribute('aria-pressed', 'true');
+        }
+    }
+}
 
 // Show More preferences storage
 const showMorePreferences = {
@@ -3852,6 +3933,7 @@ function initializeHero() {
                 updateCategoryListVisibility();
 
                 // Re-render
+                browseStatePreferences.save();
                 renderTools();
                 // Scroll to tools grid
                 const toolsSection = document.querySelector('.tools-grid');
@@ -4586,6 +4668,7 @@ if (categoryList) {
             currentCategoryGroup = null;
             isAllToolsCollapsed = false;
             updateCategoryListVisibility();
+            browseStatePreferences.save();
             renderTools();
         }
     });
@@ -4593,19 +4676,40 @@ if (categoryList) {
 // Search
 if (searchInput) {
     let searchDebounceTimer;
+
+    const updateClearSearchVisibility = () => {
+        if (!clearSearchBtn) return;
+        clearSearchBtn.hidden = searchInput.value.trim().length === 0;
+    };
+
+    updateClearSearchVisibility();
+
     searchInput.addEventListener('input', e => {
         clearTimeout(searchDebounceTimer);
         const nextSearch = e.target.value.toLowerCase();
+        updateClearSearchVisibility();
         searchDebounceTimer = setTimeout(() => {
             currentSearch = nextSearch;
             renderTools();
         }, 120);
     });
+
+    if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', () => {
+            clearTimeout(searchDebounceTimer);
+            searchInput.value = '';
+            currentSearch = '';
+            updateClearSearchVisibility();
+            renderTools();
+            searchInput.focus();
+        });
+    }
 }
 // Sort
 if (sortSelect) {
     sortSelect.addEventListener('change', e => {
         currentSort = e.target.value;
+        browseStatePreferences.save();
         renderTools();
     });
 }
@@ -4620,6 +4724,31 @@ if (loadMoreBtn) {
 
 // Keyboard shortcuts for accessibility
 document.addEventListener('keydown', (e) => {
+    const activeEl = document.activeElement;
+    const activeTag = activeEl ? activeEl.tagName : '';
+    const isTypingContext = !!activeEl && (
+        activeEl.isContentEditable ||
+        activeTag === 'INPUT' ||
+        activeTag === 'TEXTAREA' ||
+        activeTag === 'SELECT'
+    );
+
+    // '/' focuses search when user is not typing in an editable field
+    if (
+        e.key === '/' &&
+        !e.ctrlKey &&
+        !e.metaKey &&
+        !e.altKey &&
+        !e.shiftKey &&
+        !e.repeat &&
+        !isTypingContext &&
+        searchInput
+    ) {
+        e.preventDefault();
+        searchInput.focus();
+        return;
+    }
+
     // Ctrl/Cmd + M to load more tools
     if ((e.ctrlKey || e.metaKey) && e.key === 'm') {
         e.preventDefault();
@@ -4801,6 +4930,7 @@ function boot() {
     }, 300);
     initializeStats();
     initializeHero(); // Initialize hero section
+    applySavedBrowseState();
     isAllToolsCollapsed = false;
     updateCategoryListVisibility();
     renderTools();
