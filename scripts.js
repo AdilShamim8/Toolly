@@ -3670,6 +3670,7 @@ const openExternalLink = (url) => window.open(url, '_blank', 'noopener,noreferre
 // DOM Elements
 const toolsGrid = document.getElementById('toolsGrid');
 const searchInput = document.getElementById('searchInput');
+const clearSearchBtn = document.getElementById('clearSearchBtn');
 const backToTopButton = document.getElementById('backToTop');
 const toolCount = document.getElementById('toolCount');
 const totalToolCount = document.getElementById('totalToolCount');
@@ -4593,14 +4594,34 @@ if (categoryList) {
 // Search
 if (searchInput) {
     let searchDebounceTimer;
+
+    const updateClearSearchVisibility = () => {
+        if (!clearSearchBtn) return;
+        clearSearchBtn.hidden = searchInput.value.trim().length === 0;
+    };
+
+    updateClearSearchVisibility();
+
     searchInput.addEventListener('input', e => {
         clearTimeout(searchDebounceTimer);
         const nextSearch = e.target.value.toLowerCase();
+        updateClearSearchVisibility();
         searchDebounceTimer = setTimeout(() => {
             currentSearch = nextSearch;
             renderTools();
         }, 120);
     });
+
+    if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', () => {
+            clearTimeout(searchDebounceTimer);
+            searchInput.value = '';
+            currentSearch = '';
+            updateClearSearchVisibility();
+            renderTools();
+            searchInput.focus();
+        });
+    }
 }
 // Sort
 if (sortSelect) {
