@@ -21,13 +21,33 @@ class ToollyAIAdvisor {
         // Add event listeners
         this.addEventListeners();
         
-        // Get tools data from the global aiTools variable
-        this.toolsData = window.aiTools || [];
+        // Get tools data from global catalog (works for both lexical globals and window properties)
+        this.toolsData = this.loadToolsData();
         
         // Initialize deterministic recommender
         if (typeof ToollyRecommender !== 'undefined') {
             this.recommender = new ToollyRecommender(this.toolsData);
         }
+    }
+
+    loadToolsData() {
+        let catalog = [];
+
+        // Preferred: lexical global from scripts.js (const aiTools = [...])
+        if (typeof aiTools !== 'undefined' && Array.isArray(aiTools)) {
+            catalog = aiTools;
+        }
+
+        // Fallback: window/global property if present
+        if ((!catalog || catalog.length === 0) && Array.isArray(window.aiTools)) {
+            catalog = window.aiTools;
+        }
+
+        if (!Array.isArray(catalog)) {
+            return [];
+        }
+
+        return catalog;
     }
 
     createChatbotUI() {
@@ -49,7 +69,7 @@ class ToollyAIAdvisor {
                     <div class="chatbot-model-selector">
                         <button class="model-current" id="modelCurrentBtn" aria-haspopup="true" aria-expanded="false">
                             <img src="logo/Toolly_logo.png" alt="model icon" class="model-icon">
-                            <span class="model-name">Toolly (Local)</span>
+                            <span class="model-name">Toolly Local</span>
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="model-menu" id="modelMenu" role="menu" aria-label="Model selection">
@@ -64,9 +84,6 @@ class ToollyAIAdvisor {
                                 <button class="model-item model-item-disabled" data-model="gpt5-mini" data-available="false" title="Not integrated yet"><i class="fas fa-circle-notch model-icon"></i><span>GPT-5 mini</span><i class="fas fa-lock model-lock-icon"></i></button>
                                 <button class="model-item model-item-disabled" data-model="claude-haiku" data-available="false" title="Not integrated yet"><i class="fas fa-feather-alt model-icon"></i><span>Claude Haiku 4.5</span><i class="fas fa-lock model-lock-icon"></i></button>
                                 <button class="model-item model-item-disabled" data-model="qwen-max" data-available="false" title="Not integrated yet"><i class="fas fa-brain model-icon"></i><span>Qwen3-Max</span><i class="fas fa-lock model-lock-icon"></i></button>
-                            </div>
-                            <div class="model-section">
-                                <div class="model-section-title">Coming Soon</div>
                                 <button class="model-item model-item-disabled" data-model="gpt5-2" data-available="false" title="Not integrated yet"><i class="fas fa-star model-icon"></i><span>GPT-5.2</span><i class="fas fa-lock model-lock-icon"></i></button>
                                 <button class="model-item model-item-disabled" data-model="claude-sonnet" data-available="false" title="Not integrated yet"><i class="fas fa-pen-nib model-icon"></i><span>Claude Sonnet 4.5</span><i class="fas fa-lock model-lock-icon"></i></button>
                                 <button class="model-item model-item-disabled" data-model="grok4" data-available="false" title="Not integrated yet"><i class="fas fa-asterisk model-icon"></i><span>Grok 4</span><i class="fas fa-lock model-lock-icon"></i></button>
@@ -204,7 +221,7 @@ class ToollyAIAdvisor {
         if (largeBtn) largeBtn.onclick = function() { handleSizeButtonClick.call(this, 'large'); };
 
         // Model selector interactions
-        if (this.modelCurrentBtn) {
+        if (this.modelCurrentBtn && this.modelMenu) {
             this.modelCurrentBtn.addEventListener('click', () => {
                 const expanded = this.modelCurrentBtn.getAttribute('aria-expanded') === 'true';
                 this.modelCurrentBtn.setAttribute('aria-expanded', (!expanded).toString());
@@ -213,31 +230,46 @@ class ToollyAIAdvisor {
         }
 
         // Apply initial model from localStorage
+        this.normalizeCurrentModel();
         this.updateModelUI(this.currentModel);
 
         // Handle model item selection
         this.modelItems.forEach(item => {
             item.addEventListener('click', () => {
-                const isAvailable = item.getAttribute('data-available') === 'true';
+                const selected = item.getAttribute('data-model');
+                if (!selected) return;
+
+                const isAvailable = this.isModelAvailable(selected);
                 if (!isAvailable) {
                     this.addBotMessage('That model is not integrated yet. Use Toolly Local for free recommendations, or Gemini with your own API key.');
                     return;
                 }
 
-                const selected = item.getAttribute('data-model');
                 this.currentModel = selected;
                 localStorage.setItem('chatbot_model', selected);
                 this.updateModelUI(selected);
                 // Close menu
-                if (this.modelCurrentBtn) this.modelCurrentBtn.setAttribute('aria-expanded', 'false');
-                if (this.modelMenu) this.modelMenu.style.display = 'none';
+                if (this.modelCurrentBtn) {
+                    this.modelCurrentBtn.setAttribute('aria-expanded', 'false');
+                }
+                if (this.modelMenu) {
+                    this.modelMenu.style.display = 'none';
+                }
             });
         });
 
         // Close model menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!this.modelMenu) return;
+            if (!this.modelMenu || !this.modelCurrentBtn) return;
             if (!this.modelMenu.contains(e.target) && !this.modelCurrentBtn.contains(e.target)) {
+                this.modelMenu.style.display = 'none';
+                this.modelCurrentBtn.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Escape closes model menu when open
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modelMenu && this.modelCurrentBtn && this.modelMenu.style.display === 'block') {
                 this.modelMenu.style.display = 'none';
                 this.modelCurrentBtn.setAttribute('aria-expanded', 'false');
             }
@@ -1132,40 +1164,65 @@ ToollyAIAdvisor.prototype.getGeminiModelId = function() {
     return map[this.currentModel] || 'gemini-3-flash-preview';
 };
 
-ToollyAIAdvisor.prototype.updateModelUI = function(modelKey) {
-    const nameMap = {
-        'toolly-local': 'Toolly Local',
-        'gemini-flash': 'Gemini 3 Flash Preview',
-        'gemini-pro': 'Gemini Pro',
-        'gpt5-mini': 'GPT-5 mini',
-        'gpt5-2': 'GPT-5.2',
-        'claude-haiku': 'Claude Haiku 4.5',
-        'claude-sonnet': 'Claude Sonnet 4.5',
-        'qwen-max': 'Qwen3-Max',
-        'grok4': 'Grok 4',
-        'deepseek-v32': 'DeepSeek v3.2'
+ToollyAIAdvisor.prototype.getModelCatalog = function() {
+    return {
+        'toolly-local': { label: 'Toolly Local', available: true },
+        'gemini-flash': { label: 'Gemini 3 Flash Preview', available: true },
+        'gemini-pro': { label: 'Gemini 3 Pro', available: true },
+        'gpt5-mini': { label: 'GPT-5 mini', available: false },
+        'gpt5-2': { label: 'GPT-5.2', available: false },
+        'claude-haiku': { label: 'Claude Haiku 4.5', available: false },
+        'claude-sonnet': { label: 'Claude Sonnet 4.5', available: false },
+        'qwen-max': { label: 'Qwen3-Max', available: false },
+        'grok4': { label: 'Grok 4', available: false },
+        'deepseek-v32': { label: 'DeepSeek v3.2', available: false }
     };
-    const label = nameMap[modelKey] || 'Toolly (Local)';
+};
+
+ToollyAIAdvisor.prototype.isModelAvailable = function(modelKey) {
+    const catalog = this.getModelCatalog();
+    return !!(catalog[modelKey] && catalog[modelKey].available);
+};
+
+ToollyAIAdvisor.prototype.normalizeCurrentModel = function() {
+    if (!this.isModelAvailable(this.currentModel)) {
+        this.currentModel = 'toolly-local';
+        localStorage.setItem('chatbot_model', this.currentModel);
+    }
+};
+
+ToollyAIAdvisor.prototype.updateModelUI = function(modelKey) {
+    const catalog = this.getModelCatalog();
+    const safeModelKey = (catalog[modelKey] && catalog[modelKey].available) ? modelKey : 'toolly-local';
+    const label = catalog[safeModelKey].label;
+
+    if (safeModelKey !== modelKey) {
+        this.currentModel = safeModelKey;
+        localStorage.setItem('chatbot_model', safeModelKey);
+    }
+
     const nameEl = this.modelCurrentBtn?.querySelector('.model-name');
     if (nameEl) nameEl.textContent = label;
 
     // Update icon: Toolly logo for local, bolt for Gemini, star for others
     const iconImg = this.modelCurrentBtn?.querySelector('.model-icon');
     if (iconImg) {
-        if (modelKey === 'toolly-local') {
+        if (safeModelKey === 'toolly-local') {
             iconImg.src = 'logo/Toolly_logo.png';
-        } else if (modelKey.startsWith('gemini')) {
+            iconImg.style.display = '';
+        } else if (safeModelKey.startsWith('gemini')) {
             iconImg.src = '';
             iconImg.style.display = 'none';
         } else {
             iconImg.src = 'logo/Toolly_logo.png';
+            iconImg.style.display = '';
         }
     }
 
     // Active state in menu
     if (this.modelItems && this.modelItems.length) {
         this.modelItems.forEach(it => {
-            if (it.getAttribute('data-model') === modelKey) {
+            if (it.getAttribute('data-model') === safeModelKey) {
                 it.classList.add('active');
             } else {
                 it.classList.remove('active');
