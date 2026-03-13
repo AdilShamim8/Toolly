@@ -1,4 +1,4 @@
-// Chatbot powered by Gemini-2.5-Flash API
+// Chatbot supports Gemini via the browser-side Google Generative Language API
 
 const CHATBOT_DEBUG = window.location.hostname === 'localhost' || localStorage.getItem('toolly_debug') === '1';
 const chatbotDebugLog = (...args) => { if (CHATBOT_DEBUG) console.log(...args); };
@@ -54,20 +54,23 @@ class ToollyAIAdvisor {
                         </button>
                         <div class="model-menu" id="modelMenu" role="menu" aria-label="Model selection">
                             <div class="model-section">
-                                <div class="model-section-title">Basic</div>
-                                <button class="model-item" data-model="toolly-local"><img src="logo/Toolly_logo.png" alt="Toolly" class="model-icon"><span>Toolly (Local)</span><i class="fas fa-lock model-lock-icon"></i></button>
-                                <button class="model-item" data-model="gemini-flash"><i class="fas fa-bolt model-icon"></i><span>Gemini 3.0 Flash</span></button>
-                                <button class="model-item" data-model="gpt5-mini"><i class="fas fa-circle-notch model-icon"></i><span>GPT-5 mini</span><i class="fas fa-lock model-lock-icon"></i></button>
-                                <button class="model-item" data-model="claude-haiku"><i class="fas fa-feather-alt model-icon"></i><span>Claude Haiku 4.5</span><i class="fas fa-lock model-lock-icon"></i></button>
-                                <button class="model-item" data-model="qwen-max"><i class="fas fa-brain model-icon"></i><span>Qwen3-Max</span><i class="fas fa-lock model-lock-icon"></i></button>
+                                <div class="model-section-title">Available Now</div>
+                                <button class="model-item" data-model="toolly-local" data-available="true"><img src="logo/Toolly_logo.png" alt="Toolly" class="model-icon"><span>Toolly Local</span><span class="model-badge">Free</span></button>
+                                <button class="model-item" data-model="gemini-flash" data-available="true"><i class="fas fa-bolt model-icon"></i><span>Gemini 3 Flash Preview</span><span class="model-badge">Your key</span></button>
+                                <button class="model-item" data-model="gemini-pro" data-available="true"><i class="fas fa-gem model-icon"></i><span>Gemini 3 Pro</span><span class="model-badge">Your key</span></button>
                             </div>
                             <div class="model-section">
-                                <div class="model-section-title">Advanced</div>
-                                <button class="model-item" data-model="gpt5-2"><i class="fas fa-star model-icon"></i><span>GPT-5.2</span><span class="model-badge">Best for Chat</span><i class="fas fa-lock model-lock-icon"></i></button>
-                                <button class="model-item" data-model="gemini-pro"><i class="fas fa-gem model-icon"></i><span>Gemini 3 Pro</span><i class="fas fa-lock model-lock-icon"></i></button>
-                                <button class="model-item" data-model="claude-sonnet"><i class="fas fa-pen-nib model-icon"></i><span>Claude Sonnet 4.5</span><i class="fas fa-lock model-lock-icon"></i></button>
-                                <button class="model-item" data-model="grok4"><i class="fas fa-asterisk model-icon"></i><span>Grok 4</span><i class="fas fa-lock model-lock-icon"></i></button>
-                                <button class="model-item" data-model="deepseek-v32"><i class="fas fa-wave-square model-icon"></i><span>DeepSeek v3.2</span><i class="fas fa-lock model-lock-icon"></i></button>
+                                <div class="model-section-title">Coming Soon</div>
+                                <button class="model-item model-item-disabled" data-model="gpt5-mini" data-available="false" title="Not integrated yet"><i class="fas fa-circle-notch model-icon"></i><span>GPT-5 mini</span><i class="fas fa-lock model-lock-icon"></i></button>
+                                <button class="model-item model-item-disabled" data-model="claude-haiku" data-available="false" title="Not integrated yet"><i class="fas fa-feather-alt model-icon"></i><span>Claude Haiku 4.5</span><i class="fas fa-lock model-lock-icon"></i></button>
+                                <button class="model-item model-item-disabled" data-model="qwen-max" data-available="false" title="Not integrated yet"><i class="fas fa-brain model-icon"></i><span>Qwen3-Max</span><i class="fas fa-lock model-lock-icon"></i></button>
+                            </div>
+                            <div class="model-section">
+                                <div class="model-section-title">Coming Soon</div>
+                                <button class="model-item model-item-disabled" data-model="gpt5-2" data-available="false" title="Not integrated yet"><i class="fas fa-star model-icon"></i><span>GPT-5.2</span><i class="fas fa-lock model-lock-icon"></i></button>
+                                <button class="model-item model-item-disabled" data-model="claude-sonnet" data-available="false" title="Not integrated yet"><i class="fas fa-pen-nib model-icon"></i><span>Claude Sonnet 4.5</span><i class="fas fa-lock model-lock-icon"></i></button>
+                                <button class="model-item model-item-disabled" data-model="grok4" data-available="false" title="Not integrated yet"><i class="fas fa-asterisk model-icon"></i><span>Grok 4</span><i class="fas fa-lock model-lock-icon"></i></button>
+                                <button class="model-item model-item-disabled" data-model="deepseek-v32" data-available="false" title="Not integrated yet"><i class="fas fa-wave-square model-icon"></i><span>DeepSeek v3.2</span><i class="fas fa-lock model-lock-icon"></i></button>
                             </div>
                         </div>
                     </div>
@@ -93,6 +96,7 @@ class ToollyAIAdvisor {
                     <input type="text" class="chatbot-input" placeholder="Describe your project or needs..." />
                     <button class="chatbot-send"><i class="fas fa-paper-plane"></i></button>
                 </div>
+                <p class="chatbot-mode-note">Toolly Local is free and works without an API key. Gemini modes use your own key.</p>
                 <div class="chatbot-api-key-container">
                     <input type="text" class="chatbot-api-key" placeholder="Enter your Gemini API key" />
                     <button class="chatbot-save-key">Save Key</button>
@@ -214,6 +218,12 @@ class ToollyAIAdvisor {
         // Handle model item selection
         this.modelItems.forEach(item => {
             item.addEventListener('click', () => {
+                const isAvailable = item.getAttribute('data-available') === 'true';
+                if (!isAvailable) {
+                    this.addBotMessage('That model is not integrated yet. Use Toolly Local for free recommendations, or Gemini with your own API key.');
+                    return;
+                }
+
                 const selected = item.getAttribute('data-model');
                 this.currentModel = selected;
                 localStorage.setItem('chatbot_model', selected);
@@ -432,14 +442,18 @@ class ToollyAIAdvisor {
 
     saveApiKey() {
         const key = this.chatbotApiKey.value.trim();
-        if (key) {
-            this.apiKey = key;
-            localStorage.setItem('gemini_api_key', key);
-            document.querySelector('.chatbot-api-key-container').style.display = 'none';
-            this.addBotMessage('Thanks! Your API key has been saved. You can now ask me about AI tools for your needs.');
-        } else {
+        const looksLikeApiKey = key.length >= 20 && !/\s/.test(key);
+
+        if (!key || !looksLikeApiKey) {
             this.addBotMessage('Please enter a valid API key to continue.');
+            this.chatbotApiKey.focus();
+            return;
         }
+
+        this.apiKey = key;
+        localStorage.setItem('gemini_api_key', key);
+        document.querySelector('.chatbot-api-key-container').style.display = 'none';
+        this.addBotMessage('Your Gemini API key was saved locally. Toolly will use it when you choose a Gemini mode.');
     }
 
     // Enhanced: Try to answer direct queries using local dataset before Gemini API
@@ -543,17 +557,17 @@ class ToollyAIAdvisor {
 
     // New: Deterministic recommendation system
     getDeterministicRecommendation(query) {
-        if (!this.recommender) return null;
-
         // Check if this is a recommendation query
-        const isRecommendationQuery = /best|recommend|suggest|top|need|looking for|want|help.*with|tool.*for|ai.*for/i.test(query);
+        const isRecommendationQuery = /best|recommend|suggest|top|need|looking for|want|help.*with|tool.*for|ai.*for|study|student|homework|learn|learning|research/i.test(query);
         
         if (!isRecommendationQuery) {
             return null; // Let other handlers deal with non-recommendation queries
         }
 
         try {
-            const result = this.recommender.recommend(query);
+            const result = this.recommender
+                ? this.recommender.recommend(query)
+                : this.buildLocalRecommendations(query);
             
             // Only return if we have recommendations
             if (result.recommendations && result.recommendations.length > 0) {
@@ -565,6 +579,95 @@ class ToollyAIAdvisor {
             console.error('Error in deterministic recommender:', error);
             return null;
         }
+    }
+
+    buildLocalRecommendations(query) {
+        const normalizedQuery = query.toLowerCase();
+        const intentTags = [];
+
+        if (/study|student|homework|learn|learning|course|tutor|education/.test(normalizedQuery)) {
+            intentTags.push('education');
+        }
+        if (/research|paper|citation|academic|science|summary|summarize/.test(normalizedQuery)) {
+            intentTags.push('research');
+        }
+        if (/write|essay|grammar|notes|summarize|reading/.test(normalizedQuery)) {
+            intentTags.push('writing');
+        }
+        if (/productivity|organize|plan|workflow/.test(normalizedQuery)) {
+            intentTags.push('productivity');
+        }
+
+        const queryTerms = normalizedQuery
+            .split(/[^a-z0-9]+/)
+            .filter(term => term.length > 2);
+
+        const scoredTools = this.toolsData.map(tool => {
+            let score = 0;
+            const haystack = `${tool.name} ${tool.description} ${(tool.tags || []).join(' ')} ${(tool.categories || []).join(' ')}`.toLowerCase();
+
+            queryTerms.forEach(term => {
+                if (tool.name.toLowerCase().includes(term)) score += 5;
+                if ((tool.tags || []).some(tag => tag.toLowerCase().includes(term))) score += 4;
+                if ((tool.categories || []).some(category => category.toLowerCase().includes(term))) score += 4;
+                if (tool.description.toLowerCase().includes(term)) score += 2;
+            });
+
+            intentTags.forEach(intent => {
+                if ((tool.categories || []).includes(intent)) score += 8;
+                if ((tool.tags || []).some(tag => tag.toLowerCase().includes(intent))) score += 5;
+            });
+
+            if (/study|student|learning/.test(normalizedQuery) && /(education|learning|study|student|homework|tutoring|flashcards)/.test(haystack)) {
+                score += 10;
+            }
+
+            return { tool, score };
+        })
+        .filter(entry => entry.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 4);
+
+        if (!scoredTools.length) {
+            return {
+                recommendations: [],
+                intent_tags: intentTags,
+                note: 'I could not find a strong match yet. Try mentioning your use case, such as studying, coding, research, writing, or video creation.'
+            };
+        }
+
+        return {
+            intent_tags: intentTags,
+            recommendations: scoredTools.map(({ tool, score }) => ({
+                name: tool.name,
+                url: tool.url,
+                short_description: tool.description,
+                why_recommended: this.buildRecommendationReason(tool, intentTags, normalizedQuery),
+                tags: (tool.tags || []).slice(0, 4),
+                confidence: Math.min(0.98, Math.max(0.55, score / 25))
+            }))
+        };
+    }
+
+    buildRecommendationReason(tool, intentTags, normalizedQuery) {
+        const matches = [];
+
+        if (intentTags.includes('education') && (tool.categories || []).includes('education')) {
+            matches.push('it fits education and study workflows');
+        }
+        if (intentTags.includes('research') && (tool.categories || []).includes('research')) {
+            matches.push('it is strong for research-heavy tasks');
+        }
+        if ((tool.tags || []).some(tag => /learning|study|homework|tutoring|flashcards/.test(tag.toLowerCase()))) {
+            matches.push('its tags align with student-focused use cases');
+        }
+        if (/write|essay|notes|grammar/.test(normalizedQuery) && (tool.tags || []).some(tag => /writing|grammar|summarization|notes/.test(tag.toLowerCase()))) {
+            matches.push('it can help with writing, notes, or summarization');
+        }
+
+        return matches.length
+            ? `Recommended because ${matches.join(' and ')}.`
+            : 'Recommended because it matches your query and appears relevant in Toolly’s catalog.';
     }
 
     // Display recommendation as formatted HTML (from JSON)
@@ -742,7 +845,10 @@ Remember: Your recommendations must be strictly based on the AI tools listed on 
                 this.chatbotApiKey.value = '';
                 this.chatbotApiKey.focus();
             } else if (error.message.includes('quota') || error.message.includes('rate limit')) {
-                this.addBotMessage('⚠️ You have reached your Gemini API quota limit. Please enter a different API key below to continue using advanced AI features.');
+                this.currentModel = 'toolly-local';
+                localStorage.setItem('chatbot_model', 'toolly-local');
+                this.updateModelUI('toolly-local');
+                this.addBotMessage('⚠️ Your Gemini API quota has been reached. I switched you back to Toolly Local so you can keep using the chatbot for free. Add a different Gemini key any time if you want to use Gemini again.');
                 // Show API key input box so user can enter a different key
                 document.querySelector('.chatbot-api-key-container').style.display = 'block';
                 // Clear the current API key field so user can easily enter a new one
@@ -762,6 +868,10 @@ Remember: Your recommendations must be strictly based on the AI tools listed on 
     answerFactualQuery(query) {
         // Simple keyword-based matching for direct answers
         const lowerQuery = query.toLowerCase();
+
+        if (/best|recommend|suggest|top|need|looking for|want|help.*with|tool.*for|ai.*for|study|student|homework|learn|learning|research/i.test(lowerQuery)) {
+            return null;
+        }
         
         // Example: Directly answer questions about tool categories
         if (lowerQuery.includes('what ai tools') || lowerQuery.includes('ai tools for')) {
@@ -1016,17 +1126,17 @@ document.addEventListener('DOMContentLoaded', () => {
 ToollyAIAdvisor.prototype.getGeminiModelId = function() {
     // Map UI selection to Gemini API model IDs
     const map = {
-        'gemini-flash': 'gemini-2.5-flash',
+        'gemini-flash': 'gemini-3-flash-preview',
         'gemini-pro': 'gemini-1.5-pro',
     };
-    return map[this.currentModel] || 'gemini-2.5-flash';
+    return map[this.currentModel] || 'gemini-3-flash-preview';
 };
 
 ToollyAIAdvisor.prototype.updateModelUI = function(modelKey) {
     const nameMap = {
-        'toolly-local': 'Toolly (Local)',
-        'gemini-flash': 'Gemini 3.0 Flash',
-        'gemini-pro': 'Gemini 3 Pro',
+        'toolly-local': 'Toolly Local',
+        'gemini-flash': 'Gemini 3 Flash Preview',
+        'gemini-pro': 'Gemini Pro',
         'gpt5-mini': 'GPT-5 mini',
         'gpt5-2': 'GPT-5.2',
         'claude-haiku': 'Claude Haiku 4.5',

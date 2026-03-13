@@ -159,6 +159,15 @@
 .model-item:hover { background: var(--tag-bg); }
 .model-item.active { outline: 2px solid var(--primary-color); }
 .model-badge { margin-left: auto; font-size: 10px; color: var(--primary-color); }
+.model-item-disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.model-item-disabled:hover {
+    background: transparent;
+}
+
 .model-lock-icon { 
     margin-left: auto; 
     font-size: 12px; 
@@ -297,6 +306,18 @@
     color: var(--muted-text);
     margin-top: 10px;
     text-align: center;
+}
+
+.chatbot-mode-note {
+    margin: 0;
+    padding: 0 15px 12px;
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--muted-text);
+    text-align: center;
+    border-top: 1px solid var(--input-border);
+    padding-top: 10px;
+    background: var(--card-bg);
 }
 
 /* Typing indicator */
