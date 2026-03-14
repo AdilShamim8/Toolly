@@ -263,7 +263,7 @@
                         <option value="name">Name</option>
                         <option value="featured">Featured</option>
                     </select>
-                    <span id="toolCount" class="tools-counter">Showing 0 tools</span>
+                    <span id="toolCount" class="tools-counter" role="status" aria-live="polite" aria-atomic="true">Showing 0 tools</span>
                 </div>
             </header>
             <!-- My Tools Section -->
@@ -292,6 +292,7 @@
                                     <div id="icon-preview" class="icon-preview" aria-live="polite">
                                         <span class="icon-preview-placeholder">Logo preview</span>
                                     </div>
+                                    <div id="toolFormStatus" class="tool-form-status" role="status" aria-live="polite" aria-atomic="true" hidden></div>
                   <button type="submit" id="save-tool-btn">Save</button>
                 </form>
               </div>
@@ -311,6 +312,7 @@
                     <i class="fas fa-search"></i>
                     <h3>No tools found</h3>
                     <p>Try adjusting your search or category filters</p>
+                    <button type="button" id="resetFiltersBtn" class="empty-state-reset-btn">Reset Filters</button>
                 </div>
                 <div class="load-more-container" id="loadMoreContainer" style="display: none;">
                     <button class="load-more-btn" id="loadMoreBtn">

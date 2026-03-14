@@ -3680,6 +3680,7 @@ const categoryList = document.getElementById('categoryList');
 const sortSelect = document.getElementById('sortSelect');
 const loadingOverlay = document.getElementById('loadingOverlay');
 const emptyState = document.getElementById('emptyState');
+const resetFiltersBtn = document.getElementById('resetFiltersBtn');
 const viewButtons = document.querySelectorAll('.view-btn');
 const loadMoreBtn = document.getElementById('loadMoreBtn');
 const loadMoreContainer = document.getElementById('loadMoreContainer');
@@ -4646,6 +4647,45 @@ function updateCategoryListVisibility() {
     });
 }
 
+function resetAllFilters() {
+    currentCategory = 'all';
+    currentCategoryGroup = null;
+    currentSort = 'default';
+    currentSearch = '';
+    isAllToolsCollapsed = false;
+
+    if (searchInput) {
+        searchInput.value = '';
+    }
+
+    if (clearSearchBtn) {
+        clearSearchBtn.hidden = true;
+    }
+
+    if (sortSelect) {
+        sortSelect.value = 'default';
+    }
+
+    if (categoryList) {
+        categoryList.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+        const allToolsItem = categoryList.querySelector('li[data-category="all"]');
+        if (allToolsItem) allToolsItem.classList.add('active');
+    }
+
+    const quickCats = document.querySelectorAll('.hero-quick-categories .category-pill');
+    if (quickCats && quickCats.length) {
+        quickCats.forEach(btn => {
+            const isAll = btn.dataset.group === 'all';
+            btn.classList.toggle('active', isAll);
+            btn.setAttribute('aria-pressed', isAll ? 'true' : 'false');
+        });
+    }
+
+    updateCategoryListVisibility();
+    browseStatePreferences.save();
+    renderTools();
+}
+
 // Sidebar category click
 if (categoryList) {
     categoryList.addEventListener('click', e => {
@@ -4711,6 +4751,13 @@ if (sortSelect) {
         currentSort = e.target.value;
         browseStatePreferences.save();
         renderTools();
+    });
+}
+
+if (resetFiltersBtn) {
+    resetFiltersBtn.addEventListener('click', () => {
+        resetAllFilters();
+        if (searchInput) searchInput.focus();
     });
 }
 
@@ -4956,6 +5003,17 @@ const fetchLogoBtn = document.getElementById('fetch-logo-btn');
 const iconPreview = document.getElementById('icon-preview');
 const iconInputEl = document.getElementById('tool-icon');
 const linkInputEl = document.getElementById('tool-link');
+const toolFormStatus = document.getElementById('toolFormStatus');
+
+function setToolFormStatus(message, type = 'error') {
+    if (!toolFormStatus) return;
+    toolFormStatus.textContent = message || '';
+    toolFormStatus.hidden = !message;
+    toolFormStatus.classList.remove('is-error', 'is-success');
+    if (message) {
+        toolFormStatus.classList.add(type === 'success' ? 'is-success' : 'is-error');
+    }
+}
 
 // Utility: update preview box
 function updateIconPreview(src) {
@@ -5023,9 +5081,11 @@ async function autoFetchLogo() {
     if (!fetchLogoBtn) return;
     const linkVal = (linkInputEl && linkInputEl.value.trim()) || '';
     if (!linkVal) {
-        alert('Enter a Tool Link first');
+        setToolFormStatus('Enter a Tool Link first');
+        if (linkInputEl) linkInputEl.focus();
         return;
     }
+    setToolFormStatus('');
     if (iconPreview) {
         iconPreview.classList.add('loading');
     }
@@ -5037,9 +5097,11 @@ async function autoFetchLogo() {
         if (iconInputEl) iconInputEl.value = favicon;
         updateIconPreview(favicon);
         fetchLogoBtn.textContent = 'Found!';
+        setToolFormStatus('Logo found and filled in automatically.', 'success');
     } else {
         updateIconPreview(null);
         fetchLogoBtn.textContent = 'Not Found';
+        setToolFormStatus('Could not fetch a logo automatically. You can paste one manually.');
     }
     setTimeout(() => { fetchLogoBtn.textContent = original; fetchLogoBtn.disabled = false; }, 1200);
 }
@@ -5203,6 +5265,7 @@ let editMode = false;function renderMyTools() {
 }    function openModal(idx) {
         modal.style.display = 'flex';
         toolForm.reset();
+    setToolFormStatus('');
         editIndex = idx;
         if (typeof idx === 'number') {
             modalTitle.textContent = 'Edit Tool';
@@ -5220,6 +5283,7 @@ let editMode = false;function renderMyTools() {
 
     function closeModal() {
         modal.style.display = 'none';
+        setToolFormStatus('');
         editIndex = null;
     }
 
@@ -5254,9 +5318,11 @@ if (closeModalBtn && modal && editBtn && toolForm) {
     
     if (!nameInput || !iconInput || !linkInput) {
       console.error('Form elements not found:', { nameInput, iconInput, linkInput });
-      alert('Form elements not found. Please refresh the page.');
+            setToolFormStatus('Form elements not found. Please refresh the page.');
       return;
     }
+
+        setToolFormStatus('');
 
     // Show loading state
     submitBtn.textContent = 'Saving...';
@@ -5267,7 +5333,7 @@ if (closeModalBtn && modal && editBtn && toolForm) {
         const link = linkInput.value.trim();
       
       if (!name) {
-        alert('Please enter a tool name');
+                setToolFormStatus('Please enter a tool name');
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
         nameInput.focus();
@@ -5281,7 +5347,7 @@ if (closeModalBtn && modal && editBtn && toolForm) {
                     tool.name.toLowerCase() === name.toLowerCase() && idx !== editIndex
                 );
                 if (isDuplicate) {
-                    alert('A tool with this name already exists');
+                    setToolFormStatus('A tool with this name already exists');
                     submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
                     nameInput.focus();
@@ -5303,7 +5369,7 @@ if (closeModalBtn && modal && editBtn && toolForm) {
                     debugLog('Tool saved successfully:', tool);
                 } catch (error) {
                     console.error('Error saving tool:', error);
-                    alert('Failed to save tool. Please try again.');
+                    setToolFormStatus('Failed to save tool. Please try again.');
                     submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
                 }
