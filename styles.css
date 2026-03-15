@@ -368,12 +368,22 @@ body {
     color: #166534;
 }
 
+.tool-form-status.is-warning {
+    background: rgba(245, 158, 11, 0.14);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    color: #92400e;
+}
+
 [data-theme="dark"] .tool-form-status.is-error {
     color: #fecaca;
 }
 
 [data-theme="dark"] .tool-form-status.is-success {
     color: #bbf7d0;
+}
+
+[data-theme="dark"] .tool-form-status.is-warning {
+    color: #fcd34d;
 }
 
 
