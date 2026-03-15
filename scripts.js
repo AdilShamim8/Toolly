@@ -5009,10 +5009,45 @@ function setToolFormStatus(message, type = 'error') {
     if (!toolFormStatus) return;
     toolFormStatus.textContent = message || '';
     toolFormStatus.hidden = !message;
-    toolFormStatus.classList.remove('is-error', 'is-success');
+    toolFormStatus.classList.remove('is-error', 'is-success', 'is-warning');
     if (message) {
-        toolFormStatus.classList.add(type === 'success' ? 'is-success' : 'is-error');
+        if (type === 'success') {
+            toolFormStatus.classList.add('is-success');
+        } else if (type === 'warning') {
+            toolFormStatus.classList.add('is-warning');
+        } else {
+            toolFormStatus.classList.add('is-error');
+        }
     }
+}
+
+function normalizeCustomToolUrl(rawUrl) {
+    const value = (rawUrl || '').trim();
+    if (!value) return '';
+    if (/^[a-z][a-z0-9+.-]*:\/\//i.test(value)) return value;
+    if (value.startsWith('//')) return `https:${value}`;
+    return `https://${value}`;
+}
+
+function hasDuplicateCustomToolUrl(candidateUrl) {
+    if (!candidateUrl) return false;
+    const normalizedCandidate = normalizeCustomToolUrl(candidateUrl).toLowerCase();
+    return myTools.some((tool, idx) => (
+        idx !== editIndex &&
+        normalizeCustomToolUrl(tool.link).toLowerCase() === normalizedCandidate
+    ));
+}
+
+function updateDuplicateUrlWarning(candidateUrl) {
+    const hasDuplicate = hasDuplicateCustomToolUrl(candidateUrl);
+    if (hasDuplicate) {
+        setToolFormStatus('This link already exists in My Tools. You can still save it if intentional.', 'warning');
+        return true;
+    }
+    if (toolFormStatus && toolFormStatus.classList.contains('is-warning')) {
+        setToolFormStatus('');
+    }
+    return false;
 }
 
 // Utility: update preview box
@@ -5079,12 +5114,13 @@ function checkImage(src, timeout = 6000) {
 
 async function autoFetchLogo() {
     if (!fetchLogoBtn) return;
-    const linkVal = (linkInputEl && linkInputEl.value.trim()) || '';
+    const linkVal = normalizeCustomToolUrl((linkInputEl && linkInputEl.value.trim()) || '');
     if (!linkVal) {
         setToolFormStatus('Enter a Tool Link first');
         if (linkInputEl) linkInputEl.focus();
         return;
     }
+    if (linkInputEl) linkInputEl.value = linkVal;
     setToolFormStatus('');
     if (iconPreview) {
         iconPreview.classList.add('loading');
@@ -5114,6 +5150,7 @@ if (iconInputEl) {
 }
 if (linkInputEl) {
     linkInputEl.addEventListener('input', debounce(() => {
+        updateDuplicateUrlWarning(linkInputEl.value.trim());
         // If icon field empty, attempt silent fetch
         if (iconInputEl && !iconInputEl.value.trim()) {
             autoFetchLogo();
@@ -5243,8 +5280,8 @@ let editMode = false;function renderMyTools() {
           renderMyTools();
         }
       };
-    } else if (tool.link) {
-    item.onclick = () => openExternalLink(tool.link);
+        } else if (tool.link) {
+        item.onclick = () => openExternalLink(normalizeCustomToolUrl(tool.link));
       item.style.cursor = 'pointer';
     }
     
@@ -5274,6 +5311,7 @@ let editMode = false;function renderMyTools() {
             document.getElementById('tool-icon').value = t.icon;
             document.getElementById('tool-link').value = t.link || '';
             updateIconPreview(t.icon);
+            updateDuplicateUrlWarning(t.link || '');
         } else {
             modalTitle.textContent = 'Add Tool';
             updateIconPreview(null);
@@ -5330,7 +5368,12 @@ if (closeModalBtn && modal && editBtn && toolForm) {
     
         const name = nameInput.value.trim();
         const icon = iconInput.value.trim();
-        const link = linkInput.value.trim();
+        const link = normalizeCustomToolUrl(linkInput.value.trim());
+        if (linkInput.value.trim() && link && link !== linkInput.value.trim()) {
+            linkInput.value = link;
+        }
+
+      updateDuplicateUrlWarning(link);
       
       if (!name) {
                 setToolFormStatus('Please enter a tool name');
