@@ -1440,6 +1440,106 @@ html {
     }
 }
 
+/* ---- Keyboard focus visibility (Day 13) ---- */
+/*
+  Single source of truth for all focus rings.
+  Uses :focus-visible so mouse users are never shown the ring.
+*/
+:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+}
+
+/* Suppress browser default outline only where we define our own */
+.category-pill:focus-visible,
+.view-btn:focus-visible,
+.hero-cta:focus-visible,
+.hero-nav-action:focus-visible,
+.load-more-btn:focus-visible,
+.edit-btn:focus-visible,
+.tool-edit:focus-visible,
+.tool-delete:focus-visible,
+.fetch-logo-btn:focus-visible,
+.theme-toggle:focus-visible,
+.back-to-top:focus-visible,
+.sidebar-toggle:focus-visible,
+.sidebar-categories a:focus-visible,
+#categoryList li:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px rgba(176, 219, 156, 0.25);
+}
+
+/* Pills and view buttons get a rounder ring to match their shape */
+.category-pill:focus-visible {
+    outline-offset: 4px;
+}
+
+/* Sidebar category items are not naturally focusable — keep li from showing ring */
+#categoryList li:focus-visible {
+    border-radius: 8px;
+}
+
+/* Link-style items keep underline cue as well */
+.sidebar-categories a:focus-visible,
+.hero-nav-action:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+/* ---- end focus visibility ---- */
+
+/* ---- Skeleton cards (Day 12) ---- */
+@keyframes skeletonShimmer {
+    0%   { background-position: -400px 0; }
+    100% { background-position:  400px 0; }
+}
+
+.tool-card-skeleton {
+    background-color: var(--card-bg);
+    border-radius: 14px;
+    padding: 1.2rem;
+    border: 1px solid var(--input-border);
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 12px;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.skeleton-block {
+    border-radius: 6px;
+    background: linear-gradient(
+        90deg,
+        var(--input-border) 25%,
+        var(--card-bg)      50%,
+        var(--input-border) 75%
+    );
+    background-size: 800px 100%;
+    animation: skeletonShimmer 1.4s infinite linear;
+}
+
+.skeleton-logo  { width: 48px; height: 48px; border-radius: 10px; flex-shrink: 0; }
+.skeleton-title { height: 16px; width: 65%; }
+.skeleton-line  { height: 12px; width: 100%; }
+.skeleton-line-short { height: 12px; width: 45%; }
+
+.skeleton-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.skeleton-header-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+/* ---- end skeleton cards ---- */
+
 .tool-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--card-shadow-hover);

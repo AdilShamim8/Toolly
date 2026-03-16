@@ -3944,6 +3944,37 @@ function initializeHero() {
     }
 }
 
+const SKELETON_COUNT = 12;
+
+function showGridSkeletons() {
+    if (!toolsGrid) return;
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < SKELETON_COUNT; i++) {
+        const card = document.createElement('div');
+        card.className = 'tool-card-skeleton';
+        card.innerHTML = `
+            <div class="skeleton-header">
+                <div class="skeleton-block skeleton-logo"></div>
+                <div class="skeleton-header-text">
+                    <div class="skeleton-block skeleton-title"></div>
+                    <div class="skeleton-block skeleton-line-short"></div>
+                </div>
+            </div>
+            <div class="skeleton-block skeleton-line"></div>
+            <div class="skeleton-block skeleton-line"></div>
+            <div class="skeleton-block skeleton-line-short"></div>`;
+        frag.appendChild(card);
+    }
+    toolsGrid.innerHTML = '';
+    toolsGrid.appendChild(frag);
+}
+
+function clearGridSkeletons() {
+    if (!toolsGrid) return;
+    const skeletons = toolsGrid.querySelectorAll('.tool-card-skeleton');
+    skeletons.forEach(s => s.remove());
+}
+
 function renderTools(resetPage = true) {
     // Reset pagination when filters change
     if (resetPage) {
@@ -3995,9 +4026,11 @@ function renderTools(resetPage = true) {
         filteredTools.sort((a, b) => (b.badges?.includes('featured') ? 1 : 0) - (a.badges?.includes('featured') ? 1 : 0));
     }
     
-    // Clear grid only if resetting
+    // Clear grid only if resetting (also removes any leftover skeletons)
     if (resetPage) {
         toolsGrid.innerHTML = '';
+    } else {
+        clearGridSkeletons();
     }
     
     // Show/hide empty state
@@ -4980,6 +5013,7 @@ function boot() {
     applySavedBrowseState();
     isAllToolsCollapsed = false;
     updateCategoryListVisibility();
+    showGridSkeletons();
     renderTools();
 }
 
