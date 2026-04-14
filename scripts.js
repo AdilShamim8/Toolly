@@ -3665,7 +3665,104 @@ const debugLog = (...args) => { if (TOOLLY_DEBUG) console.log(...args); };
 const debugInfo = (...args) => { if (TOOLLY_DEBUG) console.info(...args); };
 const debugWarn = (...args) => { if (TOOLLY_DEBUG) console.warn(...args); };
 const DEFAULT_TOOL_ICON = 'logo/favicon.svg';
-const openExternalLink = (url) => window.open(url, '_blank', 'noopener,noreferrer');
+const TOOLLY_ANALYTICS_KEY = 'toollyAnalyticsEvents';
+const TOOLLY_ANALYTICS_MAX_EVENTS = 200;
+
+const toollyAnalytics = {
+    key: TOOLLY_ANALYTICS_KEY,
+    maxEvents: TOOLLY_ANALYTICS_MAX_EVENTS,
+    sessionId: (window.crypto && typeof window.crypto.randomUUID === 'function')
+        ? window.crypto.randomUUID()
+        : `session-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+    events: [],
+
+    loadPersistedEvents() {
+        try {
+            const raw = localStorage.getItem(this.key);
+            if (!raw) {
+                this.events = [];
+                return;
+            }
+            const parsed = JSON.parse(raw);
+            this.events = Array.isArray(parsed) ? parsed.slice(-this.maxEvents) : [];
+        } catch (error) {
+            this.events = [];
+            debugWarn('Could not load analytics events:', error);
+        }
+    },
+
+    persistEvents() {
+        try {
+            localStorage.setItem(this.key, JSON.stringify(this.events.slice(-this.maxEvents)));
+        } catch (error) {
+            debugWarn('Could not persist analytics events:', error);
+        }
+    },
+
+    track(eventName, payload = {}) {
+        if (!eventName) return;
+
+        try {
+            const safePayload = payload && typeof payload === 'object' ? payload : {};
+            const event = {
+                event: eventName,
+                payload: safePayload,
+                page: window.location.pathname,
+                timestamp: new Date().toISOString(),
+                sessionId: this.sessionId
+            };
+
+            this.events.push(event);
+            if (this.events.length > this.maxEvents) {
+                this.events = this.events.slice(-this.maxEvents);
+            }
+            this.persistEvents();
+
+            try {
+                window.dispatchEvent(new CustomEvent('toolly:analytics', { detail: event }));
+            } catch (_) {
+                // Ignore dispatch failures in constrained browser contexts.
+            }
+
+            if (Array.isArray(window.dataLayer)) {
+                window.dataLayer.push({
+                    event: eventName,
+                    ...safePayload,
+                    toollyTimestamp: event.timestamp
+                });
+            }
+
+            if (typeof window.gtag === 'function') {
+                window.gtag('event', eventName, safePayload);
+            }
+
+            if (typeof window.plausible === 'function') {
+                window.plausible(eventName, { props: safePayload });
+            }
+
+            debugInfo('[Analytics]', eventName, safePayload);
+        } catch (error) {
+            debugWarn('Analytics track failed:', error);
+        }
+    }
+};
+
+toollyAnalytics.loadPersistedEvents();
+window.ToollyAnalytics = toollyAnalytics;
+
+function openExternalLink(url, metadata = {}) {
+    const destinationUrl = (url || '').trim();
+    if (!destinationUrl) return;
+
+    toollyAnalytics.track('tool_external_link_clicked', {
+        source: metadata.source || 'external_link',
+        toolName: metadata.toolName || '',
+        category: metadata.category || '',
+        destinationUrl
+    });
+
+    window.open(destinationUrl, '_blank', 'noopener,noreferrer');
+}
 
 // DOM Elements
 const toolsGrid = document.getElementById('toolsGrid');
@@ -3692,6 +3789,16 @@ let currentSearch = '';
 let currentSort = 'default';
 let currentView = 'grid';
 let isAllToolsCollapsed = false;
+let lastTrackedSearchQuery = '';
+let modalFocusReturnEl = null;
+
+const BROWSE_URL_KEYS = Object.freeze({
+    search: 'q',
+    category: 'cat',
+    group: 'group',
+    sort: 'sort',
+    view: 'view'
+});
 
 // Pagination state
 let currentPage = 1;
@@ -3789,6 +3896,122 @@ function applySavedBrowseState() {
     }
 }
 
+function applyBrowseStateFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const availableCategories = categoryList
+        ? Array.from(categoryList.querySelectorAll('li')).map(item => item.dataset.category).filter(Boolean)
+        : ['all'];
+
+    if (params.has(BROWSE_URL_KEYS.search)) {
+        const urlSearchValue = (params.get(BROWSE_URL_KEYS.search) || '').trim();
+        currentSearch = urlSearchValue.toLowerCase();
+        if (searchInput) {
+            searchInput.value = urlSearchValue;
+        }
+        if (clearSearchBtn) {
+            clearSearchBtn.hidden = urlSearchValue.length === 0;
+        }
+    }
+
+    if (params.has(BROWSE_URL_KEYS.group) || params.has(BROWSE_URL_KEYS.category)) {
+        const nextGroup = (params.get(BROWSE_URL_KEYS.group) || '').trim();
+        const nextCategory = (params.get(BROWSE_URL_KEYS.category) || '').trim();
+
+        if (nextGroup && categoryGroups[nextGroup]) {
+            currentCategoryGroup = nextGroup;
+            currentCategory = 'all';
+        } else if (nextCategory && availableCategories.includes(nextCategory)) {
+            currentCategoryGroup = null;
+            currentCategory = nextCategory;
+        } else {
+            currentCategoryGroup = null;
+            currentCategory = 'all';
+        }
+    }
+
+    if (params.has(BROWSE_URL_KEYS.sort) && sortSelect) {
+        const nextSort = (params.get(BROWSE_URL_KEYS.sort) || '').trim();
+        const isValidSort = Array.from(sortSelect.options).some(option => option.value === nextSort);
+        currentSort = isValidSort ? nextSort : 'default';
+        sortSelect.value = currentSort;
+    }
+
+    if (params.has(BROWSE_URL_KEYS.view)) {
+        const nextView = (params.get(BROWSE_URL_KEYS.view) || '').trim();
+        currentView = nextView === 'list' ? 'list' : 'grid';
+    }
+
+    if (viewButtons && viewButtons.length) {
+        viewButtons.forEach(button => {
+            const isActiveView = button.dataset.view === currentView;
+            button.classList.toggle('active', isActiveView);
+            button.setAttribute('aria-pressed', isActiveView ? 'true' : 'false');
+        });
+    }
+
+    if (toolsGrid) {
+        toolsGrid.classList.toggle('list-view', currentView === 'list');
+    }
+
+    if (categoryList) {
+        categoryList.querySelectorAll('li').forEach(li => li.classList.remove('active'));
+        const activeCategory = currentCategoryGroup
+            ? categoryList.querySelector('li[data-category="all"]')
+            : categoryList.querySelector(`li[data-category="${currentCategory}"]`);
+        if (activeCategory) activeCategory.classList.add('active');
+    }
+
+    const quickCats = document.querySelectorAll('.hero-quick-categories .category-pill');
+    if (quickCats && quickCats.length) {
+        quickCats.forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-pressed', 'false');
+        });
+
+        const quickTarget = currentCategoryGroup || 'all';
+        const activeQuick = document.querySelector(`.hero-quick-categories .category-pill[data-group="${quickTarget}"]`) ||
+            document.querySelector('.hero-quick-categories .category-pill[data-group="all"]');
+
+        if (activeQuick) {
+            activeQuick.classList.add('active');
+            activeQuick.setAttribute('aria-pressed', 'true');
+        }
+    }
+}
+
+function syncBrowseStateToUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const managedKeys = Object.values(BROWSE_URL_KEYS);
+    managedKeys.forEach(key => params.delete(key));
+
+    const searchValue = searchInput ? searchInput.value.trim() : currentSearch;
+    if (searchValue) {
+        params.set(BROWSE_URL_KEYS.search, searchValue);
+    }
+
+    if (currentCategoryGroup) {
+        params.set(BROWSE_URL_KEYS.group, currentCategoryGroup);
+    } else if (currentCategory && currentCategory !== 'all') {
+        params.set(BROWSE_URL_KEYS.category, currentCategory);
+    }
+
+    if (currentSort && currentSort !== 'default') {
+        params.set(BROWSE_URL_KEYS.sort, currentSort);
+    }
+
+    if (currentView === 'list') {
+        params.set(BROWSE_URL_KEYS.view, 'list');
+    }
+
+    const query = params.toString();
+    const nextUrl = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
+    const currentUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+
+    if (nextUrl !== currentUrl) {
+        window.history.replaceState(null, '', nextUrl);
+    }
+}
+
 // Show More preferences storage
 const showMorePreferences = {
     descriptions: new Map(), // Store tool name -> expanded state
@@ -3880,7 +4103,11 @@ function initializeHero() {
             
             // Make icon clickable to navigate to tool
             iconWrapper.addEventListener('click', () => {
-                openExternalLink(tool.url);
+                openExternalLink(tool.url, {
+                    source: 'hero_featured_icon',
+                    toolName: tool.name,
+                    category: Array.isArray(tool.categories) ? tool.categories.join(',') : ''
+                });
             });
             
             heroToolIcons.appendChild(iconWrapper);
@@ -3935,6 +4162,7 @@ function initializeHero() {
 
                 // Re-render
                 browseStatePreferences.save();
+                trackCategorySelection('hero_quick_category');
                 renderTools();
                 // Scroll to tools grid
                 const toolsSection = document.querySelector('.tools-grid');
@@ -3989,6 +4217,7 @@ function renderTools(resetPage = true) {
         if (toolCount) {
             toolCount.textContent = 'All tools are hidden. Click All Tools again to show.';
         }
+        syncBrowseStateToUrl();
         return;
     }
     
@@ -4080,6 +4309,8 @@ function renderTools(resetPage = true) {
         const displayedCount = Math.min(currentPage * itemsPerPage, filteredTools.length);
         toolCount.textContent = `Showing ${displayedCount} of ${filteredTools.length} tool${filteredTools.length !== 1 ? 's' : ''}`;
     }
+
+    syncBrowseStateToUrl();
 }
 
 function updateLoadMoreButton() {
@@ -4371,6 +4602,14 @@ function createToolCard(tool) {
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
         link.textContent = 'Visit Site';
+        link.addEventListener('click', () => {
+            toollyAnalytics.track('tool_external_link_clicked', {
+                source: 'catalog_list',
+                toolName: tool.name,
+                category: Array.isArray(tool.categories) ? tool.categories.join(',') : '',
+                destinationUrl: tool.url
+            });
+        });
         footer.appendChild(link);
         
         content.appendChild(footer);
@@ -4513,6 +4752,14 @@ function createToolCard(tool) {
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
         link.textContent = 'Visit Site';
+        link.addEventListener('click', () => {
+            toollyAnalytics.track('tool_external_link_clicked', {
+                source: 'catalog_grid',
+                toolName: tool.name,
+                category: Array.isArray(tool.categories) ? tool.categories.join(',') : '',
+                destinationUrl: tool.url
+            });
+        });
         card.appendChild(link);
     }
     
@@ -4719,17 +4966,55 @@ function resetAllFilters() {
     renderTools();
 }
 
+function trackCategorySelection(source) {
+    toollyAnalytics.track('category_selected', {
+        source,
+        category: currentCategory,
+        categoryGroup: currentCategoryGroup || '',
+        sort: currentSort
+    });
+}
+
+function trackSearchInteraction(rawSearch) {
+    const query = (rawSearch || '').trim().toLowerCase();
+    if (query.length < 2) return;
+    if (query === lastTrackedSearchQuery) return;
+
+    lastTrackedSearchQuery = query;
+    toollyAnalytics.track('search_used', {
+        query,
+        resultsCount: Array.isArray(filteredTools) ? filteredTools.length : 0,
+        category: currentCategory,
+        categoryGroup: currentCategoryGroup || ''
+    });
+}
+
+function setupCategoryListKeyboardAccess() {
+    if (!categoryList) return;
+
+    categoryList.querySelectorAll('li').forEach(item => {
+        item.setAttribute('role', 'button');
+        item.setAttribute('tabindex', '0');
+        if (!item.getAttribute('aria-label')) {
+            item.setAttribute('aria-label', `Filter by ${item.textContent.trim()}`);
+        }
+    });
+}
+
+setupCategoryListKeyboardAccess();
+
 // Sidebar category click
 if (categoryList) {
     categoryList.addEventListener('click', e => {
-        if (e.target.tagName === 'LI') {
-            const clickedItem = e.target;
+        const clickedItem = e.target.closest('li');
+        if (clickedItem && categoryList.contains(clickedItem)) {
             const clickedCategory = clickedItem.dataset.category;
             const isAllToolsItem = clickedCategory === 'all';
             const wasActive = clickedItem.classList.contains('active');
 
             if (isAllToolsItem && wasActive && !currentCategoryGroup) {
                 isAllToolsCollapsed = !isAllToolsCollapsed;
+                toollyAnalytics.track('all_tools_toggled', { collapsed: isAllToolsCollapsed });
                 updateCategoryListVisibility();
                 renderTools();
                 return;
@@ -4742,7 +5027,18 @@ if (categoryList) {
             isAllToolsCollapsed = false;
             updateCategoryListVisibility();
             browseStatePreferences.save();
+            trackCategorySelection('sidebar_category');
             renderTools();
+        }
+    });
+
+    categoryList.addEventListener('keydown', e => {
+        const focusedItem = e.target.closest('li');
+        if (!focusedItem || !categoryList.contains(focusedItem)) return;
+
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            focusedItem.click();
         }
     });
 }
@@ -4759,11 +5055,13 @@ if (searchInput) {
 
     searchInput.addEventListener('input', e => {
         clearTimeout(searchDebounceTimer);
-        const nextSearch = e.target.value.toLowerCase();
+        const rawSearch = e.target.value;
+        const nextSearch = rawSearch.toLowerCase();
         updateClearSearchVisibility();
         searchDebounceTimer = setTimeout(() => {
             currentSearch = nextSearch;
             renderTools();
+            trackSearchInteraction(rawSearch);
         }, 120);
     });
 
@@ -4772,7 +5070,9 @@ if (searchInput) {
             clearTimeout(searchDebounceTimer);
             searchInput.value = '';
             currentSearch = '';
+            lastTrackedSearchQuery = '';
             updateClearSearchVisibility();
+            toollyAnalytics.track('search_cleared', { source: 'clear_button' });
             renderTools();
             searchInput.focus();
         });
@@ -4812,6 +5112,29 @@ document.addEventListener('keydown', (e) => {
         activeTag === 'TEXTAREA' ||
         activeTag === 'SELECT'
     );
+
+    // Escape closes open modal or mobile sidebar.
+    if (e.key === 'Escape') {
+        const modalEl = document.getElementById('tool-modal');
+        const sidebarEl = document.getElementById('sidebar');
+        const isModalOpen = !!modalEl && modalEl.style.display === 'flex';
+        const isSidebarOpen = !!sidebarEl && sidebarEl.classList.contains('open');
+
+        if (isModalOpen && typeof closeModal === 'function') {
+            e.preventDefault();
+            closeModal();
+            return;
+        }
+
+        if (isSidebarOpen) {
+            e.preventDefault();
+            closeSidebar();
+            if (sidebarToggle) {
+                sidebarToggle.focus();
+            }
+            return;
+        }
+    }
 
     // '/' focuses search when user is not typing in an editable field
     if (
@@ -4890,13 +5213,23 @@ function openSidebar() {
     sidebar.classList.add('open');
     sidebarOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
+    if (sidebarToggle) {
+        sidebarToggle.setAttribute('aria-expanded', 'true');
+        sidebarToggle.setAttribute('aria-label', 'Close sidebar');
+    }
 }
 function closeSidebar() {
     sidebar.classList.remove('open');
     sidebarOverlay.classList.remove('active');
     document.body.style.overflow = '';
+    if (sidebarToggle) {
+        sidebarToggle.setAttribute('aria-expanded', 'false');
+        sidebarToggle.setAttribute('aria-label', 'Open sidebar');
+    }
 }
 if (sidebarToggle) {
+    sidebarToggle.setAttribute('aria-expanded', 'false');
+    sidebarToggle.setAttribute('aria-controls', 'sidebar');
     sidebarToggle.addEventListener('click', openSidebar);
 }
 if (sidebarOverlay) {
@@ -4952,8 +5285,12 @@ if (viewButtons) {
     viewButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             // Update active button
-            viewButtons.forEach(b => b.classList.remove('active'));
+            viewButtons.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-pressed', 'false');
+            });
             btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
             
             // Update view
             currentView = btn.dataset.view;
@@ -5011,10 +5348,12 @@ function boot() {
     initializeStats();
     initializeHero(); // Initialize hero section
     applySavedBrowseState();
+    applyBrowseStateFromUrl();
     isAllToolsCollapsed = false;
     updateCategoryListVisibility();
     showGridSkeletons();
     renderTools();
+    toollyAnalytics.track('page_view', { pageType: 'tool_directory_home' });
 }
 
 // Prefer DOMContentLoaded for earlier render, with load as fallback
@@ -5199,6 +5538,10 @@ if (!toolsListEl || !editBtn || !modal || !closeModalBtn || !toolForm || !modalT
   });
 }
 
+if (modal) {
+    modal.setAttribute('aria-hidden', 'true');
+}
+
 // Initialize with some default tools if empty
 let myTools = JSON.parse(localStorage.getItem('myTools') || JSON.stringify([
   {
@@ -5314,8 +5657,11 @@ let editMode = false;function renderMyTools() {
           renderMyTools();
         }
       };
-        } else if (tool.link) {
-        item.onclick = () => openExternalLink(normalizeCustomToolUrl(tool.link));
+                } else if (tool.link) {
+                item.onclick = () => openExternalLink(normalizeCustomToolUrl(tool.link), {
+                    source: 'my_tools',
+                    toolName: tool.name
+                });
       item.style.cursor = 'pointer';
     }
     
@@ -5334,7 +5680,9 @@ let editMode = false;function renderMyTools() {
     toolsListEl.appendChild(addBtn);
   }
 }    function openModal(idx) {
+    modalFocusReturnEl = document.activeElement instanceof HTMLElement ? document.activeElement : null;
         modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
         toolForm.reset();
     setToolFormStatus('');
         editIndex = idx;
@@ -5351,12 +5699,21 @@ let editMode = false;function renderMyTools() {
             updateIconPreview(null);
         }
         if (fetchLogoBtn) { fetchLogoBtn.textContent = 'Auto Fetch Logo'; fetchLogoBtn.disabled = false; }
+        const toolNameInput = document.getElementById('tool-name');
+        if (toolNameInput) {
+            setTimeout(() => toolNameInput.focus(), 0);
+        }
     }
 
     function closeModal() {
         modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
         setToolFormStatus('');
         editIndex = null;
+        if (modalFocusReturnEl && typeof modalFocusReturnEl.focus === 'function') {
+            modalFocusReturnEl.focus();
+        }
+        modalFocusReturnEl = null;
     }
 
     function saveTools() {
@@ -5558,6 +5915,11 @@ if (closeModalBtn && modal && editBtn && toolForm) {
             submitBtn.textContent = 'Submitted!';
             statusEl.textContent = 'Thank you! Your tool has been submitted for review.';
             statusEl.classList.add('success');
+            toollyAnalytics.track('tool_submission_result', {
+                status: 'success',
+                toolName: nameInput.value.trim(),
+                toolUrl: urlInput.value.trim()
+            });
             form.reset();
 
             setTimeout(() => {
@@ -5568,6 +5930,10 @@ if (closeModalBtn && modal && editBtn && toolForm) {
             }, 2000);
         } catch (error) {
             console.error('Submission error:', error);
+            toollyAnalytics.track('tool_submission_result', {
+                status: 'failure',
+                errorMessage: error && error.message ? error.message : 'unknown_error'
+            });
             statusEl.textContent = 'Sorry, there was an error submitting your form. Please try again.';
             statusEl.classList.add('error');
             submitBtn.disabled = false;
