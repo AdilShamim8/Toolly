@@ -88,6 +88,27 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Skip link for keyboard users */
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -3rem;
+    z-index: 2000;
+    background: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 0.6rem 0.9rem;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+    top: 1rem;
+}
+
 /* Enhanced theme transition styles */
 .theme-transitioning * {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
@@ -1463,6 +1484,7 @@ html {
 .theme-toggle:focus-visible,
 .back-to-top:focus-visible,
 .sidebar-toggle:focus-visible,
+.skip-link:focus-visible,
 .sidebar-categories a:focus-visible,
 #categoryList li:focus-visible {
     outline: 3px solid var(--primary-color);
@@ -1475,7 +1497,7 @@ html {
     outline-offset: 4px;
 }
 
-/* Sidebar category items are not naturally focusable — keep li from showing ring */
+/* Sidebar category items are keyboard-focusable via JS role/tabindex setup */
 #categoryList li:focus-visible {
     border-radius: 8px;
 }

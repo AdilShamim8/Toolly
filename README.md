@@ -62,6 +62,50 @@ That's it. You're ready to unlock your potential.
 - **DevOps Specialists**: Streamline deployment workflows, automate testing, and ensure consistency across environments.
 - **Open Source Contributors**: Standardize code style, generate changelogs, and simplify release management.
 
+## Daily Improvement Notes
+
+Last updated: March 17, 2026.
+
+### What Changed
+
+- Added incremental UX and accessibility improvements through the 14-day micro-plan.
+- Improved search and filter ergonomics: clear search, keyboard shortcut (`/`), persisted filter/sort state, and one-click empty-state reset.
+- Improved legal/footer reliability with working policy links and consistent metadata.
+- Improved My Tools quality: inline validation/status messages, URL normalization (`https://` auto-prepend), and non-blocking duplicate URL warnings.
+- Added first-paint tool-grid skeletons and stronger keyboard focus visibility across key controls.
+- Added production planning artifact: `PRODUCTION_IMPROVEMENT_ROADMAP.md` with phase-based execution, KPI framework, and daily operating system.
+- Added URL-shareable browse state on homepage filters and view mode via query params (`q`, `cat`, `group`, `sort`, `view`).
+- Added lightweight analytics event contract in the frontend and tracked key events: search usage, category selection, outbound tool clicks, and submit result states.
+- Added release operation docs: `RELEASE_CHECKLIST.md` and `SMOKE_TEST_MATRIX.md` for consistent production-quality verification.
+- Consolidated duplicate inline JavaScript in `privacy.html` and `terms.html` into shared `legal-pages.js` for safer maintenance.
+- Completed focused accessibility improvements: skip links, keyboard-accessible category filters, sidebar/modal Escape-close behavior, and stronger ARIA state handling for toggles and views.
+
+### What Tested
+
+- Verified editor diagnostics after each small change.
+- Smoke-tested on desktop and mobile for:
+   - search
+   - category filter/group pills
+   - load more
+   - theme toggle
+   - My Tools add/edit/delete
+- Confirmed no blocking popups in My Tools validation flow.
+- Confirmed custom links with bare domains save/open reliably.
+- Confirmed focus rings are visible during keyboard navigation.
+
+### Daily Workflow For Contributors
+
+1. Ship one micro-improvement only.
+2. Check editor errors immediately.
+3. Run the smoke test list above.
+4. Record a short note in this section:
+    - Date
+    - Change shipped
+    - Files touched
+    - Manual checks passed
+    - Issues found
+    - Rollback needed (Yes/No)
+
 ## Philosophy
 
 > "Innovation distinguishes between a leader and a follower." 

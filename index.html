@@ -133,6 +133,7 @@
     <link rel="icon" href="logo/Toolly_logo.png" type="image/png">
 </head>
 <body>
+    <a class="skip-link" href="#mainContent">Skip to main content</a>
     <!-- Loading Animation with improved performance -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-spinner">
@@ -141,7 +142,7 @@
         </div>
     </div>
 
-    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Open sidebar">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Open sidebar" aria-controls="sidebar" aria-expanded="false">
         <i class="fas fa-bars"></i>
     </button>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -185,7 +186,7 @@
                 <div class="copyright">© 2026 Toolly. All rights reserved.</div>
             </div>
         </aside>
-        <main class="main-content">
+        <main class="main-content" id="mainContent" tabindex="-1">
             <!-- Hero Section - Redesigned -->
             <section class="hero-section" itemscope itemtype="https://schema.org/SoftwareApplication">
                 <div class="hero-content">
@@ -274,7 +275,7 @@
             </section>
 
             <!-- Modal for adding/editing tools -->
-            <div id="tool-modal" class="modal" style="display:none;">
+                        <div id="tool-modal" class="modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="modal-title">
               <div class="modal-content">
                 <button type="button" class="close" id="close-modal" aria-label="Close add/edit tool modal">&times;</button>
                 <h3 id="modal-title">Add/Edit Tool</h3>
@@ -301,8 +302,8 @@
                 <div class="section-header">
                     <h2 class="featured-title" id="featured-tools-heading">Featured Tools</h2>
                     <div class="view-options">
-                        <button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button>
-                        <button class="view-btn" data-view="list"><i class="fas fa-list"></i></button>
+                        <button class="view-btn active" data-view="grid" aria-label="Switch to grid view" aria-pressed="true"><i class="fas fa-th"></i></button>
+                        <button class="view-btn" data-view="list" aria-label="Switch to list view" aria-pressed="false"><i class="fas fa-list"></i></button>
                     </div>
                 </div>
                 <div class="tools-grid" id="toolsGrid">
