@@ -73,6 +73,12 @@ Last updated: March 17, 2026.
 - Improved legal/footer reliability with working policy links and consistent metadata.
 - Improved My Tools quality: inline validation/status messages, URL normalization (`https://` auto-prepend), and non-blocking duplicate URL warnings.
 - Added first-paint tool-grid skeletons and stronger keyboard focus visibility across key controls.
+- Added production planning artifact: `PRODUCTION_IMPROVEMENT_ROADMAP.md` with phase-based execution, KPI framework, and daily operating system.
+- Added URL-shareable browse state on homepage filters and view mode via query params (`q`, `cat`, `group`, `sort`, `view`).
+- Added lightweight analytics event contract in the frontend and tracked key events: search usage, category selection, outbound tool clicks, and submit result states.
+- Added release operation docs: `RELEASE_CHECKLIST.md` and `SMOKE_TEST_MATRIX.md` for consistent production-quality verification.
+- Consolidated duplicate inline JavaScript in `privacy.html` and `terms.html` into shared `legal-pages.js` for safer maintenance.
+- Completed focused accessibility improvements: skip links, keyboard-accessible category filters, sidebar/modal Escape-close behavior, and stronger ARIA state handling for toggles and views.
 
 ### What Tested
 
