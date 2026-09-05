@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="toollyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b0db9c"/>
+      <stop offset="100%" stop-color="#7ab566"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#4c7a3c" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <!-- Background rounded squircle -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#toollyGrad)" filter="url(#glow)"/>
+  <!-- Modern stylized "T" with sparkles -->
+  <path d="M18 18 H46 V26 H36 V48 H28 V26 H18 Z" fill="#ffffff"/>
+  <!-- Ambient accent sparkles -->
+  <circle cx="47" cy="17" r="3" fill="#ffffff" opacity="0.9"/>
+  <circle cx="43" cy="46" r="2" fill="#ffffff" opacity="0.75"/>
+</svg>
