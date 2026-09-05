@@ -2938,3 +2938,478 @@ html {
     box-shadow: none;
   }
 }
+
+
+/* ============================================================
+   UI REFRESH 2026 — Premium Design & Aesthetic Polish Layer
+   Elevates Toolly's clean light/white + green identity with
+   glassmorphism, modern typography, rich micro-animations,
+   and deep slate dark mode.
+   ============================================================ */
+
+/* ---------- 1. Typography & Global Polish ---------- */
+body {
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+                 Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+::selection {
+    background: rgba(176, 219, 156, 0.45);
+    color: #1e293b;
+}
+
+/* Thin, rounded scrollbar with brand-colored thumb */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(176, 219, 156, 0.8) transparent;
+}
+*::-webkit-scrollbar { width: 7px; height: 7px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb {
+    background: rgba(176, 219, 156, 0.7);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+    background: rgba(122, 181, 102, 0.9);
+    background-clip: content-box;
+}
+
+/* ---------- 2. Hero — Ambient Radial Glow & Gradient ---------- */
+.hero-section {
+    background:
+        radial-gradient(ellipse 60% 70% at 10% 10%, rgba(176, 219, 156, 0.2) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 60% at 90% 90%, rgba(143, 199, 125, 0.15) 0%, transparent 60%),
+        linear-gradient(165deg, #ffffff 0%, #f8fafc 50%, #f2f9ee 100%);
+    border: 1px solid rgba(176, 219, 156, 0.45);
+    box-shadow:
+        0 2px 4px rgba(15, 23, 42, 0.03),
+        0 14px 44px rgba(176, 219, 156, 0.16);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-headline {
+    background: linear-gradient(125deg, #0f172a 30%, #2f5424 65%, #6aa855 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #0f172a;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+}
+
+.hero-subheadline {
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+    color: var(--muted-text);
+    line-height: 1.7;
+}
+
+.hero-stat-number {
+    background: linear-gradient(120deg, #3f6e2f, #7ab566);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+/* ---------- 3. Buttons & CTA Elements ---------- */
+.hero-cta {
+    background: linear-gradient(135deg, #9dd485 0%, #68a952 100%);
+    box-shadow:
+        0 2px 4px rgba(94, 141, 74, 0.22),
+        0 8px 24px rgba(122, 181, 102, 0.38);
+    border: 1px solid rgba(122, 181, 102, 0.55);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-cta:hover {
+    background: linear-gradient(135deg, #93cf79 0%, #5d9e47 100%);
+    box-shadow:
+        0 4px 8px rgba(94, 141, 74, 0.26),
+        0 14px 32px rgba(122, 181, 102, 0.48);
+    transform: translateY(-2px);
+}
+
+.hero-nav-action {
+    background: #ffffff;
+    border: 1px solid rgba(176, 219, 156, 0.6);
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-weight: 600;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-nav-action:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 6px 20px rgba(176, 219, 156, 0.35);
+    transform: translateY(-2px);
+}
+
+.tool-link {
+    background: linear-gradient(135deg, #9dd485 0%, #68a952 100%);
+    box-shadow: 0 1px 3px rgba(94, 141, 74, 0.2);
+    border: 1px solid rgba(122, 181, 102, 0.45);
+    font-weight: 600;
+    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tool-link:hover {
+    background: linear-gradient(135deg, #93cf79 0%, #5d9e47 100%);
+    box-shadow: 0 6px 18px rgba(122, 181, 102, 0.42);
+    transform: translateY(-1.5px);
+}
+
+/* ---------- 4. Tool Cards — Soft Brand Glow on Hover ---------- */
+.tool-card {
+    border-radius: 18px;
+    padding: 1.4rem;
+    border: 1px solid rgba(226, 232, 240, 0.85);
+    background: var(--card-bg);
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03), 0 6px 18px rgba(15, 23, 42, 0.04);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.28s ease;
+}
+
+.tool-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(176, 219, 156, 0.85);
+    box-shadow:
+        0 4px 6px rgba(15, 23, 42, 0.04),
+        0 18px 40px rgba(15, 23, 42, 0.09),
+        0 8px 26px rgba(176, 219, 156, 0.3);
+}
+
+.tool-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    padding: 3px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+    transition: transform 0.25s ease;
+    object-fit: contain;
+}
+
+.tool-card:hover .tool-logo {
+    transform: scale(1.08);
+}
+
+[data-theme="dark"] .tool-logo {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+.tool-name {
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    font-size: 1.15rem;
+}
+
+/* ---------- 5. Badges — Modern Translucent Pills ---------- */
+.badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: capitalize;
+    padding: 0.22rem 0.65rem;
+    border-radius: 999px;
+    color: #3f6631;
+    background: rgba(176, 219, 156, 0.28);
+    border: 1px solid rgba(176, 219, 156, 0.55);
+    display: inline-flex;
+    align-items: center;
+    line-height: 1.3;
+}
+
+.badge.featured {
+    color: #2e5421;
+    background: rgba(176, 219, 156, 0.35);
+    border-color: rgba(143, 199, 125, 0.7);
+}
+
+.badge.trending {
+    color: #925f0a;
+    background: rgba(251, 191, 36, 0.18);
+    border-color: rgba(251, 191, 36, 0.5);
+}
+
+.badge.paid {
+    color: #b42318;
+    background: rgba(248, 113, 113, 0.15);
+    border-color: rgba(248, 113, 113, 0.4);
+}
+
+.badge.freemium {
+    color: #047857;
+    background: rgba(52, 211, 153, 0.16);
+    border-color: rgba(52, 211, 153, 0.45);
+}
+
+.badge.beta {
+    color: #6d28d9;
+    background: rgba(167, 139, 250, 0.16);
+    border-color: rgba(167, 139, 250, 0.45);
+}
+
+.badge.new {
+    color: #1d4ed8;
+    background: rgba(96, 165, 250, 0.16);
+    border-color: rgba(96, 165, 250, 0.45);
+}
+
+.badge.popular {
+    color: #0e7490;
+    background: rgba(34, 211, 238, 0.15);
+    border-color: rgba(34, 211, 238, 0.4);
+}
+
+.badge.open-source,
+.badge.open\ source {
+    color: #3f6631;
+    background: rgba(176, 219, 156, 0.28);
+    border-color: rgba(176, 219, 156, 0.55);
+}
+
+.badge.free {
+    color: #047857;
+    background: rgba(52, 211, 153, 0.16);
+    border-color: rgba(52, 211, 153, 0.45);
+}
+
+.badge.enterprise {
+    color: #1e293b;
+    background: rgba(100, 116, 139, 0.15);
+    border-color: rgba(100, 116, 139, 0.35);
+}
+
+[data-theme="dark"] .badge { color: #c4e9b4; border-color: rgba(143, 199, 125, 0.4); }
+[data-theme="dark"] .badge.trending { color: #fcd34d; border-color: rgba(251, 191, 36, 0.4); }
+[data-theme="dark"] .badge.paid { color: #fca5a5; border-color: rgba(248, 113, 113, 0.4); }
+[data-theme="dark"] .badge.freemium { color: #6ee7b7; border-color: rgba(52, 211, 153, 0.4); }
+[data-theme="dark"] .badge.beta { color: #c4b5fd; border-color: rgba(167, 139, 250, 0.4); }
+[data-theme="dark"] .badge.new { color: #93c5fd; border-color: rgba(96, 165, 250, 0.4); }
+[data-theme="dark"] .badge.popular { color: #67e8f9; border-color: rgba(34, 211, 238, 0.4); }
+[data-theme="dark"] .badge.enterprise { color: #cbd5e1; border-color: rgba(148, 163, 184, 0.35); }
+
+/* ---------- 6. Search Input & Controls ---------- */
+.search-container input {
+    border-radius: 999px;
+    border: 1.5px solid var(--input-border);
+    background: var(--input-bg);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03) inset;
+    padding-left: 2.75rem;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.search-container input::placeholder { color: #94a3b8; }
+
+.search-container input:focus {
+    border-color: var(--primary-color);
+    box-shadow:
+        0 0 0 4px rgba(176, 219, 156, 0.24),
+        0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+#sortSelect {
+    border-radius: 999px;
+    border: 1.5px solid var(--input-border);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+#sortSelect:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(176, 219, 156, 0.24);
+}
+
+/* ---------- 7. Category Pills & View Buttons ---------- */
+.category-pill {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    font-weight: 600;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 999px;
+}
+
+.category-pill:hover {
+    border-color: rgba(176, 219, 156, 0.85);
+    color: #3f6631;
+    transform: translateY(-1px);
+}
+
+.category-pill.active {
+    background: linear-gradient(135deg, #9dd485 0%, #68a952 100%);
+    border-color: rgba(122, 181, 102, 0.6);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(122, 181, 102, 0.38);
+}
+
+.view-btn {
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.view-btn:hover {
+    background: rgba(176, 219, 156, 0.25);
+    color: #3f6631;
+}
+
+.view-btn.active {
+    background: linear-gradient(135deg, #9dd485 0%, #68a952 100%);
+    box-shadow: 0 4px 12px rgba(122, 181, 102, 0.32);
+}
+
+/* ---------- 8. Sidebar Styling ---------- */
+#categoryList li {
+    border-radius: 10px;
+    transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+    padding: 10px 14px;
+    font-weight: 500;
+}
+
+#categoryList li:hover {
+    background: rgba(176, 219, 156, 0.2);
+    color: #2f5424;
+    transform: translateX(3px);
+}
+
+#categoryList li.active {
+    background: linear-gradient(135deg, rgba(163, 214, 140, 0.25), rgba(122, 181, 102, 0.2));
+    border: 1px solid rgba(176, 219, 156, 0.6);
+    font-weight: 700;
+    color: #27471d;
+}
+
+/* ---------- 9. My Tools Modal Polish ---------- */
+.modal {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(15, 23, 42, 0.6) !important;
+}
+
+.modal-content {
+    border-radius: 20px !important;
+    border: 1px solid rgba(176, 219, 156, 0.4) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25) !important;
+    max-width: 480px !important;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="url"] {
+    border-radius: 10px;
+    border: 1.5px solid var(--input-border);
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+.modal-content input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(176, 219, 156, 0.25);
+    outline: none;
+}
+
+/* ---------- 10. Dark Mode Refinements ---------- */
+[data-theme="dark"] {
+    --background-color: #0b1120;
+    --main-bg: #0b1120;
+    --sidebar-bg: #0f172a;
+    --card-bg: #131d31;
+    --text-color: #f1f5f9;
+    --muted-text: #94a3b8;
+    --input-bg: #131d31;
+    --input-border: #1e293b;
+    --tag-bg: #1e293b;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    --card-shadow-hover: 0 16px 36px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] .hero-section {
+    background:
+        radial-gradient(ellipse 60% 70% at 10% 10%, rgba(143, 199, 125, 0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 60% at 90% 90%, rgba(122, 181, 102, 0.08) 0%, transparent 60%),
+        linear-gradient(165deg, #131d31 0%, #0f172a 60%, #0b1120 100%);
+    border-color: rgba(143, 199, 125, 0.25);
+    box-shadow: 0 14px 44px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .hero-headline {
+    background: linear-gradient(125deg, #f8fafc 30%, #b0db9c 75%, #8fc77d 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-theme="dark"] .hero-nav-action {
+    background: #131d31;
+    border-color: rgba(143, 199, 125, 0.3);
+    color: #f1f5f9;
+}
+
+[data-theme="dark"] .category-pill {
+    background: #131d31;
+    border-color: #1e293b;
+    color: #e2e8f0;
+}
+
+[data-theme="dark"] .category-pill:hover {
+    border-color: rgba(143, 199, 125, 0.6);
+    color: #b0db9c;
+}
+
+[data-theme="dark"] #categoryList li.active {
+    background: linear-gradient(135deg, rgba(143, 199, 125, 0.2), rgba(122, 181, 102, 0.15));
+    border-color: rgba(143, 199, 125, 0.45);
+    color: #b0db9c;
+}
+
+[data-theme="dark"] .modal-content {
+    background: #131d31;
+    border-color: rgba(143, 199, 125, 0.3) !important;
+}
+
+/* ---------- 11. Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .tool-card,
+    .tool-logo,
+    .category-pill,
+    .hero-cta,
+    .hero-nav-action,
+    .tool-link,
+    #categoryList li {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+
+/* Enhanced Tool Logo & Fallback Styling */
+.tool-logo {
+    text-indent: -9999px;
+    color: transparent;
+}
+.tool-logo[src*="data:image/svg+xml"] {
+    background: transparent !important;
+    animation: none !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+[data-theme="dark"] .tool-logo[src*="data:image/svg+xml"] {
+    background: transparent !important;
+    border-color: rgba(255, 255, 255, 0.1);
+}
