@@ -4,6 +4,127 @@ const CHATBOT_DEBUG = window.location.hostname === 'localhost' || localStorage.g
 const chatbotDebugLog = (...args) => { if (CHATBOT_DEBUG) console.log(...args); };
 const chatbotDebugWarn = (...args) => { if (CHATBOT_DEBUG) console.warn(...args); };
 
+// Deterministic local recommender engine for instant, accurate recommendations
+class ToollyRecommender {
+    constructor(tools = []) {
+        this.tools = Array.isArray(tools) ? tools : [];
+    }
+
+    setTools(tools) {
+        this.tools = Array.isArray(tools) ? tools : [];
+    }
+
+    recommend(query) {
+        if (!query || !this.tools.length) return null;
+        const normalized = query.toLowerCase().trim();
+
+        // Pass greetings to standard conversational handler
+        if (/^(hi|hello|hey|greetings|hola|sup|good (morning|afternoon|evening))\b/i.test(normalized) && normalized.split(/\s+/).length <= 3) {
+            return null;
+        }
+
+        const categoryKeywords = {
+            coding: ['code', 'coding', 'programming', 'developer', 'python', 'javascript', 'typescript', 'react', 'git', 'terminal', 'ide', 'software', 'debug', 'frontend', 'backend', 'fullstack'],
+            nlp: ['chatbot', 'chat', 'llm', 'conversation', 'talk', 'dialogue', 'gpt', 'reasoning', 'text generation', 'writing', 'essay'],
+            vision: ['image', 'photo', 'picture', 'art', 'draw', 'drawing', 'illustration', 'photorealistic', 'sketch', 'render', 'graphic'],
+            video: ['video', 'animation', 'movie', 'clip', 'motion', 'avatar', 'reels', 'shorts', 'youtube', 'cinematic'],
+            audio: ['audio', 'music', 'sound', 'voice', 'song', 'speech', 'transcription', 'singing', 'dubbing', 'podcast'],
+            design: ['design', 'ui', 'ux', 'vector', 'svg', 'logo', 'diagram', 'canvas', 'layout', 'typography'],
+            productivity: ['productivity', 'notes', 'workflow', 'organize', 'task', 'schedule', 'calendar', 'meeting', 'summarize', 'summary'],
+            research: ['research', 'paper', 'academic', 'citations', 'study', 'literature', 'thesis', 'science'],
+            'data-science': ['data', 'analytics', 'dataset', 'machine learning', 'ml', 'statistics', 'dataframe', 'sql'],
+            automation: ['automation', 'automate', 'agent', 'workflow', 'zapier', 'pipeline', 'autonomous', 'bot'],
+            education: ['education', 'learn', 'student', 'homework', 'tutor', 'course', 'school', 'teaching'],
+            marketing: ['marketing', 'seo', 'ad', 'copywriting', 'social media', 'campaign', 'sales', 'growth'],
+            business: ['business', 'startup', 'finance', 'company', 'accounting', 'pitch', 'enterprise'],
+            'life-assistant': ['health', 'fitness', 'wellness', 'life', 'daily', 'personal', 'routine', 'companion']
+        };
+
+        const detectedIntents = [];
+        for (const [cat, keywords] of Object.entries(categoryKeywords)) {
+            if (keywords.some(kw => new RegExp(`\\b${kw}\\b`, 'i').test(normalized))) {
+                detectedIntents.push(cat);
+            }
+        }
+
+        const stopWords = new Set(['the', 'and', 'for', 'with', 'what', 'best', 'some', 'any', 'tool', 'tools', 'help', 'want', 'need', 'give', 'show', 'find']);
+        const queryTerms = normalized
+            .split(/[^a-z0-9+#]+/)
+            .filter(t => t.length > 2 && !stopWords.has(t));
+
+        // Score tools
+        const scored = this.tools.map(tool => {
+            let score = 0;
+            const nameLower = (tool.name || '').toLowerCase();
+            const descLower = (tool.description || '').toLowerCase();
+            const tags = (tool.tags || []).map(t => t.toLowerCase());
+            const categories = (tool.categories || []).map(c => c.toLowerCase());
+            const badges = (tool.badges || []).map(b => b.toLowerCase());
+
+            // Direct tool name match in query
+            if (nameLower.length > 2 && normalized.includes(nameLower)) {
+                score += 100;
+            }
+
+            // Detected category intent matches
+            detectedIntents.forEach(intent => {
+                if (categories.includes(intent)) score += 30;
+                if (tags.some(t => t.includes(intent))) score += 20;
+            });
+
+            // Query term matching
+            queryTerms.forEach(term => {
+                if (nameLower.includes(term)) score += 25;
+                if (tags.some(t => t.includes(term))) score += 15;
+                if (categories.some(c => c.includes(term))) score += 12;
+                if (descLower.includes(term)) score += 6;
+            });
+
+            // Free / Open Source preference
+            if (/\b(free|open source|freemium)\b/i.test(normalized)) {
+                if (badges.includes('free') || badges.includes('open source') || badges.includes('freemium')) {
+                    score += 20;
+                }
+            }
+
+            // Featured / Trending bonus
+            if (badges.includes('featured')) score += 5;
+            if (badges.includes('trending')) score += 3;
+
+            return { tool, score };
+        });
+
+        const top = scored
+            .filter(item => item.score > 10)
+            .sort((a, b) => b.score - a.score)
+            .slice(0, 4);
+
+        if (!top.length) return null;
+
+        const maxScore = Math.max(...top.map(t => t.score));
+
+        return {
+            intent_tags: detectedIntents.length ? detectedIntents : ['general'],
+            recommendations: top.map(item => {
+                const t = item.tool;
+                const conf = Math.min(0.99, Math.max(0.75, +(item.score / (maxScore + 10)).toFixed(2)));
+                let why = `Top-rated solution for ${t.categories.join(', ')}.`;
+                if (t.badges && t.badges.includes('featured')) {
+                    why = `Featured tool with outstanding capabilities in ${t.categories[0] || 'AI'}.`;
+                }
+                return {
+                    name: t.name,
+                    url: t.url,
+                    short_description: t.description,
+                    why_recommended: why,
+                    tags: (t.tags || []).slice(0, 4),
+                    confidence: conf
+                };
+            })
+        };
+    }
+}
+
 class ToollyAIAdvisor {
     constructor() {
         this.isOpen = false;
@@ -25,9 +146,7 @@ class ToollyAIAdvisor {
         this.toolsData = this.loadToolsData();
         
         // Initialize deterministic recommender
-        if (typeof ToollyRecommender !== 'undefined') {
-            this.recommender = new ToollyRecommender(this.toolsData);
-        }
+        this.recommender = new ToollyRecommender(this.toolsData);
     }
 
     loadToolsData() {
@@ -76,8 +195,8 @@ class ToollyAIAdvisor {
                             <div class="model-section">
                                 <div class="model-section-title">Available Now</div>
                                 <button class="model-item" data-model="toolly-local" data-available="true"><img src="logo/Toolly_logo.png" alt="Toolly" class="model-icon"><span>Toolly Local</span><span class="model-badge">Free</span></button>
-                                <button class="model-item" data-model="gemini-flash" data-available="true"><i class="fas fa-bolt model-icon"></i><span>Gemini 3 Flash Preview</span><span class="model-badge">Your key</span></button>
-                                <button class="model-item" data-model="gemini-pro" data-available="true"><i class="fas fa-gem model-icon"></i><span>Gemini 3 Pro</span><span class="model-badge">Your key</span></button>
+                                <button class="model-item" data-model="gemini-flash" data-available="true"><i class="fas fa-bolt model-icon"></i><span>Gemini 2.0 Flash</span><span class="model-badge">Your key</span></button>
+                                <button class="model-item" data-model="gemini-pro" data-available="true"><i class="fas fa-gem model-icon"></i><span>Gemini 1.5 Pro</span><span class="model-badge">Your key</span></button>
                             </div>
                             <div class="model-section">
                                 <div class="model-section-title">Coming Soon</div>
@@ -275,22 +394,26 @@ class ToollyAIAdvisor {
             }
         });
         
-        // Track resize events
-        let resizeTimeout;
-        const resizeObserver = new ResizeObserver(entries => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                // Save dimensions after resize completes
-                localStorage.setItem('chatbot_width', this.chatbotPanel.style.width || this.chatbotPanel.offsetWidth + 'px');
-                localStorage.setItem('chatbot_height', this.chatbotPanel.style.height || this.chatbotPanel.offsetHeight + 'px');
-                
-                // Ensure the panel stays within viewport
-                this.ensurePanelInViewport();
-            }, 100);
-        });
-        
-        // Observe the chatbot panel for resize events
-        resizeObserver.observe(this.chatbotPanel);
+        // Track resize events safely
+        if (typeof ResizeObserver !== 'undefined') {
+            let resizeTimeout;
+            const resizeObserver = new ResizeObserver(entries => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    // Save dimensions after resize completes
+                    localStorage.setItem('chatbot_width', this.chatbotPanel.style.width || this.chatbotPanel.offsetWidth + 'px');
+                    localStorage.setItem('chatbot_height', this.chatbotPanel.style.height || this.chatbotPanel.offsetHeight + 'px');
+                    
+                    // Ensure the panel stays within viewport
+                    this.ensurePanelInViewport();
+                }, 100);
+            });
+            
+            // Observe the chatbot panel for resize events
+            if (this.chatbotPanel) {
+                resizeObserver.observe(this.chatbotPanel);
+            }
+        }
         
         // Add keyboard shortcuts for size controls
         document.addEventListener('keydown', (e) => {
@@ -589,12 +712,7 @@ class ToollyAIAdvisor {
 
     // New: Deterministic recommendation system
     getDeterministicRecommendation(query) {
-        // Check if this is a recommendation query
-        const isRecommendationQuery = /best|recommend|suggest|top|need|looking for|want|help.*with|tool.*for|ai.*for|study|student|homework|learn|learning|research/i.test(query);
-        
-        if (!isRecommendationQuery) {
-            return null; // Let other handlers deal with non-recommendation queries
-        }
+        if (!query) return null;
 
         try {
             const result = this.recommender
@@ -602,7 +720,7 @@ class ToollyAIAdvisor {
                 : this.buildLocalRecommendations(query);
             
             // Only return if we have recommendations
-            if (result.recommendations && result.recommendations.length > 0) {
+            if (result && result.recommendations && result.recommendations.length > 0) {
                 return result;
             }
             
@@ -1144,89 +1262,91 @@ URL: ${tool.url}
         
         return html;
     }
-}
 
-// Initialize the chatbot when the page is fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-    // Wait a bit to ensure all other scripts are loaded
-    setTimeout(() => {
-        window.toollyAIAdvisor = new ToollyAIAdvisor();
-    }, 1000);
-});
-
-// Helper methods added to prototype
-ToollyAIAdvisor.prototype.getGeminiModelId = function() {
-    // Map UI selection to Gemini API model IDs
-    const map = {
-        'gemini-flash': 'gemini-3-flash-preview',
-        'gemini-pro': 'gemini-1.5-pro',
-    };
-    return map[this.currentModel] || 'gemini-3-flash-preview';
-};
-
-ToollyAIAdvisor.prototype.getModelCatalog = function() {
-    return {
-        'toolly-local': { label: 'Toolly Local', available: true },
-        'gemini-flash': { label: 'Gemini 3 Flash Preview', available: true },
-        'gemini-pro': { label: 'Gemini 3 Pro', available: true },
-        'gpt5-mini': { label: 'GPT-5 mini', available: false },
-        'gpt5-2': { label: 'GPT-5.2', available: false },
-        'claude-haiku': { label: 'Claude Haiku 4.5', available: false },
-        'claude-sonnet': { label: 'Claude Sonnet 4.5', available: false },
-        'qwen-max': { label: 'Qwen3-Max', available: false },
-        'grok4': { label: 'Grok 4', available: false },
-        'deepseek-v32': { label: 'DeepSeek v3.2', available: false }
-    };
-};
-
-ToollyAIAdvisor.prototype.isModelAvailable = function(modelKey) {
-    const catalog = this.getModelCatalog();
-    return !!(catalog[modelKey] && catalog[modelKey].available);
-};
-
-ToollyAIAdvisor.prototype.normalizeCurrentModel = function() {
-    if (!this.isModelAvailable(this.currentModel)) {
-        this.currentModel = 'toolly-local';
-        localStorage.setItem('chatbot_model', this.currentModel);
-    }
-};
-
-ToollyAIAdvisor.prototype.updateModelUI = function(modelKey) {
-    const catalog = this.getModelCatalog();
-    const safeModelKey = (catalog[modelKey] && catalog[modelKey].available) ? modelKey : 'toolly-local';
-    const label = catalog[safeModelKey].label;
-
-    if (safeModelKey !== modelKey) {
-        this.currentModel = safeModelKey;
-        localStorage.setItem('chatbot_model', safeModelKey);
+    getGeminiModelId() {
+        const map = {
+            'gemini-flash': 'gemini-2.0-flash',
+            'gemini-pro': 'gemini-1.5-pro',
+        };
+        return map[this.currentModel] || 'gemini-2.0-flash';
     }
 
-    const nameEl = this.modelCurrentBtn?.querySelector('.model-name');
-    if (nameEl) nameEl.textContent = label;
+    getModelCatalog() {
+        return {
+            'toolly-local': { label: 'Toolly Local', available: true },
+            'gemini-flash': { label: 'Gemini 2.0 Flash', available: true },
+            'gemini-pro': { label: 'Gemini 1.5 Pro', available: true },
+            'gpt5-mini': { label: 'GPT-5 mini', available: false },
+            'gpt5-2': { label: 'GPT-5.2', available: false },
+            'claude-haiku': { label: 'Claude Haiku 4.5', available: false },
+            'claude-sonnet': { label: 'Claude Sonnet 4.5', available: false },
+            'qwen-max': { label: 'Qwen3-Max', available: false },
+            'grok4': { label: 'Grok 4', available: false },
+            'deepseek-v32': { label: 'DeepSeek v3.2', available: false }
+        };
+    }
 
-    // Update icon: Toolly logo for local, bolt for Gemini, star for others
-    const iconImg = this.modelCurrentBtn?.querySelector('.model-icon');
-    if (iconImg) {
-        if (safeModelKey === 'toolly-local') {
-            iconImg.src = 'logo/Toolly_logo.png';
-            iconImg.style.display = '';
-        } else if (safeModelKey.startsWith('gemini')) {
-            iconImg.src = '';
-            iconImg.style.display = 'none';
-        } else {
-            iconImg.src = 'logo/Toolly_logo.png';
-            iconImg.style.display = '';
+    isModelAvailable(modelKey) {
+        const catalog = this.getModelCatalog();
+        return !!(catalog[modelKey] && catalog[modelKey].available);
+    }
+
+    normalizeCurrentModel() {
+        if (!this.isModelAvailable(this.currentModel)) {
+            this.currentModel = 'toolly-local';
+            localStorage.setItem('chatbot_model', this.currentModel);
         }
     }
 
-    // Active state in menu
-    if (this.modelItems && this.modelItems.length) {
-        this.modelItems.forEach(it => {
-            if (it.getAttribute('data-model') === safeModelKey) {
-                it.classList.add('active');
+    updateModelUI(modelKey) {
+        const catalog = this.getModelCatalog();
+        const safeModelKey = (catalog[modelKey] && catalog[modelKey].available) ? modelKey : 'toolly-local';
+        const label = catalog[safeModelKey].label;
+
+        if (safeModelKey !== modelKey) {
+            this.currentModel = safeModelKey;
+            localStorage.setItem('chatbot_model', safeModelKey);
+        }
+
+        const nameEl = this.modelCurrentBtn?.querySelector('.model-name');
+        if (nameEl) nameEl.textContent = label;
+
+        const iconImg = this.modelCurrentBtn?.querySelector('.model-icon');
+        if (iconImg) {
+            if (safeModelKey === 'toolly-local') {
+                iconImg.src = 'logo/Toolly_logo.png';
+                iconImg.style.display = '';
+            } else if (safeModelKey.startsWith('gemini')) {
+                iconImg.src = '';
+                iconImg.style.display = 'none';
             } else {
-                it.classList.remove('active');
+                iconImg.src = 'logo/Toolly_logo.png';
+                iconImg.style.display = '';
             }
-        });
+        }
+
+        if (this.modelItems && this.modelItems.length) {
+            this.modelItems.forEach(it => {
+                if (it.getAttribute('data-model') === safeModelKey) {
+                    it.classList.add('active');
+                } else {
+                    it.classList.remove('active');
+                }
+            });
+        }
     }
-};
+}
+
+// Initialize the chatbot when the page is ready
+function initToollyChatbot() {
+    if (!window.toollyAIAdvisor) {
+        window.toollyAIAdvisor = new ToollyAIAdvisor();
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initToollyChatbot);
+} else {
+    initToollyChatbot();
+}
+
