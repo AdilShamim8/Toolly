@@ -3413,3 +3413,127 @@ body {
     background: transparent !important;
     border-color: rgba(255, 255, 255, 0.1);
 }
+
+/* --- Sponsored Placements Section --- */
+.sponsored-section {
+    margin: 1.5rem 0 2rem;
+    scroll-margin-top: 2rem;
+}
+
+.sponsored-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.sponsored-title i {
+    margin-right: 0.4rem;
+}
+
+.sponsored-subtitle {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--muted-text);
+}
+
+.sponsored-info-link {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    text-decoration: none;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: var(--transition);
+}
+
+.sponsored-info-link:hover {
+    color: var(--text-color);
+}
+
+.sponsored-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+.sponsored-grid .tool-card {
+    position: relative;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 4px 18px rgba(176, 219, 156, 0.25);
+}
+
+.sponsor-rank {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    z-index: 2;
+    min-width: 1.6rem;
+    height: 1.6rem;
+    padding: 0 0.35rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    border-radius: 999px;
+    background: var(--primary-color);
+    color: #1e293b;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.18);
+}
+
+.sponsor-rank-1 {
+    background: linear-gradient(135deg, #fde68a, #f59e0b);
+    color: #78350f;
+}
+
+.badge.sponsored {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #1e293b;
+    font-weight: 700;
+}
+
+.badge.sponsor-tier {
+    background: var(--tag-bg);
+    color: var(--muted-text);
+    font-weight: 600;
+}
+
+.badge.sponsor-tier-platinum {
+    background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+    color: #3730a3;
+}
+
+.badge.sponsor-tier-gold {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    color: #92400e;
+}
+
+.badge.sponsor-tier-silver {
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    color: #475569;
+}
+
+.badge.sponsor-tier-bronze {
+    background: linear-gradient(135deg, #fde8d8, #fbd3ab);
+    color: #7c2d12;
+}
+
+.sponsored-load-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem;
+}
+
+[data-theme="dark"] .sponsor-rank {
+    color: #0f172a;
+}
+
+[data-theme="dark"] .badge.sponsored {
+    color: #0f172a;
+}

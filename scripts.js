@@ -10998,13 +10998,14 @@ function initializeHero() {
     const heroCtaBtn = document.getElementById('heroCtaBtn');
     const quickCats = document.querySelectorAll('.hero-quick-categories .category-pill');
     
-    // Populate featured tool icons (top 3 featured tools)
+    // Populate top sponsor icons (highest-paying 3 sponsors; fallback to featured tools)
     if (heroToolIcons) {
-        const featuredTools = aiTools
-            .filter(tool => tool.badges && tool.badges.includes('featured'))
-            .slice(0, 3);
-        
-        featuredTools.forEach(tool => {
+        const topSponsors = Array.isArray(window.sponsorPlacements) ? window.sponsorPlacements.slice(0, 3) : [];
+        const heroTools = topSponsors.length
+            ? topSponsors
+            : aiTools.filter(tool => tool.badges && tool.badges.includes('featured')).slice(0, 3);
+
+        heroTools.forEach(tool => {
             const iconWrapper = document.createElement('div');
             iconWrapper.className = 'hero-tool-icon';
             iconWrapper.title = tool.name;
@@ -11038,7 +11039,7 @@ function initializeHero() {
             // Make icon clickable to navigate to tool
             iconWrapper.addEventListener('click', () => {
                 openExternalLink(tool.url, {
-                    source: 'hero_featured_icon',
+                    source: topSponsors.length ? 'hero_sponsor_icon' : 'hero_featured_icon',
                     toolName: tool.name,
                     category: Array.isArray(tool.categories) ? tool.categories.join(',') : ''
                 });
@@ -11104,6 +11105,168 @@ function initializeHero() {
             });
         });
     }
+}
+
+// --- Sponsored Placements (pay more, rank higher) ---
+const SPONSORED_COLLAPSED_COUNT = 3;
+
+function createSponsorCard(sponsor, rank) {
+    const card = document.createElement('div');
+    card.className = 'tool-card sponsor-card';
+
+    // Rank badge (position by monthly bid, highest first)
+    const rankBadge = document.createElement('span');
+    rankBadge.className = `sponsor-rank sponsor-rank-${rank}`;
+    rankBadge.textContent = `#${rank}`;
+    rankBadge.title = `Sponsor rank ${rank}`;
+    card.appendChild(rankBadge);
+
+    // Create header with logo and name
+    const header = document.createElement('div');
+    header.className = 'tool-header';
+
+    const logo = document.createElement('img');
+    logo.className = 'tool-logo';
+    const primaryCat = Array.isArray(sponsor.categories) && sponsor.categories.length ? sponsor.categories[0] : '';
+    logo.src = sponsor.logo || generateToolAvatar(sponsor.name, primaryCat);
+    logo.alt = `${sponsor.name} logo`;
+    logo.loading = 'lazy';
+    logo.width = 48;
+    logo.height = 48;
+    logo.decoding = 'async';
+    logo.onerror = function() {
+        this.onerror = null;
+        const domain = getDomain(sponsor.url);
+        const ddg = domain ? `https://icons.duckduckgo.com/ip3/${domain}.ico` : '';
+        if (ddg && this.src !== ddg) {
+            this.onerror = function() {
+                this.onerror = null;
+                this.src = generateToolAvatar(sponsor.name, primaryCat);
+            };
+            this.src = ddg;
+        } else {
+            this.src = generateToolAvatar(sponsor.name, primaryCat);
+        }
+    };
+    header.appendChild(logo);
+
+    const name = document.createElement('h3');
+    name.className = 'tool-name';
+    name.textContent = sponsor.name;
+    header.appendChild(name);
+    card.appendChild(header);
+
+    // Badges: Sponsored label + tier derived from rank
+    const badges = document.createElement('div');
+    badges.className = 'tool-badges';
+
+    const sponsoredBadge = document.createElement('span');
+    sponsoredBadge.className = 'badge sponsored';
+    sponsoredBadge.textContent = 'Sponsored';
+    badges.appendChild(sponsoredBadge);
+
+    const tier = (typeof window.sponsorTierForRank === 'function') ? window.sponsorTierForRank(rank) : 'Sponsor';
+    const tierBadge = document.createElement('span');
+    tierBadge.className = `badge sponsor-tier sponsor-tier-${tier.toLowerCase()}`;
+    tierBadge.textContent = tier;
+    badges.appendChild(tierBadge);
+    card.appendChild(badges);
+
+    // Description
+    const desc = document.createElement('p');
+    desc.className = 'tool-description';
+    desc.textContent = sponsor.description || '';
+    card.appendChild(desc);
+
+    // Tags
+    if (Array.isArray(sponsor.tags) && sponsor.tags.length) {
+        const tags = document.createElement('div');
+        tags.className = 'tool-tags';
+        sponsor.tags.slice(0, 3).forEach(t => {
+            const tag = document.createElement('span');
+            tag.className = 'tag';
+            tag.textContent = t;
+            tags.appendChild(tag);
+        });
+        card.appendChild(tags);
+    }
+
+    // Footer with link
+    const footer = document.createElement('div');
+    footer.className = 'tool-footer';
+
+    const link = document.createElement('a');
+    link.className = 'tool-link';
+    link.href = sponsor.url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = 'Visit Site';
+    link.addEventListener('click', () => {
+        toollyAnalytics.track('sponsor_link_clicked', {
+            source: 'sponsored_section',
+            sponsorRank: rank,
+            sponsorTier: tier,
+            toolName: sponsor.name,
+            destinationUrl: sponsor.url
+        });
+    });
+    footer.appendChild(link);
+    card.appendChild(footer);
+
+    return card;
+}
+
+function initializeSponsoredSection() {
+    const sponsoredGrid = document.getElementById('sponsoredGrid');
+    if (!sponsoredGrid) return;
+
+    const sponsors = Array.isArray(window.sponsorPlacements) ? window.sponsorPlacements : [];
+    const section = document.getElementById('sponsored-section');
+
+    if (!sponsors.length) {
+        // No active sponsor placements: hide the section entirely
+        if (section) section.style.display = 'none';
+        return;
+    }
+
+    const loadMoreWrap = document.getElementById('sponsoredLoadMore');
+    const seeMoreBtn = document.getElementById('sponsoredSeeMoreBtn');
+    let expanded = false;
+
+    const render = () => {
+        sponsoredGrid.innerHTML = '';
+        const count = expanded ? sponsors.length : Math.min(SPONSORED_COLLAPSED_COUNT, sponsors.length);
+        for (let i = 0; i < count; i++) {
+            sponsoredGrid.appendChild(createSponsorCard(sponsors[i], i + 1));
+        }
+
+        if (loadMoreWrap) {
+            const hasMore = sponsors.length > SPONSORED_COLLAPSED_COUNT;
+            loadMoreWrap.style.display = hasMore ? 'flex' : 'none';
+            if (seeMoreBtn && hasMore) {
+                const textEl = seeMoreBtn.querySelector('.load-more-text');
+                if (textEl) {
+                    textEl.textContent = expanded
+                        ? 'Show Less'
+                        : `See More Sponsored Tools (${sponsors.length - SPONSORED_COLLAPSED_COUNT} more)`;
+                }
+                seeMoreBtn.setAttribute('aria-expanded', String(expanded));
+            }
+        }
+    };
+
+    if (seeMoreBtn) {
+        seeMoreBtn.addEventListener('click', () => {
+            expanded = !expanded;
+            render();
+            toollyAnalytics.track('sponsored_section_toggle', {
+                expanded,
+                totalSponsors: sponsors.length
+            });
+        });
+    }
+
+    render();
 }
 
 const SKELETON_COUNT = 12;
@@ -12350,6 +12513,7 @@ function boot() {
     }, 300);
     initializeStats();
     initializeHero(); // Initialize hero section
+    initializeSponsoredSection(); // Render sponsored placements
     applySavedBrowseState();
     applyBrowseStateFromUrl();
     isAllToolsCollapsed = false;

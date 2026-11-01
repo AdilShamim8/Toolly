@@ -211,11 +211,11 @@
                         <button class="category-pill" data-group="productivity">Productivity</button>
                     </div>
 
-                    <!-- Featured Tool Icons -->
+                    <!-- Top Sponsor Icons -->
                     <div class="hero-featured-tools">
-                        <p class="featured-label">Featured Tools:</p>
+                        <p class="featured-label">Top Sponsors:</p>
                         <div class="hero-tool-icons" id="heroToolIcons">
-                            <!-- Dynamically populated with top 3 featured tools -->
+                            <!-- Dynamically populated with top 3 sponsors -->
                         </div>
                     </div>
 
@@ -257,6 +257,27 @@
                     <span id="toolCount" class="tools-counter" role="status" aria-live="polite" aria-atomic="true">Showing 0 tools</span>
                 </div>
             </header>
+
+            <!-- Sponsored Placements Section -->
+            <section id="sponsored-section" class="sponsored-section" aria-labelledby="sponsored-heading">
+                <div class="section-header">
+                    <h2 class="sponsored-title" id="sponsored-heading">
+                        <i class="fas fa-crown" aria-hidden="true"></i>
+                        Sponsored Tools
+                        <span class="sponsored-subtitle">Promoted placements — sponsors who invest more rank higher</span>
+                    </h2>
+                    <a class="sponsored-info-link" href="#advertise">Advertise here <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="sponsored-grid" id="sponsoredGrid">
+                    <!-- Sponsor cards are rendered dynamically (top 3 first) -->
+                </div>
+                <div class="sponsored-load-more" id="sponsoredLoadMore" style="display: none;">
+                    <button type="button" class="load-more-btn" id="sponsoredSeeMoreBtn" aria-expanded="false" aria-controls="sponsoredGrid">
+                        <span class="load-more-text">See More Sponsored Tools</span>
+                    </button>
+                </div>
+            </section>
+
             <!-- My Tools Section -->
             <section id="my-tools-section" class="tools-section">
               <h2>My Tools</h2>
@@ -290,7 +311,7 @@
             </div>
             <section class="tools-catalog-section" aria-labelledby="featured-tools-heading">
                 <div class="section-header">
-                    <h2 class="featured-title" id="featured-tools-heading">Featured Tools</h2>
+                    <h2 class="featured-title" id="featured-tools-heading">All AI Tools</h2>
                     <div class="view-options">
                         <button class="view-btn active" data-view="grid" aria-label="Switch to grid view" aria-pressed="true"><i class="fas fa-th"></i></button>
                         <button class="view-btn" data-view="list" aria-label="Switch to list view" aria-pressed="false"><i class="fas fa-list"></i></button>
@@ -382,6 +403,7 @@
         <i class="fas fa-moon"></i>
     </button>
     <!-- Defer non-critical JavaScript -->
+    <script src="sponsors.js" defer></script>
     <script src="scripts.js" defer></script>
 </body>
 </html>
