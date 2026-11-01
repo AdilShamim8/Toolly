@@ -287,6 +287,24 @@
                 </div>
             </section>
 
+            <!-- Discovery Strip: Trending / Hot Today / Newly Added -->
+            <section id="discovery-section" class="discovery-section" aria-labelledby="discovery-heading">
+                <div class="section-header">
+                    <h2 class="discovery-title" id="discovery-heading">
+                        <i class="fas fa-fire" aria-hidden="true"></i>
+                        Discover What's Popular
+                    </h2>
+                    <div class="discovery-tabs" role="tablist" aria-label="Tool discovery lists">
+                        <button type="button" class="discovery-tab active" data-discovery="trending" role="tab" aria-selected="true" aria-controls="discoveryGrid">Trending</button>
+                        <button type="button" class="discovery-tab" data-discovery="hot" role="tab" aria-selected="false" aria-controls="discoveryGrid">Hot Today</button>
+                        <button type="button" class="discovery-tab" data-discovery="new" role="tab" aria-selected="false" aria-controls="discoveryGrid">Newly Added</button>
+                    </div>
+                </div>
+                <div class="discovery-grid" id="discoveryGrid" role="tabpanel">
+                    <!-- Discovery chips are rendered dynamically -->
+                </div>
+            </section>
+
             <!-- My Tools Section -->
             <section id="my-tools-section" class="tools-section">
               <h2>My Tools</h2>

@@ -11840,6 +11840,107 @@ function initializeSponsoredSection() {
     render();
 }
 
+// --- Discovery strip: Trending / Hot Today / Newly Added ---
+const DISCOVERY_CHIP_COUNT = 10;
+
+function discoveryList(kind) {
+    if (kind === 'new') {
+        // Newly added tools live at the end of the data array (append order)
+        return aiTools.slice().reverse().filter(t => t && t.name).slice(0, DISCOVERY_CHIP_COUNT);
+    }
+    if (kind === 'hot') {
+        // Hot Today: popular + trending + featured mix, seeded shuffle per day
+        const pool = aiTools.filter(t => t && Array.isArray(t.badges) && (
+            t.badges.includes('trending') || t.badges.includes('popular') || t.badges.includes('featured')
+        ));
+        const daySeed = Math.floor(Date.now() / 86400000); // changes daily
+        const seeded = pool.map((t, i) => ({ t, k: ((daySeed * 9301 + i * 49297) % 233280) / 233280 }))
+            .sort((a, b) => a.k - b.k)
+            .map(x => x.t);
+        return seeded.slice(0, DISCOVERY_CHIP_COUNT);
+    }
+    // Trending (default): trending badge first, then popular
+    return aiTools.filter(t => t && Array.isArray(t.badges) && (
+        t.badges.includes('trending') || t.badges.includes('popular')
+    )).slice(0, DISCOVERY_CHIP_COUNT);
+}
+
+function initializeDiscoverySection() {
+    const grid = document.getElementById('discoveryGrid');
+    if (!grid) return;
+
+    const tabs = document.querySelectorAll('.discovery-tab');
+    let activeKind = 'trending';
+
+    const render = () => {
+        grid.innerHTML = '';
+        const tools = discoveryList(activeKind);
+        tools.forEach((tool, idx) => {
+            const chip = document.createElement('button');
+            chip.type = 'button';
+            chip.className = 'discovery-chip';
+            chip.setAttribute('aria-label', `View details and similar tools for ${tool.name}`);
+
+            const rank = document.createElement('span');
+            rank.className = 'discovery-rank';
+            rank.textContent = idx + 1;
+            chip.appendChild(rank);
+
+            const primaryCat = Array.isArray(tool.categories) && tool.categories.length ? tool.categories[0] : '';
+            const img = document.createElement('img');
+            img.className = 'discovery-logo';
+            img.src = tool.logo || generateToolAvatar(tool.name, primaryCat);
+            img.alt = '';
+            img.loading = 'lazy';
+            img.width = 28;
+            img.height = 28;
+            img.decoding = 'async';
+            img.onerror = function () {
+                this.onerror = null;
+                const domain = getDomain(tool.url);
+                const ddg = domain ? `https://icons.duckduckgo.com/ip3/${domain}.ico` : '';
+                if (ddg && this.src !== ddg) {
+                    this.onerror = function() {
+                        this.onerror = null;
+                        this.src = generateToolAvatar(tool.name, primaryCat);
+                    };
+                    this.src = ddg;
+                } else {
+                    this.src = generateToolAvatar(tool.name, primaryCat);
+                }
+            };
+            chip.appendChild(img);
+
+            const label = document.createElement('span');
+            label.className = 'discovery-name';
+            label.textContent = tool.name;
+            chip.appendChild(label);
+
+            chip.addEventListener('click', () => {
+                if (window.ToollyToolDetails) window.ToollyToolDetails.open(tool);
+                toollyAnalytics.track('discovery_chip_clicked', { list: activeKind, toolName: tool.name });
+            });
+
+            grid.appendChild(chip);
+        });
+    };
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            activeKind = tab.dataset.discovery || 'trending';
+            tabs.forEach(t => {
+                const isActive = t === tab;
+                t.classList.toggle('active', isActive);
+                t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            });
+            render();
+            toollyAnalytics.track('discovery_tab_switched', { list: activeKind });
+        });
+    });
+
+    render();
+}
+
 const SKELETON_COUNT = 12;
 
 function showGridSkeletons() {
@@ -13150,6 +13251,7 @@ function boot() {
     initializeStats();
     initializeHero(); // Initialize hero section
     initializeSponsoredSection(); // Render sponsored placements
+    initializeDiscoverySection(); // Render trending/hot/new discovery strip
     refreshCategoryCounts(); // Show per-category tool counts in sidebar
     applySavedBrowseState();
     applyBrowseStateFromUrl();
