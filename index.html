@@ -105,6 +105,9 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
     <link rel="icon" href="logo/Toolly_logo.png" type="image/png">
 </head>
 <body class="landing-body">
@@ -124,8 +127,8 @@
             <a href="about.html">About</a>
         </nav>
         <div class="landing-nav-actions">
-            <a class="landing-nav-primary" href="tools.html">
-                <i class="fas fa-th-large" aria-hidden="true"></i> Open Directory
+            <a class="landing-nav-primary" href="tools.html" aria-label="Open the full tool directory">
+                <i class="fas fa-th-large" aria-hidden="true"></i><span class="nav-dir-open">Open </span><span class="nav-dir-rest">Directory</span>
             </a>
             <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>

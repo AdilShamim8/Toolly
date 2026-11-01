@@ -501,7 +501,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #000; /* Color of the scroll thumb */
+    background: rgba(100, 116, 139, 0.4); /* slate thumb, not harsh black */
     border-radius: 10px; /* Rounded corners for the thumb */
     border: 2px solid var(--main-bg); /* Space around thumb */
 }
@@ -509,7 +509,7 @@ body {
 /* For Firefox */
 html {
     scrollbar-width: thin; /* "auto" or "thin" */
-    scrollbar-color: #000 var(--main-bg); /* thumb color track color */
+    scrollbar-color: rgba(100, 116, 139, 0.45) var(--main-bg); /* slate thumb, was #000 (rendered as a harsh black line) */
 }
 
 .layout {
@@ -4345,6 +4345,36 @@ body.modal-open {
 
 .landing-nav-actions { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
 
+/* The landing nav's theme toggle is an INLINE nav button, not the floating
+   fixed-position circle used on directory pages. The global .theme-toggle rule
+   sets position:fixed, and .landing-nav's backdrop-filter creates a containing
+   block that anchors it inside the nav — the circle ended up half-clipped above
+   the nav's top edge. Scope the nav version back into the flow here. */
+.landing-nav-actions .theme-toggle {
+    position: static;
+    width: 40px; height: 40px;
+    background: transparent;
+    color: var(--text-color);
+    box-shadow: none;
+    border: 1px solid var(--input-border);
+    z-index: auto;
+}
+.landing-nav-actions .theme-toggle:hover {
+    background: var(--primary-color);
+    color: #1e293b;
+    transform: none;
+}
+.landing-nav-actions .theme-toggle i { font-size: 1rem; }
+
+/* Small phones: the action row (Directory button + toggle + burger) is wider
+   than the viewport, pushing the nav into horizontal overflow. Drop the
+   wordmark text and the "Open " prefix so everything fits at 390px and below. */
+@media (max-width: 480px) {
+    .landing-brand span { display: none; }
+    .landing-nav-primary .nav-dir-open { display: none; }
+    .landing-nav-primary { padding: 0.6rem 0.9rem; }
+}
+
 .landing-nav-primary {
     display: inline-flex; align-items: center; gap: 0.45rem;
     background: var(--primary-color); color: #1e293b;
@@ -4714,6 +4744,19 @@ body.modal-open {
 .landing-category-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 0.8rem;
+    /* 14 categories in 6 columns leave a dangling 2-card row; center any
+       short final row so the grid reads as intentional, not unfinished */
+    justify-content: center;
+    text-align: left;
+}
+/* Balance the tail: when the last row holds only 2 of 6 columns, the two
+   trailing cards widen to span 3 columns each (6/6/2 becomes 6/6 + two
+   wide cards centered on their own row) — only at full 6-column width */
+@media (min-width: 981px) {
+    .landing-category-grid > .landing-category-card:nth-child(13),
+    .landing-category-grid > .landing-category-card:nth-child(14) {
+        grid-column: span 3;
+    }
 }
 .landing-category-card {
     display: flex; flex-direction: column; align-items: flex-start; gap: 0.35rem;
