@@ -3537,3 +3537,224 @@ body {
 [data-theme="dark"] .badge.sponsored {
     color: #0f172a;
 }
+
+/* --- Advertise / Sponsorship Section --- */
+.advertise-section {
+    margin: 2.5rem 0;
+    scroll-margin-top: 2rem;
+}
+
+.advertise-card {
+    background: var(--card-bg);
+    border: 1px solid var(--input-border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 2rem;
+}
+
+.advertise-card h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.advertise-card h2 i {
+    color: var(--primary-dark);
+}
+
+.advertise-intro {
+    color: var(--muted-text);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 70ch;
+    margin-bottom: 1.5rem;
+}
+
+.advertise-intro strong {
+    color: var(--text-color);
+}
+
+.advertise-benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+}
+
+.advertise-benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: var(--tag-bg);
+    border-radius: 12px;
+}
+
+.advertise-benefit i {
+    font-size: 1.1rem;
+    color: var(--primary-dark);
+    margin-top: 0.15rem;
+}
+
+.advertise-benefit h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+}
+
+.advertise-benefit p {
+    font-size: 0.85rem;
+    color: var(--muted-text);
+    line-height: 1.5;
+}
+
+.advertise-tiers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+}
+
+.advertise-tier {
+    border: 1px solid var(--input-border);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.advertise-tier .tier-name {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.advertise-tier .tier-slots {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--muted-text);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.advertise-tier p {
+    font-size: 0.85rem;
+    color: var(--muted-text);
+    line-height: 1.5;
+}
+
+.advertise-tier.tier-platinum {
+    border-color: #c7d2fe;
+    background: linear-gradient(160deg, rgba(224, 231, 255, 0.55), transparent 60%);
+}
+
+.advertise-tier.tier-platinum .tier-name {
+    color: #3730a3;
+}
+
+.advertise-tier.tier-gold {
+    border-color: #fde68a;
+    background: linear-gradient(160deg, rgba(254, 243, 199, 0.6), transparent 60%);
+}
+
+.advertise-tier.tier-gold .tier-name {
+    color: #92400e;
+}
+
+.advertise-tier.tier-silver {
+    border-color: #cbd5e1;
+    background: linear-gradient(160deg, rgba(241, 245, 249, 0.8), transparent 60%);
+}
+
+.advertise-tier.tier-silver .tier-name {
+    color: #475569;
+}
+
+.advertise-tier.tier-bronze {
+    border-color: #fbd3ab;
+    background: linear-gradient(160deg, rgba(253, 232, 216, 0.55), transparent 60%);
+}
+
+.advertise-tier.tier-bronze .tier-name {
+    color: #7c2d12;
+}
+
+.advertise-cta {
+    border-top: 1px solid var(--input-border);
+    padding-top: 1.5rem;
+}
+
+.advertise-cta p {
+    color: var(--muted-text);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 70ch;
+    margin-bottom: 1rem;
+}
+
+.advertise-cta-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.advertise-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 999px;
+    background: var(--primary-color);
+    color: #1e293b;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 4px 14px rgba(176, 219, 156, 0.45);
+}
+
+.advertise-cta-btn:hover {
+    background: var(--primary-dark);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.advertise-cta-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted-text);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--input-border);
+}
+
+.advertise-cta-link:hover {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .advertise-tier.tier-platinum {
+    background: linear-gradient(160deg, rgba(99, 102, 241, 0.18), transparent 60%);
+}
+
+[data-theme="dark"] .advertise-tier.tier-gold {
+    background: linear-gradient(160deg, rgba(245, 158, 11, 0.16), transparent 60%);
+}
+
+[data-theme="dark"] .advertise-tier.tier-silver {
+    background: linear-gradient(160deg, rgba(148, 163, 184, 0.16), transparent 60%);
+}
+
+[data-theme="dark"] .advertise-tier.tier-bronze {
+    background: linear-gradient(160deg, rgba(217, 119, 6, 0.16), transparent 60%);
+}
+
+@media (max-width: 640px) {
+    .advertise-card {
+        padding: 1.25rem;
+    }
+}
