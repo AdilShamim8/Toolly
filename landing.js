@@ -49,6 +49,38 @@
         });
     }
 
+    // --- Mobile/tablet navigation drawer (hamburger) ---
+    const navBurger = document.getElementById('navBurger');
+    const navDrawer = document.getElementById('navDrawer');
+    if (navBurger && navDrawer) {
+        const setExpanded = (open) => {
+            navDrawer.classList.toggle('open', open);
+            navBurger.setAttribute('aria-expanded', String(open));
+            navBurger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            const icon = navBurger.querySelector('i');
+            if (icon) icon.className = open ? 'fas fa-xmark' : 'fas fa-bars';
+        };
+        navBurger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            setExpanded(!navDrawer.classList.contains('open'));
+        });
+        // Close after choosing a destination (anchors scroll in-page)
+        navDrawer.addEventListener('click', (e) => {
+            if (e.target.closest('a')) setExpanded(false);
+        });
+        // Close on outside click / Escape
+        document.addEventListener('click', (e) => {
+            if (navDrawer.classList.contains('open') && !e.target.closest('.landing-nav')) setExpanded(false);
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') setExpanded(false);
+        });
+        // Close if resized up to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 900 && navDrawer.classList.contains('open')) setExpanded(false);
+        }, { passive: true });
+    }
+
     // --- Shared helpers ---
     const CATEGORY_ORDER = [
         { id: 'nlp', label: 'Chatbot', icon: 'fa-comments' },
