@@ -2,125 +2,103 @@
 ![Toolly Logo](https://github.com/AdilShamim8/Toolly/blob/main/logo/Toolly.jpg)
 
 <div align="center">
-  
+
   [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
   [![GitHub issues](https://img.shields.io/github/issues/AdilShamim8/Toolly)](https://github.com/AdilShamim8/Toolly/issues)
   [![GitHub stars](https://img.shields.io/github/stars/AdilShamim8/Toolly)](https://github.com/AdilShamim8/Toolly/stargazers)
-  
+
   *"The tools you need to build the future, all in one place."*
 </div>
 
-Welcome to **Toolly**, crafted with purpose and simplicity to empower every developer's journey. Here, we don't just provide utilities—we spark creativity, ignite innovation, and remove barriers between your ideas and reality.
+**Toolly** is a free, curated AI tools directory. It helps you discover, compare, and shortlist 560+ AI tools across 15 categories — chatbots, coding assistants, image and video generators, audio, productivity, research, and more — in one clean, fast, privacy-friendly page with no signup.
 
-## Vision
-
-In the spirit of relentless innovation, Toolly was born from a belief: that the right tool, at the right time, can change everything. We imagine a world where developers focus on solving problems, not wrestling with setup. Toolly is that world made real.
+Live site: <https://adilshamim8.github.io/Toolly/>
 
 ## What Makes Toolly Special
 
-* **Elegant Simplicity**: A curated suite of utilities, each refined to do exactly what you need—no clutter, no confusion.
-* **Seamless Integration**: Designed to plug into your existing workflow; whether you're scripting, prototyping, or deploying, Toolly is there.
-* **Open by Design**: Every component is open source. Your feedback shapes the next release, and your contributions power the community.
-* **Developer-First Approach**: Built by developers, for developers—with the intuitive interfaces and powerful capabilities you actually need.
-* **Cross-Platform**: Works flawlessly across Windows, macOS, and Linux environments.
+* **Curated, not scraped**: every entry is hand-checked for a working product URL, a real description, pricing badges, and category tagging.
+* **Fast and clean**: a single static page — no frameworks, no tracking bloat, quick to load even on mobile networks.
+* **Organized by intent**: quick category pills, sidebar filters with live tool counts, pricing filter, and sort by Trending / Newly Added / Featured.
+* **Works offline-first in your browser**: search state, theme, and your personal shortcuts persist locally — nothing is stored on a server.
+* **Open by design**: MIT licensed; contributions and corrections are welcome.
 
 ## Core Features
 
-1. **Instant Scaffolding**: Bootstrap any project with a single command.
-2. **Smart Formatting**: Keep your code clean and consistent—automatically.
-3. **Unified CLI**: One interface to rule them all; no more context switching.
-4. **Extensible Plugins**: Build or install plugins that speak your language.
-5. **Insightful Analytics**: Track your workflow, then optimize with real data.
-6. **Intelligent Refactoring**: Transform your codebase with confidence through automated refactoring tools.
-7. **Integrated Documentation**: Generate comprehensive docs directly from your code comments.
+1. **560+ curated AI tools** across 15 categories, each with logo, description, pricing badge, and tags.
+2. **Instant search with autocomplete**: ranked suggestions with logos and pricing as you type, full keyboard navigation (Arrow keys + Enter).
+3. **Tool detail pages** (modal): full description, categories, tags, Visit Site CTA, and a *Similar Tools* recommendation row computed from shared categories and tags.
+4. **Discovery strip**: Trending, Hot Today (rotates daily), and Newly Added lists in ranked chip form.
+5. **Sponsored placements**: transparent pay-more-rank-higher advertising — top 3 sponsors appear above the directory with rank badges and tier labels (Platinum/Gold/Silver/Bronze). Managed in `sponsors.js`; see the "Advertise on Toolly" section on the site.
+6. **Pricing filter**: Free / Freemium / Paid / Open Source, combinable with search, categories, and sort.
+7. **My Tools**: save personal shortcuts in localStorage, with drag-to-reorder, logo auto-fetch, and duplicate-URL warnings.
+8. **Dark mode, responsive layout, and accessibility**: keyboard reachable controls, ARIA state on filters and dialogs, visible focus rings, reduced-motion support.
+
+## Repository Layout
+
+```
+index.html        Homepage: hero, sponsored, discovery, directory, advertise, submit
+about.html        About page
+learn-ai.html     AI learning roadmap for non-technical people
+privacy.html      Privacy policy
+terms.html        Terms of service
+scripts.js        Tool data (aiTools array) + directory rendering and filters
+sponsors.js       Sponsored placements (pay more, rank higher)
+tool-details.js   Tool detail modal + Similar Tools engine
+search-suggest.js Search autocomplete
+styles.css        Full design system (Toolly green, light + dark)
+legal-pages.js    Shared logic for privacy/terms pages
+logo/             Brand assets
+```
 
 ## Quick Start
 
-1. **Clone the repo**
+The site is fully static — serve it with any static file server:
 
-   ```bash
-   git clone https://github.com/AdilShamim8/Toolly.git
-   cd Toolly
-   ```
-2. **Install**
+```bash
+git clone https://github.com/AdilShamim8/Toolly.git
+cd Toolly
+python3 -m http.server 8000
+# open http://localhost:8000
+```
 
-   ```bash
-   npm install    # or yarn install
-   ```
-3. **Run**
+No build step, no dependencies. Opening `index.html` directly also works.
 
-   ```bash
-   toolly --help   # see available commands
-   ```
+### Adding a tool
 
-That's it. You're ready to unlock your potential.
+Append an entry to the `aiTools` array in `scripts.js`:
+
+```js
+{
+    "name": "Example AI",
+    "description": "One clear sentence about what it does.",
+    "categories": ["coding"],            // any of the 15 sidebar categories
+    "logo": "https://icons.duckduckgo.com/ip3/example.com.ico",
+    "url": "https://example.com",
+    "badges": ["freemium"],              // free | freemium | paid | open source | featured | trending | new | popular
+    "tags": ["keyword", "another-keyword"]
+}
+```
+
+Badges drive the pricing filter and the Trending / Newly Added lists, so tag them accurately. New entries appear in the "Newly Added" discovery list automatically (newest first).
+
+### Managing sponsor placements
+
+Edit `sponsorPlacements` in `sponsors.js`. Each entry carries a `sponsor.monthlyBid` (USD/month); the list is sorted by bid, highest first. Rank 1–3 = Platinum, 4–6 = Gold, 7–9 = Silver, 10+ = Bronze. There is no payment processing yet — placements are sold directly and updated by editing the file.
 
 ## Use Cases
 
-- **Frontend Developers**: Rapidly prototype UI components, optimize assets, and validate markup.
-- **Backend Engineers**: Test APIs, manage database migrations, and monitor performance.
-- **DevOps Specialists**: Streamline deployment workflows, automate testing, and ensure consistency across environments.
-- **Open Source Contributors**: Standardize code style, generate changelogs, and simplify release management.
-
-## Daily Improvement Notes
-
-Last updated: March 17, 2026.
-
-### What Changed
-
-- Added incremental UX and accessibility improvements through the 14-day micro-plan.
-- Improved search and filter ergonomics: clear search, keyboard shortcut (`/`), persisted filter/sort state, and one-click empty-state reset.
-- Improved legal/footer reliability with working policy links and consistent metadata.
-- Improved My Tools quality: inline validation/status messages, URL normalization (`https://` auto-prepend), and non-blocking duplicate URL warnings.
-- Added first-paint tool-grid skeletons and stronger keyboard focus visibility across key controls.
-- Added production planning artifact: `PRODUCTION_IMPROVEMENT_ROADMAP.md` with phase-based execution, KPI framework, and daily operating system.
-- Added URL-shareable browse state on homepage filters and view mode via query params (`q`, `cat`, `group`, `sort`, `view`).
-- Added lightweight analytics event contract in the frontend and tracked key events: search usage, category selection, outbound tool clicks, and submit result states.
-- Added release operation docs: `RELEASE_CHECKLIST.md` and `SMOKE_TEST_MATRIX.md` for consistent production-quality verification.
-- Consolidated duplicate inline JavaScript in `privacy.html` and `terms.html` into shared `legal-pages.js` for safer maintenance.
-- Completed focused accessibility improvements: skip links, keyboard-accessible category filters, sidebar/modal Escape-close behavior, and stronger ARIA state handling for toggles and views.
-
-### What Tested
-
-- Verified editor diagnostics after each small change.
-- Smoke-tested on desktop and mobile for:
-   - search
-   - category filter/group pills
-   - load more
-   - theme toggle
-   - My Tools add/edit/delete
-- Confirmed no blocking popups in My Tools validation flow.
-- Confirmed custom links with bare domains save/open reliably.
-- Confirmed focus rings are visible during keyboard navigation.
-
-### Daily Workflow For Contributors
-
-1. Ship one micro-improvement only.
-2. Check editor errors immediately.
-3. Run the smoke test list above.
-4. Record a short note in this section:
-    - Date
-    - Change shipped
-    - Files touched
-    - Manual checks passed
-    - Issues found
-    - Rollback needed (Yes/No)
-
-## Philosophy
-
-> "Innovation distinguishes between a leader and a follower." 
-
-We believe leadership in software comes from clarity of purpose. Every line in Toolly is intentional, every feature is designed to empower. Our tools don't just solve problems—they transform how you think about solving them.
+- **Creators and marketers**: find image, video, and copy tools, compare pricing at a glance.
+- **Developers**: shortlist coding assistants and IDEs, then keep favorites one click away in My Tools.
+- **Students and researchers**: research assistants, citation tools, and the Learn AI roadmap.
+- **Teams evaluating AI**: the detail modal's Similar Tools row makes shortlists and comparisons quick.
 
 ## Contributing
-
-Your ideas fuel this project. Whether you find a bug, dream up a new feature, or write documentation, we welcome you:
 
 1. Fork the repo
 2. Create a feature branch
 3. Open a Pull Request
 
-Let's build the future—together.
+Tool corrections (wrong pricing, dead links, better descriptions) are just as welcome as features.
 
 ## License
 
@@ -130,6 +108,6 @@ Released under the **MIT License**. See `LICENSE` for details.
 
 <div align="center">
   <i>Designed and built with by <a href="https://adilshamim.me/">Adil Shamim</a></i>
-  
-  [Live](http://www.toolly.tech/)
+
+  [Live](https://adilshamim8.github.io/Toolly/)
 </div>
