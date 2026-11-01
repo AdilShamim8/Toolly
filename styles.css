@@ -4883,3 +4883,89 @@ body.modal-open {
 @media (max-width: 600px) {
     .footer-content { grid-template-columns: 1fr; gap: 1.5rem; }
 }
+
+/* ==========================================================================
+   LANDING POLISH PASS — reveal animations, hero texture, focus states
+   ========================================================================== */
+
+/* Scroll-reveal: sections and cards fade+rise in once (respects
+   prefers-reduced-motion and works without JS: default visible, JS adds
+   the 'reveal' class only when IntersectionObserver exists) */
+.landing-reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+    transition-delay: var(--reveal-delay, 0ms);
+}
+.landing-reveal.revealed { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+    .landing-reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* Hero: faint dotted grid for texture, still calm */
+.landing-hero {
+    background-image:
+        radial-gradient(rgba(122, 181, 102, 0.14) 1px, transparent 1px),
+        radial-gradient(ellipse 70% 60% at 50% -10%, rgba(176, 219, 156, 0.35), transparent);
+    background-size: 26px 26px, 100% 100%;
+    background-position: 0 0, 0 0;
+}
+
+/* Search field: slightly larger, softer radius for friendliness */
+.landing-hero-search { border-radius: 22px; }
+.landing-hero-search input { font-size: 1.02rem; }
+
+/* Keyboard focus visibility across all landing interactive elements */
+.landing-nav-links a:focus-visible,
+.landing-nav-primary:focus-visible,
+.landing-nav-burger:focus-visible,
+.landing-nav-drawer a:focus-visible,
+.landing-quickstart a:focus-visible,
+.landing-step-link:focus-visible,
+.landing-choice:focus-visible,
+.landing-finder-tool:focus-visible,
+.landing-category-card:focus-visible,
+.landing-trending-row:focus-visible,
+.landing-learn-card:focus-visible,
+.landing-faq-item summary:focus-visible,
+.landing-button:focus-visible,
+.landing-suggest-row:focus-visible {
+    outline: 3px solid #7ab566;
+    outline-offset: 2px;
+}
+
+/* Step cards: gentle connective arrow between steps on wide screens */
+@media (min-width: 901px) {
+    .landing-step:not(:last-child)::after {
+        content: '\f178'; /* fa-arrow-right-long */
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        position: absolute;
+        top: 50%;
+        right: -0.95rem;
+        transform: translateY(-50%);
+        color: var(--primary-dark);
+        font-size: 1.05rem;
+        opacity: 0.65;
+        z-index: 1;
+    }
+    .landing-step { position: relative; }
+}
+
+/* Trending rows: rank chip alignment tweak */
+.landing-trending-rank { font-variant-numeric: tabular-nums; }
+
+/* FAQ: slightly roomier question rows for readability */
+.landing-faq-item summary { padding: 1.05rem 1.3rem; }
+
+/* Footer link hover polish on landing */
+.site-footer .footer-section ul li a { transition: color 0.18s ease, padding-left 0.18s ease; }
+.site-footer .footer-section ul li a:hover { color: var(--primary-dark); padding-left: 4px; }
+[data-theme="dark"] .site-footer .footer-section ul li a:hover { color: var(--primary-color); }
+
+/* Print: hide interactive chrome, keep content legible */
+@media print {
+    .landing-nav, .back-to-top, .theme-toggle, .landing-nav-drawer { display: none !important; }
+    .landing-hero, .landing-section, .landing-closing { padding: 1rem 0; }
+    .landing-reveal { opacity: 1 !important; transform: none !important; }
+}

@@ -81,6 +81,44 @@
         }, { passive: true });
     }
 
+    // --- Scroll-reveal (progressive enhancement: without JS everything stays visible) ---
+    if ('IntersectionObserver' in window &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const targets = document.querySelectorAll(
+            '.landing-section-head, .landing-step, .landing-choice, ' +
+            '.landing-category-card, .landing-trending-row, .landing-learn-card, ' +
+            '.landing-faq-item, .landing-finder-hint'
+        );
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+        // Stagger siblings inside grids so cards cascade in
+        targets.forEach(el => {
+            const siblings = el.parentElement ? [...el.parentElement.children].indexOf(el) : 0;
+            el.style.setProperty('--reveal-delay', Math.min(siblings, 5) * 70 + 'ms');
+            el.classList.add('landing-reveal');
+            revealObserver.observe(el);
+        });
+    }
+
+    // --- Back-to-top button (index.html does not load scripts.js, so wire it here) ---
+    const backToTopBtn = document.getElementById('backToTop');
+    if (backToTopBtn) {
+        const toggleBackToTop = () => {
+            backToTopBtn.classList.toggle('visible', window.scrollY > 300);
+        };
+        window.addEventListener('scroll', toggleBackToTop, { passive: true });
+        toggleBackToTop();
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
     // --- Shared helpers ---
     const CATEGORY_ORDER = [
         { id: 'nlp', label: 'Chatbot', icon: 'fa-comments' },
@@ -158,7 +196,15 @@
         activeSuggest = -1;
         if (!q) { heroSuggest.hidden = true; return; }
 
-        const matches = TOOLS.filter(t => t && t.name && t.name.toLowerCase().includes(q))
+        // Same matching scope as the directory page (scripts.js): name,
+        // description and tags, so plain words like "image" or "write"
+        // return results, not just exact tool names.
+        const haystack = (t) => {
+            const parts = [t.name, t.description];
+            if (Array.isArray(t.tags)) parts.push(t.tags.join(' '));
+            return parts.filter(Boolean).join(' ').toLowerCase();
+        };
+        const matches = TOOLS.filter(t => t && t.name && haystack(t).includes(q))
             .sort((a, b) => {
                 const aP = a.name.toLowerCase().startsWith(q) ? 0 : 1;
                 const bP = b.name.toLowerCase().startsWith(q) ? 0 : 1;
