@@ -12,15 +12,12 @@
     'use strict';
 
     // --- Legacy URL redirect: the directory used to live at / ---
+    // This script only runs on the landing page (index.html), so any
+    // directory browse params present here belong to a legacy link.
     const BROWSE_KEYS = ['q', 'cat', 'group', 'sort', 'view'];
     const params = new URLSearchParams(window.location.search);
     const hasBrowseParams = BROWSE_KEYS.some(k => params.has(k));
-    if (hasBrowseParams && window.location.pathname.replace(/\/[^/]*$/, '') === window.location.pathname) {
-        // root path (index.html) carrying directory params -> forward
-        window.location.replace('tools.html' + window.location.search);
-        return;
-    }
-    if (hasBrowseParams && /index\.html?$/.test(window.location.pathname)) {
+    if (hasBrowseParams) {
         window.location.replace('tools.html' + window.location.search);
         return;
     }
