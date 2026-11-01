@@ -11263,6 +11263,7 @@ const featuredCount = document.getElementById('featuredCount');
 const categoriesCount = document.getElementById('categoriesCount');
 const categoryList = document.getElementById('categoryList');
 const sortSelect = document.getElementById('sortSelect');
+const pricingSelect = document.getElementById('pricingSelect');
 const loadingOverlay = document.getElementById('loadingOverlay');
 const emptyState = document.getElementById('emptyState');
 const resetFiltersBtn = document.getElementById('resetFiltersBtn');
@@ -11275,6 +11276,7 @@ let currentCategory = 'all';
 let currentCategoryGroup = null; // 'chatbots' | 'image' | 'video' | 'audio' | 'developer' | 'productivity'
 let currentSearch = '';
 let currentSort = 'default';
+let currentPricing = 'all'; // 'all' | 'free' | 'freemium' | 'paid' | 'open source'
 let currentView = 'grid';
 let isAllToolsCollapsed = false;
 let lastTrackedSearchQuery = '';
@@ -11906,14 +11908,21 @@ function renderTools(resetPage = true) {
             tool.name.toLowerCase().includes(currentSearch) ||
             tool.description.toLowerCase().includes(currentSearch) ||
             (tool.tags && tool.tags.some(tag => tag.toLowerCase().includes(currentSearch)));
-        return matchesCategory && matchesSearch;
+        const matchesPricing =
+            currentPricing === 'all' ||
+            (Array.isArray(tool.badges) && tool.badges.includes(currentPricing));
+        return matchesCategory && matchesSearch && matchesPricing;
     });
-    
+
     // Sort
     if (currentSort === 'name') {
         filteredTools.sort((a, b) => a.name.localeCompare(b.name));
     } else if (currentSort === 'featured') {
         filteredTools.sort((a, b) => (b.badges?.includes('featured') ? 1 : 0) - (a.badges?.includes('featured') ? 1 : 0));
+    } else if (currentSort === 'trending') {
+        filteredTools.sort((a, b) => (b.badges?.includes('trending') ? 1 : 0) - (a.badges?.includes('trending') ? 1 : 0));
+    } else if (currentSort === 'new') {
+        filteredTools.sort((a, b) => (b.badges?.includes('new') ? 1 : 0) - (a.badges?.includes('new') ? 1 : 0));
     }
     
     // Clear grid only if resetting (also removes any leftover skeletons)
@@ -12642,6 +12651,29 @@ function categoryLabel(cat) {
     }
 }
 
+// Counts per category, shown in the sidebar so users can gauge directory depth
+function refreshCategoryCounts() {
+    if (!categoryList) return;
+    const counts = { all: aiTools.length };
+    aiTools.forEach(tool => {
+        (Array.isArray(tool.categories) ? tool.categories : []).forEach(cat => {
+            counts[cat] = (counts[cat] || 0) + 1;
+        });
+    });
+    categoryList.querySelectorAll('li').forEach(item => {
+        const cat = item.dataset.category;
+        const count = counts[cat];
+        if (typeof count !== 'number') return;
+        let badge = item.querySelector('.category-count');
+        if (!badge) {
+            badge = document.createElement('span');
+            badge.className = 'category-count';
+            item.appendChild(badge);
+        }
+        badge.textContent = count;
+    });
+}
+
 function updateCategoryListVisibility() {
     if (!categoryList) return;
 
@@ -12662,6 +12694,7 @@ function resetAllFilters() {
     currentCategoryGroup = null;
     currentSort = 'default';
     currentSearch = '';
+    currentPricing = 'all';
     isAllToolsCollapsed = false;
 
     if (searchInput) {
@@ -12674,6 +12707,10 @@ function resetAllFilters() {
 
     if (sortSelect) {
         sortSelect.value = 'default';
+    }
+
+    if (pricingSelect) {
+        pricingSelect.value = 'all';
     }
 
     if (categoryList) {
@@ -12813,6 +12850,15 @@ if (sortSelect) {
     sortSelect.addEventListener('change', e => {
         currentSort = e.target.value;
         browseStatePreferences.save();
+        renderTools();
+    });
+}
+
+// Pricing filter
+if (pricingSelect) {
+    pricingSelect.addEventListener('change', e => {
+        currentPricing = e.target.value;
+        toollyAnalytics.track('pricing_filter_changed', { pricing: currentPricing });
         renderTools();
     });
 }
@@ -13078,6 +13124,7 @@ function boot() {
     initializeStats();
     initializeHero(); // Initialize hero section
     initializeSponsoredSection(); // Render sponsored placements
+    refreshCategoryCounts(); // Show per-category tool counts in sidebar
     applySavedBrowseState();
     applyBrowseStateFromUrl();
     isAllToolsCollapsed = false;

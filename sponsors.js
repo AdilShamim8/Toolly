@@ -24,7 +24,7 @@ const sponsorPlacements = [
         "name": "ChatGPT",
         "description": "Conversational AI system that can engage in natural dialogues, answer questions, and assist with writing.",
         "categories": ["nlp", "productivity"],
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
+        "logo": "https://icons.duckduckgo.com/ip3/chatgpt.com.ico",
         "url": "https://chat.openai.com",
         "badges": ["featured", "trending", "freemium"],
         "tags": ["chatbot", "writing assistant", "language model"],
