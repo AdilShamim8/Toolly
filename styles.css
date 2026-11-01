@@ -755,7 +755,7 @@ html {
     align-items: center;
     gap: 0.75rem;
     background: var(--primary-color);
-    color: #fff;
+    color: #1e293b;
     font-size: 1.1rem;
     font-weight: 700;
     padding: 1rem 2.5rem;
@@ -1907,7 +1907,7 @@ html {
     display: inline-block;
     padding: 0.5rem 1rem;
     background: var(--primary-color);
-    color: white;
+    color: #1e293b;
     text-decoration: none;
     border-radius: 999px;
     font-size: 0.85rem;
@@ -2739,7 +2739,7 @@ html {
     bottom: 2rem;
     right: 2rem;
     background: var(--primary-color);
-    color: white;
+    color: #1e293b; /* dark ink on pastel green: readable in BOTH light and dark mode */
     border: none;
     border-radius: 50%;
     width: 48px;
@@ -2973,21 +2973,22 @@ body {
     color: #1e293b;
 }
 
-/* Thin, rounded scrollbar with brand-colored thumb */
+/* Thin, rounded scrollbar; neutral thumb that only hints green on hover
+   (a full-green thumb reads as a stray colored line against light cards) */
 * {
     scrollbar-width: thin;
-    scrollbar-color: rgba(176, 219, 156, 0.8) transparent;
+    scrollbar-color: rgba(100, 116, 139, 0.45) transparent;
 }
 *::-webkit-scrollbar { width: 7px; height: 7px; }
 *::-webkit-scrollbar-track { background: transparent; }
 *::-webkit-scrollbar-thumb {
-    background: rgba(176, 219, 156, 0.7);
+    background: rgba(100, 116, 139, 0.4);
     border-radius: 999px;
     border: 2px solid transparent;
     background-clip: content-box;
 }
 *::-webkit-scrollbar-thumb:hover {
-    background: rgba(122, 181, 102, 0.9);
+    background: rgba(122, 181, 102, 0.75);
     background-clip: content-box;
 }
 
@@ -3267,7 +3268,7 @@ body {
 .category-pill.active {
     background: linear-gradient(135deg, #9dd485 0%, #68a952 100%);
     border-color: rgba(122, 181, 102, 0.6);
-    color: #fff;
+    color: #1e293b;
     box-shadow: 0 6px 18px rgba(122, 181, 102, 0.38);
 }
 
