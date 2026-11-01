@@ -318,6 +318,14 @@
                 </form>
               </div>
             </div>
+
+            <!-- Tool Detail Modal (per-tool view with similar tools) -->
+            <div id="tool-detail-modal" class="modal tool-detail-modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="tool-detail-title">
+                <div class="modal-content tool-detail-content">
+                    <button type="button" class="close" id="tool-detail-close" aria-label="Close tool details">&times;</button>
+                    <div id="tool-detail-body"><!-- rendered dynamically --></div>
+                </div>
+            </div>
             <section class="tools-catalog-section" aria-labelledby="featured-tools-heading">
                 <div class="section-header">
                     <h2 class="featured-title" id="featured-tools-heading">All AI Tools</h2>
@@ -482,6 +490,7 @@
     <!-- Defer non-critical JavaScript -->
     <script src="sponsors.js" defer></script>
     <script src="scripts.js" defer></script>
+    <script src="tool-details.js" defer></script>
 </body>
 </html>
 

@@ -11237,6 +11237,11 @@ const toollyAnalytics = {
 
 toollyAnalytics.loadPersistedEvents();
 window.ToollyAnalytics = toollyAnalytics;
+// Shared helpers for companion modules (tool-details.js, sponsors.js)
+window.aiTools = aiTools;
+window.getDomain = getDomain;
+window.generateToolAvatar = generateToolAvatar;
+window.categoryLabel = categoryLabel;
 
 function openExternalLink(url, metadata = {}) {
     const destinationUrl = (url || '').trim();
@@ -12353,6 +12358,16 @@ function createToolCard(tool) {
             });
         });
         footer.appendChild(link);
+
+        const detailsBtn = document.createElement('button');
+        detailsBtn.type = 'button';
+        detailsBtn.className = 'tool-details-btn';
+        detailsBtn.innerHTML = '<i class="fas fa-info-circle" aria-hidden="true"></i> Details';
+        detailsBtn.setAttribute('aria-label', `View details and similar tools for ${tool.name}`);
+        detailsBtn.addEventListener('click', () => {
+            if (window.ToollyToolDetails) window.ToollyToolDetails.open(tool);
+        });
+        footer.appendChild(detailsBtn);
         
         content.appendChild(footer);
         card.appendChild(content);
@@ -12503,6 +12518,17 @@ function createToolCard(tool) {
             });
         });
         card.appendChild(link);
+
+        // Details button opens the per-tool modal with similar tools
+        const detailsBtn = document.createElement('button');
+        detailsBtn.type = 'button';
+        detailsBtn.className = 'tool-details-btn';
+        detailsBtn.innerHTML = '<i class="fas fa-info-circle" aria-hidden="true"></i> Details';
+        detailsBtn.setAttribute('aria-label', `View details and similar tools for ${tool.name}`);
+        detailsBtn.addEventListener('click', () => {
+            if (window.ToollyToolDetails) window.ToollyToolDetails.open(tool);
+        });
+        card.appendChild(detailsBtn);
     }
     
     return card;

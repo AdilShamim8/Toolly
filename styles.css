@@ -3878,3 +3878,236 @@ body {
         white-space: normal;
     }
 }
+
+/* --- Tool Detail Modal (per-tool view with similar tools) --- */
+body.modal-open {
+    overflow: hidden;
+}
+
+.tool-detail-modal .modal-content {
+    width: min(640px, 92vw);
+    min-width: 0; /* override .modal-content min-width so small phones fit */
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 2rem 1.75rem 1.75rem;
+}
+
+.tool-detail-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-right: 2rem; /* keep clear of the close button */
+}
+
+.tool-detail-logo-wrap {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 14px;
+    background: var(--tag-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.tool-detail-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.tool-detail-headtext {
+    min-width: 0;
+    flex: 1;
+}
+
+.tool-detail-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0 0 0.15rem;
+    word-break: break-word;
+}
+
+.tool-detail-domain {
+    font-size: 0.85rem;
+    color: var(--primary-dark);
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    word-break: break-all;
+}
+
+.tool-detail-description {
+    color: var(--muted-text);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 1rem 0 1.25rem;
+}
+
+.tool-detail-meta {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.9rem;
+}
+
+.tool-detail-meta-label {
+    flex-shrink: 0;
+    width: 84px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted-text);
+    padding-top: 0.25rem;
+}
+
+.tool-detail-meta .tool-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.tool-detail-actions {
+    margin: 1.25rem 0 0;
+}
+
+.tool-detail-visit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    border-radius: 999px;
+    background: var(--primary-color);
+    color: #1e293b;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 4px 14px rgba(176, 219, 156, 0.45);
+}
+
+.tool-detail-visit:hover {
+    background: var(--primary-dark);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.tool-detail-similar {
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--input-border);
+}
+
+.tool-detail-similar-heading {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin: 0 0 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.tool-detail-similar-heading i {
+    color: var(--primary-dark);
+}
+
+.tool-detail-similar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.6rem;
+}
+
+.tool-detail-similar-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.7rem;
+    background: var(--tag-bg);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    font: inherit;
+    color: var(--text-color);
+    transition: var(--transition);
+    text-align: left;
+}
+
+.tool-detail-similar-chip:hover {
+    border-color: var(--primary-color);
+    background: var(--card-bg);
+    transform: translateY(-1px);
+}
+
+.tool-detail-similar-thumb {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.tool-detail-similar-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Details button on tool cards (sits next to Visit Site) */
+.tool-details-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    border: 2px solid var(--input-border);
+    background: var(--card-bg);
+    color: var(--muted-text);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.tool-details-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-dark);
+    background: var(--tag-bg);
+}
+
+.tools-grid.list-view .tool-footer {
+    gap: 0.6rem;
+}
+
+.tools-grid.list-view .tool-footer .tool-details-btn {
+    flex-shrink: 0;
+}
+
+/* Card link row in grid view: keep Visit Site + Details side by side */
+.tool-card > .tool-link,
+.tool-card > .tool-details-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tool-card .tool-details-btn {
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 560px) {
+    .tool-detail-modal .modal-content {
+        padding: 1.5rem 1.1rem 1.25rem;
+    }
+    .tool-detail-meta-label {
+        width: 72px;
+    }
+    .tool-detail-similar-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
