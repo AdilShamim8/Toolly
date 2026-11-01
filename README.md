@@ -36,19 +36,26 @@ Live site: <https://adilshamim8.github.io/Toolly/>
 ## Repository Layout
 
 ```
-index.html        Homepage: hero, sponsored, discovery, directory, advertise, submit
+index.html        Landing page: hero search, task finder, categories, journey, trending, FAQ
+tools.html        Full directory: filters, sponsored, discovery, My Tools, advertise, submit
 about.html        About page
-learn-ai.html     AI learning roadmap for non-technical people
+learn-ai.html     Learn AI: step-by-step beginner roadmap (4 stages, 10 lessons)
 privacy.html      Privacy policy
 terms.html        Terms of service
-scripts.js        Tool data (aiTools array) + directory rendering and filters
+tools-data.js     Shared tool dataset (window.TOOLLY_TOOLS, 561 entries)
+scripts.js        Directory rendering and filters
+landing.js        Landing page logic (search, task finder, category grid, legacy redirect)
 sponsors.js       Sponsored placements (pay more, rank higher)
 tool-details.js   Tool detail modal + Similar Tools engine
 search-suggest.js Search autocomplete
 styles.css        Full design system (Toolly green, light + dark)
-legal-pages.js    Shared logic for privacy/terms pages
+legal-pages.js    Shared logic for secondary pages (sidebar, theme, back-to-top)
 logo/             Brand assets
 ```
+
+The old directory URLs (`/?q=...`, `/index.html?cat=...`) are forwarded to
+`tools.html` with parameters intact by `landing.js`, so existing links keep
+working.
 
 ## Quick Start
 
