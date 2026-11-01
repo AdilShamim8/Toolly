@@ -13324,17 +13324,17 @@ if (modal) {
 let myTools = JSON.parse(localStorage.getItem('myTools') || JSON.stringify([
   {
     name: 'ChatGPT',
-    icon: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg',
+    icon: 'https://icons.duckduckgo.com/ip3/chatgpt.com.ico',
     link: 'https://chat.openai.com'
   },
   {
     name: 'Gemini',
-    icon: 'https://brandlogos.net/wp-content/uploads/2025/03/gemini_icon-logo_brandlogos.net_bqzeu-512x512.png',
+    icon: 'https://icons.duckduckgo.com/ip3/gemini.google.com.ico',
     link: 'https://gemini.google.com'
   },
   {
     name: 'Perplexity',
-    icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuJtpuSPxCai6OZE-p61Ivmz9A_QSa414g7Q&s',
+    icon: 'https://icons.duckduckgo.com/ip3/perplexity.ai.ico',
     link: 'https://perplexity.ai'
   }
 ]));

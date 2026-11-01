@@ -1039,8 +1039,8 @@ html {
 
 .main-header-actions {
     display: grid;
-    grid-template-columns: minmax(260px, 1fr) auto auto auto;
-    align-items: stretch;
+    grid-template-columns: minmax(220px, 1fr) minmax(120px, auto) minmax(120px, auto) auto;
+    align-items: center;
     gap: 1rem;
     width: 100%;
     background: var(--card-bg);
@@ -1048,6 +1048,15 @@ html {
     border-radius: var(--border-radius);
     box-shadow: var(--card-shadow);
     border: 1px solid var(--input-border);
+}
+
+/* Keep the result counter on one line; selects keep a compact natural height */
+.main-header-actions .tools-counter {
+    white-space: nowrap;
+    align-self: center;
+    height: 46px;
+    display: inline-flex;
+    align-items: center;
 }
 .search-container {
     position: relative;
@@ -1108,8 +1117,8 @@ html {
 }
 #sortSelect {
     min-height: 46px;
-    min-width: 140px;
-    padding: 0.7rem 1.2rem;
+    min-width: 120px;
+    padding: 0.7rem 1rem;
     border-radius: var(--border-radius);
     border: 2px solid var(--input-border);
     background: var(--input-bg);
@@ -1117,6 +1126,7 @@ html {
     font-size: 1rem;
     transition: var(--transition);
     box-sizing: border-box;
+    width: auto;
 }
 
 .section-header {
@@ -3470,6 +3480,32 @@ body {
     box-shadow: 0 4px 18px rgba(176, 219, 156, 0.25);
 }
 
+/* Match regular tool card anatomy so rows look uniform */
+.sponsored-grid .tool-card .tool-description {
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
+    margin-bottom: 0.75rem;
+}
+
+.sponsored-grid .tool-card .tool-footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sponsored-grid .tool-card .tool-badges {
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.sponsored-grid .tool-card .tool-tags {
+    margin-bottom: 0.5rem;
+}
+
 .sponsor-rank {
     position: absolute;
     top: 0.6rem;
@@ -3764,8 +3800,8 @@ body {
 /* --- Pricing filter & sidebar category counts --- */
 #pricingSelect {
     min-height: 46px;
-    min-width: 130px;
-    padding: 0.7rem 1.2rem;
+    min-width: 120px;
+    padding: 0.7rem 1rem;
     border-radius: var(--border-radius);
     border: 2px solid var(--input-border);
     background: var(--input-bg);
@@ -3773,6 +3809,7 @@ body {
     font-size: 1rem;
     transition: var(--transition);
     box-sizing: border-box;
+    width: auto;
 }
 
 #pricingSelect:focus {
@@ -3781,8 +3818,16 @@ body {
     box-shadow: 0 0 0 3px rgba(176, 219, 156, 0.25);
 }
 
+/* Sidebar rows: label left, count right, one line */
+.sidebar-categories li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .sidebar-categories li .category-count {
     margin-left: auto;
+    flex-shrink: 0;
     min-width: 1.6rem;
     padding: 0.1rem 0.4rem;
     font-size: 0.7rem;
@@ -3793,17 +3838,43 @@ body {
     border-radius: 999px;
 }
 
+.sidebar-categories li:hover .category-count,
 .sidebar-categories li.active .category-count {
     color: #1e293b;
     background: var(--primary-color);
 }
 
+/* Narrow screens: wrap header into two tidy rows */
+@media (max-width: 1100px) {
+    .main-header-actions {
+        grid-template-columns: minmax(200px, 1fr) auto auto auto;
+    }
+    #sortSelect,
+    #pricingSelect {
+        min-width: 104px;
+    }
+}
+
 @media (max-width: 900px) {
     .main-header-actions {
-        flex-wrap: wrap;
+        grid-template-columns: 1fr auto auto;
+        grid-template-areas:
+            "search search search"
+            "sort pricing counter";
     }
-    #pricingSelect {
-        min-width: 110px;
-        flex: 1 1 130px;
+    .main-header-actions .search-container {
+        grid-area: search;
+    }
+    .main-header-actions #sortSelect {
+        grid-area: sort;
+    }
+    .main-header-actions #pricingSelect {
+        grid-area: pricing;
+    }
+    .main-header-actions .tools-counter {
+        grid-area: counter;
+        justify-self: end;
+        max-width: 100%;
+        white-space: normal;
     }
 }
