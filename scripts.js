@@ -1,4 +1,4 @@
-// AI Tools Data (Total: 533 verified tools)
+// AI Tools Data (Total: 561 verified tools)
 const aiTools = [
     {
         "name": "H2O.ai",
@@ -1376,24 +1376,6 @@ const aiTools = [
             "dubbing",
             "voiceover",
             "localization"
-        ]
-    },
-    {
-        "name": "Murf AI",
-        "description": "AI voice generator for studio-quality voiceovers.",
-        "categories": [
-            "audio",
-            "productivity"
-        ],
-        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYO81J0zYiPaCqey4hdEazJp-DZjm08DUdKA&s",
-        "url": "https://murf.ai",
-        "badges": [
-            "freemium"
-        ],
-        "tags": [
-            "voiceover",
-            "audio",
-            "generator"
         ]
     },
     {
@@ -3809,23 +3791,23 @@ const aiTools = [
         ]
     },
     {
-        "name": "Zapier AI",
-        "description": "AI-powered automation platform that helps create and manage workflows between different apps and services.",
+        "name": "Zapier Agents",
+        "description": "Build and deploy AI agents and chatbots that reason over your live business data and act across 8,000+ apps.",
         "categories": [
             "productivity",
             "business"
         ],
         "logo": "https://seeklogo.com/images/Z/zapier-logo-46EEE9963E-seeklogo.com.png",
-        "url": "https://zapier.com/ai",
+        "url": "https://zapier.com/agents",
         "badges": [
             "featured",
             "freemium"
         ],
         "tags": [
+            "AI agents",
+            "chatbots",
             "automation",
-            "workflow",
-            "integration",
-            "productivity"
+            "integrations"
         ]
     },
     {
@@ -4646,14 +4628,14 @@ const aiTools = [
         ]
     },
     {
-        "name": "ContentShake AI (Semrush)",
-        "description": "AI writing tool by Semrush to research, draft, and optimize SEO content.",
+        "name": "ContentShake AI",
+        "description": "AI writing tool from Semrush that turns keywords into ready-to-publish articles. See also Semrush for the full SEO toolkit.",
         "categories": [
             "marketing",
             "productivity"
         ],
         "logo": "https://icons.duckduckgo.com/ip3/semrush.com.ico",
-        "url": "https://www.semrush.com/",
+        "url": "https://www.semrush.com/contentshake/",
         "badges": [
             "freemium"
         ],
@@ -8151,27 +8133,6 @@ const aiTools = [
         ]
     },
     {
-        "name": "Leonardo.Ai",
-        "description": "Production-grade AI image and asset generation platform with fine-tuned models, real-time canvas, and style-reference controls.",
-        "categories": [
-            "vision",
-            "design"
-        ],
-        "logo": "https://icons.duckduckgo.com/ip3/leonardo.ai.ico",
-        "url": "https://leonardo.ai",
-        "badges": [
-            "featured",
-            "trending",
-            "freemium"
-        ],
-        "tags": [
-            "AI image generator",
-            "game assets",
-            "design",
-            "creative"
-        ]
-    },
-    {
         "name": "Krea",
         "description": "Real-time AI image and video generator with on-canvas drawing, style transfer, training, and ultra-fast diffusion rendering.",
         "categories": [
@@ -8748,26 +8709,6 @@ const aiTools = [
         ]
     },
     {
-        "name": "Motion",
-        "description": "AI calendar and task manager that auto-schedules your day based on priorities, deadlines, and meetings, adapting as plans change.",
-        "categories": [
-            "productivity",
-            "life-assistant"
-        ],
-        "logo": "https://www.usemotion.com/favicon.ico",
-        "url": "https://www.usemotion.com",
-        "badges": [
-            "paid",
-            "popular"
-        ],
-        "tags": [
-            "calendar",
-            "task manager",
-            "auto-scheduling",
-            "productivity"
-        ]
-    },
-    {
         "name": "Akiflow",
         "description": "All-in-one daily planner that aggregates tasks from email, Slack, Notion, and 2000+ tools into a single, keyboard-first inbox.",
         "categories": [
@@ -9068,28 +9009,6 @@ const aiTools = [
             "SEO",
             "no-code",
             "marketing"
-        ]
-    },
-    {
-        "name": "Julius AI",
-        "description": "Conversational AI data analyst that lets you query spreadsheets, build charts, run regressions, and forecast in plain English.",
-        "categories": [
-            "data-science",
-            "productivity",
-            "business"
-        ],
-        "logo": "https://julius.ai/favicon.ico",
-        "url": "https://julius.ai",
-        "badges": [
-            "freemium",
-            "featured",
-            "trending"
-        ],
-        "tags": [
-            "data analysis",
-            "spreadsheets",
-            "visualization",
-            "Python"
         ]
     },
     {
@@ -9969,30 +9888,6 @@ const aiTools = [
         ]
     },
     {
-        "name": "v0 by Vercel",
-        "description": "Generative UI system by Vercel that converts natural language prompts into production-ready React, Tailwind, and Next.js interfaces.",
-        "categories": [
-            "coding",
-            "design",
-            "productivity"
-        ],
-        "logo": "https://assets.vercel.com/image/upload/front/favicon/vercel/favicon.ico",
-        "url": "https://v0.dev",
-        "badges": [
-            "featured",
-            "trending",
-            "freemium"
-        ],
-        "tags": [
-            "ui generator",
-            "react",
-            "nextjs",
-            "tailwind",
-            "frontend",
-            "vercel"
-        ]
-    },
-    {
         "name": "Replit Agent",
         "description": "Autonomous AI software engineer that plans, writes, debugs, and deploys full-stack applications from simple natural language prompts.",
         "categories": [
@@ -10579,6 +10474,675 @@ const aiTools = [
             "ide",
             "agentic coding",
             "refactoring"
+        ]
+    },
+    {
+        "name": "Zapier",
+        "description": "Automation platform connecting 7,000+ apps with AI-powered workflows, steps, and agents.",
+        "categories": [
+            "automation",
+            "productivity",
+            "business"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/zapier.com.ico",
+        "url": "https://zapier.com",
+        "badges": [
+            "featured",
+            "freemium"
+        ],
+        "tags": [
+            "automation",
+            "integrations",
+            "workflow",
+            "no-code"
+        ]
+    },
+    {
+        "name": "Google Colab",
+        "description": "Free cloud Jupyter notebooks with GPU access, widely used for machine learning experiments and data science.",
+        "categories": [
+            "data-science",
+            "research",
+            "education"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/colab.research.google.com.ico",
+        "url": "https://colab.research.google.com",
+        "badges": [
+            "featured",
+            "free"
+        ],
+        "tags": [
+            "notebooks",
+            "machine learning",
+            "GPU",
+            "python"
+        ]
+    },
+    {
+        "name": "Kaggle",
+        "description": "The world's largest data science community with datasets, competitions, notebooks, and free GPU training.",
+        "categories": [
+            "data-science",
+            "education",
+            "research"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/kaggle.com.ico",
+        "url": "https://www.kaggle.com",
+        "badges": [
+            "featured",
+            "free"
+        ],
+        "tags": [
+            "datasets",
+            "competitions",
+            "machine learning",
+            "community"
+        ]
+    },
+    {
+        "name": "DeepL",
+        "description": "Neural machine translation service delivering highly accurate translations across 30+ languages, plus AI writing support.",
+        "categories": [
+            "nlp",
+            "productivity",
+            "business"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/deepl.com.ico",
+        "url": "https://www.deepl.com",
+        "badges": [
+            "featured",
+            "trending",
+            "freemium"
+        ],
+        "tags": [
+            "translation",
+            "language",
+            "writing",
+            "localization"
+        ]
+    },
+    {
+        "name": "LanguageTool",
+        "description": "Open-source grammar, spelling, and style checker supporting 30+ languages across browsers and office apps.",
+        "categories": [
+            "nlp",
+            "productivity",
+            "education"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/languagetool.org.ico",
+        "url": "https://languagetool.org",
+        "badges": [
+            "freemium",
+            "open source"
+        ],
+        "tags": [
+            "grammar",
+            "proofreading",
+            "writing",
+            "multilingual"
+        ]
+    },
+    {
+        "name": "Read.ai",
+        "description": "AI meeting copilot providing transcripts, smart summaries, engagement metrics, and follow-up suggestions.",
+        "categories": [
+            "productivity",
+            "business"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/read.ai.ico",
+        "url": "https://www.read.ai",
+        "badges": [
+            "freemium"
+        ],
+        "tags": [
+            "meetings",
+            "transcription",
+            "analytics",
+            "summaries"
+        ]
+    },
+    {
+        "name": "tl;dv",
+        "description": "AI meeting recorder that transcribes, summarizes, and clips moments from calls in 30+ languages.",
+        "categories": [
+            "productivity",
+            "business",
+            "video"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/tldv.io.ico",
+        "url": "https://tldv.io",
+        "badges": [
+            "freemium"
+        ],
+        "tags": [
+            "meetings",
+            "transcription",
+            "clips",
+            "highlights"
+        ]
+    },
+    {
+        "name": "Toggl Track",
+        "description": "Time tracking with AI-backed reporting that reveals where hours go across projects and teams.",
+        "categories": [
+            "productivity",
+            "business"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/toggl.com.ico",
+        "url": "https://toggl.com",
+        "badges": [
+            "freemium"
+        ],
+        "tags": [
+            "time tracking",
+            "reporting",
+            "billing",
+            "projects"
+        ]
+    },
+    {
+        "name": "RescueTime",
+        "description": "Automatic time-tracking and focus coaching that measures productivity and blocks distractions.",
+        "categories": [
+            "productivity",
+            "life-assistant"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/rescuetime.com.ico",
+        "url": "https://www.rescuetime.com",
+        "badges": [
+            "freemium"
+        ],
+        "tags": [
+            "time tracking",
+            "focus",
+            "distraction blocking",
+            "habits"
+        ]
+    },
+    {
+        "name": "Notion",
+        "description": "All-in-one workspace for notes, docs, projects, and wikis, supercharged with built-in AI writing and search.",
+        "categories": [
+            "productivity",
+            "business",
+            "education"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/notion.so.ico",
+        "url": "https://www.notion.com",
+        "badges": [
+            "featured",
+            "trending",
+            "freemium"
+        ],
+        "tags": [
+            "notes",
+            "wiki",
+            "project management",
+            "workspace"
+        ]
+    },
+    {
+        "name": "Obsidian",
+        "description": "Powerful markdown knowledge base with community plugins and AI-assisted note workflows.",
+        "categories": [
+            "productivity",
+            "education"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/obsidian.md.ico",
+        "url": "https://obsidian.md",
+        "badges": [
+            "free",
+            "popular"
+        ],
+        "tags": [
+            "notes",
+            "knowledge base",
+            "markdown",
+            "plugins"
+        ]
+    },
+    {
+        "name": "Mem",
+        "description": "AI-native notes app that organizes knowledge automatically and surfaces connections between ideas.",
+        "categories": [
+            "productivity",
+            "research"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/mem.ai.ico",
+        "url": "https://get.mem.ai",
+        "badges": [
+            "freemium"
+        ],
+        "tags": [
+            "notes",
+            "knowledge management",
+            "AI organization",
+            "search"
+        ]
+    },
+    {
+        "name": "Zotero",
+        "description": "Free open-source research assistant that manages sources, organizes references, and formats citations.",
+        "categories": [
+            "research",
+            "education"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/zotero.org.ico",
+        "url": "https://www.zotero.org",
+        "badges": [
+            "featured",
+            "free",
+            "open source"
+        ],
+        "tags": [
+            "citations",
+            "references",
+            "research",
+            "library"
+        ]
+    },
+    {
+        "name": "Litmaps",
+        "description": "AI research discovery platform that maps citation networks so you never miss a relevant paper.",
+        "categories": [
+            "research",
+            "education"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/litmaps.com.ico",
+        "url": "https://app.litmaps.com",
+        "badges": [
+            "freemium"
+        ],
+        "tags": [
+            "literature mapping",
+            "citations",
+            "discovery",
+            "research"
+        ]
+    },
+    {
+        "name": "Wiseone",
+        "description": "Browser extension that enriches web reading with verified information, summaries, and multi-source answers.",
+        "categories": [
+            "research",
+            "productivity"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/wiseone.io.ico",
+        "url": "https://wiseone.io",
+        "badges": [
+            "freemium"
+        ],
+        "tags": [
+            "reading",
+            "fact checking",
+            "summaries",
+            "browser extension"
+        ]
+    },
+    {
+        "name": "Merlin",
+        "description": "AI browser assistant giving one-click ChatGPT-style answers, summaries, and writing on any web page.",
+        "categories": [
+            "productivity",
+            "nlp"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/merlin.foyu.work.ico",
+        "url": "https://www.getmerlin.in",
+        "badges": [
+            "freemium",
+            "popular"
+        ],
+        "tags": [
+            "browser extension",
+            "assistant",
+            "summaries",
+            "writing"
+        ]
+    },
+    {
+        "name": "TypingMind",
+        "description": "Polished frontend for ChatGPT, Claude, Gemini, and other LLMs with personas, prompts, and chat history.",
+        "categories": [
+            "nlp",
+            "productivity"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/typingmind.com.ico",
+        "url": "https://typingmind.com",
+        "badges": [
+            "freemium"
+        ],
+        "tags": [
+            "chat interface",
+            "multi-model",
+            "prompt library",
+            "productivity"
+        ]
+    },
+    {
+        "name": "OpenRouter",
+        "description": "Unified API to route requests across hundreds of language models from all major providers with one key.",
+        "categories": [
+            "coding",
+            "research",
+            "nlp"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/openrouter.ai.ico",
+        "url": "https://openrouter.ai",
+        "badges": [
+            "trending",
+            "freemium"
+        ],
+        "tags": [
+            "API",
+            "model routing",
+            "LLM",
+            "developer tools"
+        ]
+    },
+    {
+        "name": "StarryAI",
+        "description": "Mobile-friendly AI art generator that turns text prompts into artwork in multiple styles.",
+        "categories": [
+            "vision",
+            "design",
+            "life-assistant"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/starryai.com.ico",
+        "url": "https://starryai.com",
+        "badges": [
+            "freemium",
+            "mobile"
+        ],
+        "tags": [
+            "art generation",
+            "text to image",
+            "styles",
+            "mobile"
+        ]
+    },
+    {
+        "name": "Boomy",
+        "description": "Create original songs in seconds and distribute them to streaming platforms, no instruments required.",
+        "categories": [
+            "audio"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/boomy.com.ico",
+        "url": "https://boomy.com",
+        "badges": [
+            "freemium"
+        ],
+        "tags": [
+            "music generation",
+            "distribution",
+            "songwriting",
+            "creative"
+        ]
+    },
+    {
+        "name": "Endel",
+        "description": "AI-generated adaptive soundscapes scientifically tuned for focus, relaxation, and sleep.",
+        "categories": [
+            "audio",
+            "life-assistant",
+            "productivity"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/endel.io.ico",
+        "url": "https://endel.io",
+        "badges": [
+            "freemium",
+            "mobile"
+        ],
+        "tags": [
+            "focus music",
+            "soundscapes",
+            "wellness",
+            "sleep"
+        ]
+    },
+    {
+        "name": "Brain.fm",
+        "description": "Functional music created with patented AI techniques to improve focus, meditation, and sleep.",
+        "categories": [
+            "audio",
+            "life-assistant",
+            "productivity"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/brain.fm.ico",
+        "url": "https://www.brain.fm",
+        "badges": [
+            "paid",
+            "trial"
+        ],
+        "tags": [
+            "focus",
+            "productivity",
+            "neuroscience",
+            "music"
+        ]
+    },
+    {
+        "name": "LOVO AI",
+        "description": "Text-to-speech platform with 500+ hyper-realistic AI voices for videos, ads, and e-learning.",
+        "categories": [
+            "audio",
+            "video",
+            "business"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/lovo.ai.ico",
+        "url": "https://lovo.ai",
+        "badges": [
+            "freemium"
+        ],
+        "tags": [
+            "text to speech",
+            "voiceover",
+            "AI voices",
+            "e-learning"
+        ]
+    },
+    {
+        "name": "Captions AI",
+        "description": "AI video studio that writes, captions, corrects eye contact, and edits talking-head videos automatically.",
+        "categories": [
+            "video",
+            "marketing"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/captions.ai.ico",
+        "url": "https://www.captions.ai",
+        "badges": [
+            "trending",
+            "freemium",
+            "mobile"
+        ],
+        "tags": [
+            "video editing",
+            "captions",
+            "creator tools",
+            "social media"
+        ]
+    },
+    {
+        "name": "Tavus",
+        "description": "Generative video platform that clones your voice and face to create personalized videos at scale.",
+        "categories": [
+            "video",
+            "business",
+            "marketing"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/tavus.io.ico",
+        "url": "https://www.tavus.io",
+        "badges": [
+            "freemium"
+        ],
+        "tags": [
+            "personalized video",
+            "voice cloning",
+            "sales",
+            "marketing"
+        ]
+    },
+    {
+        "name": "Semrush",
+        "description": "All-in-one visibility platform with AI features for SEO, advertising, content, and competitor research.",
+        "categories": [
+            "marketing",
+            "business"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/semrush.com.ico",
+        "url": "https://www.semrush.com",
+        "badges": [
+            "featured",
+            "freemium"
+        ],
+        "tags": [
+            "SEO",
+            "keyword research",
+            "competitor analysis",
+            "marketing"
+        ]
+    },
+    {
+        "name": "Ahrefs",
+        "description": "SEO toolkit with a vast backlink index, rank tracking, keyword research, and AI content auditing.",
+        "categories": [
+            "marketing",
+            "business"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/ahrefs.com.ico",
+        "url": "https://ahrefs.com",
+        "badges": [
+            "featured",
+            "freemium"
+        ],
+        "tags": [
+            "SEO",
+            "backlinks",
+            "rank tracking",
+            "marketing"
+        ]
+    },
+    {
+        "name": "Figma",
+        "description": "Collaborative interface design platform with AI generation features for layouts, content, and prototypes.",
+        "categories": [
+            "design",
+            "productivity",
+            "coding"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/figma.com.ico",
+        "url": "https://www.figma.com",
+        "badges": [
+            "featured",
+            "trending",
+            "freemium"
+        ],
+        "tags": [
+            "design",
+            "UI/UX",
+            "prototyping",
+            "collaboration"
+        ]
+    },
+    {
+        "name": "Uizard",
+        "description": "AI UI design tool that converts sketches and screenshots into editable multi-platform mockups.",
+        "categories": [
+            "design",
+            "coding"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/uizard.io.ico",
+        "url": "https://uizard.io",
+        "badges": [
+            "freemium",
+            "no-code"
+        ],
+        "tags": [
+            "UI design",
+            "mockups",
+            "wireframes",
+            "prototyping"
+        ]
+    },
+    {
+        "name": "Brandmark",
+        "description": "AI logo maker that generates brand identities, color palettes, and full style guides in minutes.",
+        "categories": [
+            "design",
+            "business",
+            "marketing"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/brandmark.io.ico",
+        "url": "https://brandmark.io",
+        "badges": [
+            "freemium"
+        ],
+        "tags": [
+            "logo design",
+            "branding",
+            "identity",
+            "color palette"
+        ]
+    },
+    {
+        "name": "Rewind (Microsoft Recall-style memory)",
+        "description": "AI memory tool that records your screen activity so you can search and revisit anything you saw.",
+        "categories": [
+            "productivity",
+            "life-assistant"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/rewind.ai.ico",
+        "url": "https://www.rewind.ai",
+        "badges": [
+            "freemium",
+            "beta"
+        ],
+        "tags": [
+            "memory",
+            "search",
+            "screen recording",
+            "productivity"
+        ]
+    },
+    {
+        "name": "Rufus",
+        "description": "Amazon's conversational shopping assistant that answers product questions and compares items inline.",
+        "categories": [
+            "business",
+            "life-assistant",
+            "nlp"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/amazon.com.ico",
+        "url": "https://www.amazon.com/rufus",
+        "badges": [
+            "free",
+            "new"
+        ],
+        "tags": [
+            "shopping",
+            "assistant",
+            "e-commerce",
+            "recommendations"
+        ]
+    },
+    {
+        "name": "Perplexity Pages",
+        "description": "Perplexity's publishing tool that turns research into polished, shareable articles with citations.",
+        "categories": [
+            "research",
+            "nlp",
+            "productivity"
+        ],
+        "logo": "https://icons.duckduckgo.com/ip3/perplexity.ai.ico",
+        "url": "https://www.perplexity.ai/pages",
+        "badges": [
+            "new",
+            "freemium"
+        ],
+        "tags": [
+            "writing",
+            "research",
+            "publishing",
+            "citations"
         ]
     }
 ];
